@@ -1,0 +1,290 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?mso-application progid="Excel.Sheet"?>
+<Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet"
+    xmlns:o="urn:schemas-microsoft-com:office:office"
+    xmlns:x="urn:schemas-microsoft-com:office:excel"
+    xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet"
+    xmlns:html="http://www.w3.org/TR/REC-html40"
+    xmlns:dt="uuid:C2F41010-65B3-11d1-A29F-00AA00C14882">
+    <DocumentProperties xmlns="urn:schemas-microsoft-com:office:office">
+        <Author>mwang</Author>
+        <LastAuthor>敬文.LAI</LastAuthor>
+        <Created>2025-03-10T07:36:20Z</Created>
+        <LastSaved>2025-03-10T07:38:19Z</LastSaved>
+    </DocumentProperties>
+    <CustomDocumentProperties xmlns="urn:schemas-microsoft-com:office:office">
+        <ICV dt:dt="string">FD5C8E7289CE4903880AEB9024A47FBC_13</ICV>
+        <KSOProductBuildVer dt:dt="string">2052-12.1.0.20305</KSOProductBuildVer>
+    </CustomDocumentProperties>
+    <ExcelWorkbook xmlns="urn:schemas-microsoft-com:office:excel">
+        <WindowWidth>30720</WindowWidth>
+        <WindowHeight>15300</WindowHeight>
+        <ProtectStructure>False</ProtectStructure>
+        <ProtectWindows>False</ProtectWindows>
+    </ExcelWorkbook>
+    <Styles>
+        <Style ss:ID="Default" ss:Name="Normal">
+            <Alignment ss:Vertical="Center"/>
+            <Borders/>
+            <Font ss:FontName="宋体" x:CharSet="134" ss:Size="11" ss:Color="#000000"/>
+            <Interior/>
+            <NumberFormat/>
+            <Protection/>
+        </Style>
+        <Style ss:ID="s49"/>
+        <Style ss:ID="s50">
+            <Alignment ss:Horizontal="Center" ss:Vertical="Center"/>
+            <Borders>
+                <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"/>
+                <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1"/>
+            </Borders>
+            <Font ss:FontName="微软雅黑" x:CharSet="134" ss:Size="12" ss:Color="#000000" ss:Bold="1"/>
+            <Interior ss:Color="#D2F4F2" ss:Pattern="Solid"/>
+        </Style>
+        <Style ss:ID="s51">
+            <Alignment ss:Horizontal="Center" ss:Vertical="Center"/>
+            <Borders>
+                <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"/>
+                <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1"/>
+            </Borders>
+            <Font ss:FontName="微软雅黑" x:CharSet="134" ss:Size="12" ss:Color="#000000" ss:Bold="1"/>
+            <Interior ss:Color="#D2F4F2" ss:Pattern="Solid"/>
+        </Style>
+        <Style ss:ID="s52">
+            <Alignment ss:Horizontal="Center" ss:Vertical="Center"/>
+            <Borders>
+                <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1"/>
+                <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1"/>
+            </Borders>
+            <Font ss:FontName="微软雅黑" x:CharSet="134" ss:Size="12" ss:Color="#000000" ss:Bold="1"/>
+            <Interior ss:Color="#D2F4F2" ss:Pattern="Solid"/>
+        </Style>
+        <Style ss:ID="s53">
+            <Alignment ss:Horizontal="Center" ss:Vertical="Center"/>
+            <Borders>
+                <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"/>
+                <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1"/>
+                <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1"/>
+                <Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1"/>
+            </Borders>
+            <Font ss:FontName="微软雅黑" x:CharSet="134" ss:Size="12" ss:Color="#000000" ss:Bold="1"/>
+            <Interior ss:Color="#D2F4F2" ss:Pattern="Solid"/>
+        </Style>
+        <Style ss:ID="s54">
+            <Alignment ss:Horizontal="Center" ss:Vertical="Center" ss:WrapText="1"/>
+            <Borders>
+                <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"/>
+                <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1"/>
+                <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1"/>
+                <Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1"/>
+            </Borders>
+            <Font ss:FontName="微软雅黑" x:CharSet="134" ss:Size="12" ss:Color="#000000" ss:Bold="1"/>
+            <Interior ss:Color="#D2F4F2" ss:Pattern="Solid"/>
+        </Style>
+        <Style ss:ID="s55">
+            <Alignment ss:Horizontal="Center" ss:Vertical="Center"/>
+            <Borders>
+                <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"/>
+                <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1"/>
+                <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1"/>
+            </Borders>
+            <Font ss:FontName="微软雅黑" x:CharSet="134" ss:Size="12" ss:Color="#000000" ss:Bold="1"/>
+            <Interior ss:Color="#D2F4F2" ss:Pattern="Solid"/>
+        </Style>
+        <Style ss:ID="s56">
+            <Alignment ss:Horizontal="Left" ss:Vertical="Center"/>
+            <Borders>
+                <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"/>
+                <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1"/>
+                <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1"/>
+                <Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1"/>
+            </Borders>
+            <Font ss:FontName="微软雅黑" x:CharSet="134" ss:Size="11" ss:Color="#000000"/>
+            <Interior/>
+        </Style>
+        <Style ss:ID="s57">
+            <Alignment ss:Vertical="Center" ss:WrapText="1"/>
+            <Borders>
+                <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"/>
+                <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1"/>
+                <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1"/>
+                <Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1"/>
+            </Borders>
+            <Font ss:FontName="微软雅黑" x:CharSet="134" ss:Size="11" ss:Color="#000000"/>
+            <Interior/>
+        </Style>
+        <Style ss:ID="s58">
+            <Alignment ss:Horizontal="Left" ss:Vertical="Center" ss:WrapText="1"/>
+            <Borders>
+                <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"/>
+                <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1"/>
+                <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1"/>
+                <Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1"/>
+            </Borders>
+            <Font ss:FontName="微软雅黑" x:CharSet="134" ss:Size="11" ss:Color="#000000"/>
+            <Interior/>
+        </Style>
+        <Style ss:ID="s59">
+            <Alignment ss:Horizontal="Center" ss:Vertical="Center"/>
+            <Borders>
+                <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"/>
+                <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1"/>
+                <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1"/>
+            </Borders>
+            <Font ss:FontName="微软雅黑" x:CharSet="134" ss:Size="12" ss:Color="#000000" ss:Bold="1"/>
+            <Interior ss:Color="#D2F4F2" ss:Pattern="Solid"/>
+        </Style>
+        <Style ss:ID="s60">
+            <Alignment ss:Horizontal="Center" ss:Vertical="Center"/>
+            <Borders>
+                <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"/>
+                <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1"/>
+                <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1"/>
+            </Borders>
+            <Font ss:FontName="微软雅黑" x:CharSet="134" ss:Size="12" ss:Color="#000000" ss:Bold="1"/>
+            <Interior ss:Color="#D2F4F2" ss:Pattern="Solid"/>
+        </Style>
+    </Styles>
+    <Worksheet ss:Name="Sheet1">
+        <Table ss:ExpandedColumnCount="3" ss:ExpandedRowCount="11" x:FullColumns="1" x:FullRows="1" ss:DefaultColumnWidth="48" ss:DefaultRowHeight="14.4">
+            <Column ss:Index="1" ss:StyleID="Default" ss:AutoFitWidth="0" ss:Width="160.8"/>
+            <Column ss:Index="2" ss:StyleID="Default" ss:AutoFitWidth="0" ss:Width="207"/>
+            <Column ss:StyleID="Default" ss:AutoFitWidth="0" ss:Width="374.4"/>
+            <Row ss:Height="17.4">
+                <Cell ss:StyleID="s59" ss:MergeAcross="1">
+                    <Data ss:Type="String">检测软件界面显示</Data>
+                </Cell>
+                <Cell ss:StyleID="s60" ss:MergeDown="1">
+                    <Data ss:Type="String">系统判断指标</Data>
+                </Cell>
+            </Row>
+            <Row ss:Height="34.8">
+                <Cell ss:StyleID="s53">
+                    <Data ss:Type="String">面诊问题</Data>
+                </Cell>
+                <Cell ss:StyleID="s54">
+                    <Data ss:Type="String">勾选内容</Data>
+                </Cell>
+            </Row>
+            <Row ss:Height="93.6">
+                <Cell ss:StyleID="s56">
+                    <Data ss:Type="String">1、眼睛异物感情况（进沙子）</Data>
+                </Cell>
+                <Cell ss:StyleID="s57">
+                    <Data ss:Type="String">√有&#10;√一般，偶尔有这种感觉 &#10;√无</Data>
+                </Cell>
+                <Cell ss:StyleID="s57">
+                    <Data ss:Type="String">√重度干眼&#10;√中度干眼&#10;√轻度干眼</Data>
+                </Cell>
+            </Row>
+            <Row ss:Height="109.2">
+                <Cell ss:StyleID="s58">
+                    <Data ss:Type="String">2、眼睛不适感与劳累感情况&#10;（看书/看电视时）</Data>
+                </Cell>
+                <Cell ss:StyleID="s57">
+                    <Data ss:Type="String">√有&#10;√一般，偶尔有这种感觉&#10;√无</Data>
+                </Cell>
+                <Cell ss:StyleID="s57">
+                    <Data ss:Type="String">√重度视疲劳&#10;√中度视疲劳&#10;√轻度视疲劳</Data>
+                </Cell>
+            </Row>
+            <Row ss:Height="171.6">
+                <Cell ss:StyleID="s56">
+                    <Data ss:Type="String">3、每日看手机/电视的时长</Data>
+                </Cell>
+                <Cell ss:StyleID="s57">
+                    <Data ss:Type="String">√＞6h &#10;√2~6h &#10;√＜2h</Data>
+                </Cell>
+                <Cell ss:StyleID="s57">
+                    <Data ss:Type="String">√重度视疲劳，眨眼次数少&#10;√中度视疲劳，眨眼次数一般&#10;√轻度视疲劳，眨眼次数正常</Data>
+                </Cell>
+            </Row>
+            <Row ss:Height="62.4">
+                <Cell ss:StyleID="s56">
+                    <Data ss:Type="String">4、纹眼线情况</Data>
+                </Cell>
+                <Cell ss:StyleID="s57">
+                    <Data ss:Type="String">√纹过&#10;√没纹过</Data>
+                </Cell>
+                <Cell ss:StyleID="s57">
+                    <Data ss:Type="String">√重度眼睑堵塞&#10;√轻度眼睑堵塞</Data>
+                </Cell>
+            </Row>
+            <Row ss:Height="62.4">
+                <Cell ss:StyleID="s56">
+                    <Data ss:Type="String">5、种植假睫毛情况</Data>
+                </Cell>
+                <Cell ss:StyleID="s57">
+                    <Data ss:Type="String">√种植过 &#10;√没种植过</Data>
+                </Cell>
+                <Cell ss:StyleID="s57">
+                    <Data ss:Type="String">√重度眼睑堵塞&#10;√轻度眼睑堵塞</Data>
+                </Cell>
+            </Row>
+            <Row ss:Height="93.6">
+                <Cell ss:StyleID="s56">
+                    <Data ss:Type="String">6、眼皮松弛程度</Data>
+                </Cell>
+                <Cell ss:StyleID="s57">
+                    <Data ss:Type="String">√严重&#10;√轻微&#10;√良好</Data>
+                </Cell>
+                <Cell ss:StyleID="s57">
+                    <Data ss:Type="String">√重度眼皮松弛&#10;√轻度眼皮松弛&#10;√正常眼皮</Data>
+                </Cell>
+            </Row>
+            <Row ss:Height="93.6">
+                <Cell ss:StyleID="s56">
+                    <Data ss:Type="String">7、眼窝凹陷情况</Data>
+                </Cell>
+                <Cell ss:StyleID="s57">
+                    <Data ss:Type="String">√严重&#10;√轻微&#10;√无</Data>
+                </Cell>
+                <Cell ss:StyleID="s57">
+                    <Data ss:Type="String">√重度眼窝凹陷&#10;√轻度眼窝凹陷&#10;√正常眼窝</Data>
+                </Cell>
+            </Row>
+            <Row ss:Height="140.4">
+                <Cell ss:StyleID="s56">
+                    <Data ss:Type="String">8、眼袋情况</Data>
+                </Cell>
+                <Cell ss:StyleID="s57">
+                    <Data ss:Type="String">√眼袋明显且面积大&#10;√眼袋明显但面积不大&#10;√轻微有点眼袋&#10;√无</Data>
+                </Cell>
+                <Cell ss:StyleID="s57">
+                    <Data ss:Type="String">√重度眼袋&#10;√中度眼袋&#10;√轻度眼袋&#10;√正常眼袋</Data>
+                </Cell>
+            </Row>
+            <Row ss:Height="218.4">
+                <Cell ss:StyleID="s56">
+                    <Data ss:Type="String">9、眼压情况</Data>
+                </Cell>
+                <Cell ss:StyleID="s57">
+                    <Data ss:Type="String">√明显硬、鼓胀 （硬度与额头一样）&#10;√有点硬、鼓胀（介于两者之间）&#10;√有弹性、略微鼓胀（硬度与鼻尖一样）</Data>
+                </Cell>
+                <Cell ss:StyleID="s57">
+                    <Data ss:Type="String">√高眼压&#10;√中眼压&#10;√正常眼压</Data>
+                </Cell>
+            </Row>
+        </Table>
+        <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
+            <PageSetup>
+                <Header/>
+                <Footer/>
+            </PageSetup>
+            <Selected/>
+            <TopRowVisible>0</TopRowVisible>
+            <LeftColumnVisible>0</LeftColumnVisible>
+            <PageBreakZoom>100</PageBreakZoom>
+            <Panes>
+                <Pane>
+                    <Number>3</Number>
+                    <ActiveRow>0</ActiveRow>
+                    <ActiveCol>0</ActiveCol>
+                    <RangeSelection>R1C1:R11C3</RangeSelection>
+                </Pane>
+            </Panes>
+            <ProtectObjects>False</ProtectObjects>
+            <ProtectScenarios>False</ProtectScenarios>
+        </WorksheetOptions>
+    </Worksheet>
+</Workbook>
