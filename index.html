@@ -2211,6 +2211,319 @@
             font-size: 18px;
             font-weight: 500;
         }
+
+        .service-case-detail-container {
+            padding: 16px;
+        }
+        
+        /* 设置页面样式 */
+        .settings-container {
+            padding: 16px;
+            height: 100%;
+            overflow-y: auto;
+        }
+        
+        .settings-tabs {
+            display: flex;
+            background-color: #fff;
+            border-radius: 8px;
+            margin-bottom: 16px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            overflow-x: auto;
+        }
+        
+        .settings-tab {
+            padding: 12px 16px;
+            flex: 1;
+            text-align: center;
+            cursor: pointer;
+            white-space: nowrap;
+            font-size: 14px;
+            color: #666;
+            transition: all 0.3s;
+        }
+        
+        .settings-tab.active {
+            color: #4CAF50;
+            border-bottom: 2px solid #4CAF50;
+            font-weight: 500;
+        }
+        
+        .settings-section {
+            display: none;
+        }
+        
+        .settings-section.active {
+            display: block;
+        }
+        
+        .settings-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px 0;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .settings-item:last-child {
+            border-bottom: none;
+        }
+        
+        .settings-item-title {
+            font-size: 16px;
+            margin-bottom: 4px;
+        }
+        
+        .settings-item-description {
+            font-size: 14px;
+            color: #666;
+        }
+        
+        .settings-item-action {
+            color: #4CAF50;
+            cursor: pointer;
+        }
+        
+        /* 个人资料样式 */
+        .profile-header {
+            display: flex;
+            align-items: center;
+            padding: 16px 0;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .profile-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background-color: #e0e0e0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-right: 16px;
+        }
+        
+        .profile-avatar .material-icons {
+            font-size: 36px;
+            color: #999;
+        }
+        
+        .profile-info {
+            flex: 1;
+        }
+        
+        .profile-name {
+            font-size: 18px;
+            font-weight: 500;
+            margin-bottom: 4px;
+        }
+        
+        .profile-role {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 2px;
+        }
+        
+        /* 缓存设置样式 */
+        .cache-info {
+            text-align: center;
+            padding: 24px 0;
+            border-bottom: 1px solid #eee;
+            margin-bottom: 16px;
+        }
+        
+        .cache-size {
+            font-size: 32px;
+            font-weight: 500;
+            margin-bottom: 8px;
+            color: #4CAF50;
+        }
+        
+        .cache-description {
+            font-size: 14px;
+            color: #666;
+        }
+        
+        /* 关于页面样式 */
+        .about-container {
+            text-align: center;
+            padding: 32px 0;
+        }
+        
+        .app-logo {
+            width: 80px;
+            height: 80px;
+            margin-bottom: 16px;
+        }
+        
+        .app-name {
+            font-size: 24px;
+            font-weight: 500;
+            margin-bottom: 8px;
+        }
+        
+        .app-version {
+            font-size: 16px;
+            color: #666;
+            margin-bottom: 16px;
+        }
+        
+        .version-status {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 16px;
+        }
+        
+        /* 开关样式 */
+        .toggle-switch {
+            position: relative;
+            display: inline-block;
+            width: 50px;
+            height: 24px;
+        }
+        
+        .toggle-switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+        
+        .toggle-slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            transition: .4s;
+            border-radius: 24px;
+        }
+        
+        .toggle-slider:before {
+            position: absolute;
+            content: "";
+            height: 20px;
+            width: 20px;
+            left: 2px;
+            bottom: 2px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+        
+        input:checked + .toggle-slider {
+            background-color: #4CAF50;
+        }
+        
+        input:checked + .toggle-slider:before {
+            transform: translateX(26px);
+        }
+        
+        /* 模态框样式 */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+        
+        .modal-content {
+            background-color: #fff;
+            margin: 20% auto;
+            padding: 20px;
+            border-radius: 8px;
+            width: 80%;
+            max-width: 400px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        
+        .modal-title {
+            font-size: 18px;
+            font-weight: 500;
+            margin-bottom: 16px;
+        }
+        
+        .modal-input {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 16px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+        
+        .modal-actions {
+            display: flex;
+            justify-content: flex-end;
+        }
+        
+        .modal-button {
+            padding: 8px 16px;
+            margin-left: 8px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        
+        .modal-button.cancel {
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        
+        .modal-button.confirm {
+            background-color: #4CAF50;
+            color: white;
+        }
+        
+        /* Toast样式 */
+        .toast {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 24px;
+            font-size: 14px;
+            z-index: 1000;
+            display: none;
+        }
+        
+        /* 加载指示器样式 */
+        .loading-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(255, 255, 255, 0.8);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            display: none;
+        }
+        
+        .loading-spinner {
+            width: 40px;
+            height: 40px;
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #4CAF50;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
     </style>
 </head>
 
@@ -2222,682 +2535,78 @@
                 <button class="icon-button">
                     <span class="material-icons">notifications</span>
                 </button>
-                <button class="icon-button">
+                <button class="icon-button" onclick="navigateTo('settings-page')">
                     <span class="material-icons">settings</span>
                 </button>
 
+                </div>
             </div>
-        </div>
 
-        <div class="content-area">
-            <!-- 首页 -->
-            <div class="page active" id="home-page">
-                <!-- 门店活动轮播图 -->
-                <div class="card">
-                    <div class="section-title">门店活动</div>
-                    <div class="campaign-carousel">
-                        <div class="carousel-container">
-                            <div class="carousel-wrapper">
-                                <div class="carousel-slide" onclick="navigateTo('campaign-detail-1')">
-                                    <img src="images/campaign/campaign1.jpg" alt="明眸焕新计划" class="carousel-image">
-                                    <div class="carousel-caption">
-                                        <h3>明眸焕新计划</h3>
-                                        <p>即日起至6月30日，进店享三重礼遇</p>
+            <div class="content-area">
+                <!-- 首页 -->
+                <div class="page active" id="home-page">
+                    <!-- 门店活动轮播图 -->
+                    <div class="card">
+                        <div class="section-title">门店活动</div>
+                        <div class="campaign-carousel">
+                            <div class="carousel-container">
+                                <div class="carousel-wrapper">
+                                    <div class="carousel-slide" onclick="navigateTo('campaign-detail-1')">
+                                        <img src="images/campaign/campaign1.jpg" alt="明眸焕新计划" class="carousel-image">
+                                        <div class="carousel-caption">
+                                            <h3>明眸焕新计划</h3>
+                                            <p>即日起至6月30日，进店享三重礼遇</p>
+                                        </div>
+                                    </div>
+                                    <div class="carousel-slide" onclick="navigateTo('campaign-detail-2')">
+                                        <img src="images/campaign/campaign2.jpg" alt="端午护眼粽动员" class="carousel-image">
+                                        <div class="carousel-caption">
+                                            <h3>端午护眼"粽"动员</h3>
+                                            <p>6月6日-6月10日，五重惊喜限时开启</p>
+                                        </div>
+                                    </div>
+                                    <div class="carousel-slide" onclick="navigateTo('campaign-detail-3')">
+                                        <img src="images/campaign/campaign3.jpg" alt="以老带新，明眸双倍礼" class="carousel-image">
+                                        <div class="carousel-caption">
+                                            <h3>以老带新，明眸双倍礼</h3>
+                                            <p>老客户推荐新朋友到店，双重好礼等你拿</p>
+                                        </div>
+                                    </div>
+                                    <div class="carousel-slide" onclick="navigateTo('campaign-detail-4')">
+                                        <img src="images/campaign/campaign1.jpg" alt="全民护眼课堂" class="carousel-image">
+                                        <div class="carousel-caption">
+                                            <h3>全民护眼课堂</h3>
+                                            <p>特邀眼科专家，揭秘电子屏时代的护眼秘籍</p>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="carousel-slide" onclick="navigateTo('campaign-detail-2')">
-                                    <img src="images/campaign/campaign2.jpg" alt="端午护眼粽动员" class="carousel-image">
-                                    <div class="carousel-caption">
-                                        <h3>端午护眼"粽"动员</h3>
-                                        <p>6月6日-6月10日，五重惊喜限时开启</p>
-                                    </div>
-                                </div>
-                                <div class="carousel-slide" onclick="navigateTo('campaign-detail-3')">
-                                    <img src="images/campaign/campaign3.jpg" alt="以老带新，明眸双倍礼" class="carousel-image">
-                                    <div class="carousel-caption">
-                                        <h3>以老带新，明眸双倍礼</h3>
-                                        <p>老客户推荐新朋友到店，双重好礼等你拿</p>
-                                    </div>
-                                </div>
-                                <div class="carousel-slide" onclick="navigateTo('campaign-detail-4')">
-                                    <img src="images/campaign/campaign1.jpg" alt="全民护眼课堂" class="carousel-image">
-                                    <div class="carousel-caption">
-                                        <h3>全民护眼课堂</h3>
-                                        <p>特邀眼科专家，揭秘电子屏时代的护眼秘籍</p>
-                                    </div>
-                                </div>
                             </div>
-                        </div>
-                        <div class="carousel-indicators">
-                            <span class="indicator active"></span>
-                            <span class="indicator"></span>
-                            <span class="indicator"></span>
-                            <span class="indicator"></span>
-                        </div>
-                        <div class="carousel-controls">
-                            <button class="carousel-control prev" onclick="moveCarousel(-1)">
-                                <span class="material-icons">chevron_left</span>
-                            </button>
-                            <button class="carousel-control next" onclick="moveCarousel(1)">
-                                <span class="material-icons">chevron_right</span>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="section-title">热门服务</div>
-                <div class="service-grid">
-                    <div class="service-item" onclick="navigateTo('detection-page')">
-                        <div class="service-icon">
-                            <span class="material-icons">visibility</span>
-                        </div>
-                        <div class="service-name">眼部AI检测</div>
-                        <div class="service-price">¥98</div>
-                    </div>
-                    <div class="service-item" onclick="navigateToService('service-detail', 'dry-eye')">
-                        <div class="service-icon">
-                            <span class="material-icons">spa</span>
-                        </div>
-                        <div class="service-name">舒缓干眼服务</div>
-                        <div class="service-price">¥298起</div>
-                    </div>
-                    <div class="service-item" onclick="navigateToService('service-detail', 'eye-bag')">
-                        <div class="service-icon">
-                            <span class="material-icons">face</span>
-                        </div>
-                        <div class="service-name">消除眼袋服务</div>
-                        <div class="service-price">¥398起</div>
-                    </div>
-                    <div class="service-item" onclick="navigateToService('service-detail', 'eye-bright')">
-                        <div class="service-icon">
-                            <span class="material-icons">wb_sunny</span>
-                        </div>
-                        <div class="service-name">眼周提亮服务</div>
-                        <div class="service-price">¥198起</div>
-                    </div>
-                </div>
-
-                <div class="section-title">服务案例</div>
-                <div class="case-grid">
-                    <div class="case-item" onclick="navigateTo('case-detail-1')">
-                        <img src="images/service_case/case1.jpg" alt="干眼症改善案例" class="case-image">
-                        <div class="case-content">
-                            <div class="case-title">干眼症综合改善方案</div>
-                            <div class="case-description">
-                                35岁互联网从业者，日均电子设备使用超12小时，双眼干涩、灼痛。通过IPL强脉冲光治疗、中药熏蒸和行为干预，泪膜破裂时间延长至9秒，视疲劳显著改善。</div>
-                        </div>
-                    </div>
-                    <div class="case-item" onclick="navigateTo('case-detail-2')">
-                        <img src="images/service_case/case2.jpg" alt="眼袋消除案例" class="case-image">
-                        <div class="case-content">
-                            <div class="case-title">眼袋消除年轻化方案</div>
-                            <div class="case-description">
-                                42岁企业高管，遗传性眼袋伴泪沟凹陷，通过外切眼袋+眶隔脂肪释放术，结合CO2点阵激光和PRP回输，泪沟凹陷深度显著降低，面部年轻化指数提升。</div>
-                        </div>
-                    </div>
-                    <div class="case-item" onclick="navigateTo('case-detail-3')">
-                        <img src="images/service_case/case3.jpg" alt="黑眼圈综合干预案例" class="case-image">
-                        <div class="case-content">
-                            <div class="case-title">混合型黑眼圈综合干预</div>
-                            <div class="case-description">
-                                29岁新媒体编辑，混合型黑眼圈持续3年。通过中医调理、胶原蛋白填充和射频紧致，黑眼圈综合评分从7.2分降至2.5分，化妆遮瑕用量减少80%。</div>
-                        </div>
-                    </div>
-                    <div class="case-item more-cases" onclick="navigateTo('services-page')">
-                        <div class="more-icon">
-                            <span class="material-icons">add_circle_outline</span>
-                        </div>
-                        <div class="more-text">查看更多案例</div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- 服务案例详情页面1 -->
-            <div class="page" id="case-detail-1">
-                <div class="page-header">
-                    <div class="back-button" onclick="goBack()">
-                        <span class="material-icons">arrow_back</span>
-                    </div>
-                    <div class="page-title">案例详情</div>
-                </div>
-
-                <div class="breadcrumb">
-                    <!-- 面包屑导航将由JavaScript动态生成 -->
-                </div>
-
-                <div class="case-detail">
-                    <div class="case-banner">
-                        <img src="images/service_case/case1.jpg" alt="干眼症综合改善方案">
-                    </div>
-                    <div class="case-content-detail">
-                        <h2 class="case-title-large">干眼症综合改善方案</h2>
-
-                        <div class="case-section">
-                            <h3 class="section-subtitle">患者背景</h3>
-                            <p>陈先生，35岁，互联网从业者，日均电子设备使用时长超12小时，主诉双眼干涩、灼痛、视物模糊伴晨起分泌物增多，持续8个月，外院诊断为中度干眼症（泪膜破裂时间4秒，泪液分泌量5mm/5min）。
-                            </p>
-                        </div>
-
-                        <div class="case-section">
-                            <h3 class="section-subtitle">诊疗方案</h3>
-
-                            <div class="diagnosis-part">
-                                <h4 class="part-title">1. 精准评估</h4>
-                                <ul class="diagnosis-list">
-                                    <li>采用睑板腺成像系统检测，发现腺体开口堵塞率45%（中度功能障碍）</li>
-                                    <li>眼表综合分析仪显示角膜荧光素染色阳性（+），结膜充血评分2级</li>
-                                </ul>
+                            <div class="carousel-indicators">
+                                <span class="indicator active"></span>
+                                <span class="indicator"></span>
+                                <span class="indicator"></span>
+                                <span class="indicator"></span>
                             </div>
-
-                            <div class="diagnosis-part">
-                                <h4 class="part-title">2. 分阶段干预</h4>
-
-                                <div class="treatment-phase">
-                                    <h5 class="phase-title">第一阶段（第1-2周）：症状缓解期</h5>
-                                    <ul class="treatment-list">
-                                        <li><strong>IPL强脉冲光治疗</strong>：每周1次，共2次，参数设置为波长560nm，能量密度12J/cm²，针对性融化堵塞睑脂并抑制炎症反应
-                                        </li>
-                                        <li><strong>中药熏蒸+冷敷贴</strong>：每日1次，选用密蒙花、夏枯草等组方，调节泪液渗透压</li>
-                                        <li><strong>人工泪液补充</strong>：玻璃酸钠滴眼液（0.3%浓度），配合脂质修复型凝胶（夜间使用）</li>
-                                    </ul>
-                                </div>
-
-                                <div class="treatment-phase">
-                                    <h5 class="phase-title">第二阶段（第3-6周）：功能修复期</h5>
-                                    <ul class="treatment-list">
-                                        <li><strong>热脉动系统治疗</strong>：42.5℃恒温脉冲按摩，促进睑板腺排出率提升至78%</li>
-                                        <li><strong>中医点穴调理</strong>：每周2次，取睛明、攒竹、太阳穴，配合耳穴压豆（肝、目1、目2区）调节气血</li>
-                                        <li><strong>行为干预</strong>：定制护眼计划（20-20-20用眼法则）、蓝光滤过眼镜适配、口服Omega-3脂肪酸（每日1200mg）
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="case-section">
-                            <h3 class="section-subtitle">效果追踪</h3>
-                            <ul class="result-list">
-                                <li><strong>治疗后1个月</strong>：泪膜破裂时间延长至9秒，泪液分泌量增至9mm/5min，异物感消失，视疲劳评分从7分降至2分（VAS量表）</li>
-                                <li><strong>治疗后3个月</strong>：复查睑板腺开口通畅率92%，患者自述日均屏幕使用耐受时长从2小时恢复至6小时，晨起分泌物减少80%</li>
-                            </ul>
-                        </div>
-
-                        <div class="case-section">
-                            <h3 class="section-subtitle">个性化服务亮点</h3>
-                            <ul class="service-list">
-                                <li>建立电子健康档案，通过APP推送眨眼训练提醒及湿度监测提示</li>
-                                <li>赠送"护眼能量包"（含蒸汽眼罩、叶黄素咀嚼片、护眼食谱）</li>
-                            </ul>
-                        </div>
-
-                        <div class="case-images">
-                            <div class="before-after">
-                                <div class="image-container">
-                                    <img src="images/service_case/case1_before.jpg" alt="治疗前">
-                                    <div class="image-label">治疗前</div>
-                                </div>
-                                <div class="image-container">
-                                    <img src="images/service_case/case1_after.jpg" alt="治疗后">
-                                    <div class="image-label">治疗后</div>
-                                </div>
+                            <div class="carousel-controls">
+                                <button class="carousel-control prev" onclick="moveCarousel(-1)">
+                                    <span class="material-icons">chevron_left</span>
+                                </button>
+                                <button class="carousel-control next" onclick="moveCarousel(1)">
+                                    <span class="material-icons">chevron_right</span>
+                                </button>
                             </div>
                         </div>
                     </div>
 
-                    <div class="case-navigation">
-                        <div class="nav-button prev" onclick="navigateTo('case-detail-3')">
-                            <span class="material-icons">arrow_back</span>
-                            <span>上一个案例</span>
-                        </div>
-                        <div class="nav-button next" onclick="navigateTo('case-detail-2')">
-                            <span>下一个案例</span>
-                            <span class="material-icons">arrow_forward</span>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-
-            <!-- 服务案例详情页面2 -->
-            <div class="page" id="case-detail-2">
-                <div class="page-header">
-                    <div class="back-button" onclick="goBack()">
-                        <span class="material-icons">arrow_back</span>
-                    </div>
-                    <div class="page-title">案例详情</div>
-                </div>
-
-                <div class="breadcrumb">
-                    <!-- 面包屑导航将由JavaScript动态生成 -->
-                </div>
-
-                <div class="case-detail">
-                    <div class="case-banner">
-                        <img src="images/service_case/case2.jpg" alt="眼袋消除年轻化方案">
-                    </div>
-                    <div class="case-content-detail">
-                        <h2 class="case-title-large">眼袋消除年轻化方案</h2>
-
-                        <div class="case-section">
-                            <h3 class="section-subtitle">患者背景</h3>
-                            <p>张先生，42岁，企业高管，遗传性眼袋伴泪沟凹陷，下睑皮肤松弛度评级III级（Pinch测试回缩时间>3秒），长期依赖遮瑕化妆，社交自信心受挫。</p>
-                        </div>
-
-                        <div class="case-section">
-                            <h3 class="section-subtitle">诊疗方案</h3>
-
-                            <div class="diagnosis-part">
-                                <h4 class="part-title">1. 三维美学设计</h4>
-                                <ul class="diagnosis-list">
-                                    <li>3D面部扫描分析：眼袋脂肪容积3.2ml，泪沟凹陷深度1.8mm，中面部容积缺失率25%</li>
-                                    <li>动态表情评估：微笑时下睑膨出加重，鼻唇沟联动性明显</li>
-                                </ul>
-                            </div>
-
-                            <div class="diagnosis-part">
-                                <h4 class="part-title">2. 联合术式定制</h4>
-                                <ul class="treatment-list">
-                                    <li><strong>外切眼袋+眶隔脂肪释放术</strong>：经睑缘切口去除冗余脂肪1.8ml，将眶隔脂肪梯度填充至泪沟及苹果肌过渡区</li>
-                                    <li><strong>CO2点阵激光辅助</strong>：术中同步处理下睑细纹（能量设置15mJ，密度5%）</li>
-                                    <li><strong>PRP回输</strong>：抽取自体血小板浓缩液注射至真皮层，加速创面愈合</li>
-                                </ul>
-                            </div>
-                        </div>
-
-                        <div class="case-section">
-                            <h3 class="section-subtitle">术后管理</h3>
-                            <ul class="management-list">
-                                <li><strong>恢复期（0-7天）</strong>：冰敷压迫（每日4次，每次15分钟），口服七叶皂苷钠消肿</li>
-                                <li><strong>功能锻炼（8-30天）</strong>：眼球定向转动训练（每日3组），瘢痕凝胶涂抹（含硅酮及积雪草成分）</li>
-                                <li><strong>长期维养</strong>：每月1次射频紧致治疗（单极射频，温度42℃），搭配胜肽眼霜（含Matrixyl 3000）</li>
-                            </ul>
-                        </div>
-
-                        <div class="case-section">
-                            <h3 class="section-subtitle">效果对比</h3>
-                            <ul class="result-list">
-                                <li><strong>形态改善</strong>：泪沟凹陷深度降至0.3mm，下睑平整度评分从2.1提升至8.7（9分制）</li>
-                                <li><strong>年轻化指数</strong>：面部疲劳感年龄从45岁降至37岁（AI算法测算），社交活动参与频次增加60%</li>
-                            </ul>
-                        </div>
-
-                        <div class="case-section">
-                            <h3 class="section-subtitle">服务延伸</h3>
-                            <ul class="service-list">
-                                <li>提供"术后心理调适指南"（含形象重建课程、商务淡妆教程）</li>
-                                <li>签约3年维保计划（免费处理继发性松弛问题）</li>
-                            </ul>
-                        </div>
-
-                        <div class="case-images">
-                            <div class="before-after">
-                                <div class="image-container">
-                                    <img src="images/service_case/case2_before.jpg" alt="治疗前">
-                                    <div class="image-label">治疗前</div>
-                                </div>
-                                <div class="image-container">
-                                    <img src="images/service_case/case2_after.jpg" alt="治疗后">
-                                    <div class="image-label">治疗后</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="case-navigation">
-                        <div class="nav-button prev" onclick="navigateTo('case-detail-1')">
-                            <span class="material-icons">arrow_back</span>
-                            <span>上一个案例</span>
-                        </div>
-                        <div class="nav-button next" onclick="navigateTo('case-detail-3')">
-                            <span>下一个案例</span>
-                            <span class="material-icons">arrow_forward</span>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-
-            <!-- 服务案例详情页面3 -->
-            <div class="page" id="case-detail-3">
-                <div class="page-header">
-                    <div class="back-button" onclick="goBack()">
-                        <span class="material-icons">arrow_back</span>
-                    </div>
-                    <div class="page-title">案例详情</div>
-                </div>
-
-                <div class="breadcrumb">
-                    <!-- 面包屑导航将由JavaScript动态生成 -->
-                </div>
-
-                <div class="case-detail">
-                    <div class="case-banner">
-                        <img src="images/service_case/case3.jpg" alt="混合型黑眼圈综合干预方案">
-                    </div>
-                    <div class="case-content-detail">
-                        <h2 class="case-title-large">混合型黑眼圈综合干预方案</h2>
-
-                        <div class="case-section">
-                            <h3 class="section-subtitle">患者背景</h3>
-                            <p>林女士，29岁，新媒体编辑，主诉黑眼圈持续3年加重半年，伴眼周细纹及泪沟凹陷。</p>
-                        </div>
-
-                        <div class="case-section">
-                            <h3 class="section-subtitle">临床评估</h3>
-                            <ul class="diagnosis-list">
-                                <li><strong>分型诊断</strong>：混合型黑眼圈（血管型60%+结构型30%+色素型10%）</li>
-                                <li><strong>仪器检测</strong>：
-                                    <ul>
-                                        <li>皮肤镜显示下睑毛细血管扩张密度达42条/mm²（正常值<25条 /mm²）</li>
-                                        <li>3D面部扫描显示泪沟凹陷深度1.5mm，眶下容积缺失率18%</li>
-                                    </ul>
-                                </li>
-                                <li><strong>生活习惯</strong>：日均屏幕使用14小时，长期熬夜（凌晨2点入睡）</li>
-                            </ul>
-                        </div>
-
-                        <div class="case-section">
-                            <h3 class="section-subtitle">干预方案</h3>
-
-                            <div class="treatment-phase">
-                                <h4 class="phase-title">第一阶段（0-4周）：基础修复</h4>
-                                <div class="treatment-category">
-                                    <h5>中医调理：</h5>
-                                    <ul class="treatment-list">
-                                        <li><strong>穴位注射</strong>：每周1次，取承泣、四白穴注射丹参酮注射液（0.2ml/穴）促进微循环</li>
-                                        <li><strong>膏方内服</strong>：桃红四物汤加减（桃仁10g、红花6g、当归12g、熟地15g），早晚各1次</li>
-                                    </ul>
-                                </div>
-                                <div class="treatment-category">
-                                    <h5>外用护理：</h5>
-                                    <ul class="treatment-list">
-                                        <li>晨间使用含维生素K的修护精华（改善血管渗漏）</li>
-                                        <li>夜间厚敷七子白睡眠面膜（含白蔹、白茯苓）提亮眼周</li>
-                                    </ul>
-                                </div>
-                            </div>
-
-                            <div class="treatment-phase">
-                                <h4 class="phase-title">第二阶段（5-8周）：微整强化</h4>
-                                <div class="treatment-category">
-                                    <h5>胶原蛋白填充：</h5>
-                                    <ul class="treatment-list">
-                                        <li>泪沟凹陷处注射双美胶原蛋白0.8ml（钝针扇形注射至真皮深层）</li>
-                                        <li>下睑血管密集区注射乳白色胶原（遮盖青紫色血管）</li>
-                                    </ul>
-                                </div>
-                                <div class="treatment-category">
-                                    <h5>射频紧致：</h5>
-                                    <ul class="treatment-list">
-                                        <li>每月1次眼周单极射频治疗（温度40℃，刺激胶原重塑）</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="case-section">
-                            <h3 class="section-subtitle">效果追踪</h3>
-                            <ul class="result-list">
-                                <li><strong>4周</strong>：血管型黑眼圈面积减少40%，细纹深度降低25%（PRIMOS检测）</li>
-                                <li><strong>8周</strong>：泪沟凹陷深度降至0.3mm，黑眼圈综合评分从7.2分降至2.5分（9分制）</li>
-                                <li><strong>患者自述</strong>：化妆遮瑕用量减少80%，眼周皮肤耐受蓝光时长从1小时增至4小时</li>
-                            </ul>
-                        </div>
-
-                        <div class="case-section">
-                            <h3 class="section-subtitle">服务亮点</h3>
-                            <ul class="service-list">
-                                <li>提供"数字用眼监测"小程序（记录屏幕时长并推送护眼提醒）</li>
-                                <li>赠送定制冰导棒（含玉石成分，配合精华冷敷促进吸收）</li>
-                            </ul>
-                        </div>
-
-                        <div class="case-images">
-                            <div class="before-after">
-                                <div class="image-container">
-                                    <img src="images/service_case/case3_before.jpg" alt="治疗前">
-                                    <div class="image-label">治疗前</div>
-                                </div>
-                                <div class="image-container">
-                                    <img src="images/service_case/case3_after.jpg" alt="治疗后">
-                                    <div class="image-label">治疗后</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="case-navigation">
-                        <div class="nav-button prev" onclick="navigateTo('case-detail-2')">
-                            <span class="material-icons">arrow_back</span>
-                            <span>上一个案例</span>
-                        </div>
-                        <div class="nav-button next" onclick="navigateTo('case-detail-1')">
-                            <span>下一个案例</span>
-                            <span class="material-icons">arrow_forward</span>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-
-            <!-- 门店活动详情页面1 -->
-            <div class="page" id="campaign-detail-1">
-                <div class="page-header">
-                    <div class="back-button" onclick="goBack()">
-                        <span class="material-icons">arrow_back</span>
-                    </div>
-                    <div class="page-title">活动详情</div>
-                </div>
-
-                <div class="breadcrumb">
-                    <!-- 面包屑导航将由JavaScript动态生成 -->
-                </div>
-
-                <div class="campaign-detail">
-                    <div class="campaign-banner">
-                        <img src="images/campaign/campaign1.jpg" alt="明眸焕新计划">
-                    </div>
-                    <div class="campaign-content">
-                        <h2 class="campaign-title">👀【明眸焕新计划】👩⚕️</h2>
-                        <div class="campaign-time">即日起至6月30日</div>
-                        <div class="campaign-description">
-                            <p>进店享三重礼遇：</p>
-                            <div class="campaign-benefits">
-                                <div class="benefit-item">
-                                    <div class="benefit-icon">1️⃣</div>
-                                    <div class="benefit-text">免费视力检测+眼压测试（专业医师坐诊）</div>
-                                </div>
-                                <div class="benefit-item">
-                                    <div class="benefit-icon">2️⃣</div>
-                                    <div class="benefit-text">消费满500元赠价值198元"草本护眼茶饮礼盒"（决明子/菊花配方）</div>
-                                </div>
-                                <div class="benefit-item">
-                                    <div class="benefit-icon">3️⃣</div>
-                                    <div class="benefit-text">新客专享：眼部SPA护理首单立减100元💆♀️</div>
-                                </div>
-                            </div>
-                            <div class="campaign-info">
-                                <p><span class="material-icons">location_on</span> 活动门店：北京市朝阳区建国路88号</p>
-                                <p><span class="material-icons">phone</span> 预约热线：010-12345678</p>
-                            </div>
-                            <p class="campaign-slogan">✨让眼睛与肌肤同享年轻态！</p>
-                        </div>
-                    </div>
-                    <div class="action-buttons">
-                        <button class="button" onclick="shareCampaign()">分享活动</button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- 门店活动详情页面2 -->
-            <div class="page" id="campaign-detail-2">
-                <div class="page-header">
-                    <div class="back-button" onclick="goBack()">
-                        <span class="material-icons">arrow_back</span>
-                    </div>
-                    <div class="page-title">活动详情</div>
-                </div>
-
-                <div class="breadcrumb">
-                    <!-- 面包屑导航将由JavaScript动态生成 -->
-                </div>
-
-                <div class="campaign-detail">
-                    <div class="campaign-banner">
-                        <img src="images/campaign/campaign2.jpg" alt="端午护眼粽动员">
-                    </div>
-                    <div class="campaign-content">
-                        <h2 class="campaign-title">🌿【端午护眼"粽"动员】👓</h2>
-                        <div class="campaign-time">6月6日-6月10日</div>
-                        <div class="campaign-description">
-                            <p>五重惊喜限时开启：</p>
-                            <div class="campaign-benefits">
-                                <div class="benefit-item">
-                                    <div class="benefit-icon">🎁</div>
-                                    <div class="benefit-text">惊喜一：6.6元抢购护眼蒸汽眼罩（每日限量50份）</div>
-                                </div>
-                                <div class="benefit-item">
-                                    <div class="benefit-icon">🎁</div>
-                                    <div class="benefit-text">惊喜二：配镜享6.6折，加赠防蓝光镜片升级</div>
-                                </div>
-                                <div class="benefit-item">
-                                    <div class="benefit-icon">🎁</div>
-                                    <div class="benefit-text">惊喜三：转发活动海报集38赞，免费体验冷敷褪黑眼圈护理</div>
-                                </div>
-                                <div class="benefit-item">
-                                    <div class="benefit-icon">🎁</div>
-                                    <div class="benefit-text">惊喜四：老客带新友，两人同行再减61元</div>
-                                </div>
-                                <div class="benefit-item">
-                                    <div class="benefit-icon">🎁</div>
-                                    <div class="benefit-text">惊喜五：消费满额抽奖赢"护眼美容年卡"💫</div>
-                                </div>
-                            </div>
-                            <div class="campaign-info">
-                                <p><span class="material-icons">location_on</span> 活动门店：北京市朝阳区建国路88号</p>
-                                <p><span class="material-icons">phone</span> 预约热线：010-12345678</p>
-                            </div>
-                            <p class="campaign-slogan">👉活动仅限指定门店，速来抢占明眸福利！</p>
-                        </div>
-                    </div>
-                    <div class="action-buttons">
-                        <button class="button" onclick="shareCampaign()">分享活动</button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- 门店活动详情页面3 -->
-            <div class="page" id="campaign-detail-3">
-                <div class="page-header">
-                    <div class="back-button" onclick="goBack()">
-                        <span class="material-icons">arrow_back</span>
-                    </div>
-                    <div class="page-title">活动详情</div>
-                </div>
-
-                <div class="breadcrumb">
-                    <!-- 面包屑导航将由JavaScript动态生成 -->
-                </div>
-
-                <div class="campaign-detail">
-                    <div class="campaign-banner">
-                        <img src="images/campaign/campaign3.jpg" alt="以老带新，明眸双倍礼">
-                    </div>
-                    <div class="campaign-content">
-                        <h2 class="campaign-title">👭【以老带新，明眸双倍礼】🎀</h2>
-                        <div class="campaign-time">即日起</div>
-                        <div class="campaign-description">
-                            <p>老客户推荐新朋友到店：</p>
-                            <div class="campaign-benefits">
-                                <div class="benefit-item">
-                                    <div class="benefit-icon">✅</div>
-                                    <div class="benefit-text">新客首单享8折，并获赠"眼部抗衰精华试用装"</div>
-                                </div>
-                                <div class="benefit-item">
-                                    <div class="benefit-icon">✅</div>
-                                    <div class="benefit-text">老客立得100元无门槛券 + 专属抽奖机会（100%中奖）</div>
-                                </div>
-                            </div>
-                            <p class="campaign-highlight">🌟推荐满3人额外赠送：</p>
-                            <p class="campaign-highlight-content">价值299元"黄金胶原蛋白眼膜"一盒</p>
-                            <div class="campaign-info">
-                                <p><span class="material-icons">location_on</span> 活动门店：北京市朝阳区建国路88号</p>
-                                <p><span class="material-icons">phone</span> 预约热线：010-12345678</p>
-                            </div>
-                            <p class="campaign-slogan">💌你我同行，让美丽从"眼"开始！</p>
-                        </div>
-                    </div>
-                    <div class="action-buttons">
-                        <button class="button" onclick="shareCampaign()">分享活动</button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- 门店活动详情页面4 -->
-            <div class="page" id="campaign-detail-4">
-                <div class="page-header">
-                    <div class="back-button" onclick="goBack()">
-                        <span class="material-icons">arrow_back</span>
-                    </div>
-                    <div class="page-title">活动详情</div>
-                </div>
-
-                <div class="breadcrumb">
-                    <!-- 面包屑导航将由JavaScript动态生成 -->
-                </div>
-
-                <div class="campaign-detail">
-                    <div class="campaign-banner">
-                        <img src="images/campaign/campaign1.jpg" alt="全民护眼课堂">
-                    </div>
-                    <div class="campaign-content">
-                        <h2 class="campaign-title">📚【全民护眼课堂】👨👩👧👦</h2>
-                        <div class="campaign-time">6月15日 14:00-17:00</div>
-                        <div class="campaign-description">
-                            <p>特邀眼科专家：</p>
-                            <div class="campaign-benefits">
-                                <div class="benefit-item">
-                                    <div class="benefit-icon">🔍</div>
-                                    <div class="benefit-text">揭秘"电子屏时代的护眼秘籍"</div>
-                                </div>
-                                <div class="benefit-item">
-                                    <div class="benefit-icon">🔍</div>
-                                    <div class="benefit-text">现场教学新版眼保健操（参与送护眼贴）</div>
-                                </div>
-                            </div>
-                            <p class="campaign-highlight">🎯活动福利：</p>
-                            <div class="campaign-benefits">
-                                <div class="benefit-item">
-                                    <div class="benefit-icon">1️⃣</div>
-                                    <div class="benefit-text">学生凭学生证免费验光</div>
-                                </div>
-                                <div class="benefit-item">
-                                    <div class="benefit-icon">2️⃣</div>
-                                    <div class="benefit-text">家庭组团检测赠"儿童防近视训练图册"</div>
-                                </div>
-                                <div class="benefit-item">
-                                    <div class="benefit-icon">3️⃣</div>
-                                    <div class="benefit-text">现场下单享美容项目加赠眼部热敷</div>
-                                </div>
-                            </div>
-                            <div class="campaign-info">
-                                <p><span class="material-icons">location_on</span> 地点：北京市朝阳区建国路88号购物中心中庭</p>
-                                <p><span class="material-icons">phone</span> 预约热线：010-12345678</p>
-                            </div>
-                            <p class="campaign-slogan">📲扫码报名，守护全家明眸健康！</p>
-                        </div>
-                    </div>
-                    <div class="action-buttons">
-                        <button class="button" onclick="shareCampaign()">分享活动</button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- 服务页面 -->
-            <div class="page" id="services-page">
-                <div class="service-category">
-                    <div class="section-title">眼部护理</div>
+                    <div class="section-title">热门服务</div>
                     <div class="service-grid">
+                        <div class="service-item" onclick="navigateTo('detection-page')">
+                            <div class="service-icon">
+                                <span class="material-icons">visibility</span>
+                            </div>
+                            <div class="service-name">眼部AI检测</div>
+                            <div class="service-price">¥98</div>
+                        </div>
                         <div class="service-item" onclick="navigateToService('service-detail', 'dry-eye')">
                             <div class="service-icon">
                                 <span class="material-icons">spa</span>
@@ -2920,92 +2629,696 @@
                             <div class="service-price">¥198起</div>
                         </div>
                     </div>
-                </div>
 
-                <div class="service-category">
-                    <div class="section-title">眼部检测</div>
-                    <div class="service-grid">
-                        <div class="service-item" onclick="navigateTo('detection-page')">
-                            <div class="service-icon">
-                                <span class="material-icons">visibility</span>
+                    <div class="section-title">服务案例</div>
+                    <div class="case-grid">
+                        <div class="case-item" onclick="navigateTo('case-detail-1')">
+                            <img src="images/service_case/case1.jpg" alt="干眼症改善案例" class="case-image">
+                            <div class="case-content">
+                                <div class="case-title">干眼症综合改善方案</div>
+                                <div class="case-description">
+                                    35岁互联网从业者，日均电子设备使用超12小时，双眼干涩、灼痛。通过IPL强脉冲光治疗、中药熏蒸和行为干预，泪膜破裂时间延长至9秒，视疲劳显著改善。</div>
                             </div>
-                            <div class="service-name">眼部AI检测</div>
-                            <div class="service-price">¥98</div>
                         </div>
-                        <div class="service-item" onclick="navigateTo('detection-page')">
-                            <div class="service-icon">
-                                <span class="material-icons">assessment</span>
+                        <div class="case-item" onclick="navigateTo('case-detail-2')">
+                            <img src="images/service_case/case2.jpg" alt="眼袋消除案例" class="case-image">
+                            <div class="case-content">
+                                <div class="case-title">眼袋消除年轻化方案</div>
+                                <div class="case-description">
+                                    42岁企业高管，遗传性眼袋伴泪沟凹陷，通过外切眼袋+眶隔脂肪释放术，结合CO2点阵激光和PRP回输，泪沟凹陷深度显著降低，面部年轻化指数提升。</div>
                             </div>
-                            <div class="service-name">专业眼健康评估</div>
-                            <div class="service-price">¥198</div>
                         </div>
-                    </div>
-                </div>
-
-                <div class="service-category">
-                    <div class="section-title">套餐推荐</div>
-                    <div class="service-grid">
-                        <div class="service-item" onclick="navigateToService('service-detail', 'eye-care')">
-                            <div class="service-icon">
-                                <span class="material-icons">card_giftcard</span>
+                        <div class="case-item" onclick="navigateTo('case-detail-3')">
+                            <img src="images/service_case/case3.jpg" alt="黑眼圈综合干预案例" class="case-image">
+                            <div class="case-content">
+                                <div class="case-title">混合型黑眼圈综合干预</div>
+                                <div class="case-description">
+                                    29岁新媒体编辑，混合型黑眼圈持续3年。通过中医调理、胶原蛋白填充和射频紧致，黑眼圈综合评分从7.2分降至2.5分，化妆遮瑕用量减少80%。</div>
                             </div>
-                            <div class="service-name">眼部护理套餐</div>
-                            <div class="service-price">¥498</div>
                         </div>
-                        <div class="service-item" onclick="navigateToService('service-detail', 'eye-full')">
-                            <div class="service-icon">
-                                <span class="material-icons">stars</span>
+                        <div class="case-item more-cases" onclick="navigateTo('services-page')">
+                            <div class="more-icon">
+                                <span class="material-icons">add_circle_outline</span>
                             </div>
-                            <div class="service-name">眼部全套呵护</div>
-                            <div class="service-price">¥998</div>
+                            <div class="more-text">查看更多案例</div>
                         </div>
                     </div>
                 </div>
-            </div>
 
-            <!-- 服务详情页面 -->
-            <div class="page" id="service-detail">
-                <div class="service-detail-header">
-                    <img id="service-detail-image" src="images/services/eye_bright.jpg" alt="服务图片"
-                        style="width: 100%; height: 200px; object-fit: cover; border-radius: var(--border-radius) var(--border-radius) 0 0;">
-                    <div class="service-detail-title" id="service-detail-title">眼周提亮服务</div>
+                <!-- 服务案例详情页面1 -->
+                <div class="page" id="case-detail-1">
+                    <div class="page-header">
+                        <div class="back-button" onclick="goBack()">
+                            <span class="material-icons">arrow_back</span>
+                        </div>
+                        <div class="page-title">案例详情</div>
+                    </div>
+
+                    <div class="breadcrumb">
+                        <!-- 面包屑导航将由JavaScript动态生成 -->
+                    </div>
+
+                    <div class="case-detail">
+                        <div class="case-banner">
+                            <img src="images/service_case/case1.jpg" alt="干眼症综合改善方案">
+                        </div>
+                        <div class="case-content-detail">
+                            <h2 class="case-title-large">干眼症综合改善方案</h2>
+
+                            <div class="case-section">
+                                <h3 class="section-subtitle">患者背景</h3>
+                                <p>陈先生，35岁，互联网从业者，日均电子设备使用时长超12小时，主诉双眼干涩、灼痛、视物模糊伴晨起分泌物增多，持续8个月，外院诊断为中度干眼症（泪膜破裂时间4秒，泪液分泌量5mm/5min）。
+                                </p>
+                            </div>
+
+                            <div class="case-section">
+                                <h3 class="section-subtitle">诊疗方案</h3>
+
+                                <div class="diagnosis-part">
+                                    <h4 class="part-title">1. 精准评估</h4>
+                                    <ul class="diagnosis-list">
+                                        <li>采用睑板腺成像系统检测，发现腺体开口堵塞率45%（中度功能障碍）</li>
+                                        <li>眼表综合分析仪显示角膜荧光素染色阳性（+），结膜充血评分2级</li>
+                                    </ul>
+                                </div>
+
+                                <div class="diagnosis-part">
+                                    <h4 class="part-title">2. 分阶段干预</h4>
+
+                                    <div class="treatment-phase">
+                                        <h5 class="phase-title">第一阶段（第1-2周）：症状缓解期</h5>
+                                        <ul class="treatment-list">
+                                            <li><strong>IPL强脉冲光治疗</strong>：每周1次，共2次，参数设置为波长560nm，能量密度12J/cm²，针对性融化堵塞睑脂并抑制炎症反应
+                                            </li>
+                                            <li><strong>中药熏蒸+冷敷贴</strong>：每日1次，选用密蒙花、夏枯草等组方，调节泪液渗透压</li>
+                                            <li><strong>人工泪液补充</strong>：玻璃酸钠滴眼液（0.3%浓度），配合脂质修复型凝胶（夜间使用）</li>
+                                        </ul>
+                                    </div>
+
+                                    <div class="treatment-phase">
+                                        <h5 class="phase-title">第二阶段（第3-6周）：功能修复期</h5>
+                                        <ul class="treatment-list">
+                                            <li><strong>热脉动系统治疗</strong>：42.5℃恒温脉冲按摩，促进睑板腺排出率提升至78%</li>
+                                            <li><strong>中医点穴调理</strong>：每周2次，取睛明、攒竹、太阳穴，配合耳穴压豆（肝、目1、目2区）调节气血</li>
+                                            <li><strong>行为干预</strong>：定制护眼计划（20-20-20用眼法则）、蓝光滤过眼镜适配、口服Omega-3脂肪酸（每日1200mg）
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="case-section">
+                                <h3 class="section-subtitle">效果追踪</h3>
+                                <ul class="result-list">
+                                    <li><strong>治疗后1个月</strong>：泪膜破裂时间延长至9秒，泪液分泌量增至9mm/5min，异物感消失，视疲劳评分从7分降至2分（VAS量表）</li>
+                                    <li><strong>治疗后3个月</strong>：复查睑板腺开口通畅率92%，患者自述日均屏幕使用耐受时长从2小时恢复至6小时，晨起分泌物减少80%</li>
+                                </ul>
+                            </div>
+
+                            <div class="case-section">
+                                <h3 class="section-subtitle">个性化服务亮点</h3>
+                                <ul class="service-list">
+                                    <li>建立电子健康档案，通过APP推送眨眼训练提醒及湿度监测提示</li>
+                                    <li>赠送"护眼能量包"（含蒸汽眼罩、叶黄素咀嚼片、护眼食谱）</li>
+                                </ul>
+                            </div>
+
+                            <div class="case-images">
+                                <div class="before-after">
+                                    <div class="image-container">
+                                        <img src="images/service_case/case1_before.jpg" alt="治疗前">
+                                        <div class="image-label">治疗前</div>
+                                    </div>
+                                    <div class="image-container">
+                                        <img src="images/service_case/case1_after.jpg" alt="治疗后">
+                                        <div class="image-label">治疗后</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="case-navigation">
+                            <div class="nav-button prev" onclick="navigateTo('case-detail-3')">
+                                <span class="material-icons">arrow_back</span>
+                                <span>上一个案例</span>
+                            </div>
+                            <div class="nav-button next" onclick="navigateTo('case-detail-2')">
+                                <span>下一个案例</span>
+                                <span class="material-icons">arrow_forward</span>
+                            </div>
+                        </div>
+
+                    </div>
                 </div>
 
-                <div class="card">
-                    <div class="section-title">服务介绍</div>
-                    <p id="service-detail-description">专业舒缓干眼症状，缓解眼疲劳，改善眼部不适。针对长时间使用电子设备导致的眼部问题，提供全方位的眼部护理方案。</p>
+                <!-- 服务案例详情页面2 -->
+                <div class="page" id="case-detail-2">
+                    <div class="page-header">
+                        <div class="back-button" onclick="goBack()">
+                            <span class="material-icons">arrow_back</span>
+                        </div>
+                        <div class="page-title">案例详情</div>
+                    </div>
+
+                    <div class="breadcrumb">
+                        <!-- 面包屑导航将由JavaScript动态生成 -->
+                    </div>
+
+                    <div class="case-detail">
+                        <div class="case-banner">
+                            <img src="images/service_case/case2.jpg" alt="眼袋消除年轻化方案">
+                        </div>
+                        <div class="case-content-detail">
+                            <h2 class="case-title-large">眼袋消除年轻化方案</h2>
+
+                            <div class="case-section">
+                                <h3 class="section-subtitle">患者背景</h3>
+                                <p>张先生，42岁，企业高管，遗传性眼袋伴泪沟凹陷，下睑皮肤松弛度评级III级（Pinch测试回缩时间>3秒），长期依赖遮瑕化妆，社交自信心受挫。</p>
+                            </div>
+
+                            <div class="case-section">
+                                <h3 class="section-subtitle">诊疗方案</h3>
+
+                                <div class="diagnosis-part">
+                                    <h4 class="part-title">1. 三维美学设计</h4>
+                                    <ul class="diagnosis-list">
+                                        <li>3D面部扫描分析：眼袋脂肪容积3.2ml，泪沟凹陷深度1.8mm，中面部容积缺失率25%</li>
+                                        <li>动态表情评估：微笑时下睑膨出加重，鼻唇沟联动性明显</li>
+                                    </ul>
+                                </div>
+
+                                <div class="diagnosis-part">
+                                    <h4 class="part-title">2. 联合术式定制</h4>
+                                    <ul class="treatment-list">
+                                        <li><strong>外切眼袋+眶隔脂肪释放术</strong>：经睑缘切口去除冗余脂肪1.8ml，将眶隔脂肪梯度填充至泪沟及苹果肌过渡区</li>
+                                        <li><strong>CO2点阵激光辅助</strong>：术中同步处理下睑细纹（能量设置15mJ，密度5%）</li>
+                                        <li><strong>PRP回输</strong>：抽取自体血小板浓缩液注射至真皮层，加速创面愈合</li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div class="case-section">
+                                <h3 class="section-subtitle">术后管理</h3>
+                                <ul class="management-list">
+                                    <li><strong>恢复期（0-7天）</strong>：冰敷压迫（每日4次，每次15分钟），口服七叶皂苷钠消肿</li>
+                                    <li><strong>功能锻炼（8-30天）</strong>：眼球定向转动训练（每日3组），瘢痕凝胶涂抹（含硅酮及积雪草成分）</li>
+                                    <li><strong>长期维养</strong>：每月1次射频紧致治疗（单极射频，温度42℃），搭配胜肽眼霜（含Matrixyl 3000）</li>
+                                </ul>
+                            </div>
+
+                            <div class="case-section">
+                                <h3 class="section-subtitle">效果对比</h3>
+                                <ul class="result-list">
+                                    <li><strong>形态改善</strong>：泪沟凹陷深度降至0.3mm，下睑平整度评分从2.1提升至8.7（9分制）</li>
+                                    <li><strong>年轻化指数</strong>：面部疲劳感年龄从45岁降至37岁（AI算法测算），社交活动参与频次增加60%</li>
+                                </ul>
+                            </div>
+
+                            <div class="case-section">
+                                <h3 class="section-subtitle">服务延伸</h3>
+                                <ul class="service-list">
+                                    <li>提供"术后心理调适指南"（含形象重建课程、商务淡妆教程）</li>
+                                    <li>签约3年维保计划（免费处理继发性松弛问题）</li>
+                                </ul>
+                            </div>
+
+                            <div class="case-images">
+                                <div class="before-after">
+                                    <div class="image-container">
+                                        <img src="images/service_case/case2_before.jpg" alt="治疗前">
+                                        <div class="image-label">治疗前</div>
+                                    </div>
+                                    <div class="image-container">
+                                        <img src="images/service_case/case2_after.jpg" alt="治疗后">
+                                        <div class="image-label">治疗后</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="case-navigation">
+                            <div class="nav-button prev" onclick="navigateTo('case-detail-1')">
+                                <span class="material-icons">arrow_back</span>
+                                <span>上一个案例</span>
+                            </div>
+                            <div class="nav-button next" onclick="navigateTo('case-detail-3')">
+                                <span>下一个案例</span>
+                                <span class="material-icons">arrow_forward</span>
+                            </div>
+                        </div>
+
+                    </div>
                 </div>
 
-                <div class="card">
-                    <div class="section-title">服务流程</div>
-                    <div class="detection-step">
-                        <div class="step-number">1</div>
-                        <div>眼部检测评估</div>
+                <!-- 服务案例详情页面3 -->
+                <div class="page" id="case-detail-3">
+                    <div class="page-header">
+                        <div class="back-button" onclick="goBack()">
+                            <span class="material-icons">arrow_back</span>
+                        </div>
+                        <div class="page-title">案例详情</div>
                     </div>
-                    <div class="detection-step">
-                        <div class="step-number">2</div>
-                        <div>专业眼部清洁</div>
+
+                    <div class="breadcrumb">
+                        <!-- 面包屑导航将由JavaScript动态生成 -->
                     </div>
-                    <div class="detection-step">
-                        <div class="step-number">3</div>
-                        <div>舒缓精华导入</div>
-                    </div>
-                    <div class="detection-step">
-                        <div class="step-number">4</div>
-                        <div>眼部按摩护理</div>
-                    </div>
-                    <div class="detection-step">
-                        <div class="step-number">5</div>
-                        <div>效果评估</div>
+
+                    <div class="case-detail">
+                        <div class="case-banner">
+                            <img src="images/service_case/case3.jpg" alt="混合型黑眼圈综合干预方案">
+                        </div>
+                        <div class="case-content-detail">
+                            <h2 class="case-title-large">混合型黑眼圈综合干预方案</h2>
+
+                            <div class="case-section">
+                                <h3 class="section-subtitle">患者背景</h3>
+                                <p>林女士，29岁，新媒体编辑，主诉黑眼圈持续3年加重半年，伴眼周细纹及泪沟凹陷。</p>
+                            </div>
+
+                            <div class="case-section">
+                                <h3 class="section-subtitle">临床评估</h3>
+                                <ul class="diagnosis-list">
+                                    <li><strong>分型诊断</strong>：混合型黑眼圈（血管型60%+结构型30%+色素型10%）</li>
+                                    <li><strong>仪器检测</strong>：
+                                        <ul>
+                                            <li>皮肤镜显示下睑毛细血管扩张密度达42条/mm²（正常值<25条 /mm²）</li>
+                                            <li>3D面部扫描显示泪沟凹陷深度1.5mm，眶下容积缺失率18%</li>
+                                        </ul>
+                                    </li>
+                                    <li><strong>生活习惯</strong>：日均屏幕使用14小时，长期熬夜（凌晨2点入睡）</li>
+                                </ul>
+                            </div>
+
+                            <div class="case-section">
+                                <h3 class="section-subtitle">干预方案</h3>
+
+                                <div class="treatment-phase">
+                                    <h4 class="phase-title">第一阶段（0-4周）：基础修复</h4>
+                                    <div class="treatment-category">
+                                        <h5>中医调理：</h5>
+                                        <ul class="treatment-list">
+                                            <li><strong>穴位注射</strong>：每周1次，取承泣、四白穴注射丹参酮注射液（0.2ml/穴）促进微循环</li>
+                                            <li><strong>膏方内服</strong>：桃红四物汤加减（桃仁10g、红花6g、当归12g、熟地15g），早晚各1次</li>
+                                        </ul>
+                                    </div>
+                                    <div class="treatment-category">
+                                        <h5>外用护理：</h5>
+                                        <ul class="treatment-list">
+                                            <li>晨间使用含维生素K的修护精华（改善血管渗漏）</li>
+                                            <li>夜间厚敷七子白睡眠面膜（含白蔹、白茯苓）提亮眼周</li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <div class="treatment-phase">
+                                    <h4 class="phase-title">第二阶段（5-8周）：微整强化</h4>
+                                    <div class="treatment-category">
+                                        <h5>胶原蛋白填充：</h5>
+                                        <ul class="treatment-list">
+                                            <li>泪沟凹陷处注射双美胶原蛋白0.8ml（钝针扇形注射至真皮深层）</li>
+                                            <li>下睑血管密集区注射乳白色胶原（遮盖青紫色血管）</li>
+                                        </ul>
+                                    </div>
+                                    <div class="treatment-category">
+                                        <h5>射频紧致：</h5>
+                                        <ul class="treatment-list">
+                                            <li>每月1次眼周单极射频治疗（温度40℃，刺激胶原重塑）</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="case-section">
+                                <h3 class="section-subtitle">效果追踪</h3>
+                                <ul class="result-list">
+                                    <li><strong>4周</strong>：血管型黑眼圈面积减少40%，细纹深度降低25%（PRIMOS检测）</li>
+                                    <li><strong>8周</strong>：泪沟凹陷深度降至0.3mm，黑眼圈综合评分从7.2分降至2.5分（9分制）</li>
+                                    <li><strong>患者自述</strong>：化妆遮瑕用量减少80%，眼周皮肤耐受蓝光时长从1小时增至4小时</li>
+                                </ul>
+                            </div>
+
+                            <div class="case-section">
+                                <h3 class="section-subtitle">服务亮点</h3>
+                                <ul class="service-list">
+                                    <li>提供"数字用眼监测"小程序（记录屏幕时长并推送护眼提醒）</li>
+                                    <li>赠送定制冰导棒（含玉石成分，配合精华冷敷促进吸收）</li>
+                                </ul>
+                            </div>
+
+                            <div class="case-images">
+                                <div class="before-after">
+                                    <div class="image-container">
+                                        <img src="images/service_case/case3_before.jpg" alt="治疗前">
+                                        <div class="image-label">治疗前</div>
+                                    </div>
+                                    <div class="image-container">
+                                        <img src="images/service_case/case3_after.jpg" alt="治疗后">
+                                        <div class="image-label">治疗后</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="case-navigation">
+                            <div class="nav-button prev" onclick="navigateTo('case-detail-2')">
+                                <span class="material-icons">arrow_back</span>
+                                <span>上一个案例</span>
+                            </div>
+                            <div class="nav-button next" onclick="navigateTo('case-detail-1')">
+                                <span>下一个案例</span>
+                                <span class="material-icons">arrow_forward</span>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
 
-                <div class="card">
-                    <div class="section-title">适用人群</div>
-                    <p>长时间用眼人群、干眼症患者、眼疲劳人群、电子设备使用频繁人群</p>
+                <!-- 门店活动详情页面1 -->
+                <div class="page" id="campaign-detail-1">
+                    <div class="page-header">
+                        <div class="back-button" onclick="goBack()">
+                            <span class="material-icons">arrow_back</span>
+                        </div>
+                        <div class="page-title">活动详情</div>
+                    </div>
+
+                    <div class="breadcrumb">
+                        <!-- 面包屑导航将由JavaScript动态生成 -->
+                    </div>
+
+                    <div class="campaign-detail">
+                        <div class="campaign-banner">
+                            <img src="images/campaign/campaign1.jpg" alt="明眸焕新计划">
+                        </div>
+                        <div class="campaign-content">
+                            <h2 class="campaign-title">👀【明眸焕新计划】👩⚕️</h2>
+                            <div class="campaign-time">即日起至6月30日</div>
+                            <div class="campaign-description">
+                                <p>进店享三重礼遇：</p>
+                                <div class="campaign-benefits">
+                                    <div class="benefit-item">
+                                        <div class="benefit-icon">1️⃣</div>
+                                        <div class="benefit-text">免费视力检测+眼压测试（专业医师坐诊）</div>
+                                    </div>
+                                    <div class="benefit-item">
+                                        <div class="benefit-icon">2️⃣</div>
+                                        <div class="benefit-text">消费满500元赠价值198元"草本护眼茶饮礼盒"（决明子/菊花配方）</div>
+                                    </div>
+                                    <div class="benefit-item">
+                                        <div class="benefit-icon">3️⃣</div>
+                                        <div class="benefit-text">新客专享：眼部SPA护理首单立减100元💆♀️</div>
+                                    </div>
+                                </div>
+                                <div class="campaign-info">
+                                    <p><span class="material-icons">location_on</span> 活动门店：北京市朝阳区建国路88号</p>
+                                    <p><span class="material-icons">phone</span> 预约热线：010-12345678</p>
+                                </div>
+                                <p class="campaign-slogan">✨让眼睛与肌肤同享年轻态！</p>
+                            </div>
+                        </div>
+                        <div class="action-buttons">
+                            <button class="button" onclick="shareCampaign()">分享活动</button>
+                        </div>
+                    </div>
                 </div>
 
-                <div class="card">
+                <!-- 门店活动详情页面2 -->
+                <div class="page" id="campaign-detail-2">
+                    <div class="page-header">
+                        <div class="back-button" onclick="goBack()">
+                            <span class="material-icons">arrow_back</span>
+                        </div>
+                        <div class="page-title">活动详情</div>
+                    </div>
+
+                    <div class="breadcrumb">
+                        <!-- 面包屑导航将由JavaScript动态生成 -->
+                    </div>
+
+                    <div class="campaign-detail">
+                        <div class="campaign-banner">
+                            <img src="images/campaign/campaign2.jpg" alt="端午护眼粽动员">
+                        </div>
+                        <div class="campaign-content">
+                            <h2 class="campaign-title">🌿【端午护眼"粽"动员】👓</h2>
+                            <div class="campaign-time">6月6日-6月10日</div>
+                            <div class="campaign-description">
+                                <p>五重惊喜限时开启：</p>
+                                <div class="campaign-benefits">
+                                    <div class="benefit-item">
+                                        <div class="benefit-icon">🎁</div>
+                                        <div class="benefit-text">惊喜一：6.6元抢购护眼蒸汽眼罩（每日限量50份）</div>
+                                    </div>
+                                    <div class="benefit-item">
+                                        <div class="benefit-icon">🎁</div>
+                                        <div class="benefit-text">惊喜二：配镜享6.6折，加赠防蓝光镜片升级</div>
+                                    </div>
+                                    <div class="benefit-item">
+                                        <div class="benefit-icon">🎁</div>
+                                        <div class="benefit-text">惊喜三：转发活动海报集38赞，免费体验冷敷褪黑眼圈护理</div>
+                                    </div>
+                                    <div class="benefit-item">
+                                        <div class="benefit-icon">🎁</div>
+                                        <div class="benefit-text">惊喜四：老客带新友，两人同行再减61元</div>
+                                    </div>
+                                    <div class="benefit-item">
+                                        <div class="benefit-icon">🎁</div>
+                                        <div class="benefit-text">惊喜五：消费满额抽奖赢"护眼美容年卡"💫</div>
+                                    </div>
+                                </div>
+                                <div class="campaign-info">
+                                    <p><span class="material-icons">location_on</span> 活动门店：北京市朝阳区建国路88号</p>
+                                    <p><span class="material-icons">phone</span> 预约热线：010-12345678</p>
+                                </div>
+                                <p class="campaign-slogan">👉活动仅限指定门店，速来抢占明眸福利！</p>
+                            </div>
+                        </div>
+                        <div class="action-buttons">
+                            <button class="button" onclick="shareCampaign()">分享活动</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 门店活动详情页面3 -->
+                <div class="page" id="campaign-detail-3">
+                    <div class="page-header">
+                        <div class="back-button" onclick="goBack()">
+                            <span class="material-icons">arrow_back</span>
+                        </div>
+                        <div class="page-title">活动详情</div>
+                    </div>
+
+                    <div class="breadcrumb">
+                        <!-- 面包屑导航将由JavaScript动态生成 -->
+                    </div>
+
+                    <div class="campaign-detail">
+                        <div class="campaign-banner">
+                            <img src="images/campaign/campaign3.jpg" alt="以老带新，明眸双倍礼">
+                        </div>
+                        <div class="campaign-content">
+                            <h2 class="campaign-title">👭【以老带新，明眸双倍礼】🎀</h2>
+                            <div class="campaign-time">即日起</div>
+                            <div class="campaign-description">
+                                <p>老客户推荐新朋友到店：</p>
+                                <div class="campaign-benefits">
+                                    <div class="benefit-item">
+                                        <div class="benefit-icon">✅</div>
+                                        <div class="benefit-text">新客首单享8折，并获赠"眼部抗衰精华试用装"</div>
+                                    </div>
+                                    <div class="benefit-item">
+                                        <div class="benefit-icon">✅</div>
+                                        <div class="benefit-text">老客立得100元无门槛券 + 专属抽奖机会（100%中奖）</div>
+                                    </div>
+                                </div>
+                                <p class="campaign-highlight">🌟推荐满3人额外赠送：</p>
+                                <p class="campaign-highlight-content">价值299元"黄金胶原蛋白眼膜"一盒</p>
+                                <div class="campaign-info">
+                                    <p><span class="material-icons">location_on</span> 活动门店：北京市朝阳区建国路88号</p>
+                                    <p><span class="material-icons">phone</span> 预约热线：010-12345678</p>
+                                </div>
+                                <p class="campaign-slogan">💌你我同行，让美丽从"眼"开始！</p>
+                            </div>
+                        </div>
+                        <div class="action-buttons">
+                            <button class="button" onclick="shareCampaign()">分享活动</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 门店活动详情页面4 -->
+                <div class="page" id="campaign-detail-4">
+                    <div class="page-header">
+                        <div class="back-button" onclick="goBack()">
+                            <span class="material-icons">arrow_back</span>
+                        </div>
+                        <div class="page-title">活动详情</div>
+                    </div>
+
+                    <div class="breadcrumb">
+                        <!-- 面包屑导航将由JavaScript动态生成 -->
+                    </div>
+
+                    <div class="campaign-detail">
+                        <div class="campaign-banner">
+                            <img src="images/campaign/campaign1.jpg" alt="全民护眼课堂">
+                        </div>
+                        <div class="campaign-content">
+                            <h2 class="campaign-title">📚【全民护眼课堂】👨👩👧👦</h2>
+                            <div class="campaign-time">6月15日 14:00-17:00</div>
+                            <div class="campaign-description">
+                                <p>特邀眼科专家：</p>
+                                <div class="campaign-benefits">
+                                    <div class="benefit-item">
+                                        <div class="benefit-icon">🔍</div>
+                                        <div class="benefit-text">揭秘"电子屏时代的护眼秘籍"</div>
+                                    </div>
+                                    <div class="benefit-item">
+                                        <div class="benefit-icon">🔍</div>
+                                        <div class="benefit-text">现场教学新版眼保健操（参与送护眼贴）</div>
+                                    </div>
+                                </div>
+                                <p class="campaign-highlight">🎯活动福利：</p>
+                                <div class="campaign-benefits">
+                                    <div class="benefit-item">
+                                        <div class="benefit-icon">1️⃣</div>
+                                        <div class="benefit-text">学生凭学生证免费验光</div>
+                                    </div>
+                                    <div class="benefit-item">
+                                        <div class="benefit-icon">2️⃣</div>
+                                        <div class="benefit-text">家庭组团检测赠"儿童防近视训练图册"</div>
+                                    </div>
+                                    <div class="benefit-item">
+                                        <div class="benefit-icon">3️⃣</div>
+                                        <div class="benefit-text">现场下单享美容项目加赠眼部热敷</div>
+                                    </div>
+                                </div>
+                                <div class="campaign-info">
+                                    <p><span class="material-icons">location_on</span> 地点：北京市朝阳区建国路88号购物中心中庭</p>
+                                    <p><span class="material-icons">phone</span> 预约热线：010-12345678</p>
+                                </div>
+                                <p class="campaign-slogan">📲扫码报名，守护全家明眸健康！</p>
+                            </div>
+                        </div>
+                        <div class="action-buttons">
+                            <button class="button" onclick="shareCampaign()">分享活动</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 服务页面 -->
+                <div class="page" id="services-page">
+                    <div class="service-category">
+                        <div class="section-title">眼部护理</div>
+                        <div class="service-grid">
+                            <div class="service-item" onclick="navigateToService('service-detail', 'dry-eye')">
+                                <div class="service-icon">
+                                    <span class="material-icons">spa</span>
+                                </div>
+                                <div class="service-name">舒缓干眼服务</div>
+                                <div class="service-price">¥298起</div>
+                            </div>
+                            <div class="service-item" onclick="navigateToService('service-detail', 'eye-bag')">
+                                <div class="service-icon">
+                                    <span class="material-icons">face</span>
+                                </div>
+                                <div class="service-name">消除眼袋服务</div>
+                                <div class="service-price">¥398起</div>
+                            </div>
+                            <div class="service-item" onclick="navigateToService('service-detail', 'eye-bright')">
+                                <div class="service-icon">
+                                    <span class="material-icons">wb_sunny</span>
+                                </div>
+                                <div class="service-name">眼周提亮服务</div>
+                                <div class="service-price">¥198起</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="service-category">
+                        <div class="section-title">眼部检测</div>
+                        <div class="service-grid">
+                            <div class="service-item" onclick="navigateTo('detection-page')">
+                                <div class="service-icon">
+                                    <span class="material-icons">visibility</span>
+                                </div>
+                                <div class="service-name">眼部AI检测</div>
+                                <div class="service-price">¥98</div>
+                            </div>
+                            <div class="service-item" onclick="navigateTo('detection-page')">
+                                <div class="service-icon">
+                                    <span class="material-icons">assessment</span>
+                                </div>
+                                <div class="service-name">专业眼健康评估</div>
+                                <div class="service-price">¥198</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="service-category">
+                        <div class="section-title">套餐推荐</div>
+                        <div class="service-grid">
+                            <div class="service-item" onclick="navigateToService('service-detail', 'eye-care')">
+                                <div class="service-icon">
+                                    <span class="material-icons">card_giftcard</span>
+                                </div>
+                                <div class="service-name">眼部护理套餐</div>
+                                <div class="service-price">¥498</div>
+                            </div>
+                            <div class="service-item" onclick="navigateToService('service-detail', 'eye-full')">
+                                <div class="service-icon">
+                                    <span class="material-icons">stars</span>
+                                </div>
+                                <div class="service-name">眼部全套呵护</div>
+                                <div class="service-price">¥998</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 服务详情页面 -->
+                <div class="page" id="service-detail">
+                    <div class="service-detail-header">
+                        <img id="service-detail-image" src="images/services/eye_bright.jpg" alt="服务图片"
+                            style="width: 100%; height: 200px; object-fit: cover; border-radius: var(--border-radius) var(--border-radius) 0 0;">
+                        <div class="service-detail-title" id="service-detail-title">眼周提亮服务</div>
+                    </div>
+
+                    <div class="card">
+                        <div class="section-title">服务介绍</div>
+                        <p id="service-detail-description">专业舒缓干眼症状，缓解眼疲劳，改善眼部不适。针对长时间使用电子设备导致的眼部问题，提供全方位的眼部护理方案。</p>
+                    </div>
+
+                    <div class="card">
+                        <div class="section-title">服务流程</div>
+                        <div class="detection-step">
+                            <div class="step-number">1</div>
+                            <div>眼部检测评估</div>
+                        </div>
+                        <div class="detection-step">
+                            <div class="step-number">2</div>
+                            <div>专业眼部清洁</div>
+                        </div>
+                        <div class="detection-step">
+                            <div class="step-number">3</div>
+                            <div>舒缓精华导入</div>
+                        </div>
+                        <div class="detection-step">
+                            <div class="step-number">4</div>
+                            <div>眼部按摩护理</div>
+                        </div>
+                        <div class="detection-step">
+                            <div class="step-number">5</div>
+                            <div>效果评估</div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="section-title">适用人群</div>
+                        <p>长时间用眼人群、干眼症患者、眼疲劳人群、电子设备使用频繁人群</p>
+                    </div>
+
+                    <div class="card">
                     <div style="display: flex; justify-content: space-between; align-items: center;">
                         <div>
                             <div style="color: var(--text-secondary);">服务时长</div>
@@ -3300,11 +3613,11 @@
                         </div>
                         <div class="function-name">客户管理</div>
                     </div>
-                    <div class="function-item disabled" data-tooltip="暂不实现">
+                    <div class="function-item" onclick="navigateTo('personal-settings-page')">
                         <div class="function-icon">
-                            <span class="material-icons">school</span>
+                            <span class="material-icons">personal-settings</span>
                         </div>
-                        <div class="function-name">知识学习</div>
+                        <div class="function-name">个人设置</div>
                     </div>
                     <div class="function-item disabled" data-tooltip="暂不实现">
                         <div class="function-icon">
@@ -4447,11 +4760,11 @@
                         </div>
                         <div class="function-name">客户管理</div>
                     </div>
-                    <div class="function-item disabled" data-tooltip="暂不实现">
+                    <div class="function-item" onclick="navigateTo('personal-settings-page')">
                         <div class="function-icon">
-                            <span class="material-icons">school</span>
+                            <span class="material-icons">settings</span>
                         </div>
-                        <div class="function-name">知识学习</div>
+                        <div class="function-name">个人设置</div>
                     </div>
                     <div class="function-item disabled" data-tooltip="暂不实现">
                         <div class="function-icon">
@@ -4666,6 +4979,133 @@
                 <div class="nav-item" onclick="navigateTo('profile-page')">
                     <span class="material-icons nav-item-icon">person</span>
                     <span class="nav-item-label">我的</span>
+                </div>
+            </div>
+
+            <!-- 设置页面 -->
+            <div class="page" id="settings-page">
+                <div class="settings-container">
+                    <div class="settings-tabs">
+                        <div class="settings-tab" onclick="switchSettingsTab('notification-settings')">通知设置</div>
+                        <div class="settings-tab" onclick="switchSettingsTab('cache-settings')">清理缓存</div>
+                        <div class="settings-tab" onclick="switchSettingsTab('about-settings')">关于美睛美科</div>
+                    </div>
+
+                    <!-- 通知设置 -->
+                    <div class="settings-section" id="notification-settings">
+                        <div class="card">
+                            <div class="settings-item">
+                                <div>
+                                    <div class="settings-item-title">应用公告</div>
+                                    <div class="settings-item-description">接收应用重要更新和公告</div>
+                                </div>
+                                <label class="toggle-switch">
+                                    <input type="checkbox" id="app-notice-toggle" checked>
+                                    <span class="toggle-slider"></span>
+                                </label>
+                            </div>
+                            
+                            <div class="settings-item">
+                                <div>
+                                    <div class="settings-item-title">活动提醒</div>
+                                    <div class="settings-item-description">接收门店活动和促销信息</div>
+                                </div>
+                                <label class="toggle-switch">
+                                    <input type="checkbox" id="activity-notice-toggle" checked>
+                                    <span class="toggle-slider"></span>
+                                </label>
+                            </div>
+                            
+                            <div class="settings-item">
+                                <div>
+                                    <div class="settings-item-title">后台刷新</div>
+                                    <div class="settings-item-description">允许应用在后台更新数据</div>
+                                </div>
+                                <label class="toggle-switch">
+                                    <input type="checkbox" id="background-refresh-toggle" checked>
+                                    <span class="toggle-slider"></span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 缓存设置 -->
+                    <div class="settings-section" id="cache-settings">
+                        <div class="card">
+                            <div class="cache-info">
+                                <div class="cache-size">45.8 MB</div>
+                                <div class="cache-description">当前缓存占用空间</div>
+                            </div>
+                            
+                            <div class="settings-item-description" style="text-align: center; margin-bottom: 16px;">
+                                清理缓存将删除临时文件，但不会删除您的个人数据和设置。清理后，应用将重新从服务器下载必要的数据。
+                            </div>
+                            
+                            <button class="button" style="width: 100%;" onclick="clearAppCache()">清理缓存</button>
+                        </div>
+                    </div>
+
+                    <!-- 关于美睛美科 -->
+                    <div class="settings-section" id="about-settings">
+                        <div class="card">
+                            <div class="about-container">
+                                <img src="images/logo.png" alt="美睛美科" class="app-logo">
+                                <div class="app-name">美睛美科</div>
+                                <div class="app-version">版本 1.0.5</div>
+                                <div class="version-status" id="version-status">正在检查更新...</div>
+                                <button class="button" id="check-update-btn" onclick="checkForUpdates()">检查新版本</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 个人设置页面-->
+            <div class="page" id="personal-settings-page">
+                <div class="settings-container">
+                    <div class="settings-tabs">
+                        <div class="settings-tab active" onclick="switchSettingsTab('profile-settings')">个人资料</div>
+                    </div>
+
+                    <!-- 个人资料设置 -->
+                    <div class="settings-section active" id="profile-settings">
+                        <div class="card">
+                            <div class="profile-header">
+                                <div class="profile-avatar">
+                                    <span class="material-icons">person</span>
+                                </div>
+                                <div class="profile-info">
+                                    <div class="profile-name" id="profile-name-display">李美容</div>
+                                    <div class="profile-role" id="profile-role-display">角色: 美容顾问</div>
+                                    <div class="profile-role" id="profile-store-display">门店: 美睛美科中心店</div>
+                                </div>
+                            </div>
+                            
+                            <div class="settings-item">
+                                <div>
+                                    <div class="settings-item-title">姓名</div>
+                                </div>
+                                <div class="settings-item-action" onclick="editProfileField('name')">编辑</div>
+                            </div>
+                            
+                            <div class="settings-item">
+                                <div>
+                                    <div class="settings-item-title">手机号码</div>
+                                    <div class="settings-item-description">138****1234</div>
+                                </div>
+                                <div class="settings-item-action" onclick="editProfileField('phone')">编辑</div>
+                            </div>
+                            
+                            <div class="settings-item">
+                                <div>
+                                    <div class="settings-item-title">邮箱</div>
+                                    <div class="settings-item-description">example@meijingmeike.com</div>
+                                </div>
+                                <div class="settings-item-action" onclick="editProfileField('email')">编辑</div>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
             </div>
 
@@ -6173,8 +6613,233 @@
                     }
                 }
 
+                // 辅助函数：显示模态框
+                function showModal(title, placeholder, defaultValue = '', callback) {
+                    document.getElementById('modal-title').textContent = title;
+                    const modalInput = document.getElementById('modal-input');
+                    modalInput.placeholder = placeholder;
+                    modalInput.value = defaultValue;
+                    document.getElementById('modal').style.display = 'block';
+                    
+                    // 存储回调函数
+                    window.modalCallback = callback;
+                    
+                    // 聚焦输入框
+                    setTimeout(() => modalInput.focus(), 100);
+                }
+
+                // 辅助函数：关闭模态框
+                function closeModal() {
+                    document.getElementById('modal').style.display = 'none';
+                }
+
+                // 辅助函数：确认模态框
+                function confirmModal() {
+                    const value = document.getElementById('modal-input').value;
+                    if (window.modalCallback && typeof window.modalCallback === 'function') {
+                        window.modalCallback(value);
+                    }
+                    closeModal();
+                }
+
+                // 辅助函数：显示Toast提示
+                function showToast(message, duration = 2000) {
+                    const toast = document.getElementById('toast');
+                    toast.textContent = message;
+                    toast.style.display = 'block';
+                    
+                    setTimeout(() => {
+                        toast.style.display = 'none';
+                    }, duration);
+                }
+
+                // 辅助函数：显示加载指示器
+                function showLoading() {
+                    document.getElementById('loading-overlay').style.display = 'flex';
+                }
+
+                // 辅助函数：隐藏加载指示器
+                function hideLoading() {
+                    document.getElementById('loading-overlay').style.display = 'none';
+                }
+
+                // 切换设置选项卡
+                function switchSettingsTab(tabId) {
+                    // 隐藏所有设置部分
+                    const sections = document.querySelectorAll('.settings-section');
+                    sections.forEach(section => {
+                        section.classList.remove('active');
+                    });
+                    
+                    // 显示选中的设置部分
+                    document.getElementById(tabId).classList.add('active');
+                    
+                    // 更新选项卡状态
+                    const tabs = document.querySelectorAll('.settings-tab');
+                    tabs.forEach(tab => {
+                        tab.classList.remove('active');
+                    });
+                    
+                    // 激活当前选项卡
+                    event.currentTarget.classList.add('active');
+                    
+                    // 如果是关于选项卡，自动检查更新
+                    if (tabId === 'about-settings') {
+                        checkForUpdates();
+                    }
+                }
+
+                // 编辑个人资料字段
+                function editProfileField(field) {
+                    let title = '';
+                    let placeholder = '';
+                    let defaultValue = '';
+                    
+                    switch (field) {
+                        case 'name':
+                            title = '编辑姓名';
+                            placeholder = '请输入您的姓名';
+                            defaultValue = document.getElementById('profile-name-display').textContent;
+                            break;
+                        case 'phone':
+                            title = '编辑手机号码';
+                            placeholder = '请输入您的手机号码';
+                            defaultValue = '13812341234';
+                            break;
+                        case 'email':
+                            title = '编辑邮箱';
+                            placeholder = '请输入您的邮箱';
+                            defaultValue = 'example@meijingmeike.com';
+                            break;
+                    }
+                    
+                    showModal(title, placeholder, defaultValue, (value) => {
+                        if (!value.trim()) {
+                            showToast('输入不能为空');
+                            return;
+                        }
+                        
+                        // 模拟保存操作
+                        showLoading();
+                        
+                        setTimeout(() => {
+                            hideLoading();
+                            
+                            // 更新显示
+                            if (field === 'name') {
+                                document.getElementById('profile-name-display').textContent = value;
+                            }
+                            
+                            showToast('保存成功');
+                        }, 1000);
+                    });
+                }
+
+                // 清理应用缓存
+                function clearAppCache() {
+                    showLoading();
+                    
+                    // 模拟清理过程
+                    setTimeout(() => {
+                        hideLoading();
+                        showToast('缓存清理成功');
+                        
+                        // 更新缓存大小显示
+                        const cacheSize = document.querySelector('.cache-size');
+                        if (cacheSize) {
+                            cacheSize.textContent = '0 MB';
+                        }
+                    }, 2000);
+                }
+
+                // 检查应用更新
+                function checkForUpdates() {
+                    const versionStatus = document.getElementById('version-status');
+                    if (versionStatus) {
+                        versionStatus.textContent = '正在检查更新...';
+                    }
+                    
+                    // 模拟检查更新过程
+                    setTimeout(() => {
+                        // 随机决定是否有更新可用
+                        const hasUpdate = Math.random() > 0.5;
+                        
+                        if (hasUpdate) {
+                            versionStatus.textContent = '发现新版本 1.0.6';
+                            versionStatus.style.color = '#4CAF50';
+                        } else {
+                            versionStatus.textContent = '当前已是最新版本';
+                            versionStatus.style.color = '#666';
+                        }
+                    }, 2000);
+                }
+                
+                // 页面加载完成后初始化
+                document.addEventListener('DOMContentLoaded', function() {
+                    // 为设置页面中的检查更新按钮添加点击事件
+                    const checkUpdateBtn = document.getElementById('check-update-btn');
+                    if (checkUpdateBtn) {
+                        checkUpdateBtn.addEventListener('click', checkForUpdates);
+                    }
+                    
+                    // 扩展导航函数，在导航到设置页面时自动初始化设置页面
+                    const originalNavigateTo = window.navigateTo;
+                    window.navigateTo = function(pageId, addToHistory = true) {
+                        // 调用原始导航函数
+                        if (typeof originalNavigateTo === 'function') {
+                            originalNavigateTo(pageId, addToHistory);
+                        }
+                        
+                        // 如果导航到设置页面，默认显示个人资料选项卡
+                        if (pageId === 'settings-page') {
+                            // 确保所有选项卡都不是激活状态
+                            const tabs = document.querySelectorAll('.settings-tab');
+                            tabs.forEach(tab => {
+                                tab.classList.remove('active');
+                            });
+                            
+                            // 激活第一个选项卡
+                            const firstTab = document.querySelector('.settings-tab');
+                            if (firstTab) {
+                                firstTab.classList.add('active');
+                            }
+                            
+                            // 隐藏所有设置部分
+                            const sections = document.querySelectorAll('.settings-section');
+                            sections.forEach(section => {
+                                section.classList.remove('active');
+                            });
+                            
+                            // 显示个人资料设置部分
+                            const profileSection = document.getElementById('profile-settings');
+                            if (profileSection) {
+                                profileSection.classList.add('active');
+                            }
+                        }
+                    };
+                });
          
             </script>
+        </div>
+        
+        <!-- 模态框 -->
+        <div id="modal" class="modal">
+            <div class="modal-content">
+                <div class="modal-title" id="modal-title">编辑信息</div>
+                <input type="text" id="modal-input" class="modal-input" placeholder="请输入">
+                <div class="modal-actions">
+                    <button class="modal-button cancel" onclick="closeModal()">取消</button>
+                    <button class="modal-button confirm" onclick="confirmModal()">确定</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Toast提示 -->
+        <div id="toast" class="toast"></div>
+
+        <!-- 加载指示器 -->
+        <div id="loading-overlay" class="loading-overlay">
+            <div class="loading-spinner"></div>
         </div>
     </div>
 </body>
