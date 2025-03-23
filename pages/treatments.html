@@ -1,0 +1,184 @@
+<!-- 护理项目详情页 -->
+<div class="page" id="treatment-detail-page">
+    <div class="page-header">
+        <div class="back-button" onclick="goBack()">
+            <span class="material-icons">arrow_back</span>
+        </div>
+        <div class="page-title">护理项目</div>
+        <div style="width: 40px;"></div> <!-- 占位，保持标题居中 -->
+    </div>
+
+    <!-- 护理项目类别选择 -->
+    <div class="treatment-tabs">
+        <div class="treatment-tab" data-treatment="eye-ai-detection">眼部AI检测</div>
+        <div class="treatment-tab active" data-treatment="eye-fatigue-care">眼疲劳护理</div>
+        <div class="treatment-tab" data-treatment="eye-aging-care">眼衰退护理</div>
+        <div class="treatment-tab" data-treatment="eye-sensitive-care">眼敏感护理</div>
+    </div>
+
+    <!-- 护理项目详情内容 -->
+    <div class="treatment-details">
+        <!-- 项目图片 -->
+        <div id="treatment-image-container" class="treatment-image-container">
+            <img id="treatment-image" src="" alt="护理项目图片" class="treatment-image">
+        </div>
+
+        <!-- 项目标题和信息 -->
+        <div class="treatment-info-card">
+            <h2 id="treatment-title" class="treatment-title"></h2>
+            <div id="treatment-description" class="treatment-description"></div>
+        </div>
+
+        <!-- 项目过程 -->
+        <div class="treatment-section">
+            <h3 class="section-subtitle">服务内容</h3>
+            <div id="treatment-process" class="process-steps">
+                <!-- 过程步骤将通过JS动态加载 -->
+            </div>
+        </div>
+
+        <!-- 适用人群 -->
+        <div class="treatment-section">
+            <h3 class="section-subtitle">适用人群</h3>
+            <div id="treatment-target" class="treatment-target"></div>
+        </div>
+
+        <!-- 时长和价格信息 -->
+        <div class="treatment-footer">
+            <div class="treatment-duration">
+                <div>疗程时长</div>
+                <div id="treatment-duration"></div>
+            </div>
+            <div class="treatment-price-container">
+                <div>费用</div>
+                <div id="treatment-price" class="treatment-price"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+// 当前选中的护理项目
+let currentTreatmentId = '';
+
+// 页面加载后初始化
+document.addEventListener('DOMContentLoaded', function() {
+    initTreatmentTabs();
+});
+
+// 初始化护理项目选项卡
+function initTreatmentTabs() {
+    const tabs = document.querySelectorAll('.treatment-tab');
+    tabs.forEach(tab => {
+        tab.addEventListener('click', function() {
+            // 移除所有激活状态
+            tabs.forEach(t => t.classList.remove('active'));
+            // 激活当前选项卡
+            this.classList.add('active');
+            
+            // 获取选中的护理项目
+            const treatmentId = this.getAttribute('data-treatment');
+            loadTreatmentData(treatmentId);
+        });
+    });
+    
+    // 获取默认选中的项目
+    const activeTab = document.querySelector('.treatment-tab.active');
+    if (activeTab) {
+        const defaultTreatmentId = activeTab.getAttribute('data-treatment');
+        loadTreatmentData(defaultTreatmentId);
+    }
+}
+
+// 加载护理项目数据
+function loadTreatmentData(treatmentId) {
+    console.log(`加载护理项目数据: ${treatmentId}`);
+    currentTreatmentId = treatmentId;
+    
+    // 显示加载状态
+    document.getElementById('treatment-title').textContent = '加载中...';
+    document.getElementById('treatment-description').textContent = '';
+    document.getElementById('treatment-process').innerHTML = '<div class="loading-container"><span class="material-icons loading-icon">hourglass_top</span><p>加载中...</p></div>';
+    document.getElementById('treatment-target').textContent = '';
+    document.getElementById('treatment-duration').textContent = '';
+    document.getElementById('treatment-price').textContent = '';
+    
+    // 从JSON文件加载数据
+    fetch('data/service-projects.json')
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`无法加载数据: ${response.status}`);
+            }
+            return response.json();
+        })
+        .then(data => {
+            // 查找当前项目
+            const project = data.projects.find(p => p.en_name === treatmentId);
+            if (!project) {
+                throw new Error(`未找到项目: ${treatmentId}`);
+            }
+            
+            // 更新页面内容
+            updateTreatmentDetails(project);
+        })
+        .catch(error => {
+            console.error('加载项目数据失败:', error);
+            document.getElementById('treatment-title').textContent = '加载失败';
+            document.getElementById('treatment-description').textContent = error.message;
+            document.getElementById('treatment-process').innerHTML = '';
+            document.getElementById('treatment-target').textContent = '';
+            document.getElementById('treatment-duration').textContent = '';
+            document.getElementById('treatment-price').textContent = '';
+        });
+}
+
+// 更新护理项目详情
+function updateTreatmentDetails(project) {
+    // 更新图片
+    const imageElem = document.getElementById('treatment-image');
+    imageElem.src = project.image;
+    imageElem.alt = project.cn_name;
+    
+    // 更新标题和描述
+    document.getElementById('treatment-title').textContent = project.cn_name;
+    document.getElementById('treatment-description').textContent = project.description;
+    
+    // 更新过程步骤
+    const processContainer = document.getElementById('treatment-process');
+    processContainer.innerHTML = '';
+    
+    if (project.process && project.process.length > 0) {
+        project.process.forEach((step, index) => {
+            const stepElem = document.createElement('div');
+            stepElem.className = 'process-step';
+            
+            const numberElem = document.createElement('div');
+            numberElem.className = 'step-number';
+            numberElem.textContent = index + 1;
+            
+            const contentElem = document.createElement('div');
+            contentElem.className = 'step-content';
+            contentElem.textContent = step;
+            
+            stepElem.appendChild(numberElem);
+            stepElem.appendChild(contentElem);
+            processContainer.appendChild(stepElem);
+        });
+    } else {
+        processContainer.textContent = '暂无详细步骤信息';
+    }
+    
+    // 更新适用人群
+    document.getElementById('treatment-target').textContent = project.target || '暂无信息';
+    
+    // 更新时长和价格
+    document.getElementById('treatment-duration').textContent = project.duration || '暂无信息';
+    document.getElementById('treatment-price').textContent = project.price || '暂无信息';
+}
+
+// 返回上一页
+function goBack() {
+    console.log('返回上一页');
+    window.history.back();
+}
+</script> 

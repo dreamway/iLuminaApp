@@ -1,0 +1,260 @@
+<!-- 服务案例详情页 -->
+<div class="page" id="case-detail-page">
+    <div class="page-header">
+        <div class="back-button" onclick="goBack()">
+            <span class="material-icons">arrow_back</span>
+        </div>
+        <div class="page-title">案例详情</div>
+    </div>
+
+    <div class="case-detail-content">
+        <!-- 案例主要信息 -->
+        <div class="case-main-info">
+            <div class="case-title">严重眼疲劳改善案例</div>
+            <div class="case-meta">
+                <span class="case-type">眼疲劳护理</span>
+                <span class="case-date">2023-08-15</span>
+                <span class="case-views"><span class="material-icons">visibility</span> 2,458</span>
+            </div>
+            
+            <!-- 案例图片轮播 -->
+            <div class="case-image-carousel">
+                <div class="case-image active">
+                    <img src="images/cases/eye-fatigue-before.jpg" alt="治疗前" class="case-img">
+                    <div class="image-label">治疗前</div>
+                </div>
+                <div class="case-image">
+                    <img src="images/cases/eye-fatigue-after.jpg" alt="治疗后" class="case-img">
+                    <div class="image-label">治疗后</div>
+                </div>
+                <div class="carousel-dots">
+                    <div class="dot active" data-index="0"></div>
+                    <div class="dot" data-index="1"></div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 案例详情 -->
+        <div class="case-details-section">
+            <h3 class="section-subtitle">基本情况</h3>
+            <div class="case-detail-text">
+                <p>客户性别：女</p>
+                <p>年龄：32岁</p>
+                <p>职业：设计师</p>
+                <p>主诉：长期使用电脑工作，眼睛干涩、酸痛，视觉疲劳明显，经常感到头痛。</p>
+            </div>
+            
+            <h3 class="section-subtitle">眼睛检测结果</h3>
+            <div class="case-detection-results">
+                <div class="detection-result-item">
+                    <div class="result-label">眼睛疲劳指数</div>
+                    <div class="result-value high">8.7/10</div>
+                </div>
+                <div class="detection-result-item">
+                    <div class="result-label">眼睛干燥度</div>
+                    <div class="result-value high">7.9/10</div>
+                </div>
+                <div class="detection-result-item">
+                    <div class="result-label">眼周血液循环</div>
+                    <div class="result-value low">4.2/10</div>
+                </div>
+                <div class="detection-result-item">
+                    <div class="result-label">角膜健康度</div>
+                    <div class="result-value medium">6.1/10</div>
+                </div>
+            </div>
+            
+            <h3 class="section-subtitle">护理方案</h3>
+            <div class="case-treatment-plan">
+                <div class="treatment-plan-item">
+                    <div class="plan-name">综合眼疲劳护理</div>
+                    <div class="plan-cycles">疗程：6次</div>
+                    <div class="plan-frequency">频率：每周1次</div>
+                </div>
+                <div class="treatment-steps">
+                    <div class="step-item">
+                        <div class="step-name">基础治疗</div>
+                        <div class="step-desc">眼部清洁 + 热敷 + 穴位按摩 + 舒缓精华导入 + 冷敷修复</div>
+                    </div>
+                    <div class="step-item">
+                        <div class="step-name">强化治疗</div>
+                        <div class="step-desc">添加生物波能量技术促进眼周营养吸收和血液循环</div>
+                    </div>
+                    <div class="step-item">
+                        <div class="step-name">辅助治疗</div>
+                        <div class="step-desc">每天使用舒缓眼部精华，早晚各一次</div>
+                    </div>
+                </div>
+            </div>
+            
+            <h3 class="section-subtitle">效果展示</h3>
+            <div class="case-results">
+                <div class="before-after-container">
+                    <div class="before-after-item">
+                        <div class="before-after-label">治疗前</div>
+                        <div class="before-after-value high">眼疲劳指数: 8.7/10</div>
+                    </div>
+                    <div class="arrow"><span class="material-icons">arrow_forward</span></div>
+                    <div class="before-after-item">
+                        <div class="before-after-label">治疗后</div>
+                        <div class="before-after-value low">眼疲劳指数: 3.2/10</div>
+                    </div>
+                </div>
+                
+                <div class="result-chart-container">
+                    <div class="chart-title">治疗效果曲线</div>
+                    <div id="treatment-chart" class="result-chart"></div>
+                </div>
+                
+                <div class="customer-feedback">
+                    <div class="feedback-title">客户反馈</div>
+                    <div class="feedback-content">
+                        <p>"完成6次护理后，明显感觉眼睛不再干涩，工作时间长也不会有强烈的疲劳感。头痛次数也减少了很多，总体来说效果超出了我的预期。"</p>
+                    </div>
+                </div>
+            </div>
+            
+            <h3 class="section-subtitle">护理师建议</h3>
+            <div class="specialist-advice">
+                <p>1. 工作每1小时休息10分钟，远眺放松眼睛</p>
+                <p>2. 保持充足的睡眠，提高眼部自我修复能力</p>
+                <p>3. 坚持使用推荐的眼部护理产品</p>
+                <p>4. 摄入富含维生素A和叶黄素的食物</p>
+                <p>5. 定期复查眼部健康状况</p>
+            </div>
+        </div>
+        
+        <!-- 相关推荐 -->
+        <div class="related-section">
+            <h3 class="section-subtitle">相关推荐</h3>
+            <div class="related-items">
+                <div class="related-item" onclick="viewTreatment('eye-fatigue')">
+                    <img src="images/treatment/eye-fatigue-small.jpg" alt="眼疲劳护理" class="related-img">
+                    <div class="related-name">眼疲劳护理</div>
+                    <div class="related-price">¥198/次</div>
+                </div>
+                <div class="related-item" onclick="viewCase('dry-eye')">
+                    <img src="images/cases/dry-eye-small.jpg" alt="干眼症改善案例" class="related-img">
+                    <div class="related-name">干眼症改善案例</div>
+                    <div class="related-type">眼干涩护理</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 底部按钮 -->
+        <div class="action-buttons">
+            <button class="button" onclick="bookTreatment('eye-fatigue')">预约此项目</button>
+            <button class="button secondary" onclick="shareCase()">分享案例</button>
+        </div>
+    </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // 初始化案例图片轮播
+    initCaseImageCarousel();
+    
+    // 初始化治疗效果图表
+    initTreatmentResultChart();
+});
+
+// 初始化案例图片轮播
+function initCaseImageCarousel() {
+    const dots = document.querySelectorAll('.carousel-dots .dot');
+    const images = document.querySelectorAll('.case-image');
+    
+    dots.forEach(dot => {
+        dot.addEventListener('click', function() {
+            const index = parseInt(this.getAttribute('data-index'));
+            
+            // 移除所有激活状态
+            dots.forEach(d => d.classList.remove('active'));
+            images.forEach(img => img.classList.remove('active'));
+            
+            // 激活当前点和图片
+            this.classList.add('active');
+            images[index].classList.add('active');
+        });
+    });
+}
+
+// 初始化治疗效果图表
+function initTreatmentResultChart() {
+    if (typeof echarts !== 'undefined' && document.getElementById('treatment-chart')) {
+        const chart = echarts.init(document.getElementById('treatment-chart'));
+        
+        const option = {
+            tooltip: {
+                trigger: 'axis'
+            },
+            grid: {
+                left: '3%',
+                right: '4%',
+                bottom: '3%',
+                containLabel: true
+            },
+            xAxis: {
+                type: 'category',
+                data: ['初诊', '第1次', '第2次', '第3次', '第4次', '第5次', '第6次']
+            },
+            yAxis: {
+                type: 'value',
+                min: 0,
+                max: 10,
+                name: '眼疲劳指数'
+            },
+            series: [
+                {
+                    name: '眼疲劳指数',
+                    type: 'line',
+                    data: [8.7, 7.5, 6.3, 5.8, 4.5, 3.9, 3.2],
+                    lineStyle: {
+                        color: '#3498db'
+                    },
+                    itemStyle: {
+                        color: '#3498db'
+                    }
+                }
+            ]
+        };
+        
+        chart.setOption(option);
+        
+        // 窗口大小改变时调整图表大小
+        window.addEventListener('resize', function() {
+            chart.resize();
+        });
+    }
+}
+
+// 查看护理项目
+function viewTreatment(treatmentId) {
+    console.log(`查看护理项目: ${treatmentId}`);
+    // 这里可以添加查看护理项目的逻辑
+}
+
+// 查看案例
+function viewCase(caseId) {
+    console.log(`查看案例: ${caseId}`);
+    // 这里可以添加查看案例的逻辑
+}
+
+// 预约护理
+function bookTreatment(treatmentId) {
+    console.log(`预约护理: ${treatmentId}`);
+    // 这里可以添加预约护理的逻辑
+}
+
+// 分享案例
+function shareCase() {
+    console.log('分享案例');
+    // 这里可以添加分享案例的逻辑
+}
+
+// 返回上一页
+function goBack() {
+    console.log('返回上一页');
+    // 这里可以添加返回上一页的逻辑
+    window.history.back();
+}
+</script> 

@@ -1,0 +1,499 @@
+<!-- 门店活动详情页 -->
+<div class="page" id="campaign-detail-page">
+    <div class="page-header">
+        <div class="back-button" onclick="goBack()">
+            <span class="material-icons">arrow_back</span>
+        </div>
+        <div class="page-title">活动详情</div>
+    </div>
+
+    <div class="campaign-detail-content">
+        <!-- 活动主图 -->
+        <div class="campaign-image-container">
+            <img id="campaign-image" src="" alt="活动图片" class="campaign-image">
+        </div>
+        
+        <!-- 活动标题和时间 -->
+        <div class="campaign-info-card">
+            <h2 id="campaign-title" class="campaign-detail-title"></h2>
+            <div id="campaign-period" class="campaign-period"></div>
+            
+            <!-- 活动福利 -->
+            <div class="benefits-section" id="benefits-section">
+                <h3 class="section-subtitle">活动福利</h3>
+                <ul id="benefits-list" class="benefits-list">
+                    <!-- 这里将通过JS动态添加福利项 -->
+                </ul>
+            </div>
+            
+            <!-- 专家活动(部分活动特有) -->
+            <div class="expert-activities-section" id="expert-activities-section" style="display:none;">
+                <h3 class="section-subtitle">专家活动</h3>
+                <ul id="expert-activities-list" class="benefits-list">
+                    <!-- 这里将通过JS动态添加专家活动项 -->
+                </ul>
+            </div>
+            
+            <!-- 产品/套餐信息(部分活动特有) -->
+            <div class="packages-section" id="packages-section" style="display:none;">
+                <h3 class="section-subtitle">套餐选择</h3>
+                <ul id="packages-list" class="benefits-list">
+                    <!-- 这里将通过JS动态添加套餐信息 -->
+                </ul>
+            </div>
+            
+            <!-- 额外信息 -->
+            <div id="extra-info-section" class="extra-info-section">
+                <!-- 这里将根据活动内容动态添加额外信息 -->
+            </div>
+            
+            <!-- 活动口号/备注 -->
+            <div id="slogan-section" class="slogan-section">
+                <!-- 这里将添加活动口号或备注 -->
+            </div>
+        </div>
+        
+        <!-- 相关活动 -->
+        <div class="related-campaigns-section">
+            <h3 class="section-subtitle">其他活动</h3>
+            <div id="related-campaigns" class="related-campaigns">
+                <!-- 这里将通过JS动态添加相关活动 -->
+            </div>
+        </div>
+        
+        <!-- 底部操作 -->
+        <div class="action-buttons">
+            <button class="button" onclick="joinCampaign()">立即报名</button>
+            <button class="button secondary" onclick="shareCampaign()">分享活动</button>
+        </div>
+    </div>
+</div>
+
+<script>
+// 当页面加载完成时初始化
+document.addEventListener('DOMContentLoaded', function() {
+    console.log('活动详情页面加载完成');
+    
+    // 获取活动ID（从URL或全局变量中）
+    let campaignId = null;
+    
+    // 尝试从不同来源获取活动ID
+    try {
+        // 1. 尝试从URL参数获取
+        const urlParams = new URLSearchParams(window.location.search);
+        campaignId = urlParams.get('id');
+        
+        // 2. 尝试从全局变量获取
+        if (!campaignId && window.currentCampaignId) {
+            campaignId = window.currentCampaignId;
+        }
+        
+        // 3. 尝试从父页面获取
+        if (!campaignId && window.parent && window.parent.currentCampaignId) {
+            campaignId = window.parent.currentCampaignId;
+        }
+    } catch (e) {
+        console.error('获取活动ID时出错:', e);
+    }
+    
+    console.log('正在加载活动ID:', campaignId);
+    
+    if (campaignId) {
+        loadCampaignData(campaignId);
+    } else {
+        console.error('未找到活动ID');
+        showError('未找到活动信息');
+    }
+    
+    // 确保返回按钮功能正常
+    const backButton = document.querySelector('.back-button');
+    if (backButton) {
+        backButton.addEventListener('click', function() {
+            goBack();
+        });
+    }
+});
+
+// 加载活动数据
+function loadCampaignData(campaignId) {
+    console.log('尝试加载活动数据:', campaignId);
+    
+    // 1. 首先检查父窗口是否直接提供了活动数据
+    try {
+        if (window.parent && window.parent.selectedCampaignData) {
+            console.log('使用父窗口直接提供的活动数据');
+            const campaign = window.parent.selectedCampaignData;
+            if (campaign.id == campaignId) {
+                renderCampaignDetail(campaign);
+                // 加载相关活动
+                try {
+                    if (window.parent.campaignDataCache) {
+                        const otherCampaigns = window.parent.campaignDataCache.activities.filter(c => c.id != campaignId);
+                        const relatedCampaigns = getRandomItems(otherCampaigns, Math.min(3, otherCampaigns.length));
+                        renderRelatedCampaigns(relatedCampaigns);
+                    }
+                } catch (e) {
+                    console.error('获取相关活动失败:', e);
+                    // 继续加载相关活动
+                    loadRelatedCampaigns(campaignId);
+                }
+                return;
+            }
+        }
+    } catch (e) {
+        console.error('尝试使用父窗口活动数据时出错:', e);
+    }
+    
+    // 2. 检查父窗口是否有缓存数据
+    try {
+        if (window.parent && window.parent.getCampaignData) {
+            console.log('使用父窗口缓存数据');
+            window.parent.getCampaignData()
+                .then(data => {
+                    // 查找指定ID的活动
+                    const campaign = data.activities.find(activity => activity.id == campaignId);
+                    
+                    if (campaign) {
+                        renderCampaignDetail(campaign);
+                    } else {
+                        throw new Error('未找到指定活动');
+                    }
+                })
+                .catch(error => {
+                    console.error('从父窗口获取活动数据失败:', error);
+                    // 回退到直接获取数据
+                    fetchCampaignData(campaignId);
+                });
+            return;
+        }
+    } catch (e) {
+        console.error('尝试使用父窗口缓存数据时出错:', e);
+    }
+    
+    // 3. 回退到直接获取数据
+    fetchCampaignData(campaignId);
+}
+
+// 直接从文件获取数据
+function fetchCampaignData(campaignId) {
+    console.log('直接从文件获取活动数据');
+    // 从JSON文件加载活动数据
+    fetch('../data/store_campaigns.json')
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('无法加载活动数据');
+            }
+            return response.json();
+        })
+        .then(data => {
+            console.log('获取到活动数据:', data);
+            // 查找指定ID的活动
+            const campaign = data.activities.find(activity => activity.id == campaignId);
+            
+            if (campaign) {
+                renderCampaignDetail(campaign);
+            } else {
+                throw new Error('未找到指定活动');
+            }
+        })
+        .catch(error => {
+            console.error('加载活动数据失败:', error);
+            showError('加载活动数据失败: ' + error.message);
+        });
+}
+
+// 渲染活动详情
+function renderCampaignDetail(campaign) {
+    console.log('渲染活动详情:', campaign);
+    
+    // 设置活动图片 - 修复图片路径
+    let imagePath = '';
+    if (campaign.campaignImage) {
+        // 如果路径以../开头，去掉一个../使其能够正常显示
+        imagePath = campaign.campaignImage.startsWith('../') 
+            ? campaign.campaignImage.substring(3) 
+            : campaign.campaignImage;
+    } else {
+        imagePath = 'images/campaign/default.jpg';
+    }
+    
+    document.getElementById('campaign-image').src = imagePath;
+    document.getElementById('campaign-image').alt = campaign.title;
+    
+    // 设置活动标题和时间
+    document.getElementById('campaign-title').textContent = campaign.content.title || '';
+    
+    // 设置时间信息（优先使用period，其次使用time）
+    const periodElement = document.getElementById('campaign-period');
+    if (campaign.content.period) {
+        periodElement.textContent = campaign.content.period;
+    } else if (campaign.content.time) {
+        periodElement.textContent = campaign.content.time;
+    } else {
+        periodElement.textContent = '';
+    }
+    
+    // 设置活动福利列表
+    const benefitsSection = document.getElementById('benefits-section');
+    const benefitsList = document.getElementById('benefits-list');
+    benefitsList.innerHTML = '';
+    
+    if (campaign.content.benefits && campaign.content.benefits.length > 0) {
+        benefitsSection.style.display = 'block';
+        campaign.content.benefits.forEach(benefit => {
+            const li = document.createElement('li');
+            li.textContent = benefit;
+            benefitsList.appendChild(li);
+        });
+    } else {
+        benefitsSection.style.display = 'none';
+    }
+    
+    // 设置专家活动列表（如果有）
+    const expertActivitiesSection = document.getElementById('expert-activities-section');
+    const expertActivitiesList = document.getElementById('expert-activities-list');
+    
+    if (expertActivitiesSection) {
+        expertActivitiesList.innerHTML = '';
+        
+        if (campaign.content.expertActivities && campaign.content.expertActivities.length > 0) {
+            expertActivitiesSection.style.display = 'block';
+            campaign.content.expertActivities.forEach(activity => {
+                const li = document.createElement('li');
+                li.textContent = activity;
+                expertActivitiesList.appendChild(li);
+            });
+        } else {
+            expertActivitiesSection.style.display = 'none';
+        }
+    }
+    
+    // 设置套餐信息（如果有）
+    const packagesSection = document.getElementById('packages-section');
+    const packagesList = document.getElementById('packages-list');
+    
+    if (packagesSection) {
+        packagesList.innerHTML = '';
+        
+        if (campaign.content.packages && campaign.content.packages.length > 0) {
+            packagesSection.style.display = 'block';
+            campaign.content.packages.forEach(packageItem => {
+                const li = document.createElement('li');
+                li.textContent = packageItem;
+                packagesList.appendChild(li);
+            });
+        } else {
+            packagesSection.style.display = 'none';
+        }
+    }
+    
+    // 设置额外信息
+    const extraInfoSection = document.getElementById('extra-info-section');
+    extraInfoSection.innerHTML = '';
+    
+    // 添加额外信息（不同活动可能有不同字段）
+    const extraInfoFields = [
+        {key: 'specialOffer', label: '特别优惠'},
+        {key: 'location', label: '活动地点'},
+        {key: 'contactNumber', label: '联系电话'},
+        {key: 'time', label: '活动时间', skip: !!campaign.content.period}, // 如果有period则跳过time
+        {key: 'registration', label: '报名方式'},
+        {key: 'note', label: '活动备注'},
+        {key: 'productInfo', label: '产品信息'},
+        {key: 'extraBenefit', label: '额外福利'},
+        {key: 'duration', label: '活动持续时间'}
+    ];
+    
+    let hasExtraInfo = false;
+    
+    extraInfoFields.forEach(field => {
+        if (campaign.content[field.key] && !field.skip) {
+            hasExtraInfo = true;
+            const div = document.createElement('div');
+            div.className = 'info-item';
+            
+            const label = document.createElement('div');
+            label.className = 'info-label';
+            label.textContent = field.label + '：';
+            
+            const value = document.createElement('div');
+            value.className = 'info-value';
+            value.textContent = campaign.content[field.key];
+            
+            div.appendChild(label);
+            div.appendChild(value);
+            extraInfoSection.appendChild(div);
+        }
+    });
+    
+    // 如果没有额外信息，隐藏该区域
+    if (!hasExtraInfo) {
+        extraInfoSection.style.display = 'none';
+    } else {
+        extraInfoSection.style.display = 'block';
+    }
+    
+    // 设置口号/备注
+    const sloganSection = document.getElementById('slogan-section');
+    sloganSection.innerHTML = '';
+    
+    if (campaign.content.slogan) {
+        sloganSection.style.display = 'block';
+        const slogan = document.createElement('div');
+        slogan.className = 'campaign-slogan';
+        slogan.textContent = campaign.content.slogan;
+        sloganSection.appendChild(slogan);
+    } else {
+        sloganSection.style.display = 'none';
+    }
+    
+    // 加载相关活动
+    loadRelatedCampaigns(campaign.id);
+}
+
+// 加载相关活动
+function loadRelatedCampaigns(currentCampaignId) {
+    // 1. 首先检查父窗口是否有完整的活动数据缓存
+    try {
+        if (window.parent && window.parent.campaignDataCache) {
+            console.log('使用父窗口缓存数据获取相关活动');
+            const data = window.parent.campaignDataCache;
+            // 过滤掉当前活动，随机选择2-3个其他活动
+            const otherCampaigns = data.activities.filter(campaign => campaign.id != currentCampaignId);
+            const relatedCampaigns = getRandomItems(otherCampaigns, Math.min(3, otherCampaigns.length));
+            
+            renderRelatedCampaigns(relatedCampaigns);
+            return;
+        }
+    } catch (e) {
+        console.error('从父窗口缓存获取相关活动失败:', e);
+    }
+    
+    // 2. 检查父窗口是否有获取数据的方法
+    try {
+        if (window.parent && window.parent.getCampaignData) {
+            window.parent.getCampaignData()
+                .then(data => {
+                    // 过滤掉当前活动，随机选择2-3个其他活动
+                    const otherCampaigns = data.activities.filter(campaign => campaign.id != currentCampaignId);
+                    const relatedCampaigns = getRandomItems(otherCampaigns, Math.min(3, otherCampaigns.length));
+                    
+                    renderRelatedCampaigns(relatedCampaigns);
+                })
+                .catch(error => {
+                    console.error('从父窗口获取相关活动失败:', error);
+                    fetchRelatedCampaigns(currentCampaignId);
+                });
+            return;
+        }
+    } catch (e) {
+        console.error('尝试使用父窗口方法获取相关活动时出错:', e);
+    }
+    
+    // 3. 回退到直接获取数据
+    fetchRelatedCampaigns(currentCampaignId);
+}
+
+// 直接从文件获取相关活动数据
+function fetchRelatedCampaigns(currentCampaignId) {
+    fetch('../data/store_campaigns.json')
+        .then(response => response.json())
+        .then(data => {
+            // 过滤掉当前活动，随机选择2-3个其他活动
+            const otherCampaigns = data.activities.filter(campaign => campaign.id != currentCampaignId);
+            const relatedCampaigns = getRandomItems(otherCampaigns, Math.min(3, otherCampaigns.length));
+            
+            renderRelatedCampaigns(relatedCampaigns);
+        })
+        .catch(error => {
+            console.error('加载相关活动失败:', error);
+        });
+}
+
+// 渲染相关活动
+function renderRelatedCampaigns(campaigns) {
+    const container = document.getElementById('related-campaigns');
+    container.innerHTML = '';
+    
+    campaigns.forEach(campaign => {
+        const campaignItem = document.createElement('div');
+        campaignItem.className = 'related-campaign-item';
+        campaignItem.onclick = function() {
+            loadCampaignPage(campaign.id);
+        };
+        
+        const title = document.createElement('div');
+        title.className = 'related-campaign-title';
+        title.textContent = campaign.content.title || campaign.title;
+        
+        campaignItem.appendChild(title);
+        container.appendChild(campaignItem);
+    });
+}
+
+// 从数组中随机获取指定数量的元素
+function getRandomItems(array, count) {
+    const shuffled = [...array].sort(() => 0.5 - Math.random());
+    return shuffled.slice(0, count);
+}
+
+// 显示错误信息
+function showError(message) {
+    const container = document.querySelector('.campaign-detail-content');
+    if (container) {
+        container.innerHTML = `<div class="error-message">${message}</div>`;
+    }
+}
+
+// 加载活动页面
+function loadCampaignPage(campaignId) {
+    console.log('切换到活动:', campaignId);
+    
+    // 记录当前活动ID
+    window.currentCampaignId = campaignId;
+    
+    // 尝试使用不同方式加载活动详情
+    try {
+        // 1. 尝试使用父窗口的加载函数
+        if (window.parent && typeof window.parent.loadCampaignDetail === 'function') {
+            window.parent.loadCampaignDetail(campaignId);
+            return;
+        }
+    } catch (e) {
+        console.error('尝试使用父窗口loadCampaignDetail函数失败:', e);
+    }
+    
+    // 2. 作为回退，直接在当前页面加载活动数据
+    loadCampaignData(campaignId);
+    
+    // 3. 滚动到页面顶部
+    try {
+        window.scrollTo(0, 0);
+    } catch (e) {
+        console.error('滚动到顶部失败:', e);
+    }
+}
+
+// 活动报名
+function joinCampaign() {
+    console.log('报名活动');
+    alert('报名成功！我们将尽快与您联系。');
+}
+
+// 分享活动
+function shareCampaign() {
+    console.log('分享活动');
+    alert('分享功能即将上线');
+}
+
+// 返回上一页
+function goBack() {
+    console.log('返回上一页');
+    if (typeof window.loadHomePage === 'function') {
+        window.loadHomePage();
+    } else {
+        console.error('loadHomePage函数不存在，尝试使用history.back()');
+        window.history.back();
+    }
+}
+</script> 

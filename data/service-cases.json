@@ -1,0 +1,1214 @@
+{
+  "categories": [
+    {
+      "id": 1,
+      "name": "眼疲劳护理案例",
+      "cases": [
+        {
+          "id": 1,
+          "title": "干眼症综合改善方案",
+          "before_after_images": {
+            "before": "images/service_case/case1_before.jpg",
+            "after": "images/service_case/case1_after.jpg"
+          },
+          "client_background": {
+            "name": "张女士",
+            "age": 35,
+            "occupation": "互联网从业者",
+            "symptoms": ["双眼干涩", "灼痛", "视物模糊", "晨起分泌物增多"],
+            "duration": "8个月",
+            "diagnosis": "中度干眼症"
+          },
+          "examination_results": {
+            "tear_film_breakup_time": "4秒",
+            "tear_secretion": "5mm/5min",
+            "gland_blockage": "45%",
+            "corneal_staining": "阳性(+)",
+            "conjunctival_congestion": "2级"
+          },
+          "treatment_process": {
+            "stages": [
+              {
+                "name": "症状缓解期（第1-2周）",
+                "therapies": [
+                  "IPL强脉冲光治疗（560nm, 12J/cm²）",
+                  "中药熏蒸（密蒙花、夏枯草）",
+                  "玻璃酸钠滴眼液+脂质修复凝胶"
+                ]
+              },
+              {
+                "name": "功能修复期（第3-6周）",
+                "therapies": [
+                  "热脉动系统治疗（42.5℃）",
+                  "中医点穴调理（睛明、攒竹、太阳穴）",
+                  "Omega-3脂肪酸补充（1200mg/日）"
+                ]
+              }
+            ]
+          },
+          "outcomes": {
+            "1_month": {
+              "tear_film_breakup_time": "9秒",
+              "tear_secretion": "9mm/5min",
+              "symptom_score": "7→2分"
+            },
+            "3_months": {
+              "gland_patency": "92%",
+              "screen_tolerance": "2→6小时"
+            }
+          },
+          "special_services": [
+            "电子健康档案管理",
+            "护眼能量包（蒸汽眼罩+叶黄素+食谱）"
+          ]
+        },
+        {
+          "id": 2,
+          "title": "职场办公室视疲劳改善方案",
+          "before_after_images": "案例1护理前后对比图",
+          "client_background": {
+            "name": "李先生",
+            "age": 32,
+            "occupation": "办公室职员",
+            "symptoms": ["眼睛干涩", "酸胀", "视力下降"],
+            "duration": "长期",
+            "diagnosis": "视疲劳"
+          },
+          "examination_results": {
+            "tear_film_breakup_time": "缩短",
+            "eye_pressure": "略有升高",
+            "eye_muscle_tension": "增加"
+          },
+          "treatment_process": {
+            "therapies": [
+              "眼部清洁护理",
+              "热敷按摩",
+              "人工泪液滋润"
+            ],
+            "duration": "30分钟"
+          }
+        },
+        {
+          "id": 3,
+          "title": "学生电子设备视疲劳恢复方案",
+          "before_after_images": "案例2护理前后对比图",
+          "client_background": {
+            "name": "张同学",
+            "age": 15,
+            "occupation": "中学生",
+            "symptoms": ["眼睛疲劳", "畏光", "流泪"],
+            "diagnosis": "视疲劳"
+          },
+          "examination_results": {
+            "eye_adjustment": "下降",
+            "tear_secretion": "不足",
+            "corneal_epithelium": "轻微损伤"
+          },
+          "treatment_process": {
+            "therapies": [
+              "眼部放松训练",
+              "眼部运动操和按摩",
+              "营养眼液补充",
+              "用眼时间合理安排指导"
+            ]
+          }
+        },
+        {
+          "id": 4,
+          "title": "中年干眼症改善方案",
+          "before_after_images": "案例3护理前后对比图",
+          "client_background": {
+            "name": "王女士",
+            "age": 50,
+            "symptoms": ["眼睛干涩", "视力模糊", "眼眶疼痛"],
+            "diagnosis": "干眼症"
+          },
+          "examination_results": {
+            "tear_secretion": "严重不足",
+            "meibomian_gland": "功能障碍",
+            "tear_film_stability": "差"
+          },
+          "treatment_process": {
+            "therapies": [
+              "睑板腺按摩和热敷",
+              "玻璃酸钠滴眼液",
+              "维生素A等营养补充剂"
+            ]
+          }
+        },
+        {
+          "id": 5,
+          "title": "程序员熬夜视疲劳康复方案",
+          "before_after_images": "案例4护理前后对比图",
+          "client_background": {
+            "name": "张先生",
+            "occupation": "程序员",
+            "symptoms": ["眼睛疲劳", "红血丝增多", "视力下降"],
+            "cause": "工作压力大，经常熬夜加班"
+          },
+          "examination_results": {
+            "eye_vessels": "扩张",
+            "eye_pressure": "偏高",
+            "retinal_blood_flow": "减慢"
+          },
+          "treatment_process": {
+            "therapies": [
+              "眼部冷敷护理",
+              "眼部针灸按摩",
+              "作息时间调整建议",
+              "工作环境改善指导"
+            ]
+          }
+        },
+        {
+          "id": 6,
+          "title": "隐形眼镜用户眼部修复方案",
+          "before_after_images": "案例5护理前后对比图",
+          "client_background": {
+            "name": "林女士",
+            "occupation": "上班族",
+            "symptoms": ["眼睛不适", "异物感", "干涩", "红肿"],
+            "cause": "长期佩戴隐形眼镜"
+          },
+          "examination_results": {
+            "cornea": "缺氧",
+            "tear_quality": "下降",
+            "eye_resistance": "降低"
+          },
+          "treatment_process": {
+            "therapies": [
+              "停止佩戴隐形眼镜",
+              "眼部清洁和消毒护理",
+              "人工泪液和抗生素眼药水使用",
+              "眼部营养补充",
+              "隐形眼镜佩戴指导"
+            ]
+          }
+        },
+        {
+          "id": 7,
+          "title": "青少年视力保护方案",
+          "before_after_images": "案例6护理前后对比图",
+          "client_background": {
+            "name": "王同学",
+            "occupation": "中学生",
+            "symptoms": ["眼睛疲劳", "视力下降", "近视加重趋势"],
+            "cause": "学习压力大，长时间近距离用眼"
+          },
+          "examination_results": {
+            "eye_adjustment": "异常",
+            "eye_axis_length": "增长",
+            "visual_fatigue": "明显"
+          },
+          "treatment_process": {
+            "therapies": [
+              "眼部放松训练",
+              "调节功能训练",
+              "营养补充",
+              "学习时间合理安排",
+              "户外活动增加",
+              "用眼习惯指导"
+            ]
+          }
+        },
+        {
+          "id": 8,
+          "title": "中年熬夜视疲劳改善方案",
+          "before_after_images": "案例7护理前后对比图",
+          "client_background": {
+            "name": "陈先生",
+            "age": "中年",
+            "symptoms": ["眼睑沉重", "眼眶疼痛", "视力模糊"],
+            "cause": "经常熬夜应酬"
+          },
+          "examination_results": {
+            "eye_muscle": "紧张",
+            "eye_pressure": "偏高",
+            "retinal_blood_flow": "减慢"
+          },
+          "treatment_process": {
+            "therapies": [
+              "眼部热敷按摩",
+              "眼部针灸",
+              "营养补充",
+              "作息时间调整建议"
+            ]
+          }
+        },
+        {
+          "id": 9,
+          "title": "电子产品用户综合护理方案",
+          "before_after_images": "案例8护理前后对比图",
+          "client_background": {
+            "name": "刘先生",
+            "age": "年轻",
+            "symptoms": ["眼睛干涩", "酸胀", "视力下降", "眼周皮肤松弛", "眼袋加重"],
+            "cause": "长期使用电子产品"
+          },
+          "examination_results": {
+            "tear_secretion": "不足",
+            "eye_muscle": "紧张",
+            "periocular_skin": "弹性下降"
+          },
+          "treatment_process": {
+            "therapies": [
+              "眼部清洁",
+              "热敷按摩",
+              "人工泪液滋润",
+              "眼部营养补充",
+              "眼部护理精华液使用",
+              "电子设备使用时间控制建议"
+            ]
+          }
+        },
+        {
+          "id": 10,
+          "title": "老年人眼部护理方案",
+          "before_after_images": "案例9护理前后对比图",
+          "client_background": {
+            "name": "张老先生",
+            "age": "退休老人",
+            "symptoms": ["眼睛干涩", "视力模糊", "畏光"],
+            "cause": "长时间阅读和看电视"
+          },
+          "examination_results": {
+            "tear_secretion": "减少",
+            "corneal_epithelium": "轻微损伤",
+            "retinal_function": "减退"
+          },
+          "treatment_process": {
+            "therapies": [
+              "眼部营养补充",
+              "人工泪液滋润",
+              "眼部按摩和热敷",
+              "用眼习惯调整指导",
+              "户外活动增加建议"
+            ]
+          }
+        },
+        {
+          "id": 11,
+          "title": "职业司机视疲劳缓解方案",
+          "before_after_images": "案例10护理前后对比图",
+          "client_background": {
+            "name": "李先生",
+            "occupation": "司机",
+            "symptoms": ["眼睛疲劳", "酸胀", "视力下降", "眼睑痉挛"],
+            "cause": "长期从事驾驶工作"
+          },
+          "examination_results": {
+            "eye_muscle": "过度紧张",
+            "eye_pressure": "偏高",
+            "retinal_blood_flow": "减慢"
+          },
+          "treatment_process": {
+            "therapies": [
+              "眼部冷敷和按摩",
+              "眼部针灸",
+              "营养补充",
+              "工作时间合理安排建议",
+              "驾驶环境改善指导"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "眼衰退护理案例",
+      "cases": [
+        {
+          "id": 1,
+          "title": "眼袋消除年轻化方案",
+          "before_after_images": {
+            "before": "images/service_case/case2_before.jpg",
+            "after": "images/service_case/case2_after.jpg"
+          },
+          "client_background": {
+            "name": "陈先生",
+            "age": 42,
+            "occupation": "企业高管",
+            "condition": "遗传性眼袋伴泪沟凹陷",
+            "skin_laxity": "III级（Pinch测试>3秒）"
+          },
+          "examination_results": {
+            "fat_volume": "3.2ml",
+            "tear_trough_depth": "1.8mm",
+            "midface_volume_loss": "25%"
+          },
+          "treatment_process": {
+            "procedures": [
+              "外切眼袋+眶隔脂肪释放术",
+              "CO2点阵激光（15mJ, 5%）",
+              "PRP自体血小板回输"
+            ],
+            "recovery_plan": {
+              "phase1": "冰敷压迫+七叶皂苷钠消肿",
+              "phase2": "眼球转动训练+瘢痕凝胶护理",
+              "maintenance": "射频紧致+胜肽眼霜"
+            }
+          },
+          "outcomes": {
+            "tear_trough_improvement": "1.8mm→0.3mm",
+            "appearance_score": "2.1→8.7",
+            "perceived_age": "45→37岁"
+          },
+          "special_services": [
+            "术后心理调适指南",
+            "3年维保计划"
+          ]
+        },
+        {
+          "id": 2,
+          "title": "老花眼矫正方案",
+          "before_after_images": "案例1护理前后对比图",
+          "client_background": {
+            "name": "王老师",
+            "age": 60,
+            "occupation": "退休教师",
+            "symptoms": ["视力明显下降", "视物模糊", "近距离工作困难"],
+            "diagnosis": "老花眼伴轻度白内障"
+          },
+          "examination_results": {
+            "lens": "混浊",
+            "retinal_function": "减退"
+          },
+          "treatment_process": {
+            "therapies": [
+              "老花镜佩戴指导",
+              "叶黄素和玉米黄质滴眼液使用",
+              "眼部按摩和热敷",
+              "眼部血液循环促进"
+            ]
+          }
+        },
+        {
+          "id": 3,
+          "title": "黄斑变性护理方案",
+          "before_after_images": "案例2护理前后对比图",
+          "client_background": {
+            "name": "李先生",
+            "age": 55,
+            "occupation": "公司高管",
+            "symptoms": ["视力下降", "视物变形", "强光下症状明显"],
+            "diagnosis": "视网膜黄斑变性早期"
+          },
+          "examination_results": {
+            "macula": "轻微色素紊乱",
+            "central_vision": "受损",
+            "retinal_vessels": "硬化迹象"
+          },
+          "treatment_process": {
+            "therapies": [
+              "抗氧化剂和维生素补充",
+              "低强度激光治疗",
+              "避免强光刺激指导",
+              "定期复查安排"
+            ]
+          }
+        },
+        {
+          "id": 4,
+          "title": "糖尿病视网膜病变管理方案",
+          "before_after_images": "案例3护理前后对比图",
+          "client_background": {
+            "name": "张老先生",
+            "age": 70,
+            "symptoms": ["视力急剧下降", "视物模糊", "黑影飘动"],
+            "medical_history": "糖尿病多年",
+            "diagnosis": "糖尿病视网膜病变中期"
+          },
+          "examination_results": {
+            "retina": "新生血管形成",
+            "blood_vessels": "部分渗漏",
+            "macula": "水肿明显"
+          },
+          "treatment_process": {
+            "therapies": [
+              "抗VEGF药物注射",
+              "视网膜激光光凝术",
+              "血糖控制指导",
+              "眼部营养补充"
+            ]
+          }
+        },
+        {
+          "id": 5,
+          "title": "角膜退行性变护理方案",
+          "before_after_images": "案例4护理前后对比图",
+          "client_background": {
+            "name": "陈先生",
+            "age": 65,
+            "occupation": "退休工人",
+            "symptoms": ["视力下降", "眼睛畏光", "流泪"],
+            "cause": "长期户外工作，紫外线和强光暴露",
+            "diagnosis": "角膜退行性病变"
+          },
+          "examination_results": {
+            "corneal_epithelium": "点状脱落",
+            "corneal_stroma": "轻微混浊",
+            "tear_secretion": "减少"
+          },
+          "treatment_process": {
+            "therapies": [
+              "人工泪液使用",
+              "角膜修复凝胶应用",
+              "防紫外线护目镜佩戴",
+              "室内活动时间增加建议"
+            ]
+          }
+        },
+        {
+          "id": 6,
+          "title": "视网膜血管阻塞管理方案",
+          "before_after_images": "案例5护理前后对比图",
+          "client_background": {
+            "name": "王先生",
+            "age": 60,
+            "symptoms": ["视力下降明显", "视物模糊", "视野缺损"],
+            "medical_history": "高血压多年",
+            "diagnosis": "视网膜血管阻塞早期"
+          },
+          "examination_results": {
+            "retinal_arteries": "狭窄",
+            "retina": "部分缺血",
+            "macula": "水肿迹象"
+          },
+          "treatment_process": {
+            "therapies": [
+              "抗凝药物使用",
+              "血管扩张剂应用",
+              "视网膜激光治疗",
+              "血压控制指导",
+              "眼部营养补充"
+            ]
+          }
+        },
+        {
+          "id": 7,
+          "title": "晶状体半脱位护理方案",
+          "before_after_images": "案例6护理前后对比图",
+          "client_background": {
+            "name": "张女士",
+            "age": 58,
+            "occupation": "家庭主妇",
+            "symptoms": ["视力下降", "视物模糊", "重影"],
+            "diagnosis": "晶状体半脱位"
+          },
+          "examination_results": {
+            "lens": "位置偏移",
+            "suspensory_ligaments": "部分松弛"
+          },
+          "treatment_process": {
+            "therapies": [
+              "眼压控制药物使用",
+              "合适眼镜佩戴",
+              "避免剧烈运动指导",
+              "定期复查安排"
+            ]
+          }
+        },
+        {
+          "id": 8,
+          "title": "白内障手术康复方案",
+          "before_after_images": "案例7护理前后对比图",
+          "client_background": {
+            "name": "李老先生",
+            "age": 75,
+            "symptoms": ["视力逐渐下降", "视物模糊", "有黑影"],
+            "diagnosis": "晚期白内障"
+          },
+          "examination_results": {
+            "lens": "完全混浊",
+            "vision": "仅剩光感",
+            "retinal_function": "受影响"
+          },
+          "treatment_process": {
+            "therapies": [
+              "白内障手术前评估",
+              "术后抗生素和抗炎药物使用",
+              "伤口护理指导",
+              "定期复查安排"
+            ]
+          }
+        },
+        {
+          "id": 9,
+          "title": "青光眼急性护理方案",
+          "before_after_images": "案例8护理前后对比图",
+          "client_background": {
+            "name": "王老先生",
+            "age": 62,
+            "symptoms": ["视力下降明显", "眼压升高", "头痛"],
+            "medical_history": "青光眼多年",
+            "diagnosis": "青光眼急性发作期"
+          },
+          "examination_results": {
+            "eye_pressure": "30mmHg",
+            "optic_nerve": "萎缩",
+            "visual_field": "严重缺损"
+          },
+          "treatment_process": {
+            "therapies": [
+              "降眼压药物紧急使用",
+              "青光眼手术治疗",
+              "眼压和视神经定期复查",
+              "生活方式调整指导"
+            ]
+          }
+        },
+        {
+          "id": 10,
+          "title": "视网膜色素变性护理方案",
+          "before_after_images": "案例9护理前后对比图",
+          "client_background": {
+            "name": "张老先生",
+            "age": 68,
+            "symptoms": ["视力逐渐下降", "视物模糊", "变形"],
+            "diagnosis": "视网膜色素变性晚期"
+          },
+          "examination_results": {
+            "retina": "色素沉着明显",
+            "photoreceptors": "大量萎缩",
+            "vision": "仅剩光感",
+            "visual_field": "极度缩小"
+          },
+          "treatment_process": {
+            "therapies": [
+              "抗氧化剂使用",
+              "营养补充剂应用",
+              "低视力康复训练",
+              "定期复查安排"
+            ]
+          }
+        },
+        {
+          "id": 11,
+          "title": "角膜变性晚期护理方案",
+          "before_after_images": "案例10护理前后对比图",
+          "client_background": {
+            "name": "陈老先生",
+            "age": 60,
+            "symptoms": ["视力逐渐下降", "视物模糊", "畏光"],
+            "diagnosis": "角膜变性晚期"
+          },
+          "examination_results": {
+            "corneal_stroma": "严重混浊",
+            "corneal_epithelium": "反复脱落",
+            "vision": "仅剩光感",
+            "eye_pain": "明显"
+          },
+          "treatment_process": {
+            "therapies": [
+              "人工泪液使用",
+              "角膜修复凝胶应用",
+              "角膜移植手术评估",
+              "定期复查安排"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "眼敏感护理案例",
+      "cases": [
+        {
+          "id": 1,
+          "title": "办公室干眼敏感综合方案",
+          "before_after_images": "案例1护理前后对比图",
+          "client_background": {
+            "name": "赵女士",
+            "age": 30,
+            "occupation": "上班族",
+            "symptoms": ["眼睛干涩", "发红", "对风和强光敏感", "经常流泪"],
+            "cause": "长期处于空调环境",
+            "diagnosis": "干眼症早期伴眼敏感症状"
+          },
+          "examination_results": {
+            "tear_secretion": "不足",
+            "corneal_epithelium": "轻微损伤",
+            "tear_film_stability": "差"
+          },
+          "treatment_process": {
+            "therapies": [
+              "人工泪液和抗炎眼药水使用",
+              "眼部热敷和睑板腺按摩",
+              "空调房内使用加湿器"
+            ]
+          }
+        },
+        {
+          "id": 2,
+          "title": "学生光敏感护理方案",
+          "before_after_images": "案例2护理前后对比图",
+          "client_background": {
+            "name": "杨同学",
+            "age": 25,
+            "occupation": "学生",
+            "symptoms": ["眼睛疲劳", "对光线特别敏感", "强光下眼睛刺痛", "流泪"],
+            "cause": "经常使用电子设备学习",
+            "diagnosis": "视疲劳伴光敏感症状"
+          },
+          "examination_results": {
+            "visual_fatigue": "明显",
+            "corneal_epithelium": "轻微炎症",
+            "light_sensitivity": "过度反应"
+          },
+          "treatment_process": {
+            "therapies": [
+              "眼部放松训练和按摩",
+              "抗炎眼药水使用",
+              "营养补充剂使用",
+              "减少电子设备使用时间",
+              "避免强光刺激"
+            ]
+          }
+        },
+        {
+          "id": 3,
+          "title": "过敏性结膜炎护理方案",
+          "before_after_images": "案例3护理前后对比图",
+          "client_background": {
+            "name": "王女士",
+            "age": 40,
+            "occupation": "家庭主妇",
+            "symptoms": ["眼睛红肿", "瘙痒", "对花粉和灰尘敏感"],
+            "cause": "过敏体质",
+            "diagnosis": "过敏性结膜炎"
+          },
+          "examination_results": {
+            "allergic_reaction": "明显",
+            "tear_composition": "嗜酸性粒细胞增多"
+          },
+          "treatment_process": {
+            "therapies": [
+              "抗组胺药物使用",
+              "抗炎眼药水使用",
+              "眼部冷敷",
+              "花粉季节减少外出",
+              "保持室内清洁"
+            ]
+          }
+        },
+        {
+          "id": 4,
+          "title": "程序员干眼敏感综合方案",
+          "before_after_images": "案例4护理前后对比图",
+          "client_background": {
+            "name": "张先生",
+            "age": 35,
+            "occupation": "程序员",
+            "symptoms": ["眼睛干涩", "发红", "对风和强光敏感", "经常流泪"],
+            "cause": "长期熬夜工作",
+            "diagnosis": "干眼症伴眼敏感症状"
+          },
+          "examination_results": {
+            "tear_secretion": "不足",
+            "eye_pressure": "略有升高",
+            "corneal_epithelium": "轻微损伤"
+          },
+          "treatment_process": {
+            "therapies": [
+              "人工泪液和抗炎眼药水使用",
+              "眼部热敷和按摩",
+              "调整作息时间",
+              "减少熬夜",
+              "改善工作环境"
+            ]
+          }
+        },
+        {
+          "id": 5,
+          "title": "设计师光敏感护理方案",
+          "before_after_images": "案例5护理前后对比图",
+          "client_background": {
+            "name": "李小姐",
+            "age": 28,
+            "occupation": "设计师",
+            "symptoms": ["眼睛疲劳", "对光线和风特别敏感"],
+            "cause": "长期使用电子设备",
+            "diagnosis": "视疲劳伴眼敏感症状"
+          },
+          "examination_results": {
+            "visual_fatigue": "明显",
+            "tear_film_stability": "差",
+            "corneal_epithelium": "轻微炎症"
+          },
+          "treatment_process": {
+            "therapies": [
+              "眼部放松训练和按摩",
+              "抗炎眼药水使用",
+              "营养补充剂使用",
+              "户外工作时佩戴防风眼镜"
+            ]
+          }
+        },
+        {
+          "id": 6,
+          "title": "教师粉尘敏感护理方案",
+          "before_after_images": "案例6护理前后对比图",
+          "client_background": {
+            "name": "周老师",
+            "age": 32,
+            "occupation": "教师",
+            "symptoms": ["眼睛干涩", "发红", "对粉笔灰和灰尘敏感", "瘙痒", "流泪"],
+            "cause": "长期接触粉笔灰",
+            "diagnosis": "干眼症伴眼敏感症状"
+          },
+          "examination_results": {
+            "tear_secretion": "不足",
+            "corneal_epithelium": "轻微损伤",
+            "tear_film_stability": "差"
+          },
+          "treatment_process": {
+            "therapies": [
+              "人工泪液和抗炎眼药水使用",
+              "眼部热敷和按摩",
+              "教室保持空气清新",
+              "减少粉尘刺激"
+            ]
+          }
+        },
+        {
+          "id": 7,
+          "title": "化妆品过敏护理方案",
+          "before_after_images": "案例7护理前后对比图",
+          "client_background": {
+            "name": "刘女士",
+            "age": 45,
+            "occupation": "行政人员",
+            "symptoms": ["眼睛红肿", "瘙痒", "对化妆品和香水敏感"],
+            "cause": "使用新产品后过敏",
+            "diagnosis": "过敏性结膜炎伴眼敏感症状"
+          },
+          "examination_results": {
+            "allergic_reaction": "明显",
+            "tear_composition": "嗜酸性粒细胞增多"
+          },
+          "treatment_process": {
+            "therapies": [
+              "抗组胺药物使用",
+              "抗炎眼药水使用",
+              "眼部冷敷",
+              "选择无刺激性化妆品",
+              "避免使用香水"
+            ]
+          }
+        },
+        {
+          "id": 8,
+          "title": "自由职业者光敏感护理方案",
+          "before_after_images": "案例8护理前后对比图",
+          "client_background": {
+            "name": "吴先生",
+            "age": 30,
+            "occupation": "自由职业者",
+            "symptoms": ["眼睛疲劳", "对光线特别敏感", "强光下眼睛刺痛", "流泪"],
+            "cause": "长期使用电子设备",
+            "diagnosis": "视疲劳伴光敏感症状"
+          },
+          "examination_results": {
+            "visual_fatigue": "明显",
+            "corneal_epithelium": "轻微炎症",
+            "light_sensitivity": "过度反应"
+          },
+          "treatment_process": {
+            "therapies": [
+              "眼部放松训练和按摩",
+              "抗炎眼药水使用",
+              "营养补充剂使用",
+              "减少电子设备使用时间",
+              "避免强光刺激"
+            ]
+          }
+        },
+        {
+          "id": 9,
+          "title": "中年风敏感护理方案",
+          "before_after_images": "案例9护理前后对比图",
+          "client_background": {
+            "name": "赵先生",
+            "age": 50,
+            "occupation": "出租车司机",
+            "symptoms": ["眼睛干涩", "发红", "对风和强光特别敏感"],
+            "cause": "长期户外活动",
+            "diagnosis": "干眼症伴眼敏感症状"
+          },
+          "examination_results": {
+            "tear_secretion": "不足",
+            "corneal_epithelium": "轻微损伤",
+            "tear_film_stability": "差"
+          },
+          "treatment_process": {
+            "therapies": [
+              "人工泪液和抗炎眼药水使用",
+              "眼部热敷和按摩",
+              "户外活动时佩戴防风眼镜"
+            ]
+          }
+        },
+        {
+          "id": 10,
+          "title": "大学生眼敏感护理方案",
+          "before_after_images": "案例10护理前后对比图",
+          "client_background": {
+            "name": "林同学",
+            "age": 22,
+            "occupation": "大学生",
+            "symptoms": ["眼睛疲劳", "对光线和风特别敏感"],
+            "cause": "长时间在图书馆学习",
+            "diagnosis": "视疲劳伴眼敏感症状"
+          },
+          "examination_results": {
+            "visual_fatigue": "明显",
+            "tear_film_stability": "差",
+            "corneal_epithelium": "轻微炎症"
+          },
+          "treatment_process": {
+            "therapies": [
+              "眼部放松训练和按摩",
+              "抗炎眼药水使用",
+              "营养补充剂使用",
+              "调整图书馆学习环境",
+              "保持适当照明"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "name": "综合性护理案例",
+      "cases": [
+        {
+          "id": 1,
+          "title": "混合型黑眼圈综合干预方案",
+          "before_after_images": {
+            "before": "images/service_case/case3_before.jpg",
+            "after": "images/service_case/case3_after.jpg"
+          },
+          "client_background": {
+            "name": "林女士",
+            "age": 29,
+            "occupation": "新媒体编辑",
+            "condition": "混合型黑眼圈（血管型60%+结构型30%+色素型10%）",
+            "habits": "日均屏幕使用14小时，长期熬夜"
+          },
+          "examination_results": {
+            "capillary_density": "42条/mm²",
+            "tear_trough_depth": "1.5mm",
+            "volume_loss": "18%"
+          },
+          "treatment_process": {
+            "stages": [
+              {
+                "name": "基础修复期（0-4周）",
+                "therapies": [
+                  "丹参酮穴位注射（承泣、四白穴）",
+                  "桃红四物汤加减",
+                  "维生素K修护精华"
+                ]
+              },
+              {
+                "name": "微整强化期（5-8周）",
+                "therapies": [
+                  "双美胶原蛋白填充（0.8ml）",
+                  "眼周单极射频（40℃）"
+                ]
+              }
+            ]
+          },
+          "outcomes": {
+            "4_weeks": {
+              "vascular_improvement": "40%",
+              "wrinkle_reduction": "25%"
+            },
+            "8_weeks": {
+              "tear_trough_depth": "0.3mm",
+              "overall_score": "7.2→2.5"
+            }
+          },
+          "special_services": [
+            "数字用眼监测小程序",
+            "定制冰导棒护理"
+          ]
+        },
+        {
+          "id": 2,
+          "title": "中年男性眼部综合护理方案",
+          "before_after_images": "案例1护理前后对比图",
+          "client_background": {
+            "name": "张先生",
+            "age": 45,
+            "occupation": "金融行业",
+            "symptoms": ["眼睛干涩", "疲劳", "视力下降", "对光线敏感", "眼周皮肤松弛"],
+            "cause": "长期熬夜加班"
+          },
+          "examination_results": {
+            "visual_fatigue": "明显",
+            "tear_secretion": "不足",
+            "corneal_epithelium": "轻微损伤",
+            "tear_film_stability": "差",
+            "periocular_skin": "弹性降低",
+            "eye_bags": "轻度"
+          },
+          "treatment_process": {
+            "therapies": [
+              "眼部放松训练和按摩",
+              "人工泪液和抗炎眼药水使用",
+              "眼部热敷",
+              "营养补充",
+              "眼部护理精华液应用"
+            ]
+          }
+        },
+        {
+          "id": 3,
+          "title": "年轻女性电子设备用户综合护理方案",
+          "before_after_images": "案例2护理前后对比图",
+          "client_background": {
+            "name": "李女士",
+            "age": 30,
+            "symptoms": ["眼睛干涩", "发红", "对风和强光敏感", "眼周皮肤暗沉", "细纹问题"],
+            "cause": "长期使用电子设备"
+          },
+          "examination_results": {
+            "tear_secretion": "不足",
+            "corneal_epithelium": "轻微炎症",
+            "tear_film_stability": "差",
+            "periocular_skin": "水分流失严重",
+            "pigmentation": "色素沉着"
+          },
+          "treatment_process": {
+            "therapies": [
+              "人工泪液和抗炎眼药水使用",
+              "眼部热敷和按摩",
+              "眼部护理精华液和眼霜应用"
+            ]
+          }
+        },
+        {
+          "id": 4,
+          "title": "老年综合眼部护理方案",
+          "before_after_images": "案例3护理前后对比图",
+          "client_background": {
+            "name": "王女士",
+            "age": 50,
+            "occupation": "退休教师",
+            "symptoms": ["眼睛干涩", "视力模糊", "眼周皮肤松弛", "眼袋加重"],
+            "diagnosis": "干眼症伴轻度白内障"
+          },
+          "examination_results": {
+            "tear_secretion": "减少",
+            "corneal_epithelium": "轻微损伤",
+            "lens": "轻度混浊",
+            "periocular_skin": "弹性下降",
+            "eye_bags": "明显"
+          },
+          "treatment_process": {
+            "therapies": [
+              "人工泪液使用",
+              "眼部热敷和按摩",
+              "眼部护理精华液和眼霜应用",
+              "定期复查白内障状况"
+            ]
+          }
+        },
+        {
+          "id": 5,
+          "title": "程序员眼部综合健康方案",
+          "before_after_images": "案例4护理前后对比图",
+          "client_background": {
+            "name": "李先生",
+            "age": 35,
+            "occupation": "程序员",
+            "symptoms": ["眼睛疲劳", "干涩", "视力下降", "眼周皮肤暗沉", "黑眼圈"],
+            "cause": "长期熬夜工作，用眼过度"
+          },
+          "examination_results": {
+            "visual_fatigue": "明显",
+            "tear_secretion": "不足",
+            "corneal_epithelium": "轻微损伤",
+            "periocular_skin": "血液循环不畅",
+            "pigmentation": "色素沉着"
+          },
+          "treatment_process": {
+            "therapies": [
+              "眼部放松训练和按摩",
+              "人工泪液和抗炎眼药水使用",
+              "眼部热敷",
+              "营养补充",
+              "眼部护理精华液和眼霜应用"
+            ]
+          }
+        },
+        {
+          "id": 6,
+          "title": "设计师眼部综合保养方案",
+          "before_after_images": "案例5护理前后对比图",
+          "client_background": {
+            "name": "王小姐",
+            "age": 28,
+            "occupation": "设计师",
+            "symptoms": ["眼睛疲劳", "对光线敏感", "眼周皮肤干燥", "细纹"],
+            "cause": "长期使用电子设备"
+          },
+          "examination_results": {
+            "visual_fatigue": "明显",
+            "tear_film_stability": "差",
+            "corneal_epithelium": "轻微炎症",
+            "periocular_skin": "水分流失严重",
+            "fine_lines": "存在"
+          },
+          "treatment_process": {
+            "therapies": [
+              "眼部放松训练和按摩",
+              "抗炎眼药水和营养补充剂使用",
+              "眼部护理精华液和眼霜应用"
+            ]
+          }
+        },
+        {
+          "id": 7,
+          "title": "中年女性眼部综合抗衰方案",
+          "before_after_images": "案例6护理前后对比图",
+          "client_background": {
+            "name": "张女士",
+            "age": 40,
+            "occupation": "行政主管",
+            "symptoms": ["眼睛干涩", "疲劳", "视力下降", "眼周皮肤松弛", "眼袋加重"],
+            "cause": "长期使用电子设备，眼部过敏"
+          },
+          "examination_results": {
+            "tear_secretion": "不足",
+            "corneal_epithelium": "轻微损伤",
+            "tear_film_stability": "差",
+            "periocular_skin": "弹性下降",
+            "eye_bags": "明显",
+            "allergic_reaction": "轻度"
+          },
+          "treatment_process": {
+            "therapies": [
+              "人工泪液和抗炎眼药水使用",
+              "眼部热敷和按摩",
+              "眼部护理精华液和眼霜应用",
+              "抗组胺药物使用"
+            ]
+          }
+        },
+        {
+          "id": 8,
+          "title": "上班族眼部综合呵护方案",
+          "before_after_images": "案例7护理前后对比图",
+          "client_background": {
+            "name": "陈女士",
+            "age": 32,
+            "occupation": "上班族",
+            "symptoms": ["眼睛干涩", "发红", "对风和强光敏感", "眼周皮肤暗沉", "黑眼圈"],
+            "cause": "长期处于空调环境，用眼过度"
+          },
+          "examination_results": {
+            "tear_secretion": "不足",
+            "corneal_epithelium": "轻微损伤",
+            "tear_film_stability": "差",
+            "periocular_skin": "血液循环不畅",
+            "pigmentation": "色素沉着"
+          },
+          "treatment_process": {
+            "therapies": [
+              "人工泪液和抗炎眼药水使用",
+              "眼部热敷和按摩",
+              "眼部护理精华液和眼霜应用",
+              "室内加湿"
+            ]
+          }
+        },
+        {
+          "id": 9,
+          "title": "中老年眼部综合护理方案",
+          "before_after_images": "案例8护理前后对比图",
+          "client_background": {
+            "name": "赵先生",
+            "age": 55,
+            "occupation": "退休教师",
+            "symptoms": ["眼睛干涩", "视力模糊", "眼周皮肤松弛", "眼袋加重"],
+            "cause": "长期用眼过度，年龄因素",
+            "diagnosis": "干眼症、轻度白内障、轻度视网膜病变"
+          },
+          "examination_results": {
+            "tear_secretion": "减少",
+            "corneal_epithelium": "轻微损伤",
+            "lens": "轻度混浊",
+            "retina": "轻微病变",
+            "periocular_skin": "弹性下降",
+            "eye_bags": "明显"
+          },
+          "treatment_process": {
+            "therapies": [
+              "人工泪液和营养补充剂使用",
+              "眼部热敷和按摩",
+              "眼部护理精华液和眼霜应用",
+              "定期复查眼底情况"
+            ]
+          }
+        },
+        {
+          "id": 10,
+          "title": "学生眼部综合保护方案",
+          "before_after_images": "案例9护理前后对比图",
+          "client_background": {
+            "name": "刘同学",
+            "age": 25,
+            "occupation": "学生",
+            "symptoms": ["眼睛疲劳", "对光线敏感", "眼周皮肤干燥", "细纹"],
+            "cause": "长期使用电子设备学习"
+          },
+          "examination_results": {
+            "visual_fatigue": "明显",
+            "tear_film_stability": "差",
+            "corneal_epithelium": "轻微炎症",
+            "periocular_skin": "水分流失严重",
+            "fine_lines": "轻微"
+          },
+          "treatment_process": {
+            "therapies": [
+              "眼部放松训练和按摩",
+              "抗炎眼药水和营养补充剂使用",
+              "眼部护理精华液和眼霜应用"
+            ]
+          }
+        },
+        {
+          "id": 11,
+          "title": "中年女性眼部综合修复方案",
+          "before_after_images": "案例10护理前后对比图",
+          "client_background": {
+            "name": "孙女士",
+            "age": 42,
+            "occupation": "教师",
+            "symptoms": ["眼睛干涩", "疲劳", "视力下降", "眼周皮肤松弛", "眼袋加重"],
+            "cause": "长期用眼过度",
+            "diagnosis": "干眼症和轻度视网膜病变"
+          },
+          "examination_results": {
+            "tear_secretion": "不足",
+            "corneal_epithelium": "轻微损伤",
+            "tear_film_stability": "差",
+            "retina": "轻微病变",
+            "periocular_skin": "弹性下降",
+            "eye_bags": "明显"
+          },
+          "treatment_process": {
+            "therapies": [
+              "人工泪液和抗炎眼药水使用",
+              "眼部热敷和按摩",
+              "眼部护理精华液和眼霜应用",
+              "定期复查眼底情况"
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

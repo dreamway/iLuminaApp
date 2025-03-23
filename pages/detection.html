@@ -1,0 +1,102 @@
+<!-- 检测页面入口 -->
+<div class="page" id="detection-page">
+    <!-- 最近检测客户横幅 -->
+    <div class="recent-detection-banner" style="background-color: #e0f7f5; color: #333; padding: 12px 16px; border-radius: 8px; margin-bottom: 16px; display: flex; justify-content: space-between; align-items: center;">
+        <div>最近检测客户: <span style="font-weight: 500;">陈先生 (3天前)</span></div>
+        <div style="color: #e24c4c; font-size: 14px;">——向上滑动浏览</div>
+    </div>
+    
+    <!-- 左右布局容器 -->
+    <div style="display: flex; justify-content: space-between; margin: 30px 0;">
+        <!-- 左侧 - 大型检测按钮 -->
+        <div style="flex: 1; display: flex; justify-content: center; align-items: center;">
+            <div id="start-detection-btn" onclick="startDetection()" style="width: 240px; height: 240px; background-color: var(--primary-color); border-radius: 50%; display: flex; justify-content: center; align-items: center; color: white; font-size: 32px; font-weight: bold; cursor: pointer; box-shadow: 0 4px 20px rgba(0, 150, 136, 0.3);">
+                开始检测
+            </div>
+        </div>
+        
+        <!-- 右侧 - 检测内容信息 -->
+        <div style="flex: 1;">
+            <div style="width: 260px; background-color: #f5f5f5; border-radius: 8px; padding: 16px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+                <div style="font-weight: 500; margin-bottom: 16px; color: #333;">检测内容</div>
+                <div style="display: flex; align-items: center; margin-bottom: 10px;">
+                    <div style="width: 25px; height: 25px; border-radius: 50%; background-color: var(--primary-color); color: white; display: flex; justify-content: center; align-items: center; margin-right: 10px;">1</div>
+                    <div>9题专业问卷评估</div>
+                </div>
+                <div style="display: flex; align-items: center; margin-bottom: 10px;">
+                    <div style="width: 25px; height: 25px; border-radius: 50%; background-color: var(--primary-color); color: white; display: flex; justify-content: center; align-items: center; margin-right: 10px;">2</div>
+                    <div>AI眼部图像分析</div>
+                </div>
+                <div style="display: flex; align-items: center; margin-bottom: 10px;">
+                    <div style="width: 25px; height: 25px; border-radius: 50%; background-color: var(--primary-color); color: white; display: flex; justify-content: center; align-items: center; margin-right: 10px;">3</div>
+                    <div>五维度健康评分</div>
+                </div>
+                <div style="display: flex; align-items: center; margin-bottom: 10px;">
+                    <div style="width: 25px; height: 25px; border-radius: 50%; background-color: var(--primary-color); color: white; display: flex; justify-content: center; align-items: center; margin-right: 10px;">4</div>
+                    <div>个性化方案推荐</div>
+                </div>
+                <div style="display: flex; justify-content: space-between; margin-top: 16px; font-size: 14px;">
+                    <div>检测时长<br>约5分钟</div>
+                    <div>检测费用<br>¥39 (可抵扣产品费用)</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 检测流程部分，保持不变 -->
+    <div class="card" style="display: none;">
+        <div class="section-title">检测流程</div>
+        <div class="step-list">
+            <div class="step-item">
+                <div class="step-number">1</div>
+                <div class="step-content">
+                    <div class="step-title">信息登记</div>
+                    <div class="step-description">填写眼部问题和需求</div>
+                </div>
+            </div>
+            <div class="step-item">
+                <div class="step-number">2</div>
+                <div class="step-content">
+                    <div class="step-title">AI眼部拍摄</div>
+                    <div class="step-description">全面精准拍摄眼部状态</div>
+                </div>
+            </div>
+            <div class="step-item">
+                <div class="step-number">3</div>
+                <div class="step-content">
+                    <div class="step-title">AI智能分析</div>
+                    <div class="step-description">多维度分析眼部问题</div>
+                </div>
+            </div>
+            <div class="step-item">
+                <div class="step-number">4</div>
+                <div class="step-content">
+                    <div class="step-title">专业解决方案</div>
+                    <div class="step-description">定制个性化护理方案</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 下方分割线 -->
+    <div style="height: 1px; background-color: #e0e0e0; margin: 30px 0;"></div>
+</div>
+
+<!-- 检测流程的模板 -->
+<template id="detection-process-template">
+    <!-- 嵌套的检测流程页面将通过JavaScript动态加载 -->
+</template>
+
+<script>
+function initDetectionPage() {
+    console.log('检测页面初始化');
+    // 页面初始化逻辑
+}
+
+function startDetection() {
+    console.log('加载客户选择页面');
+    // 加载客户选择页面逻辑
+    if(typeof loadDetectionCustomerPage === 'function') { loadDetectionCustomerPage(); } else { alert('系统初始化中，请稍后再试'); }
+}
+
+</script> 

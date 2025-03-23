@@ -1,0 +1,109 @@
+<!-- 检测 - 客户选择页面 -->
+<div class="page" id="detection-customer-page">
+    <!-- 页面头部 -->
+    <div class="app-header">
+        <div class="back-button" onclick="navigateTo('detection')">
+            <span class="material-icons">arrow_back</span>
+        </div>
+        <h1 class="app-title">选择客户</h1>
+        <div style="width: 40px;"></div> <!-- 占位，保持标题居中 -->
+    </div>
+
+    <!-- 简单的客户登录表单 -->
+    <div style="padding: 20px; max-width: 500px; margin: 50px auto;">
+        <!-- 输入表单 -->
+        <div style="background-color: #e0f7f5; padding: 15px; border-radius: 8px; margin-bottom: 20px;">
+            <div style="margin-bottom: 15px;">
+                <div style="margin-bottom: 5px;">客户姓名:</div>
+                <input type="text" id="customer-name" placeholder="(输入姓氏)" style="width: 100%; padding: 10px; border: none; border-radius: 4px; background-color: white;">
+            </div>
+            <div>
+                <div style="margin-bottom: 5px;">客户电话:</div>
+                <input type="tel" id="customer-phone" placeholder="(输入电话前三、后四位)" style="width: 100%; padding: 10px; border: none; border-radius: 4px; background-color: white;">
+            </div>
+        </div>
+
+        <!-- 按钮区域 -->
+        <div style="display: flex; justify-content: space-between; gap: 20px;">
+            <button id="login-button" style="flex: 1; padding: 12px; background-color: #e0f7f5; color: #333; border: none; border-radius: 8px; font-weight: 500; cursor: pointer;">登录</button>
+            <button id="create-customer-button" style="flex: 1; padding: 12px; background-color: #e0f7f5; color: #333; border: none; border-radius: 8px; font-weight: 500; cursor: pointer;">新建客户</button>
+        </div>
+    </div>
+
+    <!-- 分割线 -->
+    <div style="height: 1px; background-color: #e0e0e0; margin: 0 20px;"></div>
+</div>
+
+<script>
+    // 页面加载完成后执行
+    document.addEventListener('DOMContentLoaded', function() {
+        // 绑定登录按钮点击事件
+        const loginButton = document.getElementById('login-button');
+        if (loginButton) {
+            loginButton.addEventListener('click', function() {
+                // 获取输入值
+                const name = document.getElementById('customer-name').value;
+                const phone = document.getElementById('customer-phone').value;
+                
+                // 简单验证
+                if (!name || !phone) {
+                    alert('请输入客户姓名和电话');
+                    return;
+                }
+                
+                // 创建客户对象
+                const customer = {
+                    id: Date.now(), // 使用时间戳作为临时ID
+                    name: name,
+                    phone: phone
+                };
+                
+                // 保存客户信息
+                sessionStorage.setItem('currentCustomer', JSON.stringify(customer));
+                
+                // 跳转到问卷页面
+                if (typeof loadQuestionPage === 'function') {
+                    loadQuestionPage();
+                } else {
+                    console.error('未找到loadQuestionPage函数');
+                    alert('系统初始化中，请稍后再试');
+                }
+            });
+        }
+        
+        // 绑定新建客户按钮点击事件
+        const createButton = document.getElementById('create-customer-button');
+        if (createButton) {
+            createButton.addEventListener('click', function() {
+                // 获取输入值
+                const name = document.getElementById('customer-name').value;
+                const phone = document.getElementById('customer-phone').value;
+                
+                // 简单验证
+                if (!name || !phone) {
+                    alert('请输入客户姓名和电话');
+                    return;
+                }
+                
+                // 创建新客户对象
+                const newCustomer = {
+                    id: Date.now(), // 使用时间戳作为临时ID
+                    name: name,
+                    phone: phone,
+                    isNew: true // 标记为新客户
+                };
+                
+                // 保存新客户信息
+                sessionStorage.setItem('currentCustomer', JSON.stringify(newCustomer));
+                
+                // 跳转到问卷页面
+                if (typeof loadQuestionPage === 'function') {
+                    loadQuestionPage();
+                } else {
+                    console.error('未找到loadQuestionPage函数');
+                    alert('系统初始化中，请稍后再试');
+                }
+            });
+        }
+    });
+</script> 

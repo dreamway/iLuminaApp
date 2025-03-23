@@ -1,0 +1,346 @@
+<!-- AI检测分析页面 -->
+<div class="page" id="detection-analysis-page">
+    <!-- 页面头部 -->
+    <div class="app-header">
+        <div class="back-button" onclick="backToQuestionnaire()">
+            <span class="material-icons">arrow_back</span>
+        </div>
+        <h1 class="app-title">AI分析结果</h1>
+    </div>
+
+    <!-- 分析进度 -->
+    <div class="analysis-progress">
+        <div class="analysis-step completed">
+            <div class="step-icon"><span class="material-icons">check_circle</span></div>
+            <div class="step-text">问卷填写</div>
+        </div>
+        <div class="analysis-step active">
+            <div class="step-icon"><span class="material-icons">visibility</span></div>
+            <div class="step-text">AI分析</div>
+        </div>
+        <div class="analysis-step">
+            <div class="step-icon"><span class="material-icons">assessment</span></div>
+            <div class="step-text">检测报告</div>
+        </div>
+    </div>
+
+    <!-- 客户信息卡 -->
+    <div class="customer-info-card" id="analysis-customer-info">
+        <!-- 客户信息由JS动态加载 -->
+    </div>
+
+    <!-- 图像上传与分析区 -->
+    <div class="card">
+        <div class="section-title">AI眼部成像</div>
+        <div class="upload-section">
+            <div class="upload-preview" id="image-preview">
+                <!-- 默认显示示例图片 -->
+                <img src="images/eye-sample.jpg" alt="眼部示例图" id="preview-image">
+            </div>
+            <div class="upload-actions">
+                <button class="button secondary" onclick="selectFromGallery()">
+                    <span class="material-icons">photo_library</span>
+                    从相册选择
+                </button>
+                <button class="button primary" onclick="takePhoto()">
+                    <span class="material-icons">camera_alt</span>
+                    拍摄照片
+                </button>
+            </div>
+            <div class="upload-tip">请上传清晰的眼部照片，保持眼部区域在中心位置</div>
+        </div>
+    </div>
+
+    <!-- 分析结果区 -->
+    <div class="analysis-results" id="analysis-results">
+        <!-- 分析中状态 -->
+        <div class="card" id="analyzing-section">
+            <div class="section-title">AI分析中</div>
+            <div class="analyzing-animation">
+                <div class="scanning-line"></div>
+                <div class="processing-text">
+                    <span class="dot">.</span>
+                    <span class="dot">.</span>
+                    <span class="dot">.</span>
+                </div>
+            </div>
+            <div class="progress-container">
+                <div class="progress-bar scanning" id="analysis-progress-bar"></div>
+                <div class="progress-text">分析进度: <span id="analysis-progress-text">0%</span></div>
+            </div>
+        </div>
+
+        <!-- 分析结果部分 - 初始隐藏 -->
+        <div class="analysis-results-container" id="analysis-results-container" style="display: none;">
+            
+            <!-- 黑眼圈分析 -->
+            <div class="card analysis-result-card">
+                <div class="section-title">黑眼圈分析</div>
+                <div class="eye-comparison">
+                    <div class="eye-image">
+                        <img src="images/analysis/dark-circles-before.jpg" alt="黑眼圈-现状">
+                        <div class="image-label">当前状态</div>
+                    </div>
+                    <div class="comparison-arrow">
+                        <span class="material-icons">arrow_forward</span>
+                    </div>
+                    <div class="eye-image">
+                        <img src="images/analysis/dark-circles-after.jpg" alt="黑眼圈-改善后">
+                        <div class="image-label">改善预期</div>
+                    </div>
+                </div>
+                <div class="analysis-metrics">
+                    <div class="metric-item">
+                        <div class="metric-label">黑眼圈面积</div>
+                        <div class="metric-value high">2.3 cm²</div>
+                    </div>
+                    <div class="metric-item">
+                        <div class="metric-label">黑眼圈深度</div>
+                        <div class="metric-value medium">中度</div>
+                    </div>
+                    <div class="metric-item">
+                        <div class="metric-label">色素沉淀</div>
+                        <div class="metric-value high">明显</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 眼纹分析 -->
+            <div class="card analysis-result-card">
+                <div class="section-title">眼纹分析</div>
+                <div class="eye-comparison">
+                    <div class="eye-image">
+                        <img src="images/analysis/wrinkles-before.jpg" alt="眼纹-现状">
+                        <div class="image-label">当前状态</div>
+                    </div>
+                    <div class="comparison-arrow">
+                        <span class="material-icons">arrow_forward</span>
+                    </div>
+                    <div class="eye-image">
+                        <img src="images/analysis/wrinkles-after.jpg" alt="眼纹-改善后">
+                        <div class="image-label">改善预期</div>
+                    </div>
+                </div>
+                <div class="analysis-metrics">
+                    <div class="metric-item">
+                        <div class="metric-label">眼纹数量</div>
+                        <div class="metric-value high">12条</div>
+                    </div>
+                    <div class="metric-item">
+                        <div class="metric-label">眼纹深度</div>
+                        <div class="metric-value medium">中度</div>
+                    </div>
+                    <div class="metric-item">
+                        <div class="metric-label">纹路类型</div>
+                        <div class="metric-value">鱼尾纹、细纹</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 眼袋分析 -->
+            <div class="card analysis-result-card">
+                <div class="section-title">眼袋分析</div>
+                <div class="eye-comparison">
+                    <div class="eye-image">
+                        <img src="images/analysis/eye-bags-before.jpg" alt="眼袋-现状">
+                        <div class="image-label">当前状态</div>
+                    </div>
+                    <div class="comparison-arrow">
+                        <span class="material-icons">arrow_forward</span>
+                    </div>
+                    <div class="eye-image">
+                        <img src="images/analysis/eye-bags-after.jpg" alt="眼袋-改善后">
+                        <div class="image-label">改善预期</div>
+                    </div>
+                </div>
+                <div class="analysis-metrics">
+                    <div class="metric-item">
+                        <div class="metric-label">眼袋鼓出度</div>
+                        <div class="metric-value medium">中度</div>
+                    </div>
+                    <div class="metric-item">
+                        <div class="metric-label">松弛程度</div>
+                        <div class="metric-value medium">中度</div>
+                    </div>
+                    <div class="metric-item">
+                        <div class="metric-label">水肿状态</div>
+                        <div class="metric-value low">轻微</div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- 操作按钮 -->
+    <div class="action-buttons">
+        <button class="button secondary" onclick="backToQuestionnaire()">返回问卷</button>
+        <button class="button primary" id="view-report-btn" onclick="viewReport()" disabled>查看报告</button>
+    </div>
+</div>
+
+<script>
+    // 当前客户
+    let currentCustomer = null;
+    
+    // 问卷结果
+    let questionnaireResults = null;
+    
+    // 分析计时器
+    let analysisTimer = null;
+    
+    // 分析进度
+    let analysisProgress = 0;
+    
+    // 初始化分析页面
+    function initAnalysisPage() {
+        // 获取当前客户
+        try {
+            const customerData = sessionStorage.getItem('currentCustomer');
+            if (customerData) {
+                currentCustomer = JSON.parse(customerData);
+                renderCustomerInfo();
+            }
+        } catch (error) {
+            console.error('获取客户信息失败:', error);
+        }
+        
+        // 获取问卷结果
+        try {
+            const resultsData = sessionStorage.getItem('questionnaireResults');
+            if (resultsData) {
+                questionnaireResults = JSON.parse(resultsData);
+            }
+        } catch (error) {
+            console.error('获取问卷结果失败:', error);
+        }
+        
+        // 启动模拟分析过程
+        startAnalysisSimulation();
+    }
+    
+    // 渲染客户信息
+    function renderCustomerInfo() {
+        const customerInfoElement = document.getElementById('analysis-customer-info');
+        if (!customerInfoElement || !currentCustomer) return;
+        
+        customerInfoElement.innerHTML = `
+            <div class="customer-info-item">
+                <div class="label">姓名:</div>
+                <div class="value">${currentCustomer.name}</div>
+            </div>
+            <div class="customer-info-item">
+                <div class="label">性别:</div>
+                <div class="value">${currentCustomer.gender}</div>
+            </div>
+            <div class="customer-info-item">
+                <div class="label">年龄:</div>
+                <div class="value">${currentCustomer.age || '未知'}</div>
+            </div>
+        `;
+    }
+    
+    // 启动模拟分析过程
+    function startAnalysisSimulation() {
+        // 更新进度条
+        const progressBar = document.getElementById('analysis-progress-bar');
+        const progressText = document.getElementById('analysis-progress-text');
+        
+        // 重置进度
+        analysisProgress = 0;
+        progressBar.style.width = '0%';
+        progressText.textContent = '0%';
+        
+        // 启动定时器，模拟分析过程
+        analysisTimer = setInterval(() => {
+            analysisProgress += 1;
+            progressBar.style.width = `${analysisProgress}%`;
+            progressText.textContent = `${analysisProgress}%`;
+            
+            // 当进度达到100%时，显示结果
+            if (analysisProgress >= 100) {
+                clearInterval(analysisTimer);
+                setTimeout(showAnalysisResults, 500);
+            }
+        }, 50); // 50毫秒更新一次，总共需要5秒完成
+    }
+    
+    // 显示分析结果
+    function showAnalysisResults() {
+        // 隐藏分析中状态
+        const analyzingSection = document.getElementById('analyzing-section');
+        if (analyzingSection) {
+            analyzingSection.style.display = 'none';
+        }
+        
+        // 显示结果容器
+        const resultsContainer = document.getElementById('analysis-results-container');
+        if (resultsContainer) {
+            resultsContainer.style.display = 'block';
+        }
+        
+        // 启用查看报告按钮
+        const viewReportBtn = document.getElementById('view-report-btn');
+        if (viewReportBtn) {
+            viewReportBtn.disabled = false;
+        }
+    }
+    
+    // 从相册选择照片
+    function selectFromGallery() {
+        alert('功能模拟：从相册选择照片');
+        // 实际应用中，这里应该调用设备的相册功能
+    }
+    
+    // 拍摄照片
+    function takePhoto() {
+        alert('功能模拟：拍摄照片');
+        // 实际应用中，这里应该调用设备的相机功能
+    }
+    
+    // 返回问卷页面
+    function backToQuestionnaire() {
+        if (confirm('确定要返回问卷页面吗？当前的分析进度将会丢失。')) {
+            clearInterval(analysisTimer);
+            loadQuestionPage();
+        }
+    }
+    
+    // 查看检测报告
+    function viewReport() {
+        // 获取内容容器
+        const contentElement = document.getElementById('content');
+        
+        // 显示加载中
+        contentElement.innerHTML = '<div class="loading-container"><span class="material-icons loading-icon">hourglass_top</span><p>加载中...</p></div>';
+        
+        // 加载报告页面
+        fetch('pages/detection-report.html')
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`无法加载报告页面: ${response.status}`);
+                }
+                return response.text();
+            })
+            .then(html => {
+                // 替换内容
+                contentElement.innerHTML = html;
+                
+                // 初始化报告页面
+                if (typeof initReportPage === 'function') {
+                    setTimeout(() => {
+                        initReportPage();
+                    }, 100);
+                }
+            })
+            .catch(error => {
+                console.error('加载报告页面失败:', error);
+                contentElement.innerHTML = `
+                    <div style="text-align:center; padding:20px;">
+                        <h2>页面加载失败</h2>
+                        <p>${error.message}</p>
+                        <button class="button" onclick="loadAnalysisPage()">返回分析页面</button>
+                    </div>`;
+            });
+    }
+</script> 

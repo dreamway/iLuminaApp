@@ -1,0 +1,298 @@
+<!-- 检测问卷页面 -->
+<div class="page" id="detection-questionnaire-page">
+    <!-- 页面头部 -->
+    <div class="app-header">
+        <div class="back-button" onclick="backToCustomerPage()">
+            <span class="material-icons">arrow_back</span>
+        </div>
+        <h1 class="app-title">检测问卷</h1>
+    </div>
+
+    <!-- 问卷进度条 -->
+    <div class="progress-container">
+        <div class="progress-bar" id="questionnaire-progress"></div>
+        <div class="progress-text">
+            当前问题 <span id="current-question-num">1</span>/<span id="total-questions">9</span>
+        </div>
+    </div>
+
+    <!-- 客户信息卡 -->
+    <div class="customer-info-card" id="customer-info-card">
+        <!-- 客户信息由JS动态加载 -->
+    </div>
+
+    <!-- 问卷内容 -->
+    <div class="question-container" id="question-container">
+        <!-- 问题由JS动态加载 -->
+        <div class="loading-container">
+            <span class="material-icons loading-icon">hourglass_top</span>
+            <p>正在加载问卷...</p>
+        </div>
+    </div>
+
+    <!-- 问卷操作按钮 -->
+    <div class="action-buttons">
+        <button class="button secondary" id="prev-question-btn" onclick="prevQuestion()" disabled>上一题</button>
+        <button class="button primary" id="next-question-btn" onclick="nextQuestion()">下一题</button>
+    </div>
+</div>
+
+<script>
+    // 当前问题索引
+    let currentQuestionIndex = 0;
+    
+    // 问卷数据
+    let questionnaireData = null;
+    
+    // 当前客户
+    let currentCustomer = null;
+    
+    // 问卷回答
+    let questionnaireAnswers = [];
+    
+    // 初始化问卷页面
+    function initQuestionPage() {
+        // 获取当前客户
+        try {
+            const customerData = sessionStorage.getItem('currentCustomer');
+            if (customerData) {
+                currentCustomer = JSON.parse(customerData);
+                renderCustomerInfoCard();
+            }
+        } catch (error) {
+            console.error('获取客户信息失败:', error);
+            // 创建一个临时客户
+            currentCustomer = { name: '匿名客户', gender: '未知', age: 0 };
+            renderCustomerInfoCard();
+        }
+        
+        // 加载问卷数据
+        loadQuestionnaireData();
+    }
+    
+    // 渲染客户信息卡
+    function renderCustomerInfoCard() {
+        const customerInfoCard = document.getElementById('customer-info-card');
+        if (!customerInfoCard) return;
+        
+        customerInfoCard.innerHTML = `
+            <div class="customer-info-item">
+                <div class="label">姓名:</div>
+                <div class="value">${currentCustomer.name}</div>
+            </div>
+            <div class="customer-info-item">
+                <div class="label">性别:</div>
+                <div class="value">${currentCustomer.gender}</div>
+            </div>
+            <div class="customer-info-item">
+                <div class="label">年龄:</div>
+                <div class="value">${currentCustomer.age || '未知'}</div>
+            </div>
+        `;
+    }
+    
+    // 加载问卷数据
+    function loadQuestionnaireData() {
+        fetch('data/questionnaire.json')
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('无法加载问卷数据');
+                }
+                return response.json();
+            })
+            .then(data => {
+                questionnaireData = data.questionnaire;
+                // 初始化问卷回答数组
+                questionnaireAnswers = questionnaireData.map(() => null);
+                
+                // 更新问题总数
+                document.getElementById('total-questions').textContent = questionnaireData.length;
+                
+                // 渲染第一个问题
+                renderCurrentQuestion();
+            })
+            .catch(error => {
+                console.error('加载问卷数据失败:', error);
+                const questionContainer = document.getElementById('question-container');
+                questionContainer.innerHTML = `
+                    <div class="error-message">
+                        <span class="material-icons">error</span>
+                        <p>加载问卷失败: ${error.message}</p>
+                    </div>
+                    <button class="button" onclick="backToCustomerPage()">返回</button>
+                `;
+            });
+    }
+    
+    // 渲染当前问题
+    function renderCurrentQuestion() {
+        if (!questionnaireData || questionnaireData.length === 0) {
+            return;
+        }
+        
+        const question = questionnaireData[currentQuestionIndex];
+        const questionContainer = document.getElementById('question-container');
+        
+        // 更新当前问题编号
+        document.getElementById('current-question-num').textContent = currentQuestionIndex + 1;
+        
+        // 更新进度条
+        const progress = ((currentQuestionIndex + 1) / questionnaireData.length) * 100;
+        document.getElementById('questionnaire-progress').style.width = `${progress}%`;
+        
+        // 生成问题内容
+        let optionsHtml = '';
+        question.options.forEach((option, index) => {
+            const isChecked = questionnaireAnswers[currentQuestionIndex] === index ? 'checked' : '';
+            optionsHtml += `
+                <div class="question-option">
+                    <input type="radio" name="question-${question.id}" id="option-${index}" value="${index}" ${isChecked}>
+                    <label for="option-${index}">
+                        <div class="option-text">${option.text}</div>
+                        <div class="option-hint">${question.indicators[index] || ''}</div>
+                    </label>
+                </div>
+            `;
+        });
+        
+        // 渲染问题
+        questionContainer.innerHTML = `
+            <div class="question-title">${question.question}</div>
+            <div class="question-options">
+                ${optionsHtml}
+            </div>
+        `;
+        
+        // 绑定选项点击事件
+        question.options.forEach((_, index) => {
+            const optionElement = document.getElementById(`option-${index}`);
+            if (optionElement) {
+                optionElement.addEventListener('change', function() {
+                    questionnaireAnswers[currentQuestionIndex] = index;
+                    updateNextButtonState();
+                });
+            }
+        });
+        
+        // 更新按钮状态
+        updateButtonStates();
+    }
+    
+    // 更新下一步按钮状态
+    function updateNextButtonState() {
+        const nextButton = document.getElementById('next-question-btn');
+        if (currentQuestionIndex === questionnaireData.length - 1) {
+            // 如果是最后一个问题，改为"完成"按钮
+            nextButton.textContent = '完成问卷';
+        } else {
+            nextButton.textContent = '下一题';
+        }
+    }
+    
+    // 更新按钮状态
+    function updateButtonStates() {
+        const prevButton = document.getElementById('prev-question-btn');
+        const nextButton = document.getElementById('next-question-btn');
+        
+        // 前一题按钮仅在非第一题时启用
+        prevButton.disabled = currentQuestionIndex === 0;
+        
+        // 更新下一题按钮文本
+        updateNextButtonState();
+    }
+    
+    // 上一题
+    function prevQuestion() {
+        if (currentQuestionIndex > 0) {
+            currentQuestionIndex--;
+            renderCurrentQuestion();
+        }
+    }
+    
+    // 下一题或完成
+    function nextQuestion() {
+        // 如果当前问题已经回答，保存答案
+        const selectedOption = document.querySelector(`input[name="question-${questionnaireData[currentQuestionIndex].id}"]:checked`);
+        if (selectedOption) {
+            questionnaireAnswers[currentQuestionIndex] = parseInt(selectedOption.value);
+        }
+        
+        // 如果是最后一题，完成问卷
+        if (currentQuestionIndex === questionnaireData.length - 1) {
+            completeQuestionnaire();
+            return;
+        }
+        
+        // 否则进入下一题
+        currentQuestionIndex++;
+        renderCurrentQuestion();
+    }
+    
+    // 完成问卷
+    function completeQuestionnaire() {
+        // 保存问卷结果
+        const questionnaireResults = questionnaireData.map((question, index) => {
+            const answerIndex = questionnaireAnswers[index];
+            const answer = answerIndex !== null ? question.options[answerIndex].text : '未回答';
+            const indicator = answerIndex !== null ? question.indicators[answerIndex] : '未评估';
+            
+            return {
+                questionId: question.id,
+                question: question.question,
+                answer,
+                indicator
+            };
+        });
+        
+        // 保存问卷结果到会话存储
+        sessionStorage.setItem('questionnaireResults', JSON.stringify(questionnaireResults));
+        
+        // 加载分析页面
+        loadAnalysisPage();
+    }
+    
+    // 返回客户选择页面
+    function backToCustomerPage() {
+        if (confirm('确定要返回吗？当前的问卷进度将会丢失。')) {
+            loadDetectionCustomerPage();
+        }
+    }
+    
+    // 加载分析页面
+    function loadAnalysisPage() {
+        // 获取内容容器
+        const contentElement = document.getElementById('content');
+        
+        // 显示加载中
+        contentElement.innerHTML = '<div class="loading-container"><span class="material-icons loading-icon">hourglass_top</span><p>加载中...</p></div>';
+        
+        // 加载图像分析页面
+        fetch('pages/detection-analysis.html')
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`无法加载分析页面: ${response.status}`);
+                }
+                return response.text();
+            })
+            .then(html => {
+                // 替换内容
+                contentElement.innerHTML = html;
+                
+                // 初始化分析页面
+                if (typeof initAnalysisPage === 'function') {
+                    setTimeout(() => {
+                        initAnalysisPage();
+                    }, 100);
+                }
+            })
+            .catch(error => {
+                console.error('加载分析页面失败:', error);
+                contentElement.innerHTML = `
+                    <div style="text-align:center; padding:20px;">
+                        <h2>页面加载失败</h2>
+                        <p>${error.message}</p>
+                        <button class="button" onclick="loadQuestionPage()">返回问卷</button>
+                    </div>`;
+            });
+    }
+</script> 

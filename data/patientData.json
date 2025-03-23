@@ -1,0 +1,176 @@
+{
+    "name": "陈先生",
+    "age": 35,
+    "gender": "男",
+    "occupation": "互联网从业者",
+    "lastCheckDate": "2023-05-15",
+    "dimensionData": [
+        { "name": "疲劳度", "currentScore": 65, "targetScore": 85, "color": "#4CAF50" },
+        { "name": "浑浊度", "currentScore": 72, "targetScore": 90, "color": "#2196F3" },
+        { "name": "脆弱度", "currentScore": 58, "targetScore": 80, "color": "#9C27B0" },
+        { "name": "松弛度", "currentScore": 70, "targetScore": 88, "color": "#FFC107" },
+        { "name": "老化度", "currentScore": 68, "targetScore": 85, "color": "#FF5722" }
+    ],
+    "imageAnalysis": {
+        "leftEye": {
+            "imagePath": "images/detection-report/left-eye.jpg",
+            "findings": [
+                { "name": "结膜充血", "level": "轻度", "score": 72 },
+                { "name": "角膜透明度", "level": "良好", "score": 85 },
+                { "name": "泪膜稳定性", "level": "一般", "score": 68 }
+            ]
+        },
+        "rightEye": {
+            "imagePath": "images/detection-report/right-eye.jpg",
+            "findings": [
+                { "name": "结膜充血", "level": "轻度", "score": 75 },
+                { "name": "角膜透明度", "level": "良好", "score": 82 },
+                { "name": "泪膜稳定性", "level": "一般", "score": 70 }
+            ]
+        },
+        "eyeArea": {
+            "imagePath": "images/detection-report/eye-area.jpg",
+            "findings": [
+                { "name": "眼周皱纹", "level": "轻度", "score": 78 },
+                { "name": "眼袋", "level": "轻微", "score": 82 },
+                { "name": "黑眼圈", "level": "中度", "score": 65 }
+            ]
+        }
+    },
+    "questionnaire": [
+        {
+            "question": "眼部不适症状",
+            "answer": "偶尔有干涩感",
+            "analysis": "轻度干眼症状"
+        },
+        {
+            "question": "每日用眼时长",
+            "answer": "8-12小时",
+            "analysis": "用眼时间过长，易导致视疲劳"
+        },
+        {
+            "question": "眼部疲劳感频率",
+            "answer": "经常（每周3-5次）",
+            "analysis": "中度视疲劳，需要注意休息"
+        },
+        {
+            "question": "眼睛干涩程度",
+            "answer": "中度干涩，有时需要使用眼药水",
+            "analysis": "泪液分泌不足，建议补充人工泪液"
+        },
+        {
+            "question": "眼部护理习惯",
+            "answer": "偶尔进行，不够规律",
+            "analysis": "护理意识有待提高，建议建立日常护理习惯"
+        },
+        {
+            "question": "睡眠质量评估",
+            "answer": "一般，有时会失眠",
+            "analysis": "睡眠不足影响眼部恢复，建议改善睡眠环境"
+        },
+        {
+            "question": "用眼环境光线",
+            "answer": "光线偏暗，常在昏暗环境下用眼",
+            "analysis": "不良光线环境增加眼部负担，建议调整照明"
+        },
+        {
+            "question": "眼部不适缓解方式",
+            "answer": "主要依赖眼药水",
+            "analysis": "缺乏多样化的缓解方式，建议学习眼部按摩和热敷"
+        },
+        {
+            "question": "眼部保健意识",
+            "answer": "有一定意识，但执行不够到位",
+            "analysis": "需要加强保健知识学习和习惯养成"
+        }
+    ],
+    "analysisData": {
+        "dimensions": [
+            {
+                "name": "疲劳度",
+                "currentScore": 65,
+                "targetScore": 85,
+                "details": {
+                    "metrics": [
+                        { "label": "视疲劳指数", "value": "中度（65分）" },
+                        { "label": "用眼负荷", "value": "过重" },
+                        { "label": "恢复能力", "value": "一般" }
+                    ],
+                    "suggestions": [
+                        "每隔45分钟建议休息5分钟",
+                        "注意调整屏幕亮度和距离",
+                        "可以进行眼部按摩和热敷"
+                    ]
+                }
+            },
+            {
+                "name": "浑浊度",
+                "currentScore": 72,
+                "targetScore": 90,
+                "details": {
+                    "metrics": [
+                        { "label": "角膜透明度", "value": "良好（72分）" },
+                        { "label": "泪膜稳定性", "value": "一般" },
+                        { "label": "结膜充血", "value": "轻度" }
+                    ],
+                    "suggestions": [
+                        "使用无防腐剂人工泪液",
+                        "避免长时间佩戴隐形眼镜",
+                        "定期进行热敷按摩"
+                    ]
+                }
+            },
+            {
+                "name": "脆弱度",
+                "currentScore": 58,
+                "targetScore": 80,
+                "details": {
+                    "metrics": [
+                        { "label": "角膜敏感性", "value": "较高（58分）" },
+                        { "label": "泪液分泌量", "value": "偏低" },
+                        { "label": "抗氧化能力", "value": "弱" }
+                    ],
+                    "suggestions": [
+                        "补充Omega-3脂肪酸",
+                        "增加绿叶蔬菜摄入",
+                        "避免烟酒和辛辣食物"
+                    ]
+                }
+            },
+            {
+                "name": "松弛度",
+                "currentScore": 70,
+                "targetScore": 88,
+                "details": {
+                    "metrics": [
+                        { "label": "眼周弹性", "value": "中等（70分）" },
+                        { "label": "眼轮匝肌张力", "value": "一般" },
+                        { "label": "胶原蛋白密度", "value": "中等" }
+                    ],
+                    "suggestions": [
+                        "每日进行眼周按摩",
+                        "使用含视黄醇的眼霜",
+                        "保持充足睡眠"
+                    ]
+                }
+            },
+            {
+                "name": "老化度",
+                "currentScore": 68,
+                "targetScore": 85,
+                "details": {
+                    "metrics": [
+                        { "label": "细纹密度", "value": "中等（68分）" },
+                        { "label": "色素沉着", "value": "轻度" },
+                        { "label": "皮肤厚度", "value": "正常" }
+                    ],
+                    "suggestions": [
+                        "使用防晒霜",
+                        "补充维生素C和E",
+                        "避免揉搓眼睛"
+                    ]
+                }
+            }
+        ]
+    }
+}

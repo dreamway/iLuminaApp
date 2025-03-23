@@ -1,0 +1,279 @@
+:root {
+    --primary-color: #2196F3;
+    --secondary-color: #FF5722;
+    --background-color: #F5F5F5;
+    --card-color: #FFFFFF;
+    --text-primary: #212121;
+    --text-secondary: #757575;
+    --border-radius: 8px;
+    --spacing: 16px;
+    --nav-height: 56px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', 'Noto Sans SC', sans-serif;
+}
+
+body {
+    background-color: var(--background-color);
+    color: var(--text-primary);
+    max-width: 1920px;
+    margin: 0 auto;
+    position: relative;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.app-container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.top-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 var(--spacing);
+    height: 64px;
+    background-color: var(--card-color);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    z-index: 10;
+}
+
+.top-bar-title {
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.top-bar-actions {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.icon-button {
+    width: 48px;
+    height: 48px;
+    border-radius: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    position: relative;
+}
+
+.icon-button:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+.notification-dot {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    width: 10px;
+    height: 10px;
+    border-radius: 5px;
+    background-color: var(--secondary-color);
+}
+
+.content-area {
+    flex: 1;
+    overflow-y: auto;
+    padding: var(--spacing);
+    padding-bottom: calc(var(--nav-height) + var(--spacing));
+}
+
+.bottom-nav {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: var(--nav-height);
+    background-color: var(--card-color);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
+    z-index: 10;
+    max-width: 1920px;
+    margin: 0 auto;
+}
+
+.nav-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+    height: 100%;
+    color: var(--text-secondary);
+    text-decoration: none;
+    transition: color 0.2s;
+    cursor: pointer;
+}
+
+.nav-item.active {
+    color: var(--primary-color);
+}
+
+.nav-item-icon {
+    font-size: 24px;
+}
+
+.nav-item-label {
+    font-size: 12px;
+    margin-top: 4px;
+}
+
+.card {
+    background-color: var(--card-color);
+    border-radius: var(--border-radius);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: var(--spacing);
+    margin-bottom: var(--spacing);
+}
+
+.section-title {
+    font-size: 18px;
+    font-weight: 500;
+    margin-bottom: 12px;
+}
+
+.button {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 24px;
+    padding: 12px 24px;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.button:hover {
+    background-color: #1976D2;
+}
+
+.button.secondary {
+    background-color: transparent;
+    color: var(--primary-color);
+    border: 1px solid var(--primary-color);
+}
+
+.button.secondary:hover {
+    background-color: rgba(33, 150, 243, 0.05);
+}
+
+.button.danger {
+    background: linear-gradient(to right, #FF5722, #F44336);
+}
+
+.button.danger:hover {
+    background: linear-gradient(to right, #F44336, #E53935);
+}
+
+/* 主页面特定样式 */
+.main-buttons {
+    display: flex;
+    justify-content: space-between;
+    padding: 15px;
+    margin-top: 20px;
+}
+
+.main-button {
+    width: 48%;
+    height: 110px;
+    background-color: #26a69a;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.main-button:hover {
+    background-color: #2bbbad;
+}
+
+.button-content {
+    text-align: center;
+}
+
+/* 轮播图样式优化 */
+.carousel {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+}
+
+.carousel-slide {
+    width: 100%;
+    display: none;
+}
+
+.carousel-slide.active {
+    display: block;
+}
+
+.carousel-image {
+    width: 100%;
+    height: auto;
+}
+
+.carousel-caption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    padding: 10px 15px;
+}
+
+.carousel-caption h3 {
+    margin: 0 0 5px 0;
+    font-size: 18px;
+}
+
+.carousel-caption p {
+    margin: 0;
+    font-size: 14px;
+}
+
+.carousel-indicators {
+    position: absolute;
+    bottom: 10px;
+    width: 100%;
+    text-align: center;
+}
+
+.indicator {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.5);
+    margin: 0 5px;
+}
+
+.indicator.active {
+    background-color: white;
+}

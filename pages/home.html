@@ -1,0 +1,398 @@
+<!-- 首页 -->
+<div class="page" id="home-page">
+    <!-- 轮播图 - 门店活动 -->
+    <div class="carousel-container">
+        <div class="carousel-wrapper" id="carousel-wrapper">
+            <!-- 轮播图将通过JS从JSON数据动态加载 -->
+            <div class="loading-slide">
+                <div class="loading-container">
+                    <span class="material-icons loading-icon">hourglass_top</span>
+                    <p>加载中...</p>
+                </div>
+            </div>
+        </div>
+        <div class="carousel-indicators" id="carousel-indicators">
+            <!-- 指示器将由JavaScript动态生成 -->
+        </div>
+        <div class="carousel-controls">
+            <button class="carousel-control prev" id="carousel-prev">
+                <span class="material-icons">chevron_left</span>
+            </button>
+            <button class="carousel-control next" id="carousel-next">
+                <span class="material-icons">chevron_right</span>
+            </button>
+        </div>
+    </div>
+
+    <!-- 主要功能按钮区域 -->
+    <div class="main-buttons">
+        <div class="main-button" id="treatments-button" onclick="navigateToSection('treatments')">
+            <div class="button-content">护理项目</div>
+        </div>
+        <div class="main-button" id="cases-button" onclick="navigateToSection('cases')">
+            <div class="button-content">服务案例</div>
+        </div>
+    </div>
+</div>
+
+<script>
+// 轮播图控制变量
+let currentSlide = 0;
+let totalSlides = 0;
+let carouselInterval;
+
+// 备用活动数据
+const fallbackCampaignData = {
+    "activities": [
+        {
+            "id": 1,
+            "title": "明眸焕新计划",
+            "campaignImage": "images/banner/banner1.jpg",
+            "content": {
+                "title": "明眸焕新计划",
+                "period": "即日起至9月30日",
+                "benefits": ["初次享三重礼遇"]
+            }
+        }
+    ]
+};
+
+// 全局可访问的初始化函数
+window.initHomePage = function() {
+    console.log('首页初始化开始');
+    try {
+        // 初始化轮播图
+        const carouselContainer = document.querySelector('.carousel-container');
+        if (carouselContainer) {
+            if (typeof initializeFallbackCarousel === 'function') {
+                initializeFallbackCarousel();
+            }
+        }
+        
+        // 其他初始化逻辑...
+        
+    } catch (error) {
+        console.error('首页初始化出错:', error);
+        throw error; // 让外层错误处理来处理
+    }
+};
+
+// 加载轮播图数据
+function loadCarouselData() {
+    console.log('开始加载轮播图数据');
+    
+    // 先显示加载状态
+    const wrapper = document.getElementById('carousel-wrapper');
+    if (!wrapper) {
+        console.error('找不到轮播图容器');
+        return;
+    }
+    
+    wrapper.innerHTML = `
+        <div class="loading-slide">
+            <div class="loading-container">
+                <span class="material-icons loading-icon">hourglass_top</span>
+                <p>加载活动数据中...</p>
+            </div>
+        </div>`;
+    
+    // 设置超时，确保页面不会无限加载
+    const loadingTimeout = setTimeout(() => {
+        console.warn('数据加载超时，使用备用数据');
+        // 使用备用数据渲染
+        renderCarousel(fallbackCampaignData.activities);
+    }, 5000); // 5秒超时
+    
+    // 从JSON文件加载活动数据
+    fetch('data/store_campaigns.json')
+        .then(response => {
+            console.log('轮播数据请求响应状态:', response.status);
+            if (!response.ok) {
+                throw new Error('无法加载活动数据: ' + response.status);
+            }
+            return response.json();
+        })
+        .then(data => {
+            // 清除超时
+            clearTimeout(loadingTimeout);
+            
+            console.log('轮播数据加载成功:', data);
+            if (data.activities && data.activities.length > 0) {
+                renderCarousel(data.activities);
+            } else {
+                throw new Error('活动数据格式错误或为空');
+            }
+        })
+        .catch(error => {
+            // 清除超时
+            clearTimeout(loadingTimeout);
+            
+            console.error('加载轮播图数据失败:', error);
+            // 使用备用数据
+            renderCarousel(fallbackCampaignData.activities);
+        });
+}
+
+// 渲染轮播图
+function renderCarousel(activities) {
+    // 获取容器
+    const wrapper = document.getElementById('carousel-wrapper');
+    const indicators = document.getElementById('carousel-indicators');
+    
+    if (!wrapper || !indicators) {
+        console.error('找不到轮播图容器元素');
+        return;
+    }
+    
+    // 清空占位内容
+    wrapper.innerHTML = '';
+    indicators.innerHTML = '';
+    
+    // 动态创建轮播图内容
+    activities.forEach((activity, index) => {
+        // 创建幻灯片
+        const slide = document.createElement('div');
+        slide.className = 'carousel-slide';
+        if (index === 0) slide.classList.add('active');
+        slide.setAttribute('data-campaign-id', activity.id);
+        
+        // 创建图片
+        const img = document.createElement('img');
+        img.src = activity.campaignImage;
+        img.alt = activity.content.title || activity.title;
+        img.className = 'carousel-image';
+        
+        // 创建标题区域
+        const caption = document.createElement('div');
+        caption.className = 'carousel-caption';
+        
+        // 设置标题
+        const title = document.createElement('h3');
+        title.textContent = activity.content.title || activity.title;
+        
+        // 设置描述（使用时间或期限）
+        const description = document.createElement('p');
+        description.textContent = activity.content.period || activity.content.time || '';
+        
+        // 组装元素
+        caption.appendChild(title);
+        caption.appendChild(description);
+        slide.appendChild(img);
+        slide.appendChild(caption);
+        wrapper.appendChild(slide);
+        
+        // 创建指示器
+        const indicator = document.createElement('span');
+        indicator.className = 'indicator';
+        if (index === 0) {
+            indicator.classList.add('active');
+        }
+        indicator.setAttribute('data-index', index);
+        indicators.appendChild(indicator);
+    });
+    
+    // 更新总幻灯片数量
+    totalSlides = activities.length;
+    currentSlide = 0;
+    
+    // 绑定事件
+    setupCarouselEvents();
+    
+    // 启动自动轮播
+    startCarouselAutoplay();
+}
+
+// 设置轮播图事件
+function setupCarouselEvents() {
+    // 绑定指示器点击事件
+    const indicatorElements = document.querySelectorAll('.indicator');
+    indicatorElements.forEach((indicator, index) => {
+        indicator.addEventListener('click', function() {
+            goToSlide(index);
+        });
+    });
+    
+    // 绑定控制按钮点击事件
+    const prevBtn = document.getElementById('carousel-prev');
+    const nextBtn = document.getElementById('carousel-next');
+    
+    if (prevBtn) {
+        prevBtn.addEventListener('click', function() {
+            moveCarousel(-1);
+        });
+    }
+    
+    if (nextBtn) {
+        nextBtn.addEventListener('click', function() {
+            moveCarousel(1);
+        });
+    }
+    
+    // 绑定幻灯片点击事件
+    const slides = document.querySelectorAll('.carousel-slide');
+    slides.forEach(slide => {
+        slide.addEventListener('click', function() {
+            const campaignId = this.getAttribute('data-campaign-id');
+            if (campaignId) {
+                loadCampaignDetail(campaignId);
+            }
+        });
+    });
+}
+
+// 移动轮播图
+function moveCarousel(direction) {
+    // 停止自动播放
+    clearInterval(carouselInterval);
+    
+    // 计算新的幻灯片索引
+    currentSlide = (currentSlide + direction + totalSlides) % totalSlides;
+    updateCarousel();
+    
+    // 重新启动自动播放
+    startCarouselAutoplay();
+}
+
+// 跳转到指定幻灯片
+function goToSlide(index) {
+    // 停止自动播放
+    clearInterval(carouselInterval);
+    
+    currentSlide = index;
+    updateCarousel();
+    
+    // 重新启动自动播放
+    startCarouselAutoplay();
+}
+
+// 更新轮播图显示
+function updateCarousel() {
+    // 更新幻灯片
+    const slides = document.querySelectorAll('.carousel-slide');
+    slides.forEach((slide, index) => {
+        if (index === currentSlide) {
+            slide.classList.add('active');
+        } else {
+            slide.classList.remove('active');
+        }
+    });
+    
+    // 更新指示器
+    updateCarouselIndicators();
+}
+
+// 更新轮播图指示器
+function updateCarouselIndicators() {
+    const indicators = document.querySelectorAll('.indicator');
+    indicators.forEach((indicator, index) => {
+        indicator.classList.toggle('active', index === currentSlide);
+    });
+}
+
+// 启动自动轮播
+function startCarouselAutoplay() {
+    carouselInterval = setInterval(() => {
+        moveCarousel(1);
+    }, 5000); // 5秒切换一次
+}
+
+// 加载活动详情
+function loadCampaignDetail(campaignId) {
+    console.log(`加载活动详情: ${campaignId}`);
+    
+    // 设置当前活动ID
+    if (typeof window !== 'undefined') {
+        window.currentCampaignId = campaignId;
+    }
+    
+    // 使用全局导航函数（确保安全）
+    if (typeof navigateTo === 'function') {
+        navigateTo('campaign-detail');
+    } else {
+        console.error('导航函数不存在');
+        // 备用导航方法
+        try {
+            const contentElement = document.getElementById('content');
+            if (contentElement) {
+                contentElement.innerHTML = '<div class="loading-container"><span class="material-icons loading-icon">hourglass_top</span><p>加载中...</p></div>';
+                
+                fetch('pages/campaign-detail.html')
+                    .then(response => response.text())
+                    .then(html => {
+                        contentElement.innerHTML = html;
+                        // 通知活动详情页加载指定ID的活动
+                        setTimeout(() => {
+                            if (typeof renderCampaignDetail === 'function') {
+                                // 尝试从JSON获取并传递数据
+                                getCampaignData(campaignId);
+                            }
+                        }, 100);
+                    });
+            }
+        } catch (error) {
+            console.error('加载活动详情失败:', error);
+            alert('加载活动详情失败，请稍后再试');
+        }
+    }
+}
+
+// 获取活动数据
+function getCampaignData(campaignId) {
+    fetch('data/store_campaigns.json')
+        .then(response => response.json())
+        .then(data => {
+            const campaign = data.activities.find(a => a.id == campaignId);
+            if (campaign && typeof renderCampaignDetail === 'function') {
+                renderCampaignDetail(campaign);
+            }
+        })
+        .catch(error => {
+            console.error('获取活动数据失败:', error);
+        });
+}
+
+// 设置按钮点击事件
+function setupButtons() {
+    const treatmentsButton = document.getElementById('treatments-button');
+    const casesButton = document.getElementById('cases-button');
+    
+    if (treatmentsButton) {
+        treatmentsButton.addEventListener('click', function() {
+            navigateToSection('treatments');
+        });
+    }
+    
+    if (casesButton) {
+        casesButton.addEventListener('click', function() {
+            navigateToSection('cases');
+        });
+    }
+}
+
+// 导航到特定区域的函数
+function navigateToSection(section) {
+    console.log(`导航到区域: ${section}`);
+    if (section === 'treatments') {
+        // 安全地调用全局导航函数
+        if (typeof navigateTo === 'function') {
+            navigateTo('treatment-detail:eye-fatigue');
+        } else {
+            console.error('导航函数不存在');
+            alert('系统导航功能未初始化，请稍后再试');
+        }
+    } else if (section === 'cases') {
+        // 安全地调用全局导航函数
+        if (typeof navigateTo === 'function') {
+            navigateTo('cases');
+        } else {
+            console.error('导航函数不存在');
+            alert('系统导航功能未初始化，请稍后再试');
+        }
+    }
+}
+
+// 当页面加载完成后自动初始化
+document.addEventListener('DOMContentLoaded', function() {
+    initHomePage();
+});
+</script> 

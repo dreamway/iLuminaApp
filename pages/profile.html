@@ -1,0 +1,105 @@
+<!-- 个人中心页面 -->
+<div class="page" id="profile-page">
+    <div class="page-header">
+        <div class="page-title">个人中心</div>
+    </div>
+
+    <!-- 个人信息 -->
+    <div class="profile-header">
+        <div class="profile-avatar">
+            <span class="material-icons">person</span>
+        </div>
+        <div class="profile-info">
+            <div class="profile-name">李美容</div>
+            <div class="profile-role">角色: 美容顾问</div>
+            <div class="profile-role">门店: 美睛美科中心店</div>
+        </div>
+    </div>
+
+    <!-- 业绩数据 -->
+    <div class="section-title">我的业绩</div>
+    <div class="stats-grid">
+        <div class="stat-card">
+            <div class="stat-title">本月检测</div>
+            <div class="stat-value">45</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-title">本月转化</div>
+            <div class="stat-value">60%</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-title">本月销售</div>
+            <div class="stat-value">¥12580</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-title">目标完成</div>
+            <div class="stat-value">85%</div>
+        </div>
+    </div>
+
+    <!-- 今日数据 -->
+    <div class="section-title">今日数据</div>
+    <div class="stats-grid">
+        <div class="stat-card">
+            <div class="stat-title">今日检测</div>
+            <div class="stat-value">5</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-title">今日转化</div>
+            <div class="stat-value">60%</div>
+        </div>
+    </div>
+
+    <!-- 功能菜单 -->
+    <div class="section-title">功能中心</div>
+    <div class="function-grid">
+        <div class="function-item" onclick="navigateTo('detection-history')">
+            <div class="function-icon">
+                <span class="material-icons">visibility</span>
+            </div>
+            <div class="function-name">检测记录</div>
+        </div>
+        <div class="function-item" onclick="navigateTo('customer-management')">
+            <div class="function-icon">
+                <span class="material-icons">people</span>
+            </div>
+            <div class="function-name">客户管理</div>
+        </div>
+        <div class="function-item" onclick="navigateTo('sales-stats')">
+            <div class="function-icon">
+                <span class="material-icons">bar_chart</span>
+            </div>
+            <div class="function-name">销售统计</div>
+        </div>
+        <div class="function-item" onclick="navigateTo('appointment')">
+            <div class="function-icon">
+                <span class="material-icons">event</span>
+            </div>
+            <div class="function-name">预约管理</div>
+        </div>
+        <div class="function-item" onclick="navigateTo('settings')">
+            <div class="function-icon">
+                <span class="material-icons">settings</span>
+            </div>
+            <div class="function-name">系统设置</div>
+        </div>
+        <div class="function-item" onclick="logout()">
+            <div class="function-icon">
+                <span class="material-icons">logout</span>
+            </div>
+            <div class="function-name">退出登录</div>
+        </div>
+    </div>
+</div>
+
+<script>
+function navigateTo(page) {
+    console.log(`导航至: ${page}`);
+    // 这里可以添加导航逻辑
+}
+
+function logout() {
+    console.log('退出登录');
+    // 这里可以添加退出登录逻辑
+}
+</script> 

@@ -1,0 +1,128 @@
+{
+  "questionnaire": [
+    {
+      "id": 1,
+      "question": "眼睛异物感情况（进沙子）",
+      "options": [
+        {"text": "有", "selected": false},
+        {"text": "一般，偶尔有这种感觉", "selected": false},
+        {"text": "无", "selected": false}
+      ],
+      "indicators": [
+        "重度干眼",
+        "中度干眼",
+        "轻度干眼"
+      ]
+    },
+    {
+      "id": 2,
+      "question": "眼睛不适感与劳累感情况（看书/看电视时）",
+      "options": [
+        {"text": "有", "selected": false},
+        {"text": "一般，偶尔有这种感觉", "selected": false},
+        {"text": "无", "selected": false}
+      ],
+      "indicators": [
+        "重度视疲劳",
+        "中度视疲劳",
+        "轻度视疲劳"
+      ]
+    },
+    {
+      "id": 3,
+      "question": "每日看手机/电视的时长",
+      "options": [
+        {"text": "＞6h", "selected": false},
+        {"text": "2~6h", "selected": false},
+        {"text": "＜2h", "selected": false}
+      ],
+      "indicators": [
+        "重度视疲劳，眨眼次数少",
+        "中度视疲劳，眨眼次数一般",
+        "轻度视疲劳，眨眼次数正常"
+      ]
+    },
+    {
+      "id": 4,
+      "question": "纹眼线情况",
+      "options": [
+        {"text": "纹过", "selected": false},
+        {"text": "没纹过", "selected": false}
+      ],
+      "indicators": [
+        "重度眼睑堵塞",
+        "轻度眼睑堵塞"
+      ]
+    },
+    {
+      "id": 5,
+      "question": "种植假睫毛情况",
+      "options": [
+        {"text": "种植过", "selected": false},
+        {"text": "没种植过", "selected": false}
+      ],
+      "indicators": [
+        "重度眼睑堵塞",
+        "轻度眼睑堵塞"
+      ]
+    },
+    {
+      "id": 6,
+      "question": "眼皮松弛程度",
+      "options": [
+        {"text": "严重", "selected": false},
+        {"text": "轻微", "selected": false},
+        {"text": "良好", "selected": false}
+      ],
+      "indicators": [
+        "重度眼皮松弛",
+        "轻度眼皮松弛",
+        "正常眼皮"
+      ]
+    },
+    {
+      "id": 7,
+      "question": "眼窝凹陷情况",
+      "options": [
+        {"text": "严重", "selected": false},
+        {"text": "轻微", "selected": false},
+        {"text": "无", "selected": false}
+      ],
+      "indicators": [
+        "重度眼窝凹陷",
+        "轻度眼窝凹陷",
+        "正常眼窝"
+      ]
+    },
+    {
+      "id": 8,
+      "question": "眼袋情况",
+      "options": [
+        {"text": "眼袋明显且面积大", "selected": false},
+        {"text": "眼袋明显但面积不大", "selected": false},
+        {"text": "轻微有点眼袋", "selected": false},
+        {"text": "无", "selected": false}
+      ],
+      "indicators": [
+        "重度眼袋",
+        "中度眼袋",
+        "轻度眼袋",
+        "正常眼袋"
+      ]
+    },
+    {
+      "id": 9,
+      "question": "眼压情况",
+      "options": [
+        {"text": "明显硬、鼓胀 （硬度与额头一样）", "selected": false},
+        {"text": "有点硬、鼓胀（介于两者之间）", "selected": false},
+        {"text": "有弹性、略微鼓胀（硬度与鼻尖一样）", "selected": false}
+      ],
+      "indicators": [
+        "高眼压",
+        "中眼压",
+        "正常眼压"
+      ]
+    }
+  ]
+}

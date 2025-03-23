@@ -1,0 +1,14 @@
+<!-- 页面头部 -->
+<div class="app-container">
+    <!-- 顶部导航栏 -->
+    <div id="navigation"></div>
+    
+    <script>
+        // 加载导航栏
+        fetch('components/navigation.html')
+            .then(r => r.text())
+            .then(html => {
+                document.getElementById('navigation').innerHTML = html;
+            });
+    </script>
+</div>
