@@ -69,10 +69,10 @@ def process_images():
         if left_img is not None and right_img is not None:
             all_split_images.append((left_img, right_img))
     
-    # 为每个类别生成10组案例
+    # 为每个类别生成11组案例
     for en_category, cn_category in categories.items():
-        # 随机选择10组图片
-        selected_pairs = random.sample(all_split_images, 10)
+        # 随机选择11组图片
+        selected_pairs = random.sample(all_split_images, 11)
         
         # 保存图片
         for i, (before_img, after_img) in enumerate(selected_pairs, 1):

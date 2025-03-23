@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>美睛美科 - 眼部检测系统V3</title>
+    <title>美睛美科 - 眼部检测系统V5</title>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!-- 引入 ECharts -->
     <script src="https://cdn.bootcdn.net/ajax/libs/echarts/5.2.2/echarts.min.js"></script>
@@ -2522,6 +2522,309 @@
             animation: spin 1s linear infinite;
         }
 
+
+        .main-entries {
+            padding: 20px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        .entry-item {
+            background-color: #35A69C;
+            /* 使用图片中显示的青绿色 */
+            border-radius: 10px;
+            height: 120px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+
+        .entry-content h3 {
+            color: white;
+            font-size: 18px;
+            margin: 0;
+        }
+
+        .bottom-nav {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: white;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            padding: 8px 0;
+            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+            color: #666;
+            font-size: 12px;
+        }
+
+        .nav-item.active {
+            color: #35A69C;
+        }
+
+        .nav-item .material-icons {
+            font-size: 24px;
+        }
+
+
+        .page-header {
+            position: sticky;
+            top: 0;
+            background: #35A69C;
+            color: white;
+            padding: 15px;
+            display: flex;
+            align-items: center;
+            z-index: 100;
+        }
+
+        .back-button {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .page-title {
+            flex: 1;
+            text-align: center;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .service-tabs {
+            background: #f5f5f5;
+            overflow-x: auto;
+            white-space: nowrap;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .tab-scroll-container {
+            display: flex;
+            padding: 10px;
+        }
+
+        .service-tab {
+            padding: 10px 20px;
+            margin-right: 10px;
+            background: #ccc;
+            border-radius: 20px;
+            cursor: pointer;
+            color: #333;
+        }
+
+        .service-tab.active {
+            background: #35A69C;
+            color: white;
+        }
+
+        .service-display {
+            padding: 20px;
+            display: flex;
+            gap: 20px;
+            align-items: flex-start;
+        }
+
+        .service-image-container {
+            flex: 2;
+            /* 占比2 */
+            position: relative;
+            width: 40%;
+            /* 设置宽度占比 */
+            aspect-ratio: 1;
+            /* 保持1:1的宽高比 */
+            background: #35A69C;
+            border-radius: 10px;
+        }
+
+        .service-image-container img {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+
+        .service-details {
+            flex: 3;
+            /* 占比3 */
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            max-height: 600px;
+            overflow-y: auto;
+        }
+
+        .process-steps {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .process-step {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .process-step .step-number {
+            background: #35A69C;
+            color: white;
+            width: 24px;
+            height: 24px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+        }
+
+        .service-info {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+        }
+
+
+        .case-tabs {
+            background: #f5f5f5;
+            padding: 10px 0;
+            position: sticky;
+            top: 56px;
+            z-index: 10;
+        }
+
+        .tab-container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+            padding: 0 10px;
+        }
+
+        .case-tab {
+            text-align: center;
+            padding: 10px 5px;
+            background: #ccc;
+            border-radius: 10px;
+            cursor: pointer;
+            color: #333;
+            font-size: 14px;
+            line-height: 1.2;
+        }
+
+        .case-tab.active {
+            background: #35A69C;
+            color: white;
+        }
+
+        /* 修改网格布局为每行3个 */
+        .cases-grid {
+            padding: 15px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            /* 改为3列 */
+            gap: 15px;
+        }
+
+        /* 修改案例项样式 */
+        .case-item {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        /* 修改前后对比图片容器样式 */
+        .case-item .before-after {
+            position: relative;
+            padding-bottom: 100%;
+            /* 保持1:1的宽高比 */
+            overflow: hidden;
+        }
+
+        /* 修改前后对比图片样式 */
+        .case-item .before-after img {
+            position: absolute;
+            height: 100%;
+            width: 50%;
+            object-fit: cover;
+        }
+
+        .case-item .before-after img:first-child {
+            left: 0;
+            /* 治疗前图片靠左 */
+        }
+
+        .case-item .before-after img:last-child {
+            left: 50%;
+            /* 治疗后图片靠右 */
+        }
+
+        /* 调整信息区域的样式以适应更窄的宽度 */
+        .case-item .case-info {
+            padding: 8px;
+        }
+
+        .case-item .case-title {
+            font-size: 12px;
+            font-weight: bold;
+            margin-bottom: 4px;
+        }
+
+        .case-item .case-description {
+            font-size: 11px;
+            color: #666;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        /* 案例详情页样式 */
+        .case-detail-content {
+            padding: 15px;
+        }
+
+        .detail-images {
+            margin-bottom: 20px;
+        }
+
+        .before-after-compare {
+            display: flex;
+            gap: 10px;
+        }
+
+        .before-after-compare img {
+            width: 50%;
+            border-radius: 8px;
+        }
+
+        .detail-info {
+            background: white;
+            border-radius: 10px;
+            padding: 15px;
+        }
+
+        .detail-info h3 {
+            color: #35A69C;
+            margin: 15px 0 10px;
+        }
+
+        .detail-info>div {
+            margin-bottom: 20px;
+        }
+
         @keyframes spin {
             0% {
                 transform: rotate(0deg);
@@ -2532,104 +2835,169 @@
             }
         }
 
-        .service-category-buttons {
+
+        /* 检测页面样式 */
+        /* #detection-page {
+            height: 100vh;
+            background-color: #fff;
             display: flex;
-            justify-content: space-around;
-            padding: 10px;
-            background: #f5f5f5;
+            flex-direction: column;
+        } */
+
+        /* 最近检测客户提示条样式 */
+        .recent-customer-bar {
+            background-color: rgba(53, 166, 156, 0.1);
+            padding: 12px 16px;
         }
 
-        .category-btn {
-            padding: 8px 15px;
-            border: none;
-            border-radius: 20px;
-            background: white;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        }
-
-        .category-btn.active {
-            background: #007bff;
-            color: white;
-        }
-
-        .service-content {
-            display: flex;
-            padding: 15px;
-            gap: 20px;
-        }
-
-        .service-image {
-            flex: 1;
-            max-width: 50%;
-        }
-
-        .service-image img {
-            width: 100%;
-            height: auto;
-            border-radius: 8px;
-        }
-
-        .service-description {
-            flex: 1;
-            padding: 10px;
-        }
-
-        .case-category-buttons {
-            display: flex;
-            justify-content: space-around;
-            padding: 10px;
-            background: #f5f5f5;
-        }
-
-        .category-btn {
-            padding: 8px 15px;
-            border: none;
-            border-radius: 20px;
-            background: white;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            cursor: pointer;
-        }
-
-        .category-btn.active {
-            background: #007bff;
-            color: white;
-        }
-
-        .case-grid-container {
-            padding: 15px;
-        }
-
-        .case-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 15px;
-        }
-
-        .case-item {
-            background-color: white;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            cursor: pointer;
-        }
-
-        .case-item img {
-            width: 100%;
-            height: 150px;
-            object-fit: cover;
-        }
-
-        .case-title {
-            padding: 10px;
+        .recent-customer-info {
+            color: #333;
             font-size: 14px;
-            text-align: center;
+        }
+
+        .customer-name {
+            font-weight: 500;
+            margin: 0 4px;
+        }
+
+        .customer-time {
+            color: #666;
+        }
+
+        .customer-status {
+            color: #35A69C;
+            margin-left: 4px;
+        }
+
+        /* 修改检测内容区域样式 */
+        .detection-content {
+            flex: 1;
+            display: flex;
+            flex-direction: row;
+            /* 改为水平方向布局 */
+            align-items: center;
+            /* 垂直居中 */
+            justify-content: center;
+            /* 水平居中 */
+            padding: 40px;
+            gap: 40px;
+            /* 左右间距 */
+        }
+
+        /* 调整大圆形检测按钮样式 */
+        .detection-button {
+            flex-shrink: 0;
+            /* 防止按钮被压缩 */
+            width: 240px;
+            /* 可能需要调整大小 */
+            height: 240px;
+            border-radius: 50%;
+            background-color: #35A69C;
+            font-size: 20px;
+            font-weight: 500;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(53, 166, 156, 0.2);
+        }
+
+        /* 调整检测信息卡片样式 */
+        .detection-info-card {
+            flex: 1;
+            /* 让卡片占据剩余空间 */
+            background-color: #fff;
+            border-radius: 12px;
+            padding: 20px;
+            max-width: 400px;
+            /* 限制最大宽度 */
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        /* 其他样式保持不变 */
+
+        .info-title {
+            font-size: 16px;
+            font-weight: 500;
+            margin-bottom: 16px;
+        }
+
+        .info-items {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+
+        .info-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .item-number {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background-color: #35A69C;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+        }
+
+        .item-text {
+            font-size: 14px;
+            color: #333;
+        }
+
+        .info-footer {
+            display: flex;
+            justify-content: space-between;
+            padding-top: 16px;
+            border-top: 1px solid #eee;
+        }
+
+        .info-duration,
+        .info-price {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .label {
+            font-size: 12px;
+            color: #666;
+        }
+
+        .value {
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .info-price .value {
+            color: #35A69C;
+        }
+
+
+        .recent-customer-info {
+            transition: opacity 0.2s ease-in-out;
+        }
+
+        .customer-name,
+        .customer-time {
+            display: inline-block;
+            min-width: 60px;
+            /* 防止切换时出现跳动 */
         }
     </style>
 </head>
 
 <body>
     <div class="app-container">
-        <!-- <div class="top-bar">
+        <div class="top-bar">
             <div class="top-bar-title">美睛美科</div>
             <div class="top-bar-actions">
                 <button class="icon-button">
@@ -2640,13 +3008,14 @@
                 </button>
 
             </div>
-        </div> -->
+        </div>
 
         <div class="content-area">
             <!-- 首页 -->
             <div class="page active" id="home-page">
                 <!-- 门店活动轮播图 -->
                 <div class="card">
+                    <div class="section-title">门店活动</div>
                     <div class="campaign-carousel">
                         <div class="carousel-container">
                             <div class="carousel-wrapper">
@@ -2697,112 +3066,17 @@
                     </div>
                 </div>
 
-                <div class="service-grid">
-                    <div class="service-item" onclick="navigateTo('service-projects-page')">
-                        <div class="service-name">护理项目</div>
-                    </div>
-                    <div class="service-item" onclick="navigateTo('service-cases-page')">
-                        <div class="service-name">服务案例</div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- 护理项目页面 -->
-            <div class="page" id="service-projects-page">
-                <div class="page-header">
-                    <button class="back-button" onclick="switchToPage('home-page')">
-                        <i class="fas fa-arrow-left"></i>
-                    </button>
-                    <span class="page-title">护理项目</span>
-                </div>
-
-                <!-- 项目选择栏 -->
-                <div class="service-category-buttons">
-                    <button class="category-btn active" onclick="switchServiceProject('ai-detection')">眼部AI检测</button>
-                    <button class="category-btn" onclick="switchServiceProject('fatigue-care')">眼疲劳护理</button>
-                    <button class="category-btn" onclick="switchServiceProject('aging-care')">眼衰退护理</button>
-                    <button class="category-btn" onclick="switchServiceProject('sensitive-care')">眼敏感护理</button>
-                </div>
-
-                <!-- 项目内容展示区 -->
-                <div class="service-content">
-                    <div class="service-image">
-                        <img id="service-project-image" src="" alt="护理项目图片">
-                    </div>
-                    <div class="service-description">
-                        <h3 id="service-project-title"></h3>
-                        <p id="service-project-desc"></p>
-
-                        <h4>服务流程</h4>
-                        <ul id="service-project-process"></ul>
-
-                        <div class="service-info">
-                            <p><strong>适用人群：</strong><span id="service-project-target"></span></p>
-                            <p><strong>服务时长：</strong><span id="service-project-duration"></span></p>
-                            <p><strong>价格：</strong><span id="service-project-price"></span></p>
+                <!-- 主要入口区域 -->
+                <div class="main-entries">
+                    <div class="entry-item" onclick="navigateTo('services-entrance')">
+                        <div class="entry-content">
+                            <h3>护理项目</h3>
                         </div>
                     </div>
-                </div>
-            </div>
-
-
-            <!-- 服务案例页面 -->
-            <div class="page" id="service-cases-page">
-                <div class="page-header">
-                    <button class="back-button" onclick="switchToPage('home-page')">
-                        <i class="fas fa-arrow-left"></i>
-                    </button>
-                    <span class="page-title">服务案例</span>
-                </div>
-
-                <!-- 案例分类按钮 -->
-                <div class="case-category-buttons">
-                    <button class="category-btn active" onclick="switchCaseCategory('fatigue')">眼疲劳护理案例</button>
-                    <button class="category-btn" onclick="switchCaseCategory('aging')">眼衰退护理案例</button>
-                    <button class="category-btn" onclick="switchCaseCategory('sensitive')">眼敏感护理案例</button>
-                    <button class="category-btn" onclick="switchCaseCategory('composite')">综合性护理案例</button>
-                </div>
-
-                <!-- 案例图片展示区域 -->
-                <div class="case-grid-container">
-                    <div class="case-grid" id="all-cases">
-                        <div class="case-item" onclick="navigateTo('case-detail-1')">
-                            <img src="images/service_case/case1.jpg" alt="干眼症综合改善方案">
-                            <div class="case-title">干眼症综合改善方案</div>
+                    <div class="entry-item" onclick="navigateTo('cases-entrance')">
+                        <div class="entry-content">
+                            <h3>服务案例</h3>
                         </div>
-                        <div class="case-item" onclick="navigateTo('case-detail-2')">
-                            <img src="images/service_case/case2.jpg" alt="眼袋消除年轻化方案">
-                            <div class="case-title">眼袋消除年轻化方案</div>
-                        </div>
-                        <div class="case-item" onclick="navigateTo('case-detail-3')">
-                            <img src="images/service_case/case3.jpg" alt="混合型黑眼圈综合干预方案">
-                            <div class="case-title">混合型黑眼圈综合干预方案</div>
-                        </div>
-                        <!-- 更多案例... -->
-                    </div>
-
-                    <div class="case-grid" id="dry-eye-cases" style="display: none;">
-                        <div class="case-item" onclick="navigateTo('case-detail-1')">
-                            <img src="images/service_case/case1.jpg" alt="干眼症综合改善方案">
-                            <div class="case-title">干眼症综合改善方案</div>
-                        </div>
-                        <!-- 更多干眼症案例... -->
-                    </div>
-
-                    <div class="case-grid" id="eye-bag-cases" style="display: none;">
-                        <div class="case-item" onclick="navigateTo('case-detail-2')">
-                            <img src="images/service_case/case2.jpg" alt="眼袋消除年轻化方案">
-                            <div class="case-title">眼袋消除年轻化方案</div>
-                        </div>
-                        <!-- 更多眼袋案例... -->
-                    </div>
-
-                    <div class="case-grid" id="dark-circle-cases" style="display: none;">
-                        <div class="case-item" onclick="navigateTo('case-detail-3')">
-                            <img src="images/service_case/case3.jpg" alt="混合型黑眼圈综合干预方案">
-                            <div class="case-title">混合型黑眼圈综合干预方案</div>
-                        </div>
-                        <!-- 更多黑眼圈案例... -->
                     </div>
                 </div>
             </div>
@@ -3178,9 +3452,9 @@
                             <p class="campaign-slogan">✨让眼睛与肌肤同享年轻态！</p>
                         </div>
                     </div>
-                    <div class="action-buttons">
+                    <!-- <div class="action-buttons">
                         <button class="button" onclick="shareCampaign()">分享活动</button>
-                    </div>
+                    </div> -->
                 </div>
             </div>
 
@@ -3348,198 +3622,190 @@
                 </div>
             </div>
 
-            <!-- 服务页面 -->
-            <div class="page" id="services-page">
-                <div class="service-category">
-                    <div class="section-title">眼部护理</div>
-                    <div class="service-grid">
-                        <div class="service-item" onclick="navigateToService('service-detail', 'dry-eye')">
-                            <div class="service-icon">
-                                <span class="material-icons">spa</span>
-                            </div>
-                            <div class="service-name">舒缓干眼服务</div>
-                            <div class="service-price">¥298起</div>
-                        </div>
-                        <div class="service-item" onclick="navigateToService('service-detail', 'eye-bag')">
-                            <div class="service-icon">
-                                <span class="material-icons">face</span>
-                            </div>
-                            <div class="service-name">消除眼袋服务</div>
-                            <div class="service-price">¥398起</div>
-                        </div>
-                        <div class="service-item" onclick="navigateToService('service-detail', 'eye-bright')">
-                            <div class="service-icon">
-                                <span class="material-icons">wb_sunny</span>
-                            </div>
-                            <div class="service-name">眼周提亮服务</div>
-                            <div class="service-price">¥198起</div>
-                        </div>
+            <!-- 护理项目页面 -->
+            <div class="page" id="services-entrance">
+                <!-- 顶部导航 -->
+                <div class="page-header">
+                    <div class="back-button" onclick="navigateTo('home-page')">
+                        <span class="material-icons">arrow_back</span>
+                        <span>返回</span>
+                    </div>
+                    <div class="page-title">护理项目</div>
+                </div>
+
+                <!-- 服务项目选择区 -->
+                <div class="service-tabs">
+                    <div class="tab-scroll-container">
+                        <div class="service-tab" data-service="eye-ai-detection">眼部AI检测</div>
+                        <div class="service-tab active" data-service="eye-fatigue-care">眼疲劳护理</div>
+                        <div class="service-tab" data-service="eye-aging-care">眼衰退护理</div>
+                        <div class="service-tab" data-service="eye-sensitive-care">眼敏感护理</div>
                     </div>
                 </div>
 
-                <div class="service-category">
-                    <div class="section-title">眼部检测</div>
-                    <div class="service-grid">
-                        <div class="service-item" onclick="navigateTo('detection-page')">
-                            <div class="service-icon">
-                                <span class="material-icons">visibility</span>
-                            </div>
-                            <div class="service-name">眼部AI检测</div>
-                            <div class="service-price">¥98</div>
-                        </div>
-                        <div class="service-item" onclick="navigateTo('detection-page')">
-                            <div class="service-icon">
-                                <span class="material-icons">assessment</span>
-                            </div>
-                            <div class="service-name">专业眼健康评估</div>
-                            <div class="service-price">¥198</div>
-                        </div>
+                <!-- 服务展示区域 -->
+                <div class="service-display">
+                    <!-- 服务图片展示 -->
+                    <div class="service-image-container">
+                        <img id="serviceImage" src="" alt="服务图片">
                     </div>
-                </div>
 
-                <div class="service-category">
-                    <div class="section-title">套餐推荐</div>
-                    <div class="service-grid">
-                        <div class="service-item" onclick="navigateToService('service-detail', 'eye-care')">
-                            <div class="service-icon">
-                                <span class="material-icons">card_giftcard</span>
-                            </div>
-                            <div class="service-name">眼部护理套餐</div>
-                            <div class="service-price">¥498</div>
+                    <!-- 服务详情信息 -->
+                    <div class="service-details">
+                        <div class="service-intro">
+                            <h4>服务介绍</h4>
+                            <p id="serviceDescription"></p>
                         </div>
-                        <div class="service-item" onclick="navigateToService('service-detail', 'eye-full')">
-                            <div class="service-icon">
-                                <span class="material-icons">stars</span>
+
+                        <div class="service-process">
+                            <h4>服务流程</h4>
+                            <div id="serviceProcess" class="process-steps"></div>
+                        </div>
+
+                        <div class="service-target">
+                            <h4>适用人群</h4>
+                            <p id="serviceTarget"></p>
+                        </div>
+
+                        <div class="service-info">
+                            <div class="duration">
+                                <span>护理时长</span>
+                                <span id="serviceDuration"></span>
                             </div>
-                            <div class="service-name">眼部全套呵护</div>
-                            <div class="service-price">¥998</div>
+                            <div class="price">
+                                <span>价格</span>
+                                <span id="servicePrice"></span>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- 服务详情页面 -->
-            <div class="page" id="service-detail">
-                <div class="service-detail-header">
-                    <img id="service-detail-image" src="images/services/eye_bright.jpg" alt="服务图片"
-                        style="width: 100%; height: 200px; object-fit: cover; border-radius: var(--border-radius) var(--border-radius) 0 0;">
-                    <div class="service-detail-title" id="service-detail-title">眼周提亮服务</div>
+            <!-- 服务案例页面 -->
+            <div class="page" id="cases-entrance">
+                <!-- 顶部导航 -->
+                <div class="page-header">
+                    <div class="back-button" onclick="navigateTo('home-page')">
+                        <span class="material-icons">arrow_back</span>
+                        <span>返回</span>
+                    </div>
+                    <div class="page-title">服务案例</div>
                 </div>
 
-                <div class="card">
-                    <div class="section-title">服务介绍</div>
-                    <p id="service-detail-description">专业舒缓干眼症状，缓解眼疲劳，改善眼部不适。针对长时间使用电子设备导致的眼部问题，提供全方位的眼部护理方案。</p>
-                </div>
-
-                <div class="card">
-                    <div class="section-title">服务流程</div>
-                    <div class="detection-step">
-                        <div class="step-number">1</div>
-                        <div>眼部检测评估</div>
-                    </div>
-                    <div class="detection-step">
-                        <div class="step-number">2</div>
-                        <div>专业眼部清洁</div>
-                    </div>
-                    <div class="detection-step">
-                        <div class="step-number">3</div>
-                        <div>舒缓精华导入</div>
-                    </div>
-                    <div class="detection-step">
-                        <div class="step-number">4</div>
-                        <div>眼部按摩护理</div>
-                    </div>
-                    <div class="detection-step">
-                        <div class="step-number">5</div>
-                        <div>效果评估</div>
+                <!-- 案例分类标签部分的修改 -->
+                <div class="case-tabs">
+                    <div class="tab-container">
+                        <div class="case-tab active" data-category="眼疲劳护理案例">眼疲劳<br>护理案例</div>
+                        <div class="case-tab" data-category="眼衰退护理案例">眼衰退<br>护理案例</div>
+                        <div class="case-tab" data-category="眼敏感护理案例">眼敏感<br>护理案例</div>
+                        <div class="case-tab" data-category="综合性护理案例">综合性<br>护理案例</div>
                     </div>
                 </div>
 
-                <div class="card">
-                    <div class="section-title">适用人群</div>
-                    <p>长时间用眼人群、干眼症患者、眼疲劳人群、电子设备使用频繁人群</p>
+                <!-- 案例图片网格 -->
+                <div class="cases-grid" id="casesGrid"></div>
+            </div>
+
+            <!-- 案例详情页面（复用） -->
+            <div class="page" id="case-detail">
+                <div class="page-header">
+                    <div class="back-button" onclick="navigateTo('cases-entrance')">
+                        <span class="material-icons">arrow_back</span>
+                        <span>返回</span>
+                    </div>
+                    <div class="page-title" id="caseDetailTitle">案例详情</div>
                 </div>
 
-                <div class="card">
-                    <div style="display: flex; justify-content: space-between; align-items: center;">
-                        <div>
-                            <div style="color: var(--text-secondary);">服务时长</div>
-                            <div style="font-weight: 500;">45分钟</div>
-                        </div>
-                        <div>
-                            <div style="color: var(--text-secondary);">价格</div>
-                            <div style="font-weight: 500; color: var(--primary-color);">¥298</div>
+                <div class="case-detail-content">
+                    <!-- 前后对比图 -->
+                    <div class="detail-images">
+                        <div class="before-after-compare">
+                            <img id="beforeImage" alt="治疗前">
+                            <img id="afterImage" alt="治疗后">
                         </div>
                     </div>
-                </div>
 
-                <div style="display: flex; gap: 16px; margin-top: 24px;">
-                    <button class="button secondary" style="flex: 1;">推荐给客户</button>
+                    <!-- 案例信息 -->
+                    <div class="detail-info">
+                        <div class="client-info">
+                            <h3>客户背景</h3>
+                            <div id="clientBackground"></div>
+                        </div>
+
+                        <div class="examination-info">
+                            <h3>检查结果</h3>
+                            <div id="examinationResults"></div>
+                        </div>
+
+                        <div class="treatment-info">
+                            <h3>治疗方案</h3>
+                            <div id="treatmentProcess"></div>
+                        </div>
+
+                        <div class="outcome-info">
+                            <h3>治疗效果</h3>
+                            <div id="outcomes"></div>
+                        </div>
+                    </div>
                 </div>
             </div>
 
             <!-- 检测页面 -->
+            <!-- 检测页面 -->
             <div class="page" id="detection-page">
-                <div class="detection-intro">
-                    <h2 style="margin-bottom: 16px;">眼部AI检测</h2>
-                    <p>通过AI技术分析眼部状况，提供五维度健康评分和个性化方案推荐</p>
-                </div>
-
-                <div class="card">
-                    <div class="section-title">检测内容</div>
-                    <div class="detection-steps">
-                        <div class="detection-step">
-                            <div class="step-number">1</div>
-                            <div>9题专业问卷评估</div>
-                        </div>
-                        <div class="detection-step">
-                            <div class="step-number">2</div>
-                            <div>AI眼部图像分析</div>
-                        </div>
-                        <div class="detection-step">
-                            <div class="step-number">3</div>
-                            <div>五维度健康评分</div>
-                        </div>
-                        <div class="detection-step">
-                            <div class="step-number">4</div>
-                            <div>个性化方案推荐</div>
-                        </div>
-                    </div>
-
-                    <div style="display: flex; justify-content: space-between; margin-top: 16px;">
-                        <div>
-                            <div style="color: var(--text-secondary);">检测时长</div>
-                            <div style="font-weight: 500;">约5分钟</div>
-                        </div>
-                        <div>
-                            <div style="color: var(--text-secondary);">检测费用</div>
-                            <div style="font-weight: 500; color: var(--primary-color);">¥98 (可抵扣产品/服务)</div>
-                        </div>
+                <!-- 最近检测客户提示条 -->
+                <div class="recent-customer-bar">
+                    <div class="recent-customer-info" id="recentCustomerInfo">
+                        <span class="label">最近检测客户：</span>
+                        <span class="customer-name" id="customerName"></span>
+                        <span class="customer-time" id="customerTime"></span>
+                        <!-- <span class="customer-status">——向上滚动播放</span> -->
                     </div>
                 </div>
 
-                <div class="card">
-                    <div class="section-title">最近检测客户</div>
-                    <div class="recent-customers">
-                        <div class="customer-item" onclick="startDetection('existing')">
-                            <div style="font-weight: 500;">陈先生</div>
-                            <div style="font-size: 12px; color: var(--text-secondary);">3天前</div>
+                <!-- 检测按钮和内容区域 -->
+                <div class="detection-content">
+                    <!-- 大圆形检测按钮 -->
+                    <div class="detection-button" onclick="startDetection('new')">
+                        <span>开始检测</span>
+                    </div>
+
+                    <!-- 检测内容说明卡片 -->
+                    <div class="detection-info-card">
+                        <div class="info-title">检测内容</div>
+                        <div class="info-items">
+                            <div class="info-item">
+                                <span class="item-number">1</span>
+                                <span class="item-text">9题专业问卷评估</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="item-number">2</span>
+                                <span class="item-text">AI眼部图像分析</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="item-number">3</span>
+                                <span class="item-text">五维度健康评分</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="item-number">4</span>
+                                <span class="item-text">个性化方案推荐</span>
+                            </div>
                         </div>
-                        <div class="customer-item" onclick="startDetection('existing')">
-                            <div style="font-weight: 500;">李先生</div>
-                            <div style="font-size: 12px; color: var(--text-secondary);">1周前</div>
-                        </div>
-                        <div class="customer-item" onclick="startDetection('existing')">
-                            <div style="font-weight: 500;">王女士</div>
-                            <div style="font-size: 12px; color: var(--text-secondary);">1月前</div>
+                        <div class="info-footer">
+                            <div class="info-duration">
+                                <div class="label">检测时长</div>
+                                <div class="value">约5分钟</div>
+                            </div>
+                            <div class="info-price">
+                                <div class="label">检测费用</div>
+                                <div class="value">¥98 (可抵扣产品服务)</div>
+                            </div>
                         </div>
                     </div>
-                </div>
-
-                <div class="detection-actions">
-                    <button class="button" onclick="startDetection('new')">开始新检测</button>
                 </div>
             </div>
+
+
 
             <!-- 客户页面 -->
             <div class="page" id="customers-page">
@@ -5274,18 +5540,16 @@
                     });
 
                     // 根据页面ID更新底部导航栏
-                    if (pageId === 'home-page') {
+                    if (pageId === 'home-page' || pageId === 'services-entrance' || pageId === 'cases-entrance') {
                         document.querySelectorAll('.nav-item')[0].classList.add('active');
-                    } else if (pageId === 'services-page' || pageId === 'service-detail') {
-                        document.querySelectorAll('.nav-item')[1].classList.add('active');
                     } else if (pageId === 'detection-page' || pageId === 'detection-customer' ||
                         pageId === 'detection-questionnaire' || pageId === 'detection-camera' ||
                         pageId === 'detection-result' || pageId === 'dimension-detail') {
-                        document.querySelectorAll('.nav-item')[2].classList.add('active');
+                        document.querySelectorAll('.nav-item')[1].classList.add('active');
                     } else if (pageId === 'detection-report') {
-                        document.querySelectorAll('.nav-item')[3].classList.add('active');
+                        document.querySelectorAll('.nav-item')[2].classList.add('active');
                     } else if (pageId === 'profile-page' || pageId === 'manager-profile-page') {
-                        document.querySelectorAll('.nav-item')[4].classList.add('active');
+                        document.querySelectorAll('.nav-item')[3].classList.add('active');
                     }
 
                     // 滚动到顶部
@@ -5690,16 +5954,14 @@
                     // 根据页面ID更新底部导航栏
                     if (pageId === 'home-page') {
                         document.querySelectorAll('.nav-item')[0].classList.add('active');
-                    } else if (pageId === 'services-page' || pageId === 'service-detail') {
-                        document.querySelectorAll('.nav-item')[1].classList.add('active');
                     } else if (pageId === 'detection-page' || pageId === 'detection-customer' ||
                         pageId === 'detection-questionnaire' || pageId === 'detection-camera' ||
                         pageId === 'detection-result' || pageId === 'dimension-detail') {
-                        document.querySelectorAll('.nav-item')[2].classList.add('active');
+                        document.querySelectorAll('.nav-item')[1].classList.add('active');
                     } else if (pageId === 'detection-report' || pageId === 'detection-detail') {
-                        document.querySelectorAll('.nav-item')[3].classList.add('active');
+                        document.querySelectorAll('.nav-item')[2].classList.add('active');
                     } else if (pageId === 'profile-page' || pageId === 'manager-profile-page') {
-                        document.querySelectorAll('.nav-item')[4].classList.add('active');
+                        document.querySelectorAll('.nav-item')[3].classList.add('active');
                     }
 
                     // 更新页面标题和返回按钮
@@ -5728,8 +5990,8 @@
                     // 页面标题映射
                     const pageTitles = {
                         'home-page': '首页',
-                        'services-page': '服务项目',
-                        'service-detail': '服务详情',
+                        'services-entrance': '护理项目',
+                        'cases-entrance': '服务案例',
                         'detection-page': '眼部检测',
                         'detection-customer': '客户信息',
                         'detection-questionnaire': '问卷调查',
@@ -5770,8 +6032,8 @@
                     // 页面层级映射
                     const pageHierarchy = {
                         'home-page': ['首页'],
-                        'services-page': ['首页', '服务项目'],
-                        'service-detail': ['首页', '服务项目', '服务详情'],
+                        'services-page': ['首页', '护理项目'],
+                        'cases-entrance': ['首页', '服务案例'],
                         'detection-page': ['首页', '眼部检测'],
                         'detection-customer': ['首页', '眼部检测', '客户信息'],
                         'detection-questionnaire': ['首页', '眼部检测', '问卷调查'],
@@ -5882,17 +6144,25 @@
                     }
 
                     // 更新页面层级映射，添加活动详情页
-                    pageHierarchy['campaign-detail-1'] = ['首页', '门店活动', '明眸焕新计划'];
-                    pageHierarchy['campaign-detail-2'] = ['首页', '门店活动', '端午护眼"粽"动员'];
-                    pageHierarchy['campaign-detail-3'] = ['首页', '门店活动', '以老带新，明眸双倍礼'];
-                    pageHierarchy['campaign-detail-4'] = ['首页', '门店活动', '全民护眼课堂'];
+                    // pageHierarchy['campaign-detail-1'] = ['首页', '门店活动', '明眸焕新计划'];
+                    // pageHierarchy['campaign-detail-2'] = ['首页', '门店活动', '端午护眼"粽"动员'];
+                    // pageHierarchy['campaign-detail-3'] = ['首页', '门店活动', '以老带新，明眸双倍礼'];
+                    // pageHierarchy['campaign-detail-4'] = ['首页', '门店活动', '全民护眼课堂'];
 
 
-                    // 添加服务案例详情页到页面层级映射
-                    pageHierarchy['case-detail-1'] = ['首页', '服务案例', '干眼症综合改善方案'];
-                    pageHierarchy['case-detail-2'] = ['首页', '服务案例', '眼袋消除年轻化方案'];
-                    pageHierarchy['case-detail-3'] = ['首页', '服务案例', '混合型黑眼圈综合干预方案'];
+                    // 初始化客户记录管理器
+                    if (typeof CustomerRecordsManager === 'undefined') {
+                        console.error('CustomerRecordsManager not found');
+                        return;
+                    }
 
+                    // 初始化客户轮播
+                    const customerCarousel = new CustomerCarousel('recentCustomerInfo');
+
+                    // 延迟一小段时间再初始化，确保其他可能的DOM操作已完成
+                    setTimeout(() => {
+                        customerCarousel.init();
+                    }, 100);
 
                     // 初始化页面标题和返回按钮
                     updatePageHeader(currentPageId);
@@ -6692,49 +6962,61 @@
                     }
                 }
 
-                // 导航到服务详情页面，并根据服务类型更新内容
-                function navigateToService(pageId, serviceType) {
-                    // 先导航到页面
-                    navigateTo(pageId);
+                // 加载服务项目数据
+                let serviceProjects = null;
 
-                    // 根据服务类型更新内容
-                    const serviceDetails = {
-                        'dry-eye': {
-                            title: '舒缓干眼服务',
-                            image: 'images/services/dry_eye.jpg',
-                            description: '专业舒缓干眼症状，缓解眼疲劳，改善眼部不适。针对长时间使用电子设备导致的眼部问题，提供全方位的眼部护理方案。'
-                        },
-                        'eye-bag': {
-                            title: '消除眼袋服务',
-                            image: 'images/services/eye_bag.jpg',
-                            description: '针对眼袋问题，采用先进技术和专业手法，帮助减轻眼袋，恢复眼部年轻活力，让您的眼睛更加明亮有神。'
-                        },
-                        'eye-bright': {
-                            title: '眼周提亮服务',
-                            image: 'images/services/eye_bright.jpg',
-                            description: '专注于眼周肌肤提亮，改善黑眼圈和暗沉问题，让眼周肌肤焕发光彩，恢复明亮通透的眼部状态。'
-                        },
-                        'eye-care': {
-                            title: '眼部护理套餐',
-                            image: 'images/services/eye_care.jpg',
-                            description: '综合眼部护理套餐，包含眼部清洁、舒缓按摩、营养导入等多项服务，全方位呵护您的眼部健康。'
-                        },
-                        'eye-full': {
-                            title: '眼部全套呵护',
-                            image: 'images/services/eye_full.jpg',
-                            description: '我们的旗舰服务，包含所有眼部护理项目，从眼部检测到专业护理，再到后续保养指导，为您的眼部提供最全面的呵护。'
-                        }
-                    };
-
-                    // 获取当前服务的详情
-                    const details = serviceDetails[serviceType] || serviceDetails['eye-bright'];
-
-                    // 更新页面内容
-                    document.getElementById('service-detail-title').textContent = details.title;
-                    document.getElementById('service-detail-image').src = details.image;
-                    document.getElementById('service-detail-description').textContent = details.description;
+                async function loadServiceProjects() {
+                    try {
+                        const response = await fetch('/data/service-projects.json');
+                        const data = await response.json();
+                        serviceProjects = data.projects;
+                        // 默认显示第一个服务
+                        updateServiceDisplay(serviceProjects[0]);
+                    } catch (error) {
+                        console.error('Error loading service projects:', error);
+                    }
                 }
 
+                // 更新服务显示内容
+                function updateServiceDisplay(service) {
+                    document.getElementById('serviceImage').src = service.image;
+                    document.getElementById('serviceDescription').textContent = service.description;
+
+                    // 更新服务流程
+                    const processContainer = document.getElementById('serviceProcess');
+                    processContainer.innerHTML = service.process.map((step, index) => `
+                                                                                        <div class="process-step">
+                                                                                            <div class="step-number">${index + 1}</div>
+                                                                                            <div class="step-text">${step}</div>
+                                                                                        </div>
+                                                                                    `).join('');
+
+                    document.getElementById('serviceTarget').textContent = service.target;
+                    document.getElementById('serviceDuration').textContent = service.duration;
+                    document.getElementById('servicePrice').textContent = service.price;
+                }
+
+                // 初始化页面
+                document.addEventListener('DOMContentLoaded', () => {
+                    loadServiceProjects();
+
+                    // 添加标签切换事件监听
+                    const tabs = document.querySelectorAll('.service-tab');
+                    tabs.forEach(tab => {
+                        tab.addEventListener('click', () => {
+                            // 更新活动标签
+                            tabs.forEach(t => t.classList.remove('active'));
+                            tab.classList.add('active');
+
+                            // 更新显示内容
+                            const serviceId = tab.dataset.service;
+                            const service = serviceProjects.find(s => s.en_name === serviceId);
+                            if (service) {
+                                updateServiceDisplay(service);
+                            }
+                        });
+                    });
+                });
                 // 根据角色选择更改用户名和密码
                 function changeLoginRole() {
                     const roleSelect = document.getElementById('role-select');
@@ -6919,8 +7201,6 @@
                         checkUpdateBtn.addEventListener('click', checkForUpdates);
                     }
 
-                    switchServiceProject('ai-detection');
-
                     // 扩展导航函数，在导航到设置页面时自动初始化设置页面
                     const originalNavigateTo = window.navigateTo;
                     window.navigateTo = function (pageId, addToHistory = true) {
@@ -6958,111 +7238,344 @@
                     };
                 });
 
-                const serviceProjects = {
-                    "ai-detection": {
-                        "title": "眼部AI检测",
-                        "image": "images/service-projects/ai-detection.jpg",
-                        "description": "通过先进的AI技术，精准分析眼部健康状况，包括眼压、泪液分泌、角膜状态等，帮助您全面了解眼部问题，提供个性化护理建议。",
-                        "process": [
-                            "眼部AI扫描检测",
-                            "数据分析与报告生成",
-                            "专业医师解读报告",
-                            "定制护理方案"
-                        ],
-                        "target": "长期用眼过度、眼部不适、希望了解眼部健康状况的人群。",
-                        "duration": "30分钟",
-                        "price": "¥299"
+
+
+                let serviceCases = null;
+                let currentCategory = null;
+                let currentPage = 1;
+                const PAGE_SIZE = 9;
+
+                // 加载服务案例数据
+                async function loadServiceCases() {
+                    try {
+                        const response = await fetch('/data/service-cases.json');
+                        const data = await response.json();
+                        serviceCases = data.categories;
+                        // 默认显示第一个分类的案例
+                        showCasesByCategory(serviceCases[0].name);
+                    } catch (error) {
+                        console.error('Error loading service cases:', error);
+                    }
+                }
+
+                // 根据分类显示案例
+                function showCasesByCategory(categoryName) {
+                    currentCategory = serviceCases.find(cat => cat.name === categoryName);
+                    if (!currentCategory) {
+                        console.error('Category not found:', categoryName);
+                        return;
+                    }
+                    currentPage = 1;
+                    updateCasesGrid();
+                }
+
+                // 更新案例网格
+                function updateCasesGrid() {
+                    const grid = document.getElementById('casesGrid');
+                    grid.innerHTML = '';
+
+                    const startIndex = (currentPage - 1) * PAGE_SIZE;
+                    const endIndex = startIndex + PAGE_SIZE;
+                    const casesToShow = currentCategory.cases.slice(startIndex, endIndex);
+
+                    casesToShow.forEach(caseItem => {
+                        const caseElement = document.createElement('div');
+                        caseElement.className = 'case-item';
+                        caseElement.onclick = () => navigateTo(`case-detail-${caseItem.id}`);
+
+                        const beforeAfterDiv = document.createElement('div');
+                        beforeAfterDiv.className = 'before-after';
+
+                        const beforeImg = document.createElement('img');
+                        beforeImg.src = caseItem.before_after_images.before;
+                        beforeImg.alt = '治疗前';
+
+                        const afterImg = document.createElement('img');
+                        afterImg.src = caseItem.before_after_images.after;
+                        afterImg.alt = '治疗后';
+
+                        beforeAfterDiv.appendChild(beforeImg);
+                        beforeAfterDiv.appendChild(afterImg);
+                        caseElement.appendChild(beforeAfterDiv);
+                        grid.appendChild(caseElement);
+                    });
+                }
+
+                // 初始化页面
+                document.addEventListener('DOMContentLoaded', () => {
+                    loadServiceCases();
+
+                    // 添加标签切换事件监听
+                    const tabs = document.querySelectorAll('.case-tab');
+                    tabs.forEach(tab => {
+                        tab.addEventListener('click', () => {
+                            tabs.forEach(t => t.classList.remove('active'));
+                            tab.classList.add('active');
+                            // 使用 data-category 属性值来查找对应类别
+                            const categoryName = tab.getAttribute('data-category');
+                            showCasesByCategory(categoryName);
+                        });
+                    });
+
+                    // 添加滚动加载更多
+                    window.addEventListener('scroll', () => {
+                        if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight - 100) {
+                            if (currentCategory &&
+                                currentPage * PAGE_SIZE < currentCategory.cases.length) {
+                                currentPage++;
+                                updateCasesGrid();
+                            }
+                        }
+                    });
+                });
+
+
+
+                // 更新服务案例网格显示
+                function updateCasesGrid() {
+                    const grid = document.getElementById('casesGrid');
+                    grid.innerHTML = '';
+
+                    const startIndex = (currentPage - 1) * PAGE_SIZE;
+                    const endIndex = startIndex + PAGE_SIZE;
+                    const casesToShow = currentCategory.cases.slice(startIndex, endIndex);
+
+                    casesToShow.forEach(caseItem => {
+                        const caseElement = document.createElement('div');
+                        caseElement.className = 'case-item';
+                        caseElement.onclick = () => showCaseDetail(caseItem);
+
+                        caseElement.innerHTML = `
+                            <div class="before-after">
+                                <img src="${caseItem.before_after_images.before}" alt="治疗前">
+                                <img src="${caseItem.before_after_images.after}" alt="治疗后">
+                            </div>
+                            <div class="case-info">
+                                <div class="case-title">${caseItem.title}</div>
+                                <div class="case-description">${caseItem.client_background.symptoms}</div>
+                            </div>
+                        `;
+
+                        grid.appendChild(caseElement);
+                    });
+                }
+
+                // 显示案例详情
+                function showCaseDetail(caseItem) {
+                    // 更新页面标题
+                    document.getElementById('caseDetailTitle').textContent = caseItem.title;
+
+                    // 更新图片
+                    document.getElementById('beforeImage').src = caseItem.before_after_images.before;
+                    document.getElementById('afterImage').src = caseItem.before_after_images.after;
+
+                    // 更新客户背景信息
+                    const clientInfo = document.getElementById('clientBackground');
+                    clientInfo.innerHTML = `
+        <p>年龄：${caseItem.client_background.age}岁</p>
+        <p>职业：${caseItem.client_background.occupation || '未提供'}</p>
+        <p>症状：${caseItem.client_background.symptoms.join('、')}</p>
+        ${caseItem.client_background.diagnosis ?
+                            `<p>诊断：${caseItem.client_background.diagnosis}</p>` : ''}
+    `;
+
+                    // 更新检查结果
+                    const examResults = document.getElementById('examinationResults');
+                    examResults.innerHTML = Object.entries(caseItem.examination_results)
+                        .map(([key, value]) => `<p>${key.replace(/_/g, ' ')}: ${value}</p>`)
+                        .join('');
+
+                    // 更新治疗方案
+                    const treatment = document.getElementById('treatmentProcess');
+                    if (caseItem.treatment_process.stages) {
+                        treatment.innerHTML = caseItem.treatment_process.stages
+                            .map(stage => `
+                <div class="treatment-stage">
+                    <h4>${stage.name}</h4>
+                    <ul>${stage.therapies.map(t => `<li>${t}</li>`).join('')}</ul>
+                </div>
+            `).join('');
+                    } else {
+                        treatment.innerHTML = `
+            <ul>${caseItem.treatment_process.therapies.map(t => `<li>${t}</li>`).join('')}</ul>
+        `;
+                    }
+
+                    // 更新治疗效果
+                    const outcomes = document.getElementById('outcomes');
+                    if (caseItem.outcomes) {
+                        outcomes.innerHTML = Object.entries(caseItem.outcomes)
+                            .map(([period, results]) => `
+                <div class="outcome-period">
+                    <h4>${period.replace(/_/g, ' ')}</h4>
+                    <ul>${Object.entries(results)
+                                    .map(([key, value]) => `<li>${key.replace(/_/g, ' ')}: ${value}</li>`)
+                                    .join('')}
+                    </ul>
+                </div>
+            `).join('');
+                    } else {
+                        outcomes.innerHTML = '<p>暂无详细效果数据</p>';
+                    }
+
+                    // 切换到详情页
+                    navigateTo('case-detail');
+                }
+
+
+
+
+                // 全局客户检测记录管理
+                const CustomerRecordsManager = {
+                    records: [
+                        {
+                            id: 1,
+                            name: '陈先生',
+                            time: new Date(Date.now() - 3 * 24 * 60 * 60 * 1000), // 3天前
+                            status: '已完成'
+                        },
+                        {
+                            id: 2,
+                            name: '李女士',
+                            time: new Date(Date.now() - 5 * 24 * 60 * 60 * 1000), // 5天前
+                            status: '已完成'
+                        },
+                        {
+                            id: 3,
+                            name: '王先生',
+                            time: new Date(Date.now() - 7 * 24 * 60 * 60 * 1000), // 1周前
+                            status: '已完成'
+                        }
+                        // ... 可以添加更多记录
+                    ],
+
+                    // 获取所有记录
+                    getAllRecords() {
+                        return this.records;
                     },
-                    "fatigue-care": {
-                        "title": "眼疲劳护理",
-                        "image": "images/service-projects/fatigue-care.jpg",
-                        "description": "针对长时间用眼导致的疲劳、干涩、酸胀等问题，采用热敷、按摩、营养精华导入等方式，缓解眼部疲劳，恢复眼部活力。",
-                        "process": [
-                            "热敷放松眼部",
-                            "专业眼部按摩",
-                            "营养精华导入",
-                            "冷敷舒缓"
-                        ],
-                        "target": "长期使用电子设备、熬夜、眼部疲劳感明显的人群。",
-                        "duration": "45分钟",
-                        "price": "¥199"
+
+                    // 获取最近的N条记录
+                    getRecentRecords(count = 5) {
+                        return this.records.slice(0, count);
                     },
-                    "aging-care": {
-                        "title": "眼衰退护理",
-                        "image": "images/service-projects/aging-care.jpg",
-                        "description": "针对眼部衰老问题，如眼袋、皱纹、松弛等，采用多肽精华、射频紧致等技术，提升眼部轮廓，延缓衰老迹象。",
-                        "process": [
-                            "清洁与眼部护理准备",
-                            "多肽精华导入",
-                            "射频紧致治疗",
-                            "修复面膜护理"
-                        ],
-                        "target": "35岁以上、眼部出现衰老迹象的人群。",
-                        "duration": "60分钟",
-                        "price": "¥499"
+
+                    // 添加新记录
+                    addRecord(record) {
+                        this.records.unshift(record);
+                        // 触发更新事件
+                        this.notifyUpdate();
                     },
-                    "sensitive-care": {
-                        "title": "眼敏感护理",
-                        "image": "images/service-projects/sensitive-care.jpg",
-                        "description": "针对敏感肌肤设计的温和护理方案，采用无刺激成分的舒缓精华，缓解眼部泛红、瘙痒、干燥等敏感问题，修复眼部屏障。",
-                        "process": [
-                            "温和清洁眼部",
-                            "舒缓精华导入",
-                            "冷敷镇静",
-                            "修复眼膜护理"
-                        ],
-                        "target": "眼部肌肤敏感、易过敏、干燥不适的人群。",
-                        "duration": "40分钟",
-                        "price": "¥249"
+
+                    // 更新监听器列表
+                    listeners: [],
+
+                    // 添加更新监听器
+                    addUpdateListener(callback) {
+                        this.listeners.push(callback);
+                    },
+
+                    // 通知所有监听器
+                    notifyUpdate() {
+                        this.listeners.forEach(callback => callback(this.records));
                     }
                 };
 
-                // 切换项目展示
-                function switchServiceProject(projectId) {
-                    // 更新按钮状态
-                    document.querySelectorAll('.category-btn').forEach(btn => {
-                        btn.classList.remove('active');
-                    });
-                    event.target.classList.add('active');
 
-                    // 获取项目数据
-                    const project = serviceProjects[projectId];
+                class CustomerCarousel {
+                    constructor(containerId) {
+                        this.containerId = containerId;
+                        this.currentIndex = 0;
+                        this.records = [];
+                        this.intervalId = null;
+                    }
 
-                    // 更新页面内容
-                    document.getElementById('service-project-image').src = project.image;
-                    document.getElementById('service-project-title').textContent = project.title;
-                    document.getElementById('service-project-desc').textContent = project.description;
+                    // 初始化轮播
+                    init() {
+                        // 确保DOM已加载
+                        if (!document.getElementById(this.containerId)) {
+                            console.error('Container element not found:', this.containerId);
+                            return;
+                        }
 
-                    // 更新服务流程
-                    const processList = document.getElementById('service-project-process');
-                    processList.innerHTML = project.process.map(step => `<li>${step}</li>`).join('');
+                        // 获取最近记录
+                        this.records = CustomerRecordsManager.getRecentRecords();
+                        if (this.records.length > 0) {
+                            // 开始轮播
+                            this.startCarousel();
+                            // 监听记录更新
+                            CustomerRecordsManager.addUpdateListener(() => {
+                                this.records = CustomerRecordsManager.getRecentRecords();
+                            });
+                        }
+                    }
 
-                    // 更新其他信息
-                    document.getElementById('service-project-target').textContent = project.target;
-                    document.getElementById('service-project-duration').textContent = project.duration;
-                    document.getElementById('service-project-price').textContent = project.price;
+                    // 更新显示内容
+                    updateDisplay() {
+                        if (this.records.length === 0) return;
+
+                        const container = document.getElementById(this.containerId);
+                        if (!container) return;
+
+                        const record = this.records[this.currentIndex];
+                        const nameElement = container.querySelector('.customer-name');
+                        const timeElement = container.querySelector('.customer-time');
+
+                        if (!nameElement || !timeElement) {
+                            console.error('Required elements not found in container');
+                            return;
+                        }
+
+                        // 添加淡入淡出效果
+                        container.style.opacity = 0;
+                        setTimeout(() => {
+                            nameElement.textContent = record.name;
+                            timeElement.textContent = this.formatTime(record.time);
+                            container.style.opacity = 1;
+                        }, 200);
+                    }
+
+                    // 格式化时间显示
+                    formatTime(date) {
+                        if (!(date instanceof Date)) {
+                            date = new Date(date);
+                        }
+                        const now = new Date();
+                        const diff = now - date;
+                        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+
+                        if (days === 0) return '(今天)';
+                        if (days === 1) return '(昨天)';
+                        if (days < 7) return `(${days}天前)`;
+                        if (days < 30) return `(${Math.floor(days / 7)}周前)`;
+                        return `(${Math.floor(days / 30)}月前)`;
+                    }
+
+                    // 开始轮播
+                    startCarousel() {
+                        if (this.intervalId) {
+                            this.stopCarousel();
+                        }
+
+                        this.updateDisplay(); // 立即显示第一条
+
+                        this.intervalId = setInterval(() => {
+                            this.currentIndex = (this.currentIndex + 1) % this.records.length;
+                            this.updateDisplay();
+                        }, 3000); // 每3秒切换一次
+                    }
+
+                    // 停止轮播
+                    stopCarousel() {
+                        if (this.intervalId) {
+                            clearInterval(this.intervalId);
+                            this.intervalId = null;
+                        }
+                    }
                 }
 
-                // 切换案例分类
-                function switchCaseCategory(category) {
-                    // 更新按钮状态
-                    document.querySelectorAll('.category-btn').forEach(btn => {
-                        btn.classList.remove('active');
-                    });
-                    event.target.classList.add('active');
-
-                    // 隐藏所有案例网格
-                    document.querySelectorAll('.case-grid').forEach(grid => {
-                        grid.style.display = 'none';
-                    });
-
-                    // 显示选中的案例网格
-                    document.getElementById(`${category}-cases`).style.display = 'grid';
-                }
 
             </script>
         </div>
-
 
         <!-- 模态框 -->
         <div id="modal" class="modal">

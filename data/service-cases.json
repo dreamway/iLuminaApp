@@ -6,10 +6,10 @@
       "cases": [
         {
           "id": 1,
-          "title": "干眼症综合改善方案",
+          "title": "眼疲劳护理案例1",
           "before_after_images": {
-            "before": "images/service_case/case1_before.jpg",
-            "after": "images/service_case/case1_after.jpg"
+            "before": "images/service-cases/eye_fatigue/case1_before.jpg",
+            "after": "images/service-cases/eye_fatigue/case1_after.jpg"
           },
           "client_background": {
             "name": "张女士",
@@ -65,7 +65,10 @@
         {
           "id": 2,
           "title": "职场办公室视疲劳改善方案",
-          "before_after_images": "案例1护理前后对比图",
+          "before_after_images": {
+            "before": "images/service-cases/eye_fatigue/case2_before.jpg",
+            "after": "images/service-cases/eye_fatigue/case2_after.jpg"
+          },
           "client_background": {
             "name": "李先生",
             "age": 32,
@@ -91,7 +94,10 @@
         {
           "id": 3,
           "title": "学生电子设备视疲劳恢复方案",
-          "before_after_images": "案例2护理前后对比图",
+          "before_after_images": {
+            "before": "images/service-cases/eye_fatigue/case3_before.jpg",
+            "after": "images/service-cases/eye_fatigue/case3_after.jpg"
+          },
           "client_background": {
             "name": "张同学",
             "age": 15,
@@ -116,7 +122,10 @@
         {
           "id": 4,
           "title": "中年干眼症改善方案",
-          "before_after_images": "案例3护理前后对比图",
+          "before_after_images": {
+            "before": "images/service-cases/eye_fatigue/case4_before.jpg",
+            "after": "images/service-cases/eye_fatigue/case4_after.jpg"
+          },
           "client_background": {
             "name": "王女士",
             "age": 50,
@@ -139,7 +148,10 @@
         {
           "id": 5,
           "title": "程序员熬夜视疲劳康复方案",
-          "before_after_images": "案例4护理前后对比图",
+          "before_after_images": {
+            "before": "images/service-cases/eye_fatigue/case5_before.jpg",
+            "after": "images/service-cases/eye_fatigue/case5_after.jpg"
+          },
           "client_background": {
             "name": "张先生",
             "occupation": "程序员",
@@ -163,7 +175,10 @@
         {
           "id": 6,
           "title": "隐形眼镜用户眼部修复方案",
-          "before_after_images": "案例5护理前后对比图",
+          "before_after_images": {
+            "before": "images/service-cases/eye_fatigue/case6_before.jpg",
+            "after": "images/service-cases/eye_fatigue/case6_after.jpg"
+          },
           "client_background": {
             "name": "林女士",
             "occupation": "上班族",
@@ -188,7 +203,10 @@
         {
           "id": 7,
           "title": "青少年视力保护方案",
-          "before_after_images": "案例6护理前后对比图",
+          "before_after_images": {
+            "before": "images/service-cases/eye_fatigue/case7_before.jpg",
+            "after": "images/service-cases/eye_fatigue/case7_after.jpg"
+          },
           "client_background": {
             "name": "王同学",
             "occupation": "中学生",
@@ -214,7 +232,10 @@
         {
           "id": 8,
           "title": "中年熬夜视疲劳改善方案",
-          "before_after_images": "案例7护理前后对比图",
+          "before_after_images": {
+            "before": "images/service-cases/eye_fatigue/case8_before.jpg",
+            "after": "images/service-cases/eye_fatigue/case8_after.jpg"
+          },
           "client_background": {
             "name": "陈先生",
             "age": "中年",
@@ -238,7 +259,10 @@
         {
           "id": 9,
           "title": "电子产品用户综合护理方案",
-          "before_after_images": "案例8护理前后对比图",
+          "before_after_images": {
+            "before": "images/service-cases/eye_fatigue/case9_before.jpg",
+            "after": "images/service-cases/eye_fatigue/case9_after.jpg"
+          },
           "client_background": {
             "name": "刘先生",
             "age": "年轻",
@@ -264,7 +288,10 @@
         {
           "id": 10,
           "title": "老年人眼部护理方案",
-          "before_after_images": "案例9护理前后对比图",
+          "before_after_images": {
+            "before": "images/service-cases/eye_fatigue/case10_before.jpg",
+            "after": "images/service-cases/eye_fatigue/case10_after.jpg"
+          },
           "client_background": {
             "name": "张老先生",
             "age": "退休老人",
@@ -289,7 +316,10 @@
         {
           "id": 11,
           "title": "职业司机视疲劳缓解方案",
-          "before_after_images": "案例10护理前后对比图",
+          "before_after_images": {
+            "before": "images/service-cases/eye_fatigue/case11_before.jpg",
+            "after": "images/service-cases/eye_fatigue/case11_after.jpg"
+          },
           "client_background": {
             "name": "李先生",
             "occupation": "司机",
@@ -321,8 +351,8 @@
           "id": 1,
           "title": "眼袋消除年轻化方案",
           "before_after_images": {
-            "before": "images/service_case/case2_before.jpg",
-            "after": "images/service_case/case2_after.jpg"
+            "before": "images/service-cases/eye_decline/case1_before.jpg",
+            "after": "images/service-cases/eye_decline/case1_after.jpg"
           },
           "client_background": {
             "name": "陈先生",
@@ -361,7 +391,10 @@
         {
           "id": 2,
           "title": "老花眼矫正方案",
-          "before_after_images": "案例1护理前后对比图",
+          "before_after_images": {
+            "before": "images/service-cases/eye_decline/case2_before.jpg",
+            "after": "images/service-cases/eye_decline/case2_after.jpg"
+          },
           "client_background": {
             "name": "王老师",
             "age": 60,
@@ -385,7 +418,10 @@
         {
           "id": 3,
           "title": "黄斑变性护理方案",
-          "before_after_images": "案例2护理前后对比图",
+          "before_after_images": {
+            "before": "images/service-cases/eye_decline/case3_before.jpg",
+            "after": "images/service-cases/eye_decline/case3_after.jpg"
+          },
           "client_background": {
             "name": "李先生",
             "age": 55,
@@ -410,7 +446,10 @@
         {
           "id": 4,
           "title": "糖尿病视网膜病变管理方案",
-          "before_after_images": "案例3护理前后对比图",
+          "before_after_images": {
+            "before": "images/service-cases/eye_decline/case4_before.jpg",
+            "after": "images/service-cases/eye_decline/case4_after.jpg"
+          },
           "client_background": {
             "name": "张老先生",
             "age": 70,
@@ -435,7 +474,10 @@
         {
           "id": 5,
           "title": "角膜退行性变护理方案",
-          "before_after_images": "案例4护理前后对比图",
+          "before_after_images": {
+            "before": "images/service-cases/eye_decline/case5_before.jpg",
+            "after": "images/service-cases/eye_decline/case5_after.jpg"
+          },
           "client_background": {
             "name": "陈先生",
             "age": 65,
@@ -461,7 +503,10 @@
         {
           "id": 6,
           "title": "视网膜血管阻塞管理方案",
-          "before_after_images": "案例5护理前后对比图",
+          "before_after_images": {
+            "before": "images/service-cases/eye_decline/case6_before.jpg",
+            "after": "images/service-cases/eye_decline/case6_after.jpg"
+          },
           "client_background": {
             "name": "王先生",
             "age": 60,
@@ -487,7 +532,10 @@
         {
           "id": 7,
           "title": "晶状体半脱位护理方案",
-          "before_after_images": "案例6护理前后对比图",
+          "before_after_images": {
+            "before": "images/service-cases/eye_decline/case7_before.jpg",
+            "after": "images/service-cases/eye_decline/case7_after.jpg"
+          },
           "client_background": {
             "name": "张女士",
             "age": 58,
@@ -511,7 +559,10 @@
         {
           "id": 8,
           "title": "白内障手术康复方案",
-          "before_after_images": "案例7护理前后对比图",
+          "before_after_images": {
+            "before": "images/service-cases/eye_decline/case8_before.jpg",
+            "after": "images/service-cases/eye_decline/case8_after.jpg"
+          },
           "client_background": {
             "name": "李老先生",
             "age": 75,
@@ -535,7 +586,10 @@
         {
           "id": 9,
           "title": "青光眼急性护理方案",
-          "before_after_images": "案例8护理前后对比图",
+          "before_after_images": {
+            "before": "images/service-cases/eye_decline/case9_before.jpg",
+            "after": "images/service-cases/eye_decline/case9_after.jpg"
+          },
           "client_background": {
             "name": "王老先生",
             "age": 62,
@@ -560,7 +614,10 @@
         {
           "id": 10,
           "title": "视网膜色素变性护理方案",
-          "before_after_images": "案例9护理前后对比图",
+          "before_after_images": {
+            "before": "images/service-cases/eye_decline/case10_before.jpg",
+            "after": "images/service-cases/eye_decline/case10_after.jpg"
+          },
           "client_background": {
             "name": "张老先生",
             "age": 68,
@@ -585,7 +642,10 @@
         {
           "id": 11,
           "title": "角膜变性晚期护理方案",
-          "before_after_images": "案例10护理前后对比图",
+          "before_after_images": {
+            "before": "images/service-cases/eye_decline/case11_before.jpg",
+            "after": "images/service-cases/eye_decline/case11_after.jpg"
+          },
           "client_background": {
             "name": "陈老先生",
             "age": 60,
@@ -616,7 +676,10 @@
         {
           "id": 1,
           "title": "办公室干眼敏感综合方案",
-          "before_after_images": "案例1护理前后对比图",
+          "before_after_images": {
+            "before": "images/service-cases/eye_sensitivity/case1_before.jpg",
+            "after": "images/service-cases/eye_sensitivity/case1_after.jpg"
+          },
           "client_background": {
             "name": "赵女士",
             "age": 30,
@@ -641,7 +704,10 @@
         {
           "id": 2,
           "title": "学生光敏感护理方案",
-          "before_after_images": "案例2护理前后对比图",
+          "before_after_images": {
+            "before": "images/service-cases/eye_sensitivity/case2_before.jpg",
+            "after": "images/service-cases/eye_sensitivity/case2_after.jpg"
+          },
           "client_background": {
             "name": "杨同学",
             "age": 25,
@@ -668,7 +734,10 @@
         {
           "id": 3,
           "title": "过敏性结膜炎护理方案",
-          "before_after_images": "案例3护理前后对比图",
+          "before_after_images": {
+            "before": "images/service-cases/eye_sensitivity/case3_before.jpg",
+            "after": "images/service-cases/eye_sensitivity/case3_after.jpg"
+          },
           "client_background": {
             "name": "王女士",
             "age": 40,
@@ -694,7 +763,10 @@
         {
           "id": 4,
           "title": "程序员干眼敏感综合方案",
-          "before_after_images": "案例4护理前后对比图",
+          "before_after_images": {
+            "before": "images/service-cases/eye_sensitivity/case4_before.jpg",
+            "after": "images/service-cases/eye_sensitivity/case4_after.jpg"
+          },
           "client_background": {
             "name": "张先生",
             "age": 35,
@@ -721,7 +793,10 @@
         {
           "id": 5,
           "title": "设计师光敏感护理方案",
-          "before_after_images": "案例5护理前后对比图",
+          "before_after_images": {
+            "before": "images/service-cases/eye_sensitivity/case5_before.jpg",
+            "after": "images/service-cases/eye_sensitivity/case5_after.jpg"
+          },
           "client_background": {
             "name": "李小姐",
             "age": 28,
@@ -747,7 +822,10 @@
         {
           "id": 6,
           "title": "教师粉尘敏感护理方案",
-          "before_after_images": "案例6护理前后对比图",
+          "before_after_images": {
+            "before": "images/service-cases/eye_sensitivity/case6_before.jpg",
+            "after": "images/service-cases/eye_sensitivity/case6_after.jpg"
+          },
           "client_background": {
             "name": "周老师",
             "age": 32,
@@ -773,7 +851,10 @@
         {
           "id": 7,
           "title": "化妆品过敏护理方案",
-          "before_after_images": "案例7护理前后对比图",
+          "before_after_images": {
+            "before": "images/service-cases/eye_sensitivity/case7_before.jpg",
+            "after": "images/service-cases/eye_sensitivity/case7_after.jpg"
+          },
           "client_background": {
             "name": "刘女士",
             "age": 45,
@@ -799,7 +880,10 @@
         {
           "id": 8,
           "title": "自由职业者光敏感护理方案",
-          "before_after_images": "案例8护理前后对比图",
+          "before_after_images": {
+            "before": "images/service-cases/eye_sensitivity/case8_before.jpg",
+            "after": "images/service-cases/eye_sensitivity/case8_after.jpg"
+          },
           "client_background": {
             "name": "吴先生",
             "age": 30,
@@ -826,7 +910,10 @@
         {
           "id": 9,
           "title": "中年风敏感护理方案",
-          "before_after_images": "案例9护理前后对比图",
+          "before_after_images": {
+            "before": "images/service-cases/eye_sensitivity/case9_before.jpg",
+            "after": "images/service-cases/eye_sensitivity/case9_after.jpg"
+          },
           "client_background": {
             "name": "赵先生",
             "age": 50,
@@ -851,7 +938,10 @@
         {
           "id": 10,
           "title": "大学生眼敏感护理方案",
-          "before_after_images": "案例10护理前后对比图",
+          "before_after_images": {
+            "before": "images/service-cases/eye_sensitivity/case10_before.jpg",
+            "after": "images/service-cases/eye_sensitivity/case10_after.jpg"
+          },
           "client_background": {
             "name": "林同学",
             "age": 22,
@@ -885,8 +975,8 @@
           "id": 1,
           "title": "混合型黑眼圈综合干预方案",
           "before_after_images": {
-            "before": "images/service_case/case3_before.jpg",
-            "after": "images/service_case/case3_after.jpg"
+            "before": "images/service-cases/comprehensive/case1_before.jpg",
+            "after": "images/service-cases/comprehensive/case1_after.jpg"
           },
           "client_background": {
             "name": "林女士",
@@ -937,7 +1027,10 @@
         {
           "id": 2,
           "title": "中年男性眼部综合护理方案",
-          "before_after_images": "案例1护理前后对比图",
+          "before_after_images": {
+            "before": "images/service-cases/comprehensive/case2_before.jpg",
+            "after": "images/service-cases/comprehensive/case2_after.jpg"
+          },
           "client_background": {
             "name": "张先生",
             "age": 45,
@@ -966,7 +1059,10 @@
         {
           "id": 3,
           "title": "年轻女性电子设备用户综合护理方案",
-          "before_after_images": "案例2护理前后对比图",
+          "before_after_images": {
+            "before": "images/service-cases/comprehensive/case3_before.jpg",
+            "after": "images/service-cases/comprehensive/case3_after.jpg"
+          },
           "client_background": {
             "name": "李女士",
             "age": 30,
@@ -991,7 +1087,10 @@
         {
           "id": 4,
           "title": "老年综合眼部护理方案",
-          "before_after_images": "案例3护理前后对比图",
+          "before_after_images": {
+            "before": "images/service-cases/comprehensive/case4_before.jpg",
+            "after": "images/service-cases/comprehensive/case4_after.jpg"
+          },
           "client_background": {
             "name": "王女士",
             "age": 50,
@@ -1018,7 +1117,10 @@
         {
           "id": 5,
           "title": "程序员眼部综合健康方案",
-          "before_after_images": "案例4护理前后对比图",
+          "before_after_images": {
+            "before": "images/service-cases/comprehensive/case5_before.jpg",
+            "after": "images/service-cases/comprehensive/case5_after.jpg"
+          },
           "client_background": {
             "name": "李先生",
             "age": 35,
@@ -1046,7 +1148,10 @@
         {
           "id": 6,
           "title": "设计师眼部综合保养方案",
-          "before_after_images": "案例5护理前后对比图",
+          "before_after_images": {
+            "before": "images/service-cases/comprehensive/case6_before.jpg",
+            "after": "images/service-cases/comprehensive/case6_after.jpg"
+          },
           "client_background": {
             "name": "王小姐",
             "age": 28,
@@ -1072,7 +1177,10 @@
         {
           "id": 7,
           "title": "中年女性眼部综合抗衰方案",
-          "before_after_images": "案例6护理前后对比图",
+          "before_after_images": {
+            "before": "images/service-cases/comprehensive/case7_before.jpg",
+            "after": "images/service-cases/comprehensive/case7_after.jpg"
+          },
           "client_background": {
             "name": "张女士",
             "age": 40,
@@ -1100,7 +1208,10 @@
         {
           "id": 8,
           "title": "上班族眼部综合呵护方案",
-          "before_after_images": "案例7护理前后对比图",
+          "before_after_images": {
+            "before": "images/service-cases/comprehensive/case8_before.jpg",
+            "after": "images/service-cases/comprehensive/case8_after.jpg"
+          },
           "client_background": {
             "name": "陈女士",
             "age": 32,
@@ -1127,7 +1238,10 @@
         {
           "id": 9,
           "title": "中老年眼部综合护理方案",
-          "before_after_images": "案例8护理前后对比图",
+          "before_after_images": {
+            "before": "images/service-cases/comprehensive/case9_before.jpg",
+            "after": "images/service-cases/comprehensive/case9_after.jpg"
+          },
           "client_background": {
             "name": "赵先生",
             "age": 55,
@@ -1156,7 +1270,10 @@
         {
           "id": 10,
           "title": "学生眼部综合保护方案",
-          "before_after_images": "案例9护理前后对比图",
+          "before_after_images": {
+            "before": "images/service-cases/comprehensive/case10_before.jpg",
+            "after": "images/service-cases/comprehensive/case10_after.jpg"
+          },
           "client_background": {
             "name": "刘同学",
             "age": 25,
@@ -1182,7 +1299,10 @@
         {
           "id": 11,
           "title": "中年女性眼部综合修复方案",
-          "before_after_images": "案例10护理前后对比图",
+          "before_after_images": {
+            "before": "images/service-cases/comprehensive/case11_before.jpg",
+            "after": "images/service-cases/comprehensive/case11_after.jpg"
+          },
           "client_background": {
             "name": "孙女士",
             "age": 42,
