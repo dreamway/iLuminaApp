@@ -2992,6 +2992,165 @@
             min-width: 60px;
             /* 防止切换时出现跳动 */
         }
+
+
+        /* 客户登录页面样式 */
+        .login-form {
+            padding: 20px;
+            margin-top: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #333;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 12px;
+            font-size: 16px;
+            border: none;
+            border-radius: 8px;
+            background-color: rgba(53, 166, 156, 0.1);
+        }
+
+        .form-input::placeholder {
+            color: #999;
+        }
+
+        .form-actions {
+            display: flex;
+            gap: 20px;
+            margin-top: 40px;
+            justify-content: center;
+        }
+
+        .action-button {
+            padding: 12px 40px;
+            border: none;
+            border-radius: 24px;
+            background-color: rgba(53, 166, 156, 0.1);
+            color: #333;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .action-button:hover {
+            background-color: rgba(53, 166, 156, 0.2);
+        }
+
+
+        .phone-input-container {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .phone-input-box {
+            width: auto;
+            padding: 12px;
+            font-size: 16px;
+            border: none;
+            border-radius: 8px;
+            background-color: rgba(53, 166, 156, 0.1);
+            text-align: center;
+            letter-spacing: 4px;
+        }
+
+        .phone-input-box:first-child {
+            width: 60px;
+            /* 适应3位数字 */
+        }
+
+        .phone-input-box:last-child {
+            width: 80px;
+            /* 适应4位数字 */
+        }
+
+        .phone-placeholder {
+            display: flex;
+            gap: 4px;
+        }
+
+        .phone-placeholder span {
+            width: 20px;
+            height: 32px;
+            background-color: #E0E0E0;
+            border-radius: 4px;
+        }
+
+        .questionnaire-container {
+            padding: 16px;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            max-height: calc(100vh - 140px);
+            overflow-y: auto;
+        }
+
+        .question-card {
+            border-radius: 12px;
+            padding: 16px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .question-title {
+            font-size: 16px;
+            font-weight: 500;
+            margin-bottom: 12px;
+        }
+
+        .question-options {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            margin-bottom: 12px;
+        }
+
+        .option-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px;
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.8);
+            cursor: pointer;
+        }
+
+        .option-radio {
+            width: 20px;
+            height: 20px;
+            border: 2px solid #666;
+            border-radius: 50%;
+            position: relative;
+        }
+
+        .option-item.selected .option-radio::after {
+            content: '';
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            background: #35A69C;
+            border-radius: 50%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .option-label {
+            flex: 1;
+        }
+
+        .question-hint {
+            font-size: 12px;
+            color: #666;
+        }
     </style>
 </head>
 
@@ -3757,8 +3916,8 @@
                 <div class="recent-customer-bar">
                     <div class="recent-customer-info" id="recentCustomerInfo">
                         <span class="label">最近检测客户：</span>
-                        <span class="customer-name" id="customerName"></span>
-                        <span class="customer-time" id="customerTime"></span>
+                        <span class="customer-name" id="recentCustomerName"></span>
+                        <span class="customer-time" id="recentCustomerTime"></span>
                         <!-- <span class="customer-status">——向上滚动播放</span> -->
                     </div>
                 </div>
@@ -3805,6 +3964,54 @@
                 </div>
             </div>
 
+
+            <!-- 客户登录/注册页面 -->
+            <div class="page" id="customer-login-page">
+                <!-- 顶部导航 -->
+                <div class="page-header">
+                    <div class="back-button" onclick="navigateTo('detection-page')">
+                        <span class="material-icons">arrow_back</span>
+                        <span>返回</span>
+                    </div>
+                </div>
+
+                <!-- 登录表单 -->
+                <div class="login-form">
+                    <div class="form-group">
+                        <label>客户姓名：</label>
+                        <input type="text" id="customerName" placeholder="(输入姓氏)" class="form-input">
+                    </div>
+
+                    <!-- 修改登录表单的电话输入部分 -->
+                    <div class="form-group">
+                        <label>客户电话：</label>
+                        <div class="phone-input-container">
+                            <!-- 前3位 -->
+                            <input type="text" id="phonePrefix" class="phone-input-box" maxlength="3"
+                                onkeyup="handlePhoneInput(this, 'phoneSuffix')"
+                                oninput="this.value = this.value.replace(/[^0-9]/g, '')">
+
+                            <!-- 中间4位占位框 -->
+                            <div class="phone-placeholder">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                            </div>
+
+                            <!-- 后4位 -->
+                            <input type="text" id="phoneSuffix" class="phone-input-box" maxlength="4"
+                                onkeyup="handlePhoneInput(this, null)"
+                                oninput="this.value = this.value.replace(/[^0-9]/g, '')">
+                        </div>
+                    </div>
+
+                    <div class="form-actions">
+                        <button class="action-button" onclick="handleCustomerLogin()">登录</button>
+                        <button class="action-button" onclick="handleCustomerRegister()">新建客户</button>
+                    </div>
+                </div>
+            </div>
 
 
             <!-- 客户页面 -->
@@ -4204,185 +4411,13 @@
                     <div class="flow-progress">2/4</div>
                 </div>
 
-                <!-- 问题1 -->
-                <div class="question-card" id="question-1">
-                    <div class="question-title">问题1: 眼睛异物感情况（进沙子）</div>
-                    <div class="question-options">
-                        <div class="option-item" onclick="selectOption(this)">
-                            <div class="option-radio"></div>
-                            <div class="option-label">有</div>
-                        </div>
-                        <div class="option-item" onclick="selectOption(this)">
-                            <div class="option-radio"></div>
-                            <div class="option-label">一般，偶尔有这种感觉</div>
-                        </div>
-                        <div class="option-item" onclick="selectOption(this)">
-                            <div class="option-radio"></div>
-                            <div class="option-label">无</div>
-                        </div>
-                    </div>
-                    <div class="question-hint">此题用于评估重度/中度/轻度干眼</div>
-                </div>
-
-                <!-- 问题2 -->
-                <div class="question-card" id="question-2" style="display: none;">
-                    <div class="question-title">问题2: 眼睛不适感与劳累感情况（看书/看电视时）</div>
-                    <div class="question-options">
-                        <div class="option-item" onclick="selectOption(this)">
-                            <div class="option-radio"></div>
-                            <div class="option-label">有</div>
-                        </div>
-                        <div class="option-item" onclick="selectOption(this)">
-                            <div class="option-radio"></div>
-                            <div class="option-label">一般，偶尔有这种感觉</div>
-                        </div>
-                        <div class="option-item" onclick="selectOption(this)">
-                            <div class="option-radio"></div>
-                            <div class="option-label">无</div>
-                        </div>
-                    </div>
-                    <div class="question-hint">此题用于评估重度/中度/轻度视疲劳</div>
-                </div>
-
-                <!-- 问题3 -->
-                <div class="question-card" id="question-3" style="display: none;">
-                    <div class="question-title">问题3: 每日看手机/电视的时长</div>
-                    <div class="question-options">
-                        <div class="option-item" onclick="selectOption(this)">
-                            <div class="option-radio"></div>
-                            <div class="option-label">＞6h</div>
-                        </div>
-                        <div class="option-item" onclick="selectOption(this)">
-                            <div class="option-radio"></div>
-                            <div class="option-label">2~6h</div>
-                        </div>
-                        <div class="option-item" onclick="selectOption(this)">
-                            <div class="option-radio"></div>
-                            <div class="option-label">＜2h</div>
-                        </div>
-                    </div>
-                    <div class="question-hint">此题用于评估视疲劳程度和眨眼频率</div>
-                </div>
-
-                <!-- 问题4 -->
-                <div class="question-card" id="question-4" style="display: none;">
-                    <div class="question-title">问题4: 纹眼线情况</div>
-                    <div class="question-options">
-                        <div class="option-item" onclick="selectOption(this)">
-                            <div class="option-radio"></div>
-                            <div class="option-label">纹过</div>
-                        </div>
-                        <div class="option-item" onclick="selectOption(this)">
-                            <div class="option-radio"></div>
-                            <div class="option-label">没纹过</div>
-                        </div>
-                    </div>
-                    <div class="question-hint">此题用于评估眼睑堵塞程度</div>
-                </div>
-
-                <!-- 问题5 -->
-                <div class="question-card" id="question-5" style="display: none;">
-                    <div class="question-title">问题5: 种植假睫毛情况</div>
-                    <div class="question-options">
-                        <div class="option-item" onclick="selectOption(this)">
-                            <div class="option-radio"></div>
-                            <div class="option-label">种植过</div>
-                        </div>
-                        <div class="option-item" onclick="selectOption(this)">
-                            <div class="option-radio"></div>
-                            <div class="option-label">没种植过</div>
-                        </div>
-                    </div>
-                    <div class="question-hint">此题用于评估眼睑堵塞程度</div>
-                </div>
-
-                <!-- 问题6 -->
-                <div class="question-card" id="question-6" style="display: none;">
-                    <div class="question-title">问题6: 眼皮松弛程度</div>
-                    <div class="question-options">
-                        <div class="option-item" onclick="selectOption(this)">
-                            <div class="option-radio"></div>
-                            <div class="option-label">严重</div>
-                        </div>
-                        <div class="option-item" onclick="selectOption(this)">
-                            <div class="option-radio"></div>
-                            <div class="option-label">轻微</div>
-                        </div>
-                        <div class="option-item" onclick="selectOption(this)">
-                            <div class="option-radio"></div>
-                            <div class="option-label">良好</div>
-                        </div>
-                    </div>
-                    <div class="question-hint">此题用于评估眼皮松弛程度</div>
-                </div>
-
-                <!-- 问题7 -->
-                <div class="question-card" id="question-7" style="display: none;">
-                    <div class="question-title">问题7: 眼窝凹陷情况</div>
-                    <div class="question-options">
-                        <div class="option-item" onclick="selectOption(this)">
-                            <div class="option-radio"></div>
-                            <div class="option-label">严重</div>
-                        </div>
-                        <div class="option-item" onclick="selectOption(this)">
-                            <div class="option-radio"></div>
-                            <div class="option-label">轻微</div>
-                        </div>
-                        <div class="option-item" onclick="selectOption(this)">
-                            <div class="option-radio"></div>
-                            <div class="option-label">无</div>
-                        </div>
-                    </div>
-                    <div class="question-hint">此题用于评估眼窝凹陷程度</div>
-                </div>
-
-                <!-- 问题8 -->
-                <div class="question-card" id="question-8" style="display: none;">
-                    <div class="question-title">问题8: 眼袋情况</div>
-                    <div class="question-options">
-                        <div class="option-item" onclick="selectOption(this)">
-                            <div class="option-radio"></div>
-                            <div class="option-label">眼袋明显且面积大</div>
-                        </div>
-                        <div class="option-item" onclick="selectOption(this)">
-                            <div class="option-radio"></div>
-                            <div class="option-label">眼袋明显但面积不大</div>
-                        </div>
-                        <div class="option-item" onclick="selectOption(this)">
-                            <div class="option-radio"></div>
-                            <div class="option-label">轻微有点眼袋</div>
-                        </div>
-                        <div class="option-item" onclick="selectOption(this)">
-                            <div class="option-radio"></div>
-                            <div class="option-label">无</div>
-                        </div>
-                    </div>
-                    <div class="question-hint">此题用于评估眼袋程度</div>
-                </div>
-
-                <!-- 问题9 -->
-                <div class="question-card" id="question-9" style="display: none;">
-                    <div class="question-title">问题9: 眼压情况</div>
-                    <div class="question-options">
-                        <div class="option-item" onclick="selectOption(this)">
-                            <div class="option-radio"></div>
-                            <div class="option-label">明显硬、鼓胀（硬度与额头一样）</div>
-                        </div>
-                        <div class="option-item" onclick="selectOption(this)">
-                            <div class="option-radio"></div>
-                            <div class="option-label">有点硬、鼓胀（介于两者之间）</div>
-                        </div>
-                        <div class="option-item" onclick="selectOption(this)">
-                            <div class="option-radio"></div>
-                            <div class="option-label">有弹性、略微鼓胀（硬度与鼻尖一样）</div>
-                        </div>
-                    </div>
-                    <div class="question-hint">此题用于评估眼压水平</div>
+                <!-- 问卷列表容器 -->
+                <div class="questionnaire-container" id="questionnaireList">
+                    <!-- 问题列表将通过 JavaScript 动态生成 -->
                 </div>
 
                 <div class="flow-actions">
-                    <button class="button secondary" onclick="previousQuestion()">上一题</button>
-                    <!-- <button class="button" onclick="nextQuestion()">下一题</button> -->
+                    <button class="button" onclick="submitQuestionnaire()">提交问卷</button>
                 </div>
             </div>
 
@@ -4394,8 +4429,7 @@
                 </div>
 
                 <div class="camera-container">
-                    <img src="https://via.placeholder.com/1920x1080/000000/FFFFFF?text=相机预览" alt="相机预览"
-                        class="camera-preview">
+                    <img src="" alt="相机预览" class="camera-preview">
                     <div class="camera-guide"></div>
                     <div class="camera-instruction">
                         请引导客户:
@@ -4464,8 +4498,7 @@
 
                 <div class="detail-grid">
                     <div class="eye-image-container">
-                        <img src="https://via.placeholder.com/400x300/FFFFFF/2196F3?text=眼部图像" alt="眼部图像"
-                            class="eye-image">
+                        <img src="" alt="眼部图像" class="eye-image">
                     </div>
                     <div class="analysis-container">
                         <div class="analysis-title">问题分析</div>
@@ -4561,11 +4594,11 @@
                             <div class="analysis-content">
                                 <div class="analysis-images">
                                     <div class="image-compare">
-                                        <img src="https://via.placeholder.com/400x266" alt="原始图像">
+                                        <img src="" alt="原始图像">
                                         <div class="image-label">原始图像</div>
                                     </div>
                                     <div class="image-compare">
-                                        <img src="https://via.placeholder.com/400x266" alt="AI标注">
+                                        <img src="" alt="AI标注">
                                         <div class="image-label">AI标注</div>
                                     </div>
                                 </div>
@@ -5112,10 +5145,6 @@
                 <div class="section-title">门店业绩</div>
                 <div class="stats-grid">
                     <div class="stat-card">
-                        <div class="stat-title">本月营业额</div>
-                        <div class="stat-value">¥128,580</div>
-                    </div>
-                    <div class="stat-card">
                         <div class="stat-title">本月客流量</div>
                         <div class="stat-value">325</div>
                     </div>
@@ -5123,25 +5152,16 @@
                         <div class="stat-title">本月新客</div>
                         <div class="stat-value">86</div>
                     </div>
-                    <div class="stat-card">
-                        <div class="stat-title">客单价</div>
-                        <div class="stat-value">¥395</div>
-                    </div>
                 </div>
 
                 <div class="section-title">今日数据</div>
                 <div class="stats-grid">
-                    <div class="stat-card">
-                        <div class="stat-title">今日营业额</div>
-                        <div class="stat-value">¥12,580</div>
-                    </div>
                     <div class="stat-card">
                         <div class="stat-title">今日客流</div>
                         <div class="stat-value">35</div>
                     </div>
                 </div>
 
-                <div class="section-title">功能中心</div>
                 <div class="function-grid">
                     <div class="function-item" onclick="navigateTo('store-management')">
                         <div class="function-icon">
@@ -5172,12 +5192,6 @@
                             <span class="material-icons">settings</span>
                         </div>
                         <div class="function-name">个人设置</div>
-                    </div>
-                    <div class="function-item disabled" data-tooltip="暂不实现">
-                        <div class="function-icon">
-                            <span class="material-icons">help</span>
-                        </div>
-                        <div class="function-name">帮助中心</div>
                     </div>
                 </div>
 
@@ -5513,8 +5527,24 @@
             </div>
 
             <script>
+                // 添加导航安全检查
+                const VALID_PAGES = [
+                    'home-page',
+                    'detection-page',
+                    'new-customer',
+                    'customer-login-page',
+                    // ... 其他有效的页面ID
+                ];
+
                 // 页面导航
                 function navigateTo(pageId) {
+                    // 检查页面是否存在
+                    if (!checkPageExists(pageId)) {
+                        console.error(`Attempted to navigate to non-existent page: ${pageId}`);
+                        showToast('系统错误：页面不存在');
+                        return;
+                    }
+
                     // 如果未登录且尝试访问需要登录的页面，则跳转到登录页
                     if (!currentUser && pageId !== 'login-page') {
                         pageId = 'login-page';
@@ -5557,16 +5587,183 @@
                 }
 
                 // 开始检测流程
-                function startDetection(type) {
-                    // 设置当前检测的患者数据
-                    window.currentPatient = getPatientData();
+                // 修改开始检测函数
+                function startDetection() {
+                    // 直接跳转到客户登录页面
+                    navigateTo('customer-login-page');
+                }
 
-                    if (type === 'new') {
-                        navigateTo('detection-customer');
-                    } else {
-                        navigateTo('detection-questionnaire');
+                // 修改 handleCustomerLogin 函数
+                async function handleCustomerLogin() {
+                    const nameInput = document.getElementById('customerName');
+                    const phonePrefix = document.getElementById('phonePrefix');
+                    const phoneSuffix = document.getElementById('phoneSuffix');
+
+                    if (!nameInput || !phonePrefix || !phoneSuffix) {
+                        console.error('Required form elements not found');
+                        return;
+                    }
+
+                    const name = nameInput.value.trim();
+                    const prefix = phonePrefix.value.trim();
+                    const suffix = phoneSuffix.value.trim();
+
+                    if (!validateInput(name, prefix, suffix)) return;
+
+                    const phone = `${prefix}-${suffix}`;
+
+                    try {
+                        showLoading();
+                        const customer = await findCustomer(name, phone);
+
+                        if (customer) {
+                            sessionStorage.setItem('currentCustomer', JSON.stringify(customer));
+                            // 老客户登录成功后，跳转到检测页面开始检测流程
+                            navigateTo('detection-page');
+                        } else {
+                            showToast('未找到客户信息，请使用新建客户');
+                        }
+                    } catch (error) {
+                        console.error('查找客户失败:', error);
+                        showToast('系统错误，请稍后重试');
+                    } finally {
+                        hideLoading();
                     }
                 }
+
+
+                // 修改新建客户处理逻辑
+                function handleCustomerRegister() {
+                    const name = document.getElementById('customerName').value.trim();
+                    const phone = document.getElementById('customerPhone').value.trim();
+
+                    if (!validateInput(name, phone)) return;
+
+                    // 创建新客户
+                    createCustomer(name, phone)
+                        .then(customer => {
+                            // 存储当前客户信息
+                            sessionStorage.setItem('currentCustomer', JSON.stringify(customer));
+                            // 对于新客户，可能需要收集更多信息
+                            startNewCustomerFlow(customer);
+                        })
+                        .catch(error => {
+                            console.error('创建客户失败:', error);
+                            showToast('创建客户失败，请稍后重试');
+                        });
+                }
+
+                // 修改 startNewDetection 函数
+                function startNewDetection(customer) {
+                    const lastDetection = customer.lastDetectionTime;
+                    const now = new Date();
+
+                    if (lastDetection && (now - new Date(lastDetection)) < 24 * 60 * 60 * 1000) {
+                        // 如果24小时内已经做过检测，显示提醒
+                        showConfirmDialog(
+                            '提示',
+                            '您在24小时内已进行过检测，是否继续新的检测？',
+                            () => navigateTo('detection-page'),  // 确认继续检测
+                            () => navigateTo('home-page')        // 取消返回首页
+                        );
+                    } else {
+                        // 直接进入检测页面
+                        navigateTo('detection-page');
+                    }
+                }
+
+                // 开始新客户流程
+                function startNewCustomerFlow(customer) {
+                    // 存储当前客户信息到 sessionStorage
+                    sessionStorage.setItem('currentCustomer', JSON.stringify(customer));
+                    // 对于新客户，可能需要收集更多基础信息
+                    navigateTo('new-customer'); // 或直接进入问卷页面
+                }
+
+                // 添加确认对话框组件
+                function showConfirmDialog(title, message, onConfirm, onCancel) {
+                    const dialog = document.createElement('div');
+                    dialog.className = 'confirm-dialog';
+                    dialog.innerHTML = `
+                        <div class="dialog-content">
+                            <h3>${title}</h3>
+                            <p>${message}</p>
+                            <div class="dialog-actions">
+                                <button class="cancel-btn" onclick="handleDialogCancel()">取消</button>
+                                <button class="confirm-btn" onclick="handleDialogConfirm()">继续</button>
+                            </div>
+                        </div>
+                    `;
+
+                    // 添加到页面
+                    document.body.appendChild(dialog);
+
+                    // 存储回调函数
+                    window.handleDialogConfirm = () => {
+                        onConfirm();
+                        dialog.remove();
+                    };
+
+                    window.handleDialogCancel = () => {
+                        onCancel();
+                        dialog.remove();
+                    };
+                }
+
+                // 添加确认对话框样式
+                const dialogStyle = document.createElement('style');
+                dialogStyle.textContent = `
+                    .confirm-dialog {
+                        position: fixed;
+                        top: 0;
+                        left: 0;
+                        right: 0;
+                        bottom: 0;
+                        background: rgba(0, 0, 0, 0.5);
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        z-index: 1000;
+                    }
+
+                    .dialog-content {
+                        background: white;
+                        padding: 20px;
+                        border-radius: 12px;
+                        width: 80%;
+                        max-width: 300px;
+                    }
+
+                    .dialog-content h3 {
+                        margin: 0 0 10px 0;
+                        color: #333;
+                    }
+
+                    .dialog-actions {
+                        display: flex;
+                        justify-content: flex-end;
+                        gap: 10px;
+                        margin-top: 20px;
+                    }
+
+                    .dialog-actions button {
+                        padding: 8px 20px;
+                        border: none;
+                        border-radius: 20px;
+                        cursor: pointer;
+                    }
+
+                    .cancel-btn {
+                        background: #f5f5f5;
+                        color: #666;
+                    }
+
+                    .confirm-btn {
+                        background: #35A69C;
+                        color: white;
+                    }
+                `;
+                document.head.appendChild(dialogStyle);
 
                 // 选择问卷选项
                 function selectOption(element) {
@@ -5918,6 +6115,7 @@
 
                 // 修改页面导航函数
                 function navigateTo(pageId, addToHistory = true) {
+                    console.log('navigateTo', pageId);
                     // 如果未登录且尝试访问需要登录的页面，则跳转到登录页
                     if (!currentUser && pageId !== 'login-page') {
                         pageId = 'login-page';
@@ -5999,7 +6197,8 @@
                         'detection-result': '检测结果',
                         'detection-report': '检测报告',
                         'detection-detail': '检测详情',
-                        'recommendation': '推荐方案',
+                        'new-customer': '新建客户',
+                        'customer-login-page': '客户登录',
                         'dimension-detail': '维度详情',
                         'profile-page': '个人中心',
                         'manager-profile-page': '管理中心',
@@ -6041,7 +6240,8 @@
                         'detection-result': ['首页', '眼部检测', '检测结果'],
                         'detection-report': ['首页', '检测报告'],
                         'detection-detail': ['首页', '检测报告', '检测详情'],
-                        'recommendation': ['首页', '检测报告', '推荐方案'],
+                        'new-customer': ['首页', '眼部检测', '新建客户'],
+                        'customer-login-page': ['首页', '眼部检测', '客户登录'],
                         'dimension-detail': ['首页', '眼部检测', '维度详情'],
                         'profile-page': ['首页', '个人中心'],
                         'manager-profile-page': ['首页', '管理中心'],
@@ -6202,12 +6402,12 @@
                     const analysis = new DimensionAnalysis('dimensionAnalysis', getPatientData().analysisData);
 
                     // 为底部导航栏的"我的"按钮添加特殊处理
-                    const profileNavItem = document.querySelectorAll('.nav-item')[4];
+                    const profileNavItem = document.querySelectorAll('.nav-item')[3];
                     profileNavItem.onclick = function () {
                         if (!currentUser) {
                             navigateTo('login-page');
                         } else {
-                            navigateTo(currentRole === 'manager' ? 'manager-profile-page' : 'profile-page');
+                            navigateTo('profile-page');
                         }
                     };
                 });
@@ -7573,6 +7773,400 @@
                     }
                 }
 
+
+                // 处理电话号码输入
+                function handlePhoneInput(input, nextInputId) {
+                    // 只允许输入数字
+                    input.value = input.value.replace(/[^0-9]/g, '');
+
+                    // 当输入达到最大长度时，自动跳转到下一个输入框
+                    if (nextInputId && input.value.length >= input.maxLength) {
+                        document.getElementById(nextInputId).focus();
+                    }
+                }
+
+                // 模拟客户数据存储
+                const mockCustomerDB = {
+                    customers: [
+                        {
+                            id: 1,
+                            name: '陈先生',
+                            phone: '138-1234',
+                            lastDetectionTime: new Date(Date.now() - 2 * 24 * 60 * 60 * 1000) // 2天前
+                        },
+                        {
+                            id: 2,
+                            name: '李女士',
+                            phone: '139-5678',
+                            lastDetectionTime: new Date(Date.now() - 5 * 24 * 60 * 60 * 1000) // 5天前
+                        }
+                    ]
+                };
+
+                // 查找客户函数
+                async function findCustomer(name, phone) {
+                    // 模拟API调用延迟
+                    await new Promise(resolve => setTimeout(resolve, 500));
+
+                    // 在模拟数据中查找匹配的客户
+                    const customer = mockCustomerDB.customers.find(c =>
+                        c.name === name && c.phone === phone
+                    );
+                    console.log('findCustomer', customer);
+                    return customer;
+                }
+
+                // 创建客户函数
+                async function createCustomer(name, phone) {
+                    // 模拟API调用延迟
+                    await new Promise(resolve => setTimeout(resolve, 500));
+
+                    // 检查客户是否已存在
+                    const existing = mockCustomerDB.customers.find(c => c.phone === phone);
+                    if (existing) {
+                        throw new Error('该电话号码已被注册');
+                    }
+
+                    // 创建新客户
+                    const newCustomer = {
+                        id: mockCustomerDB.customers.length + 1,
+                        name,
+                        phone,
+                        lastDetectionTime: null,
+                        createTime: new Date()
+                    };
+
+                    // 添加到模拟数据库
+                    mockCustomerDB.customers.push(newCustomer);
+
+                    return newCustomer;
+                }
+
+                // 更新客户检测时间
+                async function updateCustomerDetectionTime(customerId) {
+                    // 模拟API调用延迟
+                    await new Promise(resolve => setTimeout(resolve, 500));
+
+                    const customer = mockCustomerDB.customers.find(c => c.id === customerId);
+                    if (customer) {
+                        customer.lastDetectionTime = new Date();
+                    }
+
+                    return customer;
+                }
+
+                // 添加加载状态管理
+                function showLoading() {
+                    const loading = document.createElement('div');
+                    loading.className = 'loading-overlay';
+                    loading.innerHTML = `
+                        <div class="loading-spinner"></div>
+                        <div class="loading-text">加载中...</div>
+                    `;
+                    document.body.appendChild(loading);
+                }
+
+                function hideLoading() {
+                    const loading = document.querySelector('.loading-overlay');
+                    if (loading) {
+                        loading.remove();
+                    }
+                }
+
+                // 修改handleCustomerLogin函数以使用加载状态
+                async function handleCustomerLogin() {
+                    const nameInput = document.getElementById('customerName');
+                    const phonePrefix = document.getElementById('phonePrefix');
+                    const phoneSuffix = document.getElementById('phoneSuffix');
+
+                    if (!nameInput || !phonePrefix || !phoneSuffix) {
+                        console.error('Required form elements not found');
+                        return;
+                    }
+
+                    const name = nameInput.value.trim();
+                    const prefix = phonePrefix.value.trim();
+                    const suffix = phoneSuffix.value.trim();
+
+                    console.log('validateInput', name, prefix, suffix);
+                    if (!validateInput(name, prefix, suffix)) return;
+
+                    const phone = `${prefix}-${suffix}`;
+
+                    try {
+                        showLoading();
+                        const customer = await findCustomer(name, phone);
+
+                        if (customer) {
+                            sessionStorage.setItem('currentCustomer', JSON.stringify(customer));
+                            // 直接跳转到问卷页面
+                            navigateTo('detection-questionnaire'); // 修改为正确的页面ID
+                        } else {
+                            console.log('未找到客户信息，请使用新建客户');
+                            showToast('未找到客户信息，请使用新建客户');
+                        }
+                    } catch (error) {
+                        console.error('查找客户失败:', error);
+                        showToast('系统错误，请稍后重试');
+                    } finally {
+                        hideLoading();
+                    }
+                }
+
+                // 修改handleCustomerRegister函数以使用加载状态
+                async function handleCustomerRegister() {
+                    const nameInput = document.getElementById('customerName');
+                    const phonePrefix = document.getElementById('phonePrefix');
+                    const phoneSuffix = document.getElementById('phoneSuffix');
+
+                    if (!nameInput || !phonePrefix || !phoneSuffix) {
+                        console.error('Required form elements not found');
+                        return;
+                    }
+
+                    const name = nameInput.value.trim();
+                    const prefix = phonePrefix.value.trim();
+                    const suffix = phoneSuffix.value.trim();
+
+                    if (!validateInput(name, prefix, suffix)) return;
+
+                    const phone = `${prefix}-${suffix}`;
+
+                    try {
+                        showLoading();
+                        const customer = await createCustomer(name, phone);
+
+                        sessionStorage.setItem('currentCustomer', JSON.stringify(customer));
+                        startNewCustomerFlow(customer);
+                    } catch (error) {
+                        console.error('创建客户失败:', error);
+                        showToast(error.message || '创建客户失败，请稍后重试');
+                    } finally {
+                        hideLoading();
+                    }
+                }
+
+                // 添加加载状态的样式
+                const loadingStyle = document.createElement('style');
+                loadingStyle.textContent = `
+                    .loading-overlay {
+                        position: fixed;
+                        top: 0;
+                        left: 0;
+                        right: 0;
+                        bottom: 0;
+                        background: rgba(255, 255, 255, 0.8);
+                        display: flex;
+                        flex-direction: column;
+                        align-items: center;
+                        justify-content: center;
+                        z-index: 1000;
+                    }
+
+                    .loading-spinner {
+                        width: 40px;
+                        height: 40px;
+                        border: 4px solid #f3f3f3;
+                        border-top: 4px solid #35A69C;
+                        border-radius: 50%;
+                        animation: spin 1s linear infinite;
+                    }
+
+                    .loading-text {
+                        margin-top: 10px;
+                        color: #666;
+                    }
+
+                    @keyframes spin {
+                        0% { transform: rotate(0deg); }
+                        100% { transform: rotate(360deg); }
+                    }
+                `;
+                // document.head.appendChild(loadingStyle);
+
+
+
+                // 修改输入验证函数
+                function validateInput(name, prefix, suffix) {
+                    if (!name) {
+                        showToast('请输入客户姓名');
+                        return false;
+                    }
+
+                    if (!prefix || prefix.length !== 3) {
+                        showToast('请输入正确的电话号码前3位');
+                        return false;
+                    }
+
+                    if (!suffix || suffix.length !== 4) {
+                        showToast('请输入正确的电话号码后4位');
+                        return false;
+                    }
+
+                    return true;
+                }
+
+                // 显示提示信息
+                function showToast(message) {
+                    // 实现一个简单的提示框
+                    const toast = document.createElement('div');
+                    toast.className = 'toast-message';
+                    toast.textContent = message;
+                    document.body.appendChild(toast);
+
+                    setTimeout(() => {
+                        toast.remove();
+                    }, 3000);
+                }
+
+                // 添加提示框样式
+                const style = document.createElement('style');
+                style.textContent = `
+    .toast-message {
+        position: fixed;
+        bottom: 100px;
+        left: 50%;
+        transform: translateX(-50%);
+        background-color: rgba(0, 0, 0, 0.7);
+        color: white;
+        padding: 12px 24px;
+        border-radius: 24px;
+        font-size: 14px;
+        z-index: 1000;
+    }
+`;
+                document.head.appendChild(style);
+
+
+                // 在新客户页面初始化时获取之前收集的信息
+                function initNewCustomerPage() {
+                    const customerData = JSON.parse(sessionStorage.getItem('currentCustomer') || '{}');
+                    // 使用 customerData 填充表单或进行其他初始化操作
+                    if (customerData.name) {
+                        document.getElementById('customerName').value = customerData.name;
+                    }
+                    if (customerData.phone) {
+                        // 处理电话号码显示
+                        const [prefix, suffix] = customerData.phone.split('-');
+                        document.getElementById('phonePrefix').value = prefix;
+                        document.getElementById('phoneSuffix').value = suffix;
+                    }
+                }
+
+
+                // 加载问卷数据
+                let questionnaireData = null;
+
+                async function loadQuestionnaire() {
+                    try {
+                        const response = await fetch('/data/questionnaire.json');
+                        const data = await response.json();
+                        questionnaireData = data.questionnaire;
+                        renderQuestionnaire();
+                    } catch (error) {
+                        console.error('加载问卷数据失败:', error);
+                        showToast('加载问卷失败，请刷新重试');
+                    }
+                }
+
+                // 渲染问卷
+                function renderQuestionnaire() {
+                    const container = document.getElementById('questionnaireList');
+                    if (!container || !questionnaireData) return;
+
+                    container.innerHTML = questionnaireData.map((question, index) => `
+                        <div class="question-card" 
+                            id="question-${question.id}" 
+                            style="background-color: ${question.display_color}20;">
+                            <div class="question-title">问题${index + 1}: ${question.question}</div>
+                            <div class="question-options">
+                                ${question.options.map((option, optIndex) => `
+                                    <div class="option-item" 
+                                        onclick="selectOption(${question.id}, ${optIndex})">
+                                        <div class="option-radio"></div>
+                                        <div class="option-label">${option.text}</div>
+                                    </div>
+                                `).join('')}
+                            </div>
+                            <div class="question-hint">
+                                ${question.question_type === 'ask_for_customer_response' ?
+                                            '需要询问客户' : '观察即可'}：
+                                ${question.indicators.join('/')}
+                            </div>
+                        </div>
+                    `).join('');
+                }
+
+                // 选择选项
+                function selectOption(questionId, optionIndex) {
+                    // 找到问题数据
+                    const question = questionnaireData.find(q => q.id === questionId);
+                    if (!question) return;
+
+                    // 更新选中状态
+                    question.options.forEach((opt, index) => {
+                        opt.selected = index === optionIndex;
+                    });
+
+                    // 更新UI
+                    const questionCard = document.getElementById(`question-${questionId}`);
+                    if (!questionCard) return;
+
+                    const options = questionCard.querySelectorAll('.option-item');
+                    options.forEach((opt, index) => {
+                        if (index === optionIndex) {
+                            opt.classList.add('selected');
+                        } else {
+                            opt.classList.remove('selected');
+                        }
+                    });
+                }
+
+                // 提交问卷
+                function submitQuestionnaire() {
+                    // 检查是否所有问题都已回答
+                    const unanswered = questionnaireData.filter(q =>
+                        !q.options.some(opt => opt.selected)
+                    );
+
+                    if (unanswered.length > 0) {
+                        showToast(`还有 ${unanswered.length} 个问题未回答`);
+                        return;
+                    }
+
+                    // 收集答案
+                    const answers = questionnaireData.map(q => ({
+                        questionId: q.id,
+                        selectedOption: q.options.findIndex(opt => opt.selected),
+                        indicator: q.indicators[q.options.findIndex(opt => opt.selected)]
+                    }));
+
+                    // 存储答案
+                    sessionStorage.setItem('questionnaireAnswers', JSON.stringify(answers));
+
+                    // 继续下一步
+                    navigateTo('detection-camera'); // 或其他下一步页面
+                }
+
+                // 页面加载时初始化问卷
+                document.addEventListener('DOMContentLoaded', () => {
+                    loadQuestionnaire();
+                });
+
+                // 添加到 pageInitializers
+                pageInitializers['detection-questionnaire'] = () => {
+                    loadQuestionnaire();
+                };
+
+                // 添加一个用于测试的函数，确认页面是否存在
+                function checkPageExists(pageId) {
+                    const page = document.getElementById(pageId);
+                    if (!page) {
+                        console.error(`Page not found: ${pageId}`);
+                        return false;
+                    }
+                    return true;
+                }
 
             </script>
         </div>

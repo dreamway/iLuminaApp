@@ -8,6 +8,8 @@
         {"text": "一般，偶尔有这种感觉", "selected": false},
         {"text": "无", "selected": false}
       ],
+      "question_type": "ask_for_customer_response",
+      "display_color": "#FF0000",
       "indicators": [
         "重度干眼",
         "中度干眼",
@@ -22,6 +24,8 @@
         {"text": "一般，偶尔有这种感觉", "selected": false},
         {"text": "无", "selected": false}
       ],
+      "question_type": "ask_for_customer_response",
+      "display_color": "#FF0000",
       "indicators": [
         "重度视疲劳",
         "中度视疲劳",
@@ -36,6 +40,8 @@
         {"text": "2~6h", "selected": false},
         {"text": "＜2h", "selected": false}
       ],
+      "question_type": "ask_for_customer_response",
+      "display_color": "#FF0000",
       "indicators": [
         "重度视疲劳，眨眼次数少",
         "中度视疲劳，眨眼次数一般",
@@ -49,6 +55,8 @@
         {"text": "纹过", "selected": false},
         {"text": "没纹过", "selected": false}
       ],
+      "question_type": "ask_for_customer_response",
+      "display_color": "#FF0000",
       "indicators": [
         "重度眼睑堵塞",
         "轻度眼睑堵塞"
@@ -61,6 +69,8 @@
         {"text": "种植过", "selected": false},
         {"text": "没种植过", "selected": false}
       ],
+      "question_type": "ask_for_customer_response",
+      "display_color": "#FF0000",
       "indicators": [
         "重度眼睑堵塞",
         "轻度眼睑堵塞"
@@ -74,6 +84,8 @@
         {"text": "轻微", "selected": false},
         {"text": "良好", "selected": false}
       ],
+      "question_type": "watching_is_enough",
+      "display_color": "#0000FF",
       "indicators": [
         "重度眼皮松弛",
         "轻度眼皮松弛",
@@ -88,6 +100,8 @@
         {"text": "轻微", "selected": false},
         {"text": "无", "selected": false}
       ],
+      "question_type": "watching_is_enough",
+      "display_color": "#0000FF",
       "indicators": [
         "重度眼窝凹陷",
         "轻度眼窝凹陷",
@@ -103,6 +117,8 @@
         {"text": "轻微有点眼袋", "selected": false},
         {"text": "无", "selected": false}
       ],
+      "question_type": "watching_is_enough",
+      "display_color": "#0000FF",
       "indicators": [
         "重度眼袋",
         "中度眼袋",
@@ -118,6 +134,8 @@
         {"text": "有点硬、鼓胀（介于两者之间）", "selected": false},
         {"text": "有弹性、略微鼓胀（硬度与鼻尖一样）", "selected": false}
       ],
+      "question_type": "ask_for_customer_response",
+      "display_color": "#FF0000",
       "indicators": [
         "高眼压",
         "中眼压",
