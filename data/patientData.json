@@ -3,6 +3,7 @@
     "age": 35,
     "gender": "男",
     "occupation": "互联网从业者",
+    "checkCount": 3,
     "lastCheckDate": "2023-05-15",
     "dimensionData": [
         { "name": "疲劳度", "currentScore": 65, "targetScore": 85, "color": "#4CAF50" },
@@ -39,46 +40,55 @@
     },
     "questionnaire": [
         {
+            "id": 1,
             "question": "眼部不适症状",
             "answer": "偶尔有干涩感",
             "analysis": "轻度干眼症状"
         },
         {
+            "id": 2,
             "question": "每日用眼时长",
             "answer": "8-12小时",
             "analysis": "用眼时间过长，易导致视疲劳"
         },
         {
+            "id": 3,
             "question": "眼部疲劳感频率",
             "answer": "经常（每周3-5次）",
             "analysis": "中度视疲劳，需要注意休息"
         },
         {
+            "id": 4,
             "question": "眼睛干涩程度",
             "answer": "中度干涩，有时需要使用眼药水",
             "analysis": "泪液分泌不足，建议补充人工泪液"
         },
         {
+            "id": 5,
             "question": "眼部护理习惯",
             "answer": "偶尔进行，不够规律",
             "analysis": "护理意识有待提高，建议建立日常护理习惯"
         },
         {
+            "id": 6,
             "question": "睡眠质量评估",
             "answer": "一般，有时会失眠",
             "analysis": "睡眠不足影响眼部恢复，建议改善睡眠环境"
         },
         {
+            "id": 7,
             "question": "用眼环境光线",
             "answer": "光线偏暗，常在昏暗环境下用眼",
             "analysis": "不良光线环境增加眼部负担，建议调整照明"
         },
         {
+            "id": 8,
             "question": "眼部不适缓解方式",
             "answer": "主要依赖眼药水",
             "analysis": "缺乏多样化的缓解方式，建议学习眼部按摩和热敷"
         },
         {
+            "id": 9,
             "question": "眼部保健意识",
             "answer": "有一定意识，但执行不够到位",
             "analysis": "需要加强保健知识学习和习惯养成"
@@ -170,6 +180,39 @@
                         "避免揉搓眼睛"
                     ]
                 }
+            }
+        ]
+    },
+    "overallScore": 75,
+   
+    "problemsSummary": {
+        "title": "问题汇总",
+        "details": [
+            {
+                "id": 1,
+                "name": "干眼症状",
+                "details": "轻度干眼，伴有异物感"
+            },
+            {
+                "id": 2,
+                "name": "疲劳度",
+                        "details": "视疲劳指数较高，用眼负荷过重，恢复能力一般"
+                    
+            }
+        ]
+    },
+    "dailySuggestions": {
+        "title": "日常建议",
+        "details": [
+            {
+                "id": 1,
+                "title": "用眼时间管理",
+                "suggestion": "每隔45分钟建议休息5分钟,远眺放松眼部肌肉"
+            },
+            {
+                "id": 2,
+                "title": "眼部按摩",
+                "suggestion": "每日进行眼周按摩，促进血液循环"
             }
         ]
     }
