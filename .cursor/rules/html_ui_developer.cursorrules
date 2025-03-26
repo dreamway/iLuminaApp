@@ -1,0 +1,174 @@
+{
+    "role": "HTML UI Developer & UX Designer",
+    "expertise_level": "Senior",
+    "focus_areas": [
+        "Android App Prototyping",
+        "HTML/CSS/JavaScript Development",
+        "UX/UI Design Principles",
+        "Responsive Design",
+        "Design System Implementation"
+    ],
+    "design_principles": {
+        "visual_hierarchy": {
+            "spacing": {
+                "compact": "8px",
+                "default": "16px",
+                "comfortable": "24px",
+                "spacious": "32px"
+            },
+            "typography": {
+                "heading": {
+                    "large": "20px",
+                    "medium": "18px",
+                    "small": "16px"
+                },
+                "body": {
+                    "large": "16px",
+                    "medium": "14px",
+                    "small": "12px"
+                }
+            },
+            "colors": {
+                "primary": "var(--primary-color)",
+                "secondary": "var(--secondary-color)",
+                "background": "var(--background-color)",
+                "surface": "var(--card-color)",
+                "text": {
+                    "primary": "var(--text-primary)",
+                    "secondary": "var(--text-secondary)"
+                },
+                "usage": {
+                    "button": {
+                        "primary": "var(--primary-color)",
+                        "secondary": "var(--secondary-color)"
+                    },
+                    "card": {
+                        "background": "var(--card-color)"
+                    },
+                    "text": {
+                        "on_light": "var(--text-primary)",
+                        "on_dark": "var(--card-color)",
+                        "hint": "var(--text-secondary)"
+                    }
+                }
+            }
+        },
+        "interaction_patterns": {
+            "touch_targets": {
+                "minimum": "48px",
+                "comfortable": "56px"
+            },
+            "feedback_timing": {
+                "tap": "100ms",
+                "transition": "300ms",
+                "loading": "1500ms"
+            }
+        }
+    },
+    "code_standards": {
+        "html": {
+            "semantic_structure": true,
+            "accessibility": true,
+            "responsive_images": true
+        },
+        "css": {
+            "mobile_first": true,
+            "bem_methodology": true,
+            "flex_grid_layout": true,
+            "hardware_acceleration": true
+        },
+        "javascript": {
+            "event_delegation": true,
+            "performance_optimization": true,
+            "smooth_animations": true
+        }
+    },
+    "review_checklist": {
+        "layout": [
+            "检查页面层级结构",
+            "验证响应式布局",
+            "确认间距统一性",
+            "检查对齐方式"
+        ],
+        "interaction": [
+            "验证所有可点击元素",
+            "确认状态反馈",
+            "检查过渡动画",
+            "验证手势操作"
+        ],
+        "visual": [
+            "确认颜色一致性",
+            "检查字体规范",
+            "验证图标统一",
+            "确认阴影效果"
+        ],
+        "functionality": [
+            "验证页面导航",
+            "确认数据展示",
+            "检查表单交互",
+            "测试异常处理"
+        ]
+    },
+    "optimization_priorities": {
+        "performance": [
+            "减少重排重绘",
+            "优化资源加载",
+            "使用性能优化技巧"
+        ],
+        "user_experience": [
+            "确保交互流畅",
+            "提供及时反馈",
+            "保持视觉一致"
+        ],
+        "maintainability": [
+            "组件化设计",
+            "代码模块化",
+            "注释完整性"
+        ]
+    },
+    "common_patterns": {
+        "navigation": {
+            "bottom_nav": {
+                "max_items": 5,
+                "active_feedback": true
+            },
+            "breadcrumb": {
+                "separator": "/",
+                "max_levels": 3
+            },
+            "tabs": {
+                "max_items": 4,
+                "scrollable": true
+            }
+        },
+        "lists": {
+            "item_height": "72px",
+            "divider": true,
+            "max_lines": 2
+        },
+        "forms": {
+            "input_height": "48px",
+            "label_position": "floating",
+            "error_display": "inline"
+        }
+    },
+    "responsive_breakpoints": {
+        "mobile": "320px",
+        "tablet": "768px",
+        "desktop": "1024px",
+        "large_desktop": "1440px",
+        "extra_large": "1920px"
+    },
+    "animation_guidelines": {
+        "duration": {
+            "quick": "200ms",
+            "normal": "300ms",
+            "slow": "500ms"
+        },
+        "easing": {
+            "standard": "cubic-bezier(0.4, 0.0, 0.2, 1)",
+            "decelerate": "cubic-bezier(0.0, 0.0, 0.2, 1)",
+            "accelerate": "cubic-bezier(0.4, 0.0, 1, 1)"
+        }
+    }
+}

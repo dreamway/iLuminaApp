@@ -2700,38 +2700,43 @@
 
 
         .case-tabs {
-            background: #f5f5f5;
-            padding: 10px 0;
             position: sticky;
             top: 56px;
-            z-index: 10;
+            /* 面包屑导航的高度 */
+            z-index: 99;
+            background: white;
+            padding: 12px 16px;
+            border-bottom: 1px solid #eee;
         }
 
         .tab-container {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            gap: 10px;
-            padding: 0 10px;
+            gap: 12px;
+            max-width: 1200px;
+            margin: 0 auto;
         }
 
         .case-tab {
             text-align: center;
-            padding: 10px 5px;
-            background: #ccc;
-            border-radius: 10px;
+            padding: 12px 8px;
+            background: #f5f5f5;
+            border-radius: 8px;
             cursor: pointer;
-            color: #333;
+            transition: all 0.3s;
             font-size: 14px;
-            line-height: 1.2;
+            line-height: 1.3;
         }
 
         .case-tab.active {
-            background: #35A69C;
+            background: var(--primary-color);
             color: white;
         }
 
         /* 修改网格布局为每行3个 */
         .cases-grid {
+            flex: 1;
+            overflow-y: auto;
             padding: 15px;
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -2794,38 +2799,80 @@
         }
 
         /* 案例详情页样式 */
-        .case-detail-content {
-            padding: 15px;
+
+        /* 面包屑导航固定在顶部， #case-detail  */
+        .breadcrumb-nav {
+            flex: 1;
+            overflow-y: auto;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: var(--primary-color);
+            padding: 16px;
+            display: flex;
+            align-items: center;
         }
 
+        /* 内容区域可滚动 */
+        .case-detail-content {
+            flex: 1;
+            overflow-y: hidden;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        /* 前后对比图区域 */
         .detail-images {
-            margin-bottom: 20px;
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
         }
 
         .before-after-compare {
-            display: flex;
-            gap: 10px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 20px;
         }
 
         .before-after-compare img {
-            width: 50%;
+            width: 100%;
+            height: auto;
             border-radius: 8px;
+            object-fit: cover;
         }
 
+        /* 案例信息区域 */
         .detail-info {
             background: white;
-            border-radius: 10px;
-            padding: 15px;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
         }
 
         .detail-info h3 {
-            color: #35A69C;
-            margin: 15px 0 10px;
+            color: #333;
+            font-size: 18px;
+            margin-bottom: 12px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid #eee;
         }
 
-        .detail-info>div {
-            margin-bottom: 20px;
+        .client-info,
+        .examination-info,
+        .treatment-info,
+        .outcome-info {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
         }
+
 
         @keyframes spin {
             0% {
@@ -3423,10 +3470,10 @@
         }
 
         .page-content {
-            height: calc(100vh - 120px);
-            /* 减去header和底部导航的高度 */
-            overflow-y: auto;
-            padding: 16px;
+            display: flex;
+            flex-direction: column;
+            height: calc(100vh - 56px);
+            /* 减去面包屑导航的高度 */
         }
 
 
@@ -4044,38 +4091,159 @@
         }
 
 
-        .breadcrumb-nav {
+
+        /* 护理项目页面样式 */
+        /* #services-entrance {
             display: flex;
-            align-items: center;
-            padding: 16px;
-            background: white;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+            flex-direction: column;
+            height: 100vh;
+            overflow: hidden;
+        } */
+
+        .services-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
         }
 
-        .breadcrumb-item {
+        .service-tabs {
+            background: white;
+            padding: 12px 16px;
+            border-bottom: 1px solid #eee;
+            position: sticky;
+            top: 0;
+            z-index: 99;
+        }
+
+        .tab-scroll-container {
+            display: flex;
+            gap: 12px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .service-tab {
+            flex: 1;
+            padding: 12px;
+            text-align: center;
+            background: #f5f5f5;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+            white-space: nowrap;
+            color: #666;
+        }
+
+        .service-tab.active {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        .service-display-container {
+            display: flex;
+            flex-direction: column;
+            height: calc(100vh - 56px);
+            /* 减去面包屑导航的高度 */
+            overflow: hidden;
+        }
+
+        .service-display {
+            display: flex;
+            gap: 24px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .service-image-container {
+            flex: 2;
+            position: relative;
+            border-radius: 12px;
+            overflow: hidden;
+            background: #f5f5f5;
+            aspect-ratio: 4/3;
+        }
+
+        .service-image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .service-details {
+            flex: 3;
+            background: white;
+            border-radius: 12px;
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .service-intro h4,
+        .service-process h4,
+        .service-target h4 {
+            color: #333;
+            font-size: 18px;
+            margin-bottom: 16px;
+        }
+
+        .process-steps {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .process-step {
             display: flex;
             align-items: center;
+            gap: 12px;
+        }
+
+        .step-number {
+            width: 24px;
+            height: 24px;
+            border-radius: 12px;
+            background: var(--primary-color);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+        }
+
+        .service-info {
+            display: flex;
+            justify-content: space-between;
+            padding-top: 24px;
+            border-top: 1px solid #eee;
+            margin-top: auto;
+        }
+
+        .service-info>div {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .service-info span:first-child {
             color: #666;
             font-size: 14px;
         }
 
-        .breadcrumb-item:not(:last-child) {
-            cursor: pointer;
-        }
-
-        .breadcrumb-item:last-child {
+        .service-info span:last-child {
             color: #333;
+            font-size: 16px;
             font-weight: 500;
         }
 
-        .breadcrumb-separator {
-            margin: 0 8px;
-            color: #999;
-        }
+        @media screen and (min-width: 1920px) {
 
+            .service-display,
+            .tab-scroll-container {
+                max-width: 1600px;
+            }
+        }
     </style>
 </head>
 
@@ -4099,7 +4267,6 @@
             <div class="page active" id="home-page">
                 <!-- 门店活动轮播图 -->
                 <div class="card">
-                    <!-- <div class="section-title">门店活动</div> -->
                     <div class="campaign-carousel">
                         <div class="carousel-container">
                             <div class="carousel-wrapper">
@@ -4167,15 +4334,11 @@
 
             <!-- 门店活动详情页面1 -->
             <div class="page" id="campaign-detail-1">
-                <div class="page-header">
-                    <div class="back-button" onclick="goBack()">
-                        <span class="material-icons">arrow_back</span>
-                    </div>
-                    <div class="page-title">活动详情</div>
-                </div>
 
-                <div class="breadcrumb">
-                    <!-- 面包屑导航将由JavaScript动态生成 -->
+                <div class="breadcrumb-nav">
+                    <div class="breadcrumb-item" onclick="navigateTo('home-page')">首页</div>
+                    <span class="breadcrumb-separator">/</span>
+                    <div class="breadcrumb-item">活动详情</div>
                 </div>
 
                 <div class="campaign-detail">
@@ -4213,15 +4376,10 @@
 
             <!-- 门店活动详情页面2 -->
             <div class="page" id="campaign-detail-2">
-                <div class="page-header">
-                    <div class="back-button" onclick="goBack()">
-                        <span class="material-icons">arrow_back</span>
-                    </div>
-                    <div class="page-title">活动详情</div>
-                </div>
-
-                <div class="breadcrumb">
-                    <!-- 面包屑导航将由JavaScript动态生成 -->
+                 <div class="breadcrumb-nav">
+                    <div class="breadcrumb-item" onclick="navigateTo('home-page')">首页</div>
+                    <span class="breadcrumb-separator">/</span>
+                    <div class="breadcrumb-item">活动详情</div>
                 </div>
 
                 <div class="campaign-detail">
@@ -4267,15 +4425,10 @@
 
             <!-- 门店活动详情页面3 -->
             <div class="page" id="campaign-detail-3">
-                <div class="page-header">
-                    <div class="back-button" onclick="goBack()">
-                        <span class="material-icons">arrow_back</span>
-                    </div>
-                    <div class="page-title">活动详情</div>
-                </div>
-
-                <div class="breadcrumb">
-                    <!-- 面包屑导航将由JavaScript动态生成 -->
+                <div class="breadcrumb-nav">
+                    <div class="breadcrumb-item" onclick="navigateTo('home-page')">首页</div>
+                    <span class="breadcrumb-separator">/</span>
+                    <div class="breadcrumb-item">活动详情</div>
                 </div>
 
                 <div class="campaign-detail">
@@ -4311,15 +4464,10 @@
 
             <!-- 门店活动详情页面4 -->
             <div class="page" id="campaign-detail-4">
-                <div class="page-header">
-                    <div class="back-button" onclick="goBack()">
-                        <span class="material-icons">arrow_back</span>
-                    </div>
-                    <div class="page-title">活动详情</div>
-                </div>
-
-                <div class="breadcrumb">
-                    <!-- 面包屑导航将由JavaScript动态生成 -->
+                <div class="breadcrumb-nav">
+                    <div class="breadcrumb-item" onclick="navigateTo('home-page')">首页</div>
+                    <span class="breadcrumb-separator">/</span>
+                    <div class="breadcrumb-item">活动详情</div>
                 </div>
 
                 <div class="campaign-detail">
@@ -4369,15 +4517,13 @@
             <!-- 护理项目页面 -->
             <div class="page" id="services-entrance">
                 <!-- 顶部导航 -->
-                <div class="page-header">
-                    <div class="back-button" onclick="navigateTo('home-page')">
-                        <span class="material-icons">arrow_back</span>
-                        <span>返回</span>
-                    </div>
-                    <div class="page-title">护理项目</div>
+                <div class="breadcrumb-nav">
+                    <div class="breadcrumb-item" onclick="navigateTo('home-page')">首页</div>
+                    <span class="breadcrumb-separator">/</span>
+                    <div class="breadcrumb-item">护理项目</div>
                 </div>
 
-                <div class="page-content">
+                <div class="services-content">
                     <!-- 服务项目选择区 -->
                     <div class="service-tabs">
                         <div class="tab-scroll-container">
@@ -4387,39 +4533,40 @@
                             <div class="service-tab" data-service="eye-sensitive-care">眼敏感护理</div>
                         </div>
                     </div>
-
                     <!-- 服务展示区域 -->
-                    <div class="service-display">
-                        <!-- 服务图片展示 -->
-                        <div class="service-image-container">
-                            <img id="serviceImage" src="" alt="服务图片">
-                        </div>
-
-                        <!-- 服务详情信息 -->
-                        <div class="service-details">
-                            <div class="service-intro">
-                                <h4>服务介绍</h4>
-                                <p id="serviceDescription"></p>
+                    <div class="service-display-container">
+                        <div class="service-display">
+                            <!-- 服务图片展示 -->
+                            <div class="service-image-container">
+                                <img id="serviceImage" src="" alt="服务图片">
                             </div>
 
-                            <div class="service-process">
-                                <h4>服务流程</h4>
-                                <div id="serviceProcess" class="process-steps"></div>
-                            </div>
-
-                            <div class="service-target">
-                                <h4>适用人群</h4>
-                                <p id="serviceTarget"></p>
-                            </div>
-
-                            <div class="service-info">
-                                <div class="duration">
-                                    <span>护理时长</span>
-                                    <span id="serviceDuration"></span>
+                            <!-- 服务详情信息 -->
+                            <div class="service-details">
+                                <div class="service-intro">
+                                    <h4>服务介绍</h4>
+                                    <p id="serviceDescription"></p>
                                 </div>
-                                <div class="price">
-                                    <span>价格</span>
-                                    <span id="servicePrice"></span>
+
+                                <div class="service-process">
+                                    <h4>服务流程</h4>
+                                    <div id="serviceProcess" class="process-steps"></div>
+                                </div>
+
+                                <div class="service-target">
+                                    <h4>适用人群</h4>
+                                    <p id="serviceTarget"></p>
+                                </div>
+
+                                <div class="service-info">
+                                    <div class="duration">
+                                        <span>护理时长</span>
+                                        <span id="serviceDuration"></span>
+                                    </div>
+                                    <div class="price">
+                                        <span>价格</span>
+                                        <span id="servicePrice"></span>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -4430,12 +4577,10 @@
             <!-- 服务案例页面 -->
             <div class="page" id="cases-entrance">
                 <!-- 顶部导航 -->
-                <div class="page-header">
-                    <div class="back-button" onclick="navigateTo('home-page')">
-                        <span class="material-icons">arrow_back</span>
-                        <span>返回</span>
-                    </div>
-                    <div class="page-title">服务案例</div>
+                <div class="breadcrumb-nav">
+                    <div class="breadcrumb-item" onclick="navigateTo('home-page')">首页</div>
+                    <span class="breadcrumb-separator">/</span>
+                    <div class="breadcrumb-item">服务案例</div>
                 </div>
 
                 <div class="page-content">
@@ -4499,7 +4644,6 @@
             </div>
 
             <!-- 检测页面 -->
-            <!-- 检测页面 -->
             <div class="page" id="detection-page">
                 <!-- 最近检测客户提示条 -->
                 <div class="recent-customer-bar">
@@ -4556,12 +4700,12 @@
 
             <!-- 客户登录/注册页面 -->
             <div class="page" id="customer-login-page">
-                <!-- 顶部导航 -->
-                <div class="page-header">
-                    <div class="back-button" onclick="navigateTo('detection-page')">
-                        <span class="material-icons">arrow_back</span>
-                        <span>返回</span>
-                    </div>
+                <div class="breadcrumb-nav">
+                    <div class="breadcrumb-item" onclick="navigateTo('home-page')">首页</div>
+                    <span class="breadcrumb-separator">/</span>
+                    <div class="breadcrumb-item" onclick="navigateTo('detection-page')">检测</div>
+                    <span class="breadcrumb-separator">/</span>
+                    <div class="breadcrumb-item">登录/注册</div>
                 </div>
 
                 <!-- 登录表单 -->
@@ -4605,6 +4749,12 @@
 
             <!-- 客户页面 -->
             <div class="page" id="customers-page">
+                <div class="breadcrumb-nav">
+                    <div class="breadcrumb-item" onclick="navigateTo('profile-page')">我的</div>
+                    <span class="breadcrumb-separator">/</span>
+                    <div class="breadcrumb-item">客户管理</div>
+                </div>
+                
                 <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;">
                     <div class="section-title">客户管理</div>
                     <div style="display: flex; gap: 8px;">
@@ -4667,6 +4817,13 @@
 
             <!-- 客户详情页面 -->
             <div class="page" id="customer-detail">
+                <div class="breadcrumb-nav">
+                    <div class="breadcrumb-item" onclick="navigateTo('profile-page')">我的</div>
+                    <span class="breadcrumb-separator">/</span>
+                    <div class="breadcrumb-item" onclick="navigateTo('customers-page')">客户管理</div>
+                    <span class="breadcrumb-separator">/</span>
+                    <div class="breadcrumb-item">客户详情</div>
+                </div>
                 <div class="profile-header">
                     <div class="profile-avatar">
                         <span class="material-icons">person</span>
@@ -4797,11 +4954,10 @@
 
             <!-- 检测记录页面 -->
             <div class="page" id="detection-records">
-                <div class="page-header">
-                    <div class="back-button" onclick="navigateTo('profile-page')">
-                        <span class="material-icons">arrow_back</span>
-                    </div>
-                    <div class="page-title">检测记录</div>
+                <div class="breadcrumb-nav">
+                    <div class="breadcrumb-item" onclick="navigateTo('profile-page')">我的</div>
+                    <span class="breadcrumb-separator">/</span>
+                    <div class="breadcrumb-item">检测记录</div>
                 </div>
 
                 <div class="search-container">
@@ -4821,6 +4977,14 @@
 
             <!-- 新建客户页面 -->
             <div class="page" id="new-customer">
+                <div class="breadcrumb-nav">
+                    <div class="breadcrumb-item" onclick="navigateTo('profile-page')">我的</div>
+                    <span class="breadcrumb-separator">/</span>
+                    <div class="breadcrumb-item" onclick="navigateTo('detection-customer')">客户管理</div>
+                    <span class="breadcrumb-separator">/</span>
+                    <div class="breadcrumb-item">新建客户</div>
+                </div>
+                
                 <div class="flow-header">
                     <div class="flow-title">新建客户</div>
                     <button class="icon-button" onclick="navigateTo('detection-customer')"
@@ -4935,6 +5099,11 @@
 
             <!-- 检测流程 - 问卷调查 -->
             <div class="page" id="detection-questionnaire">
+                <!-- <div class="breadcrumb-nav">
+                    <div class="breadcrumb-item" onclick="navigateTo('detection-page')">检测</div>
+                    <span class="breadcrumb-separator">/</span>
+                    <div class="breadcrumb-item">问卷调查</div>
+                </div> -->
                 <div class="flow-header">
                     <div class="flow-title">问卷调查</div>
                     <div class="flow-progress">2/4</div>
@@ -4989,11 +5158,10 @@
             <!-- 检测结果页面 -->
             <div class="page" id="detection-result">
                 <!-- 返回按钮 -->
-                <div class="back-header">
-                    <div class="back-button" onclick="navigateTo('home-page')">
-                        <span class="back-arrow">←</span>
-                        <span>返回</span>
-                    </div>
+                <div class="breadcrumb-nav">
+                    <div class="breadcrumb-item" onclick="navigateTo('detection-page')">检测</div>
+                    <span class="breadcrumb-separator">/</span>
+                    <div class="breadcrumb-item">检测结果</div>
                 </div>
 
                 <!-- 客户信息卡片 -->
@@ -5093,11 +5261,10 @@
             <!-- 修改页面头部，添加返回按钮和标题 -->
             <!-- 以下是一个示例，需要为每个页面添加类似的头部 -->
             <div class="page" id="detection-detail">
-                <div class="page-header">
-                    <div class="back-button" onclick="goBack()">
-                        <span class="material-icons">arrow_back</span>
-                    </div>
-                    <div class="page-title">检测详情</div>
+                <div class="breadcrumb-nav">
+                    <div class="breadcrumb-item" onclick="navigateTo('detection-page')">检测</div>
+                    <span class="breadcrumb-separator">/</span>
+                    <div class="breadcrumb-item">检测详情</div>
                 </div>
 
 
@@ -5272,20 +5439,18 @@
                     </span>
                 </div>
 
-                <div class="customer-grid" id="records-list">
+                <div class="customer-grid" id="reports-list">
                     <!-- 报告列表将通过 JavaScript 动态生成 -->
                 </div>
             </div>
 
-
             <!-- 检测报告页面 -->
             <!-- 为其他页面也添加类似的页面头部结构 -->
             <div class="page" id="report-details">
-                <div class="page-header">
-                    <div class="back-button" onclick="goBack()">
-                        <span class="material-icons">arrow_back</span>
-                    </div>
-                    <div class="page-title">检测报告</div>
+                <div class="breadcrumb-nav">
+                    <div class="breadcrumb-item" onclick="navigateTo('report-entrance')">检测报告</div>
+                    <span class="breadcrumb-separator">/</span>
+                    <div class="breadcrumb-item">报告详情</div>
                 </div>
 
                 <div class="flow-header">
@@ -5612,8 +5777,13 @@
                 </div>
             </div>
 
-            <!-- 店长-检测记录页面 -->
+            <!-- 检测记录页面 -->
             <div class="page" id="detection-history">
+                <div class="breadcrumb-nav">
+                    <div class="breadcrumb-item" onclick="navigateTo('profile-page')">我的</div>
+                    <span class="breadcrumb-separator">/</span>
+                    <div class="breadcrumb-item">检测记录</div>
+                </div>
                 <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;">
                     <div class="section-title">检测记录</div>
                     <div class="customer-filter">
@@ -5645,8 +5815,13 @@
             </div>
 
 
-            <!-- 店长-门店管理页面 -->
+            <!-- 门店管理页面 -->
             <div class="page" id="store-management">
+                <div class="breadcrumb-nav">
+                    <div class="breadcrumb-item" onclick="navigateTo('profile-page')">我的</div>
+                    <span class="breadcrumb-separator">/</span>
+                    <div class="breadcrumb-item">门店管理</div>
+                </div>
                 <div class="section-title">门店信息</div>
                 <div class="card">
                     <div style="display: grid; gap: 16px;">
@@ -5731,86 +5906,13 @@
                 </div>
             </div>
 
-            <!-- 设置页面 -->
-            <div class="page" id="settings-page">
-                <div class="settings-container">
-                    <div class="settings-tabs">
-                        <div class="settings-tab" onclick="switchSettingsTab('notification-settings')">通知设置</div>
-                        <div class="settings-tab" onclick="switchSettingsTab('cache-settings')">清理缓存</div>
-                        <div class="settings-tab" onclick="switchSettingsTab('about-settings')">关于美睛美科</div>
-                    </div>
-
-                    <!-- 通知设置 -->
-                    <div class="settings-section" id="notification-settings">
-                        <div class="card">
-                            <div class="settings-item">
-                                <div>
-                                    <div class="settings-item-title">应用公告</div>
-                                    <div class="settings-item-description">接收应用重要更新和公告</div>
-                                </div>
-                                <label class="toggle-switch">
-                                    <input type="checkbox" id="app-notice-toggle" checked>
-                                    <span class="toggle-slider"></span>
-                                </label>
-                            </div>
-
-                            <div class="settings-item">
-                                <div>
-                                    <div class="settings-item-title">活动提醒</div>
-                                    <div class="settings-item-description">接收门店活动和促销信息</div>
-                                </div>
-                                <label class="toggle-switch">
-                                    <input type="checkbox" id="activity-notice-toggle" checked>
-                                    <span class="toggle-slider"></span>
-                                </label>
-                            </div>
-
-                            <div class="settings-item">
-                                <div>
-                                    <div class="settings-item-title">后台刷新</div>
-                                    <div class="settings-item-description">允许应用在后台更新数据</div>
-                                </div>
-                                <label class="toggle-switch">
-                                    <input type="checkbox" id="background-refresh-toggle" checked>
-                                    <span class="toggle-slider"></span>
-                                </label>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- 缓存设置 -->
-                    <div class="settings-section" id="cache-settings">
-                        <div class="card">
-                            <div class="cache-info">
-                                <div class="cache-size">45.8 MB</div>
-                                <div class="cache-description">当前缓存占用空间</div>
-                            </div>
-
-                            <div class="settings-item-description" style="text-align: center; margin-bottom: 16px;">
-                                清理缓存将删除临时文件，但不会删除您的个人数据和设置。清理后，应用将重新从服务器下载必要的数据。
-                            </div>
-
-                            <button class="button" style="width: 100%;" onclick="clearAppCache()">清理缓存</button>
-                        </div>
-                    </div>
-
-                    <!-- 关于美睛美科 -->
-                    <div class="settings-section" id="about-settings">
-                        <div class="card">
-                            <div class="about-container">
-                                <img src="images/logo.png" alt="美睛美科" class="app-logo">
-                                <div class="app-name">美睛美科</div>
-                                <div class="app-version">版本 1.0.5</div>
-                                <div class="version-status" id="version-status">正在检查更新...</div>
-                                <button class="button" id="check-update-btn" onclick="checkForUpdates()">检查新版本</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
             <!-- 个人设置页面-->
             <div class="page" id="personal-settings-page">
+                <div class="breadcrumb-nav">
+                    <div class="breadcrumb-item" onclick="navigateTo('profile-page')">我的</div>
+                    <span class="breadcrumb-separator">/</span>
+                    <div class="breadcrumb-item">个人设置</div>
+                </div>
                 <div class="settings-container">
                     <div class="settings-tabs">
                         <div class="settings-tab active" onclick="switchSettingsTab('profile-settings')">个人资料</div>
@@ -6451,7 +6553,7 @@
                     // 更新面包屑导航
                     updateBreadcrumb(pageId);
 
-                    
+
                     // 3. 更新导航状态（如果有底部导航栏）
                     updateNavigationState(pageId);
 
@@ -7737,22 +7839,19 @@
                     casesToShow.forEach(caseItem => {
                         const caseElement = document.createElement('div');
                         caseElement.className = 'case-item';
-                        caseElement.onclick = () => navigateTo(`case-detail-${caseItem.id}`);
+                        caseElement.onclick = () => showCaseDetail(caseItem);
 
-                        const beforeAfterDiv = document.createElement('div');
-                        beforeAfterDiv.className = 'before-after';
+                        caseElement.innerHTML = `
+                        <div class="before-after">
+                            <img src="\${caseItem.before_after_images.before}" alt="治疗前">
+                            <img src="\${caseItem.before_after_images.after}" alt="治疗后">
+                        </div>
+                        <div class="case-info">
+                            <div class="case-title">\${caseItem.title}</div>
+                            <div class="case-description">\${caseItem.client_background.symptoms}</div>
+                        </div>
+                    `;
 
-                        const beforeImg = document.createElement('img');
-                        beforeImg.src = caseItem.before_after_images.before;
-                        beforeImg.alt = '治疗前';
-
-                        const afterImg = document.createElement('img');
-                        afterImg.src = caseItem.before_after_images.after;
-                        afterImg.alt = '治疗后';
-
-                        beforeAfterDiv.appendChild(beforeImg);
-                        beforeAfterDiv.appendChild(afterImg);
-                        caseElement.appendChild(beforeAfterDiv);
                         grid.appendChild(caseElement);
                     });
                 }
@@ -7772,6 +7871,61 @@
                             showCasesByCategory(categoryName);
                         });
                     });
+
+
+                    // 添加滚动监听
+                    function initCasesScroll() {
+                        const grid = document.getElementById('casesGrid');
+                        if (!grid) return;
+
+                        grid.addEventListener('scroll', () => {
+                            const { scrollTop, scrollHeight, clientHeight } = grid;
+
+                            // 当滚动到距离底部100px时加载更多
+                            if (scrollHeight - scrollTop - clientHeight < 100) {
+                                if (currentCategory &&
+                                    currentPage * PAGE_SIZE < currentCategory.cases.length) {
+                                    currentPage++;
+                                    updateCasesGrid();
+                                }
+                            }
+                        });
+                    }
+
+                    // 修改案例分类切换处理
+                    function switchCaseCategory(category) {
+                        currentCategory = category;
+                        currentPage = 1;
+                        updateCasesGrid();
+                    }
+
+                    // 在页面初始化时添加
+                    function initCasesPage() {
+                        // 初始化滚动监听
+                        initCasesScroll();
+
+                        // 初始化分类标签点击事件
+                        document.querySelectorAll('.case-tab').forEach(tab => {
+                            tab.addEventListener('click', () => {
+                                // 移除所有active类
+                                document.querySelectorAll('.case-tab').forEach(t =>
+                                    t.classList.remove('active'));
+
+                                // 添加active类到当前标签
+                                tab.classList.add('active');
+
+                                // 切换分类
+                                const category = tab.dataset.category;
+                                switchCaseCategory(getCasesByCategory(category));
+                            });
+                        });
+
+                        // 默认显示第一个分类
+                        const firstTab = document.querySelector('.case-tab');
+                        if (firstTab) {
+                            firstTab.click();
+                        }
+                    }
 
                     // 添加滚动加载更多
                     window.addEventListener('scroll', () => {
@@ -8299,8 +8453,42 @@
 
                 // 添加数据访问函数
                 async function getCustomers() {
-                    // 模拟从本地存储获取数据
-                    return mockCustomerDB.customers;
+                    try {
+                        // 模拟从本地存储获取数据
+                        return [
+                            {
+                                id: "1",
+                                name: "陈先生",
+                                phone: "138-1234",
+                                lastDetectionTime: "2024-03-20T10:30:00",
+                                checkCount: 3
+                            },
+                            {
+                                id: "2",
+                                name: "李先生",
+                                phone: "139-5678",
+                                lastDetectionTime: "2024-03-19T14:20:00",
+                                checkCount: 1
+                            },
+                            {
+                                id: "3",
+                                name: "王女士",
+                                phone: "137-2222",
+                                lastDetectionTime: "2024-03-18T16:45:00",
+                                checkCount: 2
+                            },
+                            {
+                                id: "4",
+                                name: "赵先生",
+                                phone: "136-5555",
+                                lastDetectionTime: "2024-03-17T09:15:00",
+                                checkCount: 2
+                            }
+                        ];
+                    } catch (error) {
+                        console.error('Error getting customers:', error);
+                        throw error;
+                    }
                 }
 
                 async function getReports() {
@@ -9056,6 +9244,18 @@
                     },
                     'detection-questionnaire': () => {
                         loadQuestionnaire();
+                    },
+                    'report-entrance': () => {
+                        // 报告入口页面初始化逻辑
+                        initReportEntrance();
+                    },
+                    'cases-entrance': () => {
+                        // 服务案例入口页面初始化逻辑
+                        initCasesPage();
+                    },
+                    'services-entrance': () => {
+                        // 护理项目入口页面初始化逻辑
+                        initServicesPage();
                     }
                 };
 
@@ -9101,8 +9301,13 @@
                         updateDetectionResult();
                     }
                     if (pageId === 'report-entrance') {
-                        initReportEntrance();
-                        updateReportEntrance();
+                        // 确保在切换到报告页面时重新初始化
+                        setTimeout(() => {
+                            initReportEntrance();
+                        }, 100);
+                    }
+                    if (pageId === 'cases-entrance') {
+                        initCasesPage();
                     }
                     // if (targetPage === 'detection-records') {
                     //     initDetectionRecords();
@@ -9184,12 +9389,42 @@
                 let reportsList = []; // 存储所有报告数据
 
                 async function initReportEntrance() {
+                    console.log('Initializing report entrance...');
                     try {
+                        // 确保在渲染前页面已经显示
+                        await waitForElement('#reports-list');
+
+                        // 获取客户数据
                         const customers = await getCustomers();
-                        renderReportsList(customers);
+                        console.log('Customers data received:', customers);
+
+
+                        // 渲染列表
+                        await renderReportsList(customers);
                     } catch (error) {
                         console.error('Error initializing report entrance:', error);
                     }
+                }
+
+                // 添加等待元素加载的辅助函数
+                function waitForElement(selector) {
+                    return new Promise(resolve => {
+                        if (document.querySelector(selector)) {
+                            return resolve();
+                        }
+
+                        const observer = new MutationObserver(() => {
+                            if (document.querySelector(selector)) {
+                                observer.disconnect();
+                                resolve();
+                            }
+                        });
+
+                        observer.observe(document.body, {
+                            childList: true,
+                            subtree: true
+                        });
+                    });
                 }
 
                 async function updateReportEntrance() {
@@ -9202,18 +9437,51 @@
                 }
 
                 async function renderReportsList(customers) {
-                    const reportsList = document.getElementById('records-list');
-                    if (!reportsList) return;
+                    const reportsContainer = document.getElementById('reports-list');
+                    if (!reportsContainer) {
+                        console.error('Reports container not found');
+                        return;
+                    }
 
-                    const reportsHTML = customers.map(customer => `
-                        <div class="customer-card" onclick="navigateToRecordDetail('${customer.id}')">
-                            <div class="customer-name">${customer.name}</div>
-                            <div class="customer-info">${customer.phone}</div>
-                            <div class="customer-info">${formatLastCheckInfo(customer.lastCheckTime)}</div>
-                        </div>
-                    `).join('');
+                    console.log('Rendering reports list...');
 
-                    reportsList.innerHTML = reportsHTML;
+                    try {
+                        // 清空现有内容
+                        reportsContainer.innerHTML = '';
+
+                        // 按最后检测时间排序
+                        const sortedCustomers = [...customers].sort((a, b) => {
+                            const dateA = new Date(b.lastDetectionTime || b.lastCheckTime);
+                            const dateB = new Date(a.lastDetectionTime || a.lastCheckTime);
+                            return dateA - dateB;
+                        });
+
+                        // 生成 HTML
+                        const reportsHTML = sortedCustomers.map(customer => {
+                            // 格式化电话号码显示
+                            const formattedPhone = customer.phone.replace(/(\d{3})(\d{4})/, '$1-$2');
+
+                            // 获取最后检测时间
+                            const lastCheckTime = customer.lastDetectionTime || customer.lastCheckTime;
+                            const lastCheckInfo = formatLastCheckInfo(lastCheckTime);
+
+                            return `
+                            <div class="customer-card" onclick="navigateToRecordDetail('\${customer.id}')">
+                                <div class="customer-name">\${customer.name}</div>
+                                <div class="customer-info">\${formattedPhone}</div>
+                                <div class="customer-info">\${lastCheckInfo}</div>
+                                <div class="customer-info">检测次数：\${customer.checkCount || 1}次</div>
+                            </div>
+                        `;
+                        }).join('');
+
+                        // 更新容器内容
+                        reportsContainer.innerHTML = reportsHTML;
+                        console.log('Reports list rendered successfully');
+                    } catch (error) {
+                        console.error('Error rendering reports list:', error);
+                        reportsContainer.innerHTML = '<div class="error-message">加载失败，请稍后重试</div>';
+                    }
                 }
 
 
@@ -9311,7 +9579,7 @@
                             return {
                                 ...customer,
                                 latestReport,
-                                lastCheckInfo: formatLastCheckInfo(customer.lastCheckTime)
+                                lastCheckInfo: formatLastCheckInfo(customer.lastDetectionTime)
                             };
                         });
 
@@ -9319,14 +9587,14 @@
 
                         // 按最后检测时间排序
                         records.sort((a, b) =>
-                            new Date(b.lastCheckTime) - new Date(a.lastCheckTime)
+                            new Date(b.lastDetectionTime) - new Date(a.lastDetectionTime)
                         );
 
                         recordsList.innerHTML = records.map(record => `
-                            < div class="record-item" onclick = "navigateToRecordDetail('${record.latestReport?.id}')" >
+                                < div class="record-item" onclick = "navigateToRecordDetail('${record.id}')" >
                                         <div class="record-header">
                                             <div class="customer-name">${record.name}</div>
-                                            <div class="check-time">${formatCheckTime(record.lastCheckTime)}</div>
+                                            <div class="check-time">${formatCheckTime(record.lastDetectionTime)}</div>
                                         </div>
                                         <div class="record-info">${record.phone}</div>
                                         <div class="record-info">检测次数：${record.checkCount}次</div>
@@ -9367,16 +9635,16 @@
                         if (!recordsList) return;
 
                         recordsList.innerHTML = filteredRecords.map(record => `
-                    < div class="record-item" onclick = "navigateToRecordDetail('${record.id}')" >
+                            < div class="record-item" onclick = "navigateToRecordDetail('${record.id}')" >
                                 <div class="record-header">
                                     <div class="customer-name">${record.name}</div>
-                                    <div class="check-time">${formatCheckTime(record.checkTime)}</div>
+                                    <div class="check-time">${formatCheckTime(record.lastDetectionTime)}</div>
                                 </div>
                                 <div class="record-info">${record.phone}</div>
                                 <div class="record-info">${record.lastCheckInfo}</div>
                                 <div class="record-status">查看检测报告 ></div>
                             </div >
-                        `).join('');
+                            `).join('');
                     });
                 }
 
@@ -9406,162 +9674,162 @@
 
                 // 首先修改系统设置页面的样式和结构
                 const systemSettingsStyles = `
-.settings-container {
-    padding: 15px;
-}
+                                .settings - container {
+                            padding: 15px;
+                        }
 
-.settings-tabs {
-    display: flex;
-    background: white;
-    border-radius: 12px;
-    padding: 4px;
-    margin-bottom: 15px;
-}
+.settings - tabs {
+                            display: flex;
+                            background: white;
+                            border - radius: 12px;
+                            padding: 4px;
+                            margin - bottom: 15px;
+                        }
 
-.settings-tab {
-    flex: 1;
-    padding: 12px;
-    text-align: center;
-    cursor: pointer;
-    border-radius: 8px;
-    color: #666;
-    transition: all 0.3s;
-}
+.settings - tab {
+                            flex: 1;
+                            padding: 12px;
+                            text - align: center;
+                            cursor: pointer;
+                            border - radius: 8px;
+                            color: #666;
+                            transition: all 0.3s;
+                        }
 
-.settings-tab.active {
-    background: #35A69C;
-    color: white;
-}
+.settings - tab.active {
+                            background: #35A69C;
+                            color: white;
+                        }
 
-.settings-section {
-    display: none;
-}
+.settings - section {
+                            display: none;
+                        }
 
-.settings-section.active {
-    display: block;
-}
+.settings - section.active {
+                            display: block;
+                        }
 
 .card {
-    background: white;
-    border-radius: 12px;
-    padding: 16px;
-    margin-bottom: 15px;
-}
+                            background: white;
+                            border - radius: 12px;
+                            padding: 16px;
+                            margin - bottom: 15px;
+                        }
 
-.settings-item {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 12px 0;
-    border-bottom: 1px solid #f0f0f0;
-}
+.settings - item {
+                            display: flex;
+                            justify - content: space - between;
+                            align - items: center;
+                            padding: 12px 0;
+                            border - bottom: 1px solid #f0f0f0;
+                        }
 
-.settings-item:last-child {
-    border-bottom: none;
-}
+.settings - item: last - child {
+                            border - bottom: none;
+                        }
 
-.settings-item-title {
-    font-size: 16px;
-    color: #333;
-    margin-bottom: 4px;
-}
+.settings - item - title {
+                            font - size: 16px;
+                            color: #333;
+                            margin - bottom: 4px;
+                        }
 
-.settings-item-description {
-    font-size: 14px;
-    color: #666;
-}
+.settings - item - description {
+                            font - size: 14px;
+                            color: #666;
+                        }
 
-.toggle-switch {
-    position: relative;
-    display: inline-block;
-    width: 52px;
-    height: 28px;
-}
+.toggle -switch {
+                            position: relative;
+                            display: inline - block;
+                            width: 52px;
+                            height: 28px;
+                        }
 
-.toggle-switch input {
+                            .toggle -switch input {
     opacity: 0;
-    width: 0;
-    height: 0;
-}
+                        width: 0;
+                        height: 0;
+                    }
 
-.toggle-slider {
-    position: absolute;
-    cursor: pointer;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: #ccc;
-    transition: .4s;
-    border-radius: 34px;
-}
+.toggle - slider {
+                        position: absolute;
+                        cursor: pointer;
+                        top: 0;
+                        left: 0;
+                        right: 0;
+                        bottom: 0;
+                        background - color: #ccc;
+                        transition: .4s;
+                        border - radius: 34px;
+                    }
 
-.toggle-slider:before {
-    position: absolute;
-    content: "";
-    height: 20px;
-    width: 20px;
-    left: 4px;
-    bottom: 4px;
-    background-color: white;
-    transition: .4s;
-    border-radius: 50%;
-}
+.toggle - slider:before {
+                        position: absolute;
+                        content: "";
+                        height: 20px;
+                        width: 20px;
+                        left: 4px;
+                        bottom: 4px;
+                        background - color: white;
+                        transition: .4s;
+                        border - radius: 50 %;
+                    }
 
-input:checked + .toggle-slider {
-    background-color: #35A69C;
-}
+                    input: checked + .toggle - slider {
+                        background - color: #35A69C;
+                    }
 
-input:checked + .toggle-slider:before {
-    transform: translateX(24px);
-}
+                    input: checked + .toggle - slider:before {
+                        transform: translateX(24px);
+                    }
 
-.cache-info {
-    text-align: center;
-    padding: 20px 0;
-}
+.cache - info {
+                        text - align: center;
+                        padding: 20px 0;
+                    }
 
-.cache-size {
-    font-size: 24px;
-    font-weight: 500;
-    color: #333;
-    margin-bottom: 8px;
-}
+.cache - size {
+                        font - size: 24px;
+                        font - weight: 500;
+                        color: #333;
+                        margin - bottom: 8px;
+                    }
 
-.cache-description {
-    font-size: 14px;
-    color: #666;
-}
+.cache - description {
+                        font - size: 14px;
+                        color: #666;
+                    }
 
-.about-container {
-    text-align: center;
-    padding: 20px 0;
-}
+.about - container {
+                        text - align: center;
+                        padding: 20px 0;
+                    }
 
-.app-logo {
-    width: 80px;
-    height: 80px;
-    margin-bottom: 16px;
-}
+.app - logo {
+                        width: 80px;
+                        height: 80px;
+                        margin - bottom: 16px;
+                    }
 
-.app-name {
-    font-size: 20px;
-    font-weight: 500;
-    color: #333;
-    margin-bottom: 8px;
-}
+.app - name {
+                        font - size: 20px;
+                        font - weight: 500;
+                        color: #333;
+                        margin - bottom: 8px;
+                    }
 
-.app-version {
-    font-size: 14px;
-    color: #666;
-    margin-bottom: 16px;
-}
+.app - version {
+                        font - size: 14px;
+                        color: #666;
+                        margin - bottom: 16px;
+                    }
 
-.version-status {
-    font-size: 14px;
-    color: #35A69C;
-    margin-bottom: 16px;
-}
+.version - status {
+                        font - size: 14px;
+                        color: #35A69C;
+                        margin - bottom: 16px;
+                    }
 `;
 
                 // 添加系统设置页面的初始化和切换逻辑
