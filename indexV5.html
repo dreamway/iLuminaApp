@@ -1066,6 +1066,83 @@
             font-size: 14px;
         }
 
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            padding: 10px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .section-title {
+            font-size: 16px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .toggle-button {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            padding: 5px 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            background: white;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .toggle-button:hover {
+            background: #f5f5f5;
+        }
+
+        .toggle-icon {
+            font-size: 12px;
+            transition: transform 0.3s ease;
+        }
+
+        .toggle-icon.active {
+            transform: rotate(180deg);
+        }
+
+        .toggle-text {
+            font-size: 14px;
+            color: #666;
+        }
+
+        .section-content {
+            transition: all 0.3s ease;
+        }
+
+        .result-grid {
+            display: grid;
+            gap: 15px;
+            padding: 15px;
+        }
+
+        .result-item {
+            background: #f9f9f9;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+
+        .question-text {
+            font-weight: bold;
+            margin-bottom: 8px;
+            color: #333;
+        }
+
+        .answer-text {
+            color: #666;
+            margin-bottom: 5px;
+        }
+
+        .analysis-text {
+            color: #888;
+            font-size: 14px;
+        }
 
 
         .form-group {
@@ -3043,97 +3120,7 @@
         }
 
 
-        /* 客户登录页面样式 */
-        .login-form {
-            padding: 20px;
-            margin-top: 20px;
-        }
-
-        .form-group {
-            margin-bottom: 20px;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 8px;
-            color: #333;
-        }
-
-        .form-input {
-            width: 100%;
-            padding: 12px;
-            font-size: 16px;
-            border: none;
-            border-radius: 8px;
-            background-color: rgba(53, 166, 156, 0.1);
-        }
-
-        .form-input::placeholder {
-            color: #999;
-        }
-
-        .form-actions {
-            display: flex;
-            gap: 20px;
-            margin-top: 40px;
-            justify-content: center;
-        }
-
-        .action-button {
-            padding: 12px 40px;
-            border: none;
-            border-radius: 24px;
-            background-color: rgba(53, 166, 156, 0.1);
-            color: #333;
-            font-size: 16px;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-
-        .action-button:hover {
-            background-color: rgba(53, 166, 156, 0.2);
-        }
-
-
-        .phone-input-container {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .phone-input-box {
-            width: auto;
-            padding: 12px;
-            font-size: 16px;
-            border: none;
-            border-radius: 8px;
-            background-color: rgba(53, 166, 156, 0.1);
-            text-align: center;
-            letter-spacing: 4px;
-        }
-
-        .phone-input-box:first-child {
-            width: 60px;
-            /* 适应3位数字 */
-        }
-
-        .phone-input-box:last-child {
-            width: 80px;
-            /* 适应4位数字 */
-        }
-
-        .phone-placeholder {
-            display: flex;
-            gap: 4px;
-        }
-
-        .phone-placeholder span {
-            width: 20px;
-            height: 32px;
-            background-color: #E0E0E0;
-            border-radius: 4px;
-        }
-
+        /* 问卷页面样式 */
         .questionnaire-container {
             padding: 16px;
             display: flex;
@@ -4244,6 +4231,74 @@
                 max-width: 1600px;
             }
         }
+
+        .login-form {
+            padding: 20px;
+            max-width: 600px;
+            margin: 20px auto;
+        }
+
+        .input-row {
+            margin-bottom: 20px;
+        }
+
+        .input-label {
+            font-size: 16px;
+            color: #333;
+            margin-bottom: 8px;
+        }
+
+        .input-field {
+            border-radius: 4px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            padding: 8px 12px;
+        }
+
+        .mint-bg {
+            background-color: rgba(183, 233, 230, 0.3);
+        }
+
+        .transparent-input {
+            border: none;
+            background: transparent;
+            width: 100%;
+            font-size: 16px;
+            color: #333;
+            outline: none;
+            padding: 8px 0;
+        }
+
+        .transparent-input::placeholder {
+            color: #999;
+        }
+
+        .phone-separator {
+            margin: 0 8px;
+            color: #666;
+        }
+
+        .button-group {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin-top: 30px;
+        }
+
+        .mint-button {
+            background-color: rgba(183, 233, 230, 0.3);
+            border: none;
+            padding: 10px 30px;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .mint-button:hover {
+            background-color: rgba(183, 233, 230, 0.5);
+        }
     </style>
 </head>
 
@@ -4376,7 +4431,7 @@
 
             <!-- 门店活动详情页面2 -->
             <div class="page" id="campaign-detail-2">
-                 <div class="breadcrumb-nav">
+                <div class="breadcrumb-nav">
                     <div class="breadcrumb-item" onclick="navigateTo('home-page')">首页</div>
                     <span class="breadcrumb-separator">/</span>
                     <div class="breadcrumb-item">活动详情</div>
@@ -4710,38 +4765,32 @@
 
                 <!-- 登录表单 -->
                 <div class="login-form">
-                    <div class="form-group">
-                        <label>客户姓名：</label>
-                        <input type="text" id="customerName" placeholder="(输入姓氏)" class="form-input">
+                    <!-- 姓名输入框 -->
+                    <div class="input-row">
+                        <div class="input-label">客户姓名:</div>
+                        <div class="input-field mint-bg">
+                            <input type="text" id="customerName" placeholder="(输入姓氏)" class="transparent-input">
+                        </div>
                     </div>
 
-                    <!-- 修改登录表单的电话输入部分 -->
-                    <div class="form-group">
-                        <label>客户电话：</label>
-                        <div class="phone-input-container">
-                            <!-- 前3位 -->
-                            <input type="text" id="phonePrefix" class="phone-input-box" maxlength="3"
-                                onkeyup="handlePhoneInput(this, 'phoneSuffix')"
+                    <!-- 电话输入框 -->
+                    <div class="input-row">
+                        <div class="input-label">客户电话:</div>
+                        <div class="input-field mint-bg">
+                            <input type="text" id="phonePrefix" class="transparent-input" maxlength="3"
+                                placeholder="(输入电话前三、后四位)" onkeyup="handlePhoneInput(this, 'phoneSuffix')"
                                 oninput="this.value = this.value.replace(/[^0-9]/g, '')">
-
-                            <!-- 中间4位占位框 -->
-                            <div class="phone-placeholder">
-                                <span></span>
-                                <span></span>
-                                <span></span>
-                                <span></span>
-                            </div>
-
-                            <!-- 后4位 -->
-                            <input type="text" id="phoneSuffix" class="phone-input-box" maxlength="4"
+                            <span class="phone-separator">-</span>
+                            <input type="text" id="phoneSuffix" class="transparent-input" maxlength="4"
                                 onkeyup="handlePhoneInput(this, null)"
                                 oninput="this.value = this.value.replace(/[^0-9]/g, '')">
                         </div>
                     </div>
 
-                    <div class="form-actions">
-                        <button class="action-button" onclick="handleCustomerLogin()">登录</button>
-                        <button class="action-button" onclick="handleCustomerRegister()">新建客户</button>
+                    <!-- 按钮组 -->
+                    <div class="button-group">
+                        <button class="mint-button" onclick="handleCustomerLogin()">登录</button>
+                        <button class="mint-button" onclick="handleCustomerRegister()">新建客户</button>
                     </div>
                 </div>
             </div>
@@ -4754,7 +4803,7 @@
                     <span class="breadcrumb-separator">/</span>
                     <div class="breadcrumb-item">客户管理</div>
                 </div>
-                
+
                 <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;">
                     <div class="section-title">客户管理</div>
                     <div style="display: flex; gap: 8px;">
@@ -4984,7 +5033,7 @@
                     <span class="breadcrumb-separator">/</span>
                     <div class="breadcrumb-item">新建客户</div>
                 </div>
-                
+
                 <div class="flow-header">
                     <div class="flow-title">新建客户</div>
                     <button class="icon-button" onclick="navigateTo('detection-customer')"
@@ -5099,14 +5148,10 @@
 
             <!-- 检测流程 - 问卷调查 -->
             <div class="page" id="detection-questionnaire">
-                <!-- <div class="breadcrumb-nav">
+                <div class="breadcrumb-nav">
                     <div class="breadcrumb-item" onclick="navigateTo('detection-page')">检测</div>
                     <span class="breadcrumb-separator">/</span>
                     <div class="breadcrumb-item">问卷调查</div>
-                </div> -->
-                <div class="flow-header">
-                    <div class="flow-title">问卷调查</div>
-                    <div class="flow-progress">2/4</div>
                 </div>
 
                 <!-- 问卷列表容器 -->
@@ -5121,9 +5166,10 @@
 
             <!-- 检测流程 - 图像采集 -->
             <div class="page" id="detection-camera">
-                <div class="flow-header">
-                    <div class="flow-title">图像采集</div>
-                    <div class="flow-progress">3/4</div>
+                <div class="breadcrumb-nav">
+                    <div class="breadcrumb-item" onclick="navigateTo('detection-page')">检测</div>
+                    <span class="breadcrumb-separator">/</span>
+                    <div class="breadcrumb-item">图像采集</div>
                 </div>
 
                 <div class="camera-container">
@@ -5454,7 +5500,6 @@
                 </div>
 
                 <div class="flow-header">
-                    <!-- <div class="flow-title">检测报告</div> -->
                     <div class="report-date">2025-03-15 14:30</div>
                 </div>
 
@@ -5480,8 +5525,14 @@
                 </div>
 
                 <div class="report-section">
-                    <div class="report-section-title">问卷答案分析</div>
-                    <div class="questionnaire-results">
+                    <div class="section-header">
+                        <div class="section-title">问卷答案分析</div>
+                        <button class="toggle-button" onclick="toggleQuestionnaireResults(this)">
+                            <span class="toggle-icon">▼</span>
+                            <span class="toggle-text">展开</span>
+                        </button>
+                    </div>
+                    <div id="questionnaire-results" class="section-content" style="display: none;">
                         <div class="question-result">
                             <div class="question-text">1. 眼睛异物感情况</div>
                             <div class="answer-text">一般，偶尔有这种感觉</div>
@@ -7345,11 +7396,11 @@
                     if (!detectionResult) return;
 
                     detectionResult.innerHTML = `
-                        <div class="back-header">
-                            <div class="back-button" onclick="navigateTo('home-page')">
-                                <span class="back-arrow">←</span>
-                                <span>返回</span>
-                            </div>
+
+                        <div class="breadcrumb-nav">
+                            <div class="breadcrumb-item" onclick="navigateTo('detection-page')">检测</div>
+                            <span class="breadcrumb-separator">/</span>
+                            <div class="breadcrumb-item">检测结果</div>
                         </div>
 
                         <div class="customer-info-card">
@@ -9300,12 +9351,12 @@
                     if (pageId === 'detection-result') {
                         updateDetectionResult();
                     }
-                    if (pageId === 'report-entrance') {
-                        // 确保在切换到报告页面时重新初始化
-                        setTimeout(() => {
-                            initReportEntrance();
-                        }, 100);
-                    }
+                    // if (pageId === 'report-entrance') {
+                    //     // 确保在切换到报告页面时重新初始化
+                    //     setTimeout(() => {
+                    //         initReportEntrance();
+                    //     }, 100);
+                    // }
                     if (pageId === 'cases-entrance') {
                         initCasesPage();
                     }
@@ -9392,7 +9443,7 @@
                     console.log('Initializing report entrance...');
                     try {
                         // 确保在渲染前页面已经显示
-                        await waitForElement('#reports-list');
+                        //await waitForElement('#reports-list');
 
                         // 获取客户数据
                         const customers = await getCustomers();
@@ -9460,19 +9511,25 @@
                         const reportsHTML = sortedCustomers.map(customer => {
                             // 格式化电话号码显示
                             const formattedPhone = customer.phone.replace(/(\d{3})(\d{4})/, '$1-$2');
-
+                            console.log('formattedPhone:', formattedPhone);
                             // 获取最后检测时间
                             const lastCheckTime = customer.lastDetectionTime || customer.lastCheckTime;
                             const lastCheckInfo = formatLastCheckInfo(lastCheckTime);
+                            console.log('lastCheckInfo:', lastCheckInfo);
+                            console.log('customer.checkCount:', customer.checkCount);
+                            console.log('customer.name:', customer.name);
+                            console.log('customer.id:', customer.id);
+                            console.log('customer:', customer);
+                            console.log('lastCheckTime:', lastCheckTime);
 
                             return `
-                            <div class="customer-card" onclick="navigateToRecordDetail('\${customer.id}')">
-                                <div class="customer-name">\${customer.name}</div>
-                                <div class="customer-info">\${formattedPhone}</div>
-                                <div class="customer-info">\${lastCheckInfo}</div>
-                                <div class="customer-info">检测次数：\${customer.checkCount || 1}次</div>
+                            <div class="customer-card" onclick="navigateToRecordDetail('${customer.id}')">
+                                <div class="customer-name">${customer.name}</div>
+                                <div class="customer-info">${formattedPhone}</div>
+                                <div class="customer-info">${lastCheckInfo}</div>
+                                <div class="customer-info">检测次数：${customer.checkCount || 1}次</div>
                             </div>
-                        `;
+                            `;
                         }).join('');
 
                         // 更新容器内容
@@ -9904,7 +9961,21 @@
                     }, 1500);
                 }
 
+                function toggleQuestionnaireResults(button) {
+                    const content = document.getElementById('questionnaire-results');
+                    const icon = button.querySelector('.toggle-icon');
+                    const text = button.querySelector('.toggle-text');
 
+                    if (content.style.display === 'none') {
+                        content.style.display = 'block';
+                        icon.classList.add('active');
+                        text.textContent = '收起';
+                    } else {
+                        content.style.display = 'none';
+                        icon.classList.remove('active');
+                        text.textContent = '展开';
+                    }
+                }
             </script>
         </div>
 
