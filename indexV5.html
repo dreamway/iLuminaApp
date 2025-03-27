@@ -2010,13 +2010,13 @@
 
 
         /* 雷达图样式 */
-        .radar-chart-container {
+        /* .radar-chart-container {
             background: white;
             border-radius: var(--border-radius);
             padding: 20px;
             margin-bottom: 24px;
             box-shadow: var(--shadow);
-        }
+        } */
 
         /* 维度得分项样式 */
         .dimension-scores,
@@ -3284,12 +3284,12 @@
         }
 
         /* 五维图表容器样式 */
-        .radar-chart-container {
+        /* .radar-chart-container {
             background: white;
             border-radius: 12px;
             padding: 15px;
             margin: 15px;
-        }
+        } */
 
         /* 核心问题和日常建议样式 */
         .issues-section,
@@ -3493,16 +3493,16 @@
 
 
         .record-item {
-            background: white;
-            border-radius: 12px;
+            background: #fff;
+            border-radius: 8px;
             padding: 16px;
             margin-bottom: 12px;
-            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
             cursor: pointer;
+            transition: all 0.3s ease;
         }
 
-        .record-item:active {
-            transform: scale(0.98);
+        .record-item:hover {
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
         }
 
         .record-header {
@@ -3519,19 +3519,20 @@
         }
 
         .check-time {
-            font-size: 12px;
+            font-size: 14px;
             color: #999;
         }
 
         .record-info {
             font-size: 14px;
             color: #666;
-            margin-bottom: 4px;
+            margin: 4px 0;
         }
 
         .record-status {
-            font-size: 12px;
-            color: #35A69C;
+            color: #2196F3;
+            font-size: 14px;
+            margin-top: 8px;
         }
 
 
@@ -3838,11 +3839,16 @@
         }
 
         .radar-chart-container {
-            background: white;
-            border-radius: 12px;
-            padding: 20px;
-            margin: 15px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            height: 400px;
+            position: relative;
+            margin: 20px 0;
+        }
+
+        .radar-chart {
+            width: 100% !important;
+            height: 100% !important;
+            min-height: 350px;
         }
 
         .issues-section,
@@ -4298,6 +4304,43 @@
 
         .mint-button:hover {
             background-color: rgba(183, 233, 230, 0.5);
+        }
+
+        .content-wrapper {
+            display: flex;
+            gap: 20px;
+            padding: 15px;
+        }
+
+        .ai-detection-part {
+            flex: 1;
+            padding: 15px;
+            background-color: #f5f5f5;
+            border-radius: 8px;
+        }
+
+        .analysis-content {
+            flex: 1;
+        }
+
+        .detection-image {
+            margin: 15px 0;
+            text-align: center;
+        }
+
+        .detection-image img {
+            max-width: 100%;
+            border-radius: 4px;
+        }
+
+        .detection-result {
+            margin-top: 15px;
+        }
+
+        .result-item {
+            margin: 8px 0;
+            display: flex;
+            justify-content: space-between;
         }
     </style>
 </head>
@@ -5252,6 +5295,7 @@
                     </div>
                 </div>
             </div>
+
             <!-- 维度详情页面 -->
             <div class="page" id="dimension-detail">
                 <div class="dimension-detail-header">
@@ -5294,11 +5338,6 @@
                         <div class="suggestion-number">3</div>
                         <div class="suggestion-text">使用专业眼部舒缓产品</div>
                     </div>
-                </div>
-
-                <div class="result-actions">
-                    <button class="button" onclick="navigateTo('detection-result')">其他维度</button>
-                    <button class="button secondary" onclick="navigateTo('recommendation')">推荐产品</button>
                 </div>
             </div>
 
@@ -5471,8 +5510,6 @@
             </div>
 
 
-
-
             <!-- 检测报告入口页面 -->
             <div class="page" id="report-entrance">
                 <div style="position: relative; margin: 16px;">
@@ -5582,18 +5619,10 @@
                 </div>
 
                 <div class="report-section">
-                    <div class="report-section-title">AI图像检测结果</div>
-                    <div class="image-analysis-grid">
-                        <!-- AI图像分析结果将由JavaScript动态生成 -->
-
-                    </div>
-                </div>
-
-                <div class="report-section">
                     <div class="report-section-title">综合评估</div>
                     <div class="radar-chart-container">
                         <!-- 雷达图容器 -->
-                        <div id="eyeRadarChart" style="width: 100%; height: 350px;"></div>
+                        <div id="detectionRadarChart" style="width: 800px; height: 400px;" class="radar-chart"></div>
                     </div>
 
                     <div class="dimension-scores">
@@ -5602,36 +5631,57 @@
                                 <div class="dimension-title">
                                     <div class="dimension-name">疲劳度</div>
                                     <div class="score-bar-container">
-                                        <div class="score-bar" style="width: 65%;">
-                                            <span class="score-value">65</span>
+                                        <div class="score-bar" style="width: 72%;">
+                                            <span class="score-value">72</span>
                                         </div>
                                     </div>
                                 </div>
                                 <span class="material-icons toggle-icon">expand_more</span>
                             </div>
+
                             <div class="dimension-detail">
-                                <div class="detail-content">
-                                    <h4>疲劳度详细分析</h4>
-                                    <div class="detail-metrics">
-                                        <div class="metric-item">
-                                            <div class="metric-label">视疲劳指数</div>
-                                            <div class="metric-value">中度（65分）</div>
+                                <!-- 使用flex布局并排显示AI检测和详情分析 -->
+                                <div class="content-wrapper">
+                                    <!-- AI检测结果 -->
+                                    <div class="ai-detection-part">
+                                        <h4>AI 图像检测</h4>
+                                        <div class="detection-image">
+                                            <img src="images/report/fatigue.jpg" alt="疲劳度AI检测结果">
                                         </div>
-                                        <div class="metric-item">
-                                            <div class="metric-label">用眼负荷</div>
-                                            <div class="metric-value">过重</div>
-                                        </div>
-                                        <div class="metric-item">
-                                            <div class="metric-label">恢复能力</div>
-                                            <div class="metric-value">一般</div>
+                                        <div class="detection-result">
+                                            <div class="result-item">
+                                                <span class="label">疲劳指数：</span>
+                                                <span class="value">75%</span>
+                                            </div>
+                                            <div class="result-item">
+                                                <span class="label">检测结果：</span>
+                                                <span class="value">轻度疲劳</span>
+                                            </div>
                                         </div>
                                     </div>
-                                    <div class="detail-suggestion">
-                                        <h5>改善建议</h5>
-                                        <ul>
-                                            <li>每隔45分钟建议休息5分钟</li>
-                                            <li>注意调整屏幕亮度和距离</li>
-                                            <li>可以进行眼部按摩和热敷</li>
+
+                                    <!-- 详情分析 -->
+                                    <div class="analysis-content">
+                                        <h4>详情分析</h4>
+                                        <div class="detail-item">
+                                            <div class="detail-label">眼部疲劳程度：</div>
+                                            <div class="detail-value">轻度疲劳</div>
+                                        </div>
+                                        <div class="detail-item">
+                                            <div class="detail-label">用眼时长：</div>
+                                            <div class="detail-value">8小时/天</div>
+                                        </div>
+                                        <div class="detail-item">
+                                            <div class="detail-label">休息频率：</div>
+                                            <div class="detail-value">每2小时/次</div>
+                                        </div>
+
+                                        <h4>建议</h4>
+                                        <ul class="suggestions-list">
+                                            <li>建议增加用眼休息频率，保持每1小时休息10分钟</li>
+                                            <li>建议适当调整电子设备亮度和对比度</li>
+                                            <li>建议进行眼部按摩和热敷</li>
+                                            <li>建议增加户外活动时间</li>
                                         </ul>
                                     </div>
                                 </div>
@@ -5652,48 +5702,90 @@
                             </div>
 
                             <div class="dimension-detail">
-                                <div class="detail-content">
-                                    <h4>浑浊度详细分析</h4>
-                                    <div class="detail-metrics">
-                                        <div class="metric-item">
-                                            <div class="metric-label">角膜透明度</div>
-                                            <div class="metric-value">良好（72分）</div>
+                                <div class="content-wrapper">
+                                    <!-- AI检测结果 -->
+                                    <div class="ai-detection-part">
+                                        <h4>AI 图像检测</h4>
+                                        <div class="detection-image">
+                                            <img src="images/report/turbidity.jpg" alt="浑浊度AI检测结果">
                                         </div>
-                                        <div class="metric-item">
-                                            <div class="metric-label">泪膜稳定性</div>
-                                            <div class="metric-value">一般</div>
-                                        </div>
-                                        <div class="metric-item">
-                                            <div class="metric-label">结膜充血</div>
-                                            <div class="metric-value">轻度</div>
+                                        <div class="detection-result">
+                                            <div class="result-item">
+                                                <span class="label">浑浊指数：</span>
+                                                <span class="value">72%</span>
+                                            </div>
+                                            <div class="result-item">
+                                                <span class="label">检测结果：</span>
+                                                <span class="value">轻度浑浊</span>
+                                            </div>
                                         </div>
                                     </div>
-                                    <div class="detail-suggestion">
-                                        <h5>改善建议</h5>
-                                        <ul>
-                                            <li>使用无防腐剂人工泪液</li>
-                                            <li>避免长时间佩戴隐形眼镜</li>
-                                            <li>定期进行热敷按摩</li>
-                                        </ul>
+
+                                    <!-- 详情分析 -->
+                                    <div class="analysis-content">
+                                        <h4>浑浊度详细分析</h4>
+                                        <div class="detail-metrics">
+                                            <div class="metric-item">
+                                                <div class="metric-label">角膜透明度</div>
+                                                <div class="metric-value">良好（72分）</div>
+                                            </div>
+                                            <div class="metric-item">
+                                                <div class="metric-label">泪膜稳定性</div>
+                                                <div class="metric-value">一般</div>
+                                            </div>
+                                            <div class="metric-item">
+                                                <div class="metric-label">结膜充血</div>
+                                                <div class="metric-value">轻度</div>
+                                            </div>
+                                        </div>
+                                        <div class="detail-suggestion">
+                                            <h5>改善建议</h5>
+                                            <ul>
+                                                <li>使用无防腐剂人工泪液</li>
+                                                <li>避免长时间佩戴隐形眼镜</li>
+                                                <li>定期进行热敷按摩</li>
+                                            </ul>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
+                    </div>
 
-                        <div class="dimension-score-item" data-dimension="fragility">
-                            <div class="dimension-header" onclick="toggleDimensionDetail('fragility')">
-                                <div class="dimension-title">
-                                    <div class="dimension-name">脆弱度</div>
-                                    <div class="score-bar-container">
-                                        <div class="score-bar" style="width: 58%;">
-                                            <span class="score-value">58</span>
+                    <div class="dimension-score-item" data-dimension="fragility">
+                        <div class="dimension-header" onclick="toggleDimensionDetail('fragility')">
+                            <div class="dimension-title">
+                                <div class="dimension-name">脆弱度</div>
+                                <div class="score-bar-container">
+                                    <div class="score-bar" style="width: 58%;">
+                                        <span class="score-value">58</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <span class="material-icons toggle-icon">expand_more</span>
+                        </div>
+                        <div class="dimension-detail">
+                            <div class="content-wrapper">
+                                <!-- AI检测结果 -->
+                                <div class="ai-detection-part">
+                                    <h4>AI 图像检测</h4>
+                                    <div class="detection-image">
+                                        <img src="images/report/fragility.jpg" alt="脆弱度AI检测结果">
+                                    </div>
+                                    <div class="detection-result">
+                                        <div class="result-item">
+                                            <span class="label">脆弱指数：</span>
+                                            <span class="value">68%</span>
+                                        </div>
+                                        <div class="result-item">
+                                            <span class="label">检测结果：</span>
+                                            <span class="value">中度脆弱</span>
                                         </div>
                                     </div>
                                 </div>
-                                <span class="material-icons toggle-icon">expand_more</span>
-                            </div>
-                            <div class="dimension-detail">
-                                <div class="detail-content">
+
+                                <!-- 详情分析 -->
+                                <div class="analysis-content">
                                     <h4>脆弱度详细分析</h4>
                                     <div class="detail-metrics">
                                         <div class="metric-item">
@@ -5720,21 +5812,43 @@
                                 </div>
                             </div>
                         </div>
+                    </div>
 
-                        <div class="dimension-score-item" data-dimension="relaxation">
-                            <div class="dimension-header" onclick="toggleDimensionDetail('relaxation')">
-                                <div class="dimension-title">
-                                    <div class="dimension-name">松弛度</div>
-                                    <div class="score-bar-container">
-                                        <div class="score-bar" style="width: 70%;">
-                                            <span class="score-value">70</span>
+
+                    <div class="dimension-score-item" data-dimension="relaxation">
+                        <div class="dimension-header" onclick="toggleDimensionDetail('relaxation')">
+                            <div class="dimension-title">
+                                <div class="dimension-name">松弛度</div>
+                                <div class="score-bar-container">
+                                    <div class="score-bar" style="width: 70%;">
+                                        <span class="score-value">70</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <span class="material-icons toggle-icon">expand_more</span>
+                        </div>
+                        <div class="dimension-detail">
+                            <div class="content-wrapper">
+                                <!-- AI检测结果 -->
+                                <div class="ai-detection-part">
+                                    <h4>AI 图像检测</h4>
+                                    <div class="detection-image">
+                                        <img src="images/report/relaxation.jpg" alt="干涩度AI检测结果">
+                                    </div>
+                                    <div class="detection-result">
+                                        <div class="result-item">
+                                            <span class="label">干涩指数：</span>
+                                            <span class="value">65%</span>
+                                        </div>
+                                        <div class="result-item">
+                                            <span class="label">检测结果：</span>
+                                            <span class="value">中度干涩</span>
                                         </div>
                                     </div>
                                 </div>
-                                <span class="material-icons toggle-icon">expand_more</span>
-                            </div>
-                            <div class="dimension-detail">
-                                <div class="detail-content">
+
+                                <!-- 详情分析 -->
+                                <div class="analysis-content">
                                     <h4>松弛度详细分析</h4>
                                     <div class="detail-metrics">
                                         <div class="metric-item">
@@ -5761,21 +5875,42 @@
                                 </div>
                             </div>
                         </div>
+                    </div>
 
-                        <div class="dimension-score-item" data-dimension="aging">
-                            <div class="dimension-header" onclick="toggleDimensionDetail('aging')">
-                                <div class="dimension-title">
-                                    <div class="dimension-name">老化度</div>
-                                    <div class="score-bar-container">
-                                        <div class="score-bar" style="width: 68%;">
-                                            <span class="score-value">68</span>
+                    <div class="dimension-score-item" data-dimension="aging">
+                        <div class="dimension-header" onclick="toggleDimensionDetail('aging')">
+                            <div class="dimension-title">
+                                <div class="dimension-name">老化度</div>
+                                <div class="score-bar-container">
+                                    <div class="score-bar" style="width: 68%;">
+                                        <span class="score-value">68</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <span class="material-icons toggle-icon">expand_more</span>
+                        </div>
+                        <div class="dimension-detail">
+                            <div class="content-wrapper">
+                                <!-- AI检测结果 -->
+                                <div class="ai-detection-part">
+                                    <h4>AI 图像检测</h4>
+                                    <div class="detection-image">
+                                        <img src="images/report/aging.jpg" alt="充血度AI检测结果">
+                                    </div>
+                                    <div class="detection-result">
+                                        <div class="result-item">
+                                            <span class="label">充血指数：</span>
+                                            <span class="value">70%</span>
+                                        </div>
+                                        <div class="result-item">
+                                            <span class="label">检测结果：</span>
+                                            <span class="value">轻度充血</span>
                                         </div>
                                     </div>
                                 </div>
-                                <span class="material-icons toggle-icon">expand_more</span>
-                            </div>
-                            <div class="dimension-detail">
-                                <div class="detail-content">
+
+                                <!-- 详情分析 -->
+                                <div class="analysis-content">
                                     <h4>老化度详细分析</h4>
                                     <div class="detail-metrics">
                                         <div class="metric-item">
@@ -5804,7 +5939,6 @@
                         </div>
                     </div>
                 </div>
-
             </div>
 
             <!-- 登录页面 -->
@@ -6092,50 +6226,50 @@
 
             <script>
                 // 页面导航
-                function navigateTo(pageId) {
-                    if (currentPage === 'detection-result') {
-                        cleanupDetectionResult();
-                    }
+                // function navigateTo(pageId) {
+                //     if (currentPage === 'detection-result') {
+                //         cleanupDetectionResult();
+                //     }
 
-                    // 检查页面是否存在
-                    if (!checkPageExists(pageId)) {
-                        console.error(`Attempted to navigate to non-existent page: ${pageId}`);
-                        showToast('系统错误：页面不存在');
-                        return;
-                    }
+                //     // 检查页面是否存在
+                //     if (!checkPageExists(pageId)) {
+                //         console.error(`Attempted to navigate to non-existent page: ${pageId}`);
+                //         showToast('系统错误：页面不存在');
+                //         return;
+                //     }
 
-                    // 如果未登录且尝试访问需要登录的页面，则跳转到登录页
-                    if (!currentUser && pageId !== 'login-page') {
-                        pageId = 'login-page';
-                    }
+                //     // 如果未登录且尝试访问需要登录的页面，则跳转到登录页
+                //     if (!currentUser && pageId !== 'login-page') {
+                //         pageId = 'login-page';
+                //     }
 
-                    // 隐藏所有页面
-                    document.querySelectorAll('.page').forEach(page => {
-                        page.classList.remove('active');
-                    });
+                //     // 隐藏所有页面
+                //     document.querySelectorAll('.page').forEach(page => {
+                //         page.classList.remove('active');
+                //     });
 
-                    // 显示目标页面
-                    document.getElementById(pageId).classList.add('active');
+                //     // 显示目标页面
+                //     document.getElementById(pageId).classList.add('active');
 
-                    // 更新底部导航栏状态
-                    document.querySelectorAll('.nav-item').forEach(item => {
-                        item.classList.remove('active');
-                    });
+                //     // 更新底部导航栏状态
+                //     document.querySelectorAll('.nav-item').forEach(item => {
+                //         item.classList.remove('active');
+                //     });
 
-                    // 根据页面ID更新底部导航栏
-                    if (pageId === 'home-page' || pageId === 'services-entrance' || pageId === 'cases-entrance') {
-                        document.querySelectorAll('.nav-item')[0].classList.add('active');
-                    } else if (pageId.contains('detection') || pageId.contains('dimension')) {
-                        document.querySelectorAll('.nav-item')[1].classList.add('active');
-                    } else if (pageId === 'report-entrance') {
-                        document.querySelectorAll('.nav-item')[2].classList.add('active');
-                    } else if (pageId === 'profile-page') {
-                        document.querySelectorAll('.nav-item')[3].classList.add('active');
-                    }
+                //     // 根据页面ID更新底部导航栏
+                //     if (pageId === 'home-page' || pageId === 'services-entrance' || pageId === 'cases-entrance') {
+                //         document.querySelectorAll('.nav-item')[0].classList.add('active');
+                //     } else if (pageId.contains('detection') || pageId.contains('dimension')) {
+                //         document.querySelectorAll('.nav-item')[1].classList.add('active');
+                //     } else if (pageId === 'report') {
+                //         document.querySelectorAll('.nav-item')[2].classList.add('active');
+                //     } else if (pageId === 'profile-page') {
+                //         document.querySelectorAll('.nav-item')[3].classList.add('active');
+                //     }
 
-                    // 滚动到顶部
-                    document.querySelector('.content-area').scrollTop = 0;
-                }
+                //     // 滚动到顶部
+                //     document.querySelector('.content-area').scrollTop = 0;
+                // }
 
 
                 // 开始检测流程
@@ -6553,7 +6687,7 @@
                 let currentPageId = 'home-page';
 
                 // 修改页面导航函数
-                function navigateTo(pageId, addToHistory = true) {
+                async function navigateTo(pageId, addToHistory = true) {
                     console.log('L6170, navigateTo', pageId, ", histories:", navigationHistory);
                     // 如果未登录且尝试访问需要登录的页面，则跳转到登录页
                     if (!currentUser && pageId !== 'login-page') {
@@ -6566,25 +6700,25 @@
                         navigationHistory.push(currentPageId);
                     }
 
-                    const currentPath = sessionStorage.getItem('currentPath') || '';
-                    const pathArray = currentPath.split(',').filter(Boolean);
+                    // const currentPath = sessionStorage.getItem('currentPath') || '';
+                    // const pathArray = currentPath.split(',').filter(Boolean);
 
-                    // 更新路径
-                    if (pageId === 'home-page') {
-                        pathArray.length = 0;
-                    } else if (pageId === 'cases-entrance') {
-                        pathArray.length = 1;
-                        if (!pathArray.includes('cases-entrance')) {
-                            pathArray.push('cases-entrance');
-                        }
-                    } else if (pageId === 'case-detail') {
-                        if (!pathArray.includes('cases-entrance')) {
-                            pathArray.push('cases-entrance');
-                        }
-                        pathArray.push('case-detail');
-                    }
+                    // // 更新路径
+                    // if (pageId === 'home-page') {
+                    //     pathArray.length = 0;
+                    // } else if (pageId === 'cases-entrance') {
+                    //     pathArray.length = 1;
+                    //     if (!pathArray.includes('cases-entrance')) {
+                    //         pathArray.push('cases-entrance');
+                    //     }
+                    // } else if (pageId === 'case-detail') {
+                    //     if (!pathArray.includes('cases-entrance')) {
+                    //         pathArray.push('cases-entrance');
+                    //     }
+                    //     pathArray.push('case-detail');
+                    // }
 
-                    sessionStorage.setItem('currentPath', pathArray.join(','));
+                    // sessionStorage.setItem('currentPath', pathArray.join(','));
 
                     // 更新当前页面ID
                     currentPageId = pageId;
@@ -6608,7 +6742,8 @@
                     // 3. 更新导航状态（如果有底部导航栏）
                     updateNavigationState(pageId);
 
-                    handlePageChange(pageId);
+                    // 4. 处理页面切换
+                    await handlePageChange(pageId);
                 }
 
                 // 返回上一页
@@ -6782,12 +6917,11 @@
                     updateBreadcrumb(currentPageId);
 
                     // 初始化雷达图
-                    initRadarChart('eyeRadarChart');
-                    initRadarChart('detectionRadarChart');
+                    //initRadarChart('detectionRadarChart');
 
                     // 初始化检测报告和检测结果
-                    updateDetectionReport();
-                    updateDetectionResult();
+                    //updateDetectionReport();
+                    //updateDetectionResult();
 
                     // 为维度项添加点击事件
                     document.querySelectorAll('.dimension-item.expandable').forEach(item => {
@@ -6802,11 +6936,9 @@
 
                     // 窗口大小变化时重绘雷达图
                     window.addEventListener('resize', function () {
-                        const eyeRadarChart = echarts.getInstanceByDom(document.getElementById('eyeRadarChart'));
-                        const detectionRadarChart = echarts.getInstanceByDom(document.getElementById('detectionRadarChart'));
-
-                        if (eyeRadarChart) eyeRadarChart.resize();
-                        if (detectionRadarChart) detectionRadarChart.resize();
+                        if (window.radarChart) {
+                            window.radarChart.resize();
+                        }
                     });
 
                     // 初始化维度分析组件
@@ -6900,7 +7032,8 @@
                 }
 
                 // 统一的雷达图初始化函数
-                async function initRadarChart(chartId) {
+                async function initRadarChart(chartDom) {
+                    console.log(' initRadarChart, chartDom:', chartDom);
                     try {
                         if (!window.currentPatient) {
                             window.currentPatient = await getPatientData();
@@ -6912,16 +7045,41 @@
                             return;
                         }
 
-                        const chartContainer = document.getElementById('detectionRadarChart');
-                        if (!chartContainer) {
-                            console.warn('Chart container not found');
-                            return;
-                        }
+
+
+                        // 确保容器有正确的尺寸
+                        const containerRect = chartDom.getBoundingClientRect();
+                        console.log('Container size:', containerRect.width, containerRect.height);
+                        // 等待容器准备就绪
+                        await new Promise(resolve => {
+                            const checkContainer = () => {
+                                const rect = chartDom.getBoundingClientRect();
+                                if (rect.width > 0 && rect.height > 0) {
+                                    resolve();
+                                } else {
+                                    setTimeout(checkContainer, 100);
+                                }
+                            };
+                            checkContainer();
+                        });
+
+                        // 使用 renderer 参数确保在某些环境下正确渲染
+                        const chart = echarts.init(chartDom, null, { renderer: 'canvas' });
+                        console.log('Container size:', containerRect.width, containerRect.height);
+                        console.log('chart.size', chartDom.getBoundingClientRect());
+
 
                         const dimensions = window.currentPatient.dimensionData;
+                        console.log('initRadarChart dimensions', dimensions);
 
-                        // 初始化图表
-                        const chart = echarts.init(chartContainer);
+                        // 添加 resize 观察器
+                        const resizeObserver = new ResizeObserver(() => {
+                            const rect = chartContainer.getBoundingClientRect();
+                            if (rect.width > 0 && rect.height > 0) {
+                                chart.resize();
+                            }
+                        });
+                        resizeObserver.observe(chartContainer);
 
                         const option = {
                             tooltip: {
@@ -6984,7 +7142,7 @@
                             }]
                         };
 
-                        chart.setOption(option);
+                        chart.setOption(option, true);
 
                         // 添加点击事件监听
                         chart.on('click', params => {
@@ -7001,7 +7159,7 @@
 
                         // 添加窗口大小变化的监听
                         window.addEventListener('resize', () => {
-                            chart.resize();
+                            window.radarChart.resize();
                         });
 
                     } catch (error) {
@@ -7011,6 +7169,7 @@
 
                 // 统一的维度详情切换函数
                 function toggleDimensionDetail(dimensionId) {
+                    console.log('toggleDimensionDetail', dimensionId);
                     // 查找所有可能的维度项（包括dimension-item和dimension-score-item）
                     const items = document.querySelectorAll('[data-dimension]');
                     const clickedItem = document.querySelector(`[data-dimension="${dimensionId}"]`);
@@ -7059,7 +7218,7 @@
                     }
 
                     // 初始化雷达图
-                    await initRadarChart();
+                    //await initRadarChart('detectionRadarChart');
 
 
 
@@ -7218,7 +7377,7 @@
                     }
 
                     // 重新初始化雷达图
-                    initRadarChart('detectionRadarChart');
+                    //await initRadarChart('detectionRadarChart');
 
                     // 默认展开第一个维度
                     const firstDimension = document.querySelector('#dimension-list-container .dimension-score-item');
@@ -7240,21 +7399,20 @@
                     if (pageId === 'detection-result') {
                         setTimeout(updateDetectionResult, 100); // 延迟一点执行，确保DOM已更新
                     } else if (pageId === 'report-details') {
+                        console.log("pageId === 'report-details', updateDetectionReport");
                         setTimeout(updateDetectionReport, 100); // 延迟一点执行，确保DOM已更新
                     }
                 };
 
                 // 更新检测报告页面
-                function updateDetectionReport() {
+                async function updateDetectionReport() {
                     if (!window.currentPatient) {
-                        window.currentPatient = getPatientData();
+                        window.currentPatient = await getPatientData();
                     }
-
-                    // 初始化雷达图
-                    initRadarChart('eyeRadarChart');
+                    console.log('window.currentPatient', window.currentPatient);
 
                     // 填充问卷结果
-                    patient = window.currentPatient;
+                    const patient = window.currentPatient;
                     if (patient.questionnaire) {
                         const questionnaireContainer = document.querySelector('.questionnaire-results');
                         if (questionnaireContainer) {
@@ -7273,110 +7431,6 @@
                         }
                     }
 
-                    // 填充AI图像分析结果
-                    if (patient.imageAnalysis) {
-                        const imageAnalysisContainer = document.querySelector('#report-details .image-analysis-grid');
-                        if (imageAnalysisContainer) {
-                            imageAnalysisContainer.innerHTML = '';
-
-                            // 添加左眼分析
-                            if (patient.imageAnalysis.leftEye) {
-                                const leftEyeAnalysis = document.createElement('div');
-                                leftEyeAnalysis.className = 'analysis-item';
-                                leftEyeAnalysis.innerHTML = `
-                                    <div class="analysis-title">
-                                        <span class="material-icons">visibility</span>
-                                        <div class="analysis-title-text">左眼分析</div>
-                                    </div>
-                                    <div class="analysis-content">
-                                        <div class="analysis-images">
-                                            <div class="image-compare">
-                                                <img src="${patient.imageAnalysis.leftEye.imagePath}" alt="左眼图像">
-                                                <div class="image-label">左眼</div>
-                                            </div>
-                                        </div>
-                                        <div class="analysis-result">
-                                            <div class="result-title">检测结果</div>
-                                            <div class="result-details">
-                                                ${patient.imageAnalysis.leftEye.findings.map(finding => `
-                                                    <div class="result-item">
-                                                        <div class="result-label">${finding.name}</div>
-                                                        <div class="result-value">${finding.level} (${finding.score}分)</div>
-                                                    </div>
-                                                `).join('')}
-                                            </div>
-                                        </div>
-                                    </div>
-                                `;
-                                imageAnalysisContainer.appendChild(leftEyeAnalysis);
-                            }
-
-                            // 添加右眼分析
-                            if (patient.imageAnalysis.rightEye) {
-                                const rightEyeAnalysis = document.createElement('div');
-                                rightEyeAnalysis.className = 'analysis-item';
-                                rightEyeAnalysis.innerHTML = `
-                                    <div class="analysis-title">
-                                        <span class="material-icons">visibility</span>
-                                        <div class="analysis-title-text">右眼分析</div>
-                                    </div>
-                                    <div class="analysis-content">
-                                        <div class="analysis-images">
-                                            <div class="image-compare">
-                                                <img src="${patient.imageAnalysis.rightEye.imagePath}" alt="右眼图像">
-                                                <div class="image-label">右眼</div>
-                                            </div>
-                                        </div>
-                                        <div class="analysis-result">
-                                            <div class="result-title">检测结果</div>
-                                            <div class="result-details">
-                                                ${patient.imageAnalysis.rightEye.findings.map(finding => `
-                                                    <div class="result-item">
-                                                        <div class="result-label">${finding.name}</div>
-                                                        <div class="result-value">${finding.level} (${finding.score}分)</div>
-                                                    </div>
-                                                `).join('')}
-                                            </div>
-                                        </div>
-                                    </div>
-                                `;
-                                imageAnalysisContainer.appendChild(rightEyeAnalysis);
-                            }
-
-                            // 添加眼周分析
-                            if (patient.imageAnalysis.eyeArea) {
-                                const eyeAreaAnalysis = document.createElement('div');
-                                eyeAreaAnalysis.className = 'analysis-item';
-                                eyeAreaAnalysis.innerHTML = `
-                                    <div class="analysis-title">
-                                        <span class="material-icons">face</span>
-                                        <div class="analysis-title-text">眼周分析</div>
-                                    </div>
-                                    <div class="analysis-content">
-                                        <div class="analysis-images">
-                                            <div class="image-compare">
-                                                <img src="${patient.imageAnalysis.eyeArea.imagePath}" alt="眼周图像">
-                                                <div class="image-label">眼周</div>
-                                            </div>
-                                        </div>
-                                        <div class="analysis-result">
-                                            <div class="result-title">检测结果</div>
-                                            <div class="result-details">
-                                                ${patient.imageAnalysis.eyeArea.findings.map(finding => `
-                                                    <div class="result-item">
-                                                        <div class="result-label">${finding.name}</div>
-                                                        <div class="result-value">${finding.level} (${finding.score}分)</div>
-                                                    </div>
-                                                `).join('')}
-                                            </div>
-                                        </div>
-                                    </div>
-                                `;
-                                imageAnalysisContainer.appendChild(eyeAreaAnalysis);
-                            }
-                        }
-                    }
-
 
                     // 默认展开第一个维度
                     const firstDimension = document.querySelector('.dimension-scores .dimension-score-item');
@@ -7388,6 +7442,58 @@
                             }, 100);
                         }
                     }
+
+                    // 更新雷达图数据
+                    if (!window.radarChart) {
+                        console.log('Waiting for radar chart initialization...');
+                        await new Promise(resolve => setTimeout(resolve, 3000));
+                        if (!window.radarChart) {
+                            console.error('Radar chart initialization timeout');
+                            return;
+                        }
+                    }
+                    updateRadarChartData(patient.dimensionData);
+                }
+
+                // 添加更新雷达图数据的函数
+                async function updateRadarChartData(dimensionData) {
+                    // 确保雷达图实例存在
+                    if (!window.radarChart) {
+                        console.error('Radar chart instance not found');
+                        await initRadarChart('detectionRadarChart');
+                        return;
+                    }
+
+                    console.log('Updating radar chart data with dimensionData:', dimensionData);
+
+                    // 从 report 中提取维度数据
+
+                    const currentScores = [];
+                    const targetScores = [];
+                    const indicators = [];
+
+                    // 处理维度数据
+                    dimensionData.forEach(dim => {
+                        currentScores.push(dim.currentScore);
+                        targetScores.push(dim.targetScore);
+                        indicators.push({
+                            name: dim.name,
+                            max: 100,
+                            axisLabel: { show: true }
+                        });
+                    });
+
+                    // 更新雷达图配置
+                    const option = window.radarChart.getOption();
+                    option.radar[0].indicator = indicators;
+                    option.series[0].data[0].value = currentScores;
+                    option.series[0].data[1].value = targetScores;
+
+                    console.log('Updating radar chart data with option:', option);
+                    console.log('window.radarChart', window.radarChart);
+
+                    // 应用更新
+                    window.radarChart.setOption(option, true);
                 }
 
                 // 首先修改 detection-result 页面的 HTML 结构
@@ -7425,7 +7531,7 @@
                             <div class="left-section">
                                 <div class="radar-section">
                                     <h3 class="section-title">眼部健康综合评估</h3>
-                                    <div id="detectionRadarChart"></div>
+                                    <div id="detectionRadarChart" style="width: 100%; height: 300px;" class="radar-chart"></div>
                                 </div>
                             </div>
                             
@@ -7558,7 +7664,7 @@
                         document.getElementById('check-count').textContent = `第${patient.checkCount}次`;
 
                         // 初始化雷达图
-                        await initRadarChart();
+                        //await initRadarChart();
 
                         // 更新问题汇总
                         const problemsList = document.getElementById('problems-list');
@@ -9300,6 +9406,26 @@
                         // 报告入口页面初始化逻辑
                         initReportEntrance();
                     },
+                    'report-details': async () => {
+                        // 报告详情页面初始化逻辑
+                        console.log('Initializing report details page');
+                        try {
+                            console.log(' report-details initPage');
+                            // 使用原有的 initRadarChart 函数
+                            const chartDom = document.getElementById('detectionRadarChart');
+                            if (chartDom) {
+                                console.log('L9422, report-details initRadarChart', chartDom);
+                                await initRadarChart(chartDom);
+                                console.log('radarChart initialized');
+                                await updateDetectionReport();
+                                console.log('detectionReport updated');
+                            } else {
+                                console.error('L9425, report-details initRadarChart, chartDom not found');
+                            }
+                        } catch (error) {
+                            console.error('Error initializing report details page:', error);
+                        }
+                    },
                     'cases-entrance': () => {
                         // 服务案例入口页面初始化逻辑
                         initCasesPage();
@@ -9307,50 +9433,62 @@
                     'services-entrance': () => {
                         // 护理项目入口页面初始化逻辑
                         initServicesPage();
+                    },
+                    'profile-page': () => {
+                        // 个人中心页面初始化逻辑
+                        //initProfilePage();
+                    },
+                    'login-page': () => {
+                        // 登录页面初始化逻辑
+                        // initLoginPage();
+                    },
+                    'detection-records': () => {
+                        // 检测记录页面初始化逻辑
+                        initDetectionRecords();
                     }
                 };
 
-                // 页面标题映射
-                const pageTitles = {
-                    'home-page': '首页',
-                    'services-entrance': '护理项目',
-                    'cases-entrance': '服务案例',
-                    'detection-page': '眼部检测',
-                    'detection-customer': '客户信息',
-                    'detection-questionnaire': '问卷调查',
-                    'detection-camera': '拍摄检测',
-                    'detection-result': '检测结果',
-                    'report-entrance': '报告',
-                    'report-details': '报告详情',
-                    'new-customer': '新建客户',
-                    'customer-login-page': '客户登录',
-                    'dimension-detail': '维度详情',
-                    'profile-page': '个人中心',
-                    'detection-records': '检测记录',
-                    'employee-management': '员工管理',
-                    'store-management': '门店管理',
-                    'login-page': '登录'
-                };
+                // // 页面标题映射
+                // const pageTitles = {
+                //     'home-page': '首页',
+                //     'services-entrance': '护理项目',
+                //     'cases-entrance': '服务案例',
+                //     'detection-page': '眼部检测',
+                //     'detection-customer': '客户信息',
+                //     'detection-questionnaire': '问卷调查',
+                //     'detection-camera': '拍摄检测',
+                //     'detection-result': '检测结果',
+                //     'report-entrance': '报告',
+                //     'report-details': '报告详情',
+                //     'new-customer': '新建客户',
+                //     'customer-login-page': '客户登录',
+                //     'dimension-detail': '维度详情',
+                //     'profile-page': '个人中心',
+                //     'detection-records': '检测记录',
+                //     'employee-management': '员工管理',
+                //     'store-management': '门店管理',
+                //     'login-page': '登录'
+                // };
 
                 /**
                  * 处理页面切换的函数
                  * @param {string} pageId - 目标页面的ID
                  */
-                function handlePageChange(pageId) {
+                async function handlePageChange(pageId) {
                     console.log('L9174, handlePageChange', pageId);
                     // 1. 更新页面标题
                     //updatePageTitle(pageId);
 
                     // 2. 执行页面特定的初始化
-                    initializePage(pageId);
+                    await initializePage(pageId);
 
                     // if (currentPage === 'detection-result') {
                     //     cleanupDetectionResult();
                     // }
 
-                    if (pageId === 'detection-result') {
-                        updateDetectionResult();
-                    }
+                    // if (pageId === 'detection-result') {
+                    //     updateDetectionResult();
+                    // }
                     // if (pageId === 'report-entrance') {
                     //     // 确保在切换到报告页面时重新初始化
                     //     setTimeout(() => {
@@ -9386,14 +9524,16 @@
                 /**
                  * 执行页面特定的初始化
                  */
-                function initializePage(pageId) {
+                async function initializePage(pageId) {
                     console.log('initializePage', pageId);
                     if (pageInitializers[pageId]) {
                         try {
-                            pageInitializers[pageId]();
+                            await pageInitializers[pageId]();
                         } catch (error) {
                             console.error(`Error initializing page ${pageId}: `, error);
                         }
+                    } else {
+                        console.error(`Page ${pageId} not found in pageInitializers`);
                     }
                 }
 
@@ -9648,21 +9788,30 @@
                         );
 
                         recordsList.innerHTML = records.map(record => `
-                                < div class="record-item" onclick = "navigateToRecordDetail('${record.id}')" >
-                                        <div class="record-header">
-                                            <div class="customer-name">${record.name}</div>
-                                            <div class="check-time">${formatCheckTime(record.lastDetectionTime)}</div>
-                                        </div>
-                                        <div class="record-info">${record.phone}</div>
-                                        <div class="record-info">检测次数：${record.checkCount}次</div>
-                                        <div class="record-status">查看检测报告 ></div>
-                                    </div >
+                            <div class="record-item" onclick="navigateToRecordDetail('${record.id}')">
+                                <div class="record-header">
+                                    <div class="customer-name">${record.name}</div>
+                                    <div class="check-time">上次检测 ${formatCheckTime(record.lastDetectionTime)}</div>
+                                </div>
+                                <div class="record-info">${formatPhone(record.phone)}</div>
+                                <div class="record-info">检测次数：${record.checkCount}次</div>
+                                <div class="record-status">查看检测报告 ></div>
+                            </div>
                             `).join('');
 
                     } catch (error) {
                         console.error('Error rendering detection records:', error);
                     }
                 }
+
+                // 添加格式化电话号码的函数
+                function formatPhone(phone) {
+                    if (!phone) return '';
+                    // 格式化为 XXX-XXXX 格式
+                    return phone.replace(/(\d{3})(\d{4})/, '$1-$2');
+                }
+
+
 
 
                 async function getDetectionRecords() {
@@ -9719,6 +9868,7 @@
 
                         // 存储当前报告数据
                         sessionStorage.setItem('currentReport', JSON.stringify(report));
+                        console.log("L9854, navigateToRecordDetail", report);
 
                         // 导航到报告详情页
                         navigateTo('report-details');
@@ -9732,162 +9882,162 @@
                 // 首先修改系统设置页面的样式和结构
                 const systemSettingsStyles = `
                                 .settings - container {
-                            padding: 15px;
-                        }
+                                                            padding: 15px;
+                                                        }
 
-.settings - tabs {
-                            display: flex;
-                            background: white;
-                            border - radius: 12px;
-                            padding: 4px;
-                            margin - bottom: 15px;
-                        }
+                                .settings - tabs {
+                                                            display: flex;
+                                                            background: white;
+                                                            border - radius: 12px;
+                                                            padding: 4px;
+                                                            margin - bottom: 15px;
+                                                        }
 
-.settings - tab {
-                            flex: 1;
-                            padding: 12px;
-                            text - align: center;
-                            cursor: pointer;
-                            border - radius: 8px;
-                            color: #666;
-                            transition: all 0.3s;
-                        }
+                                .settings - tab {
+                                                            flex: 1;
+                                                            padding: 12px;
+                                                            text - align: center;
+                                                            cursor: pointer;
+                                                            border - radius: 8px;
+                                                            color: #666;
+                                                            transition: all 0.3s;
+                                                        }
 
-.settings - tab.active {
-                            background: #35A69C;
-                            color: white;
-                        }
+                                .settings - tab.active {
+                                                            background: #35A69C;
+                                                            color: white;
+                                                        }
 
-.settings - section {
-                            display: none;
-                        }
+                                .settings - section {
+                                                            display: none;
+                                                        }
 
-.settings - section.active {
-                            display: block;
-                        }
+                                .settings - section.active {
+                                                            display: block;
+                                                        }
 
-.card {
-                            background: white;
-                            border - radius: 12px;
-                            padding: 16px;
-                            margin - bottom: 15px;
-                        }
+                                .card {
+                                                            background: white;
+                                                            border - radius: 12px;
+                                                            padding: 16px;
+                                                            margin - bottom: 15px;
+                                                        }
 
-.settings - item {
-                            display: flex;
-                            justify - content: space - between;
-                            align - items: center;
-                            padding: 12px 0;
-                            border - bottom: 1px solid #f0f0f0;
-                        }
+                                .settings - item {
+                                                            display: flex;
+                                                            justify - content: space - between;
+                                                            align - items: center;
+                                                            padding: 12px 0;
+                                                            border - bottom: 1px solid #f0f0f0;
+                                                        }
 
-.settings - item: last - child {
-                            border - bottom: none;
-                        }
+                                .settings - item: last - child {
+                                                            border - bottom: none;
+                                                        }
 
-.settings - item - title {
-                            font - size: 16px;
-                            color: #333;
-                            margin - bottom: 4px;
-                        }
+                                .settings - item - title {
+                                                            font - size: 16px;
+                                                            color: #333;
+                                                            margin - bottom: 4px;
+                                                        }
 
-.settings - item - description {
-                            font - size: 14px;
-                            color: #666;
-                        }
+                                .settings - item - description {
+                                                            font - size: 14px;
+                                                            color: #666;
+                                                        }
 
-.toggle -switch {
-                            position: relative;
-                            display: inline - block;
-                            width: 52px;
-                            height: 28px;
-                        }
+                                .toggle -switch {
+                                                            position: relative;
+                                                            display: inline - block;
+                                                            width: 52px;
+                                                            height: 28px;
+                                                        }
 
-                            .toggle -switch input {
-    opacity: 0;
-                        width: 0;
-                        height: 0;
-                    }
+                                                            .toggle -switch input {
+                                    opacity: 0;
+                                                        width: 0;
+                                                        height: 0;
+                                                    }
 
-.toggle - slider {
-                        position: absolute;
-                        cursor: pointer;
-                        top: 0;
-                        left: 0;
-                        right: 0;
-                        bottom: 0;
-                        background - color: #ccc;
-                        transition: .4s;
-                        border - radius: 34px;
-                    }
+                                .toggle - slider {
+                                                        position: absolute;
+                                                        cursor: pointer;
+                                                        top: 0;
+                                                        left: 0;
+                                                        right: 0;
+                                                        bottom: 0;
+                                                        background - color: #ccc;
+                                                        transition: .4s;
+                                                        border - radius: 34px;
+                                                    }
 
-.toggle - slider:before {
-                        position: absolute;
-                        content: "";
-                        height: 20px;
-                        width: 20px;
-                        left: 4px;
-                        bottom: 4px;
-                        background - color: white;
-                        transition: .4s;
-                        border - radius: 50 %;
-                    }
+                                .toggle - slider:before {
+                                                        position: absolute;
+                                                        content: "";
+                                                        height: 20px;
+                                                        width: 20px;
+                                                        left: 4px;
+                                                        bottom: 4px;
+                                                        background - color: white;
+                                                        transition: .4s;
+                                                        border - radius: 50 %;
+                                                    }
 
-                    input: checked + .toggle - slider {
-                        background - color: #35A69C;
-                    }
+                                                    input: checked + .toggle - slider {
+                                                        background - color: #35A69C;
+                                                    }
 
-                    input: checked + .toggle - slider:before {
-                        transform: translateX(24px);
-                    }
+                                                    input: checked + .toggle - slider:before {
+                                                        transform: translateX(24px);
+                                                    }
 
-.cache - info {
-                        text - align: center;
-                        padding: 20px 0;
-                    }
+                                .cache - info {
+                                                        text - align: center;
+                                                        padding: 20px 0;
+                                                    }
 
-.cache - size {
-                        font - size: 24px;
-                        font - weight: 500;
-                        color: #333;
-                        margin - bottom: 8px;
-                    }
+                                .cache - size {
+                                                        font - size: 24px;
+                                                        font - weight: 500;
+                                                        color: #333;
+                                                        margin - bottom: 8px;
+                                                    }
 
-.cache - description {
-                        font - size: 14px;
-                        color: #666;
-                    }
+                                .cache - description {
+                                                        font - size: 14px;
+                                                        color: #666;
+                                                    }
 
-.about - container {
-                        text - align: center;
-                        padding: 20px 0;
-                    }
+                                .about - container {
+                                                        text - align: center;
+                                                        padding: 20px 0;
+                                                    }
 
-.app - logo {
-                        width: 80px;
-                        height: 80px;
-                        margin - bottom: 16px;
-                    }
+                                .app - logo {
+                                                        width: 80px;
+                                                        height: 80px;
+                                                        margin - bottom: 16px;
+                                                    }
 
-.app - name {
-                        font - size: 20px;
-                        font - weight: 500;
-                        color: #333;
-                        margin - bottom: 8px;
-                    }
+                                .app - name {
+                                                        font - size: 20px;
+                                                        font - weight: 500;
+                                                        color: #333;
+                                                        margin - bottom: 8px;
+                                                    }
 
-.app - version {
-                        font - size: 14px;
-                        color: #666;
-                        margin - bottom: 16px;
-                    }
+                                .app - version {
+                                                        font - size: 14px;
+                                                        color: #666;
+                                                        margin - bottom: 16px;
+                                                    }
 
-.version - status {
-                        font - size: 14px;
-                        color: #35A69C;
-                        margin - bottom: 16px;
-                    }
-`;
+                                .version - status {
+                                                        font - size: 14px;
+                                                        color: #35A69C;
+                                                        margin - bottom: 16px;
+                                                    }
+                                `;
 
                 // 添加系统设置页面的初始化和切换逻辑
                 function initSystemSettings() {
@@ -9976,6 +10126,245 @@
                         text.textContent = '展开';
                     }
                 }
+
+
+                // // 初始化雷达图
+                // function initDetectionRadarChart(data) {
+                //     // 确保容器存在
+                //     const chartDom = document.getElementById('detectionRadarChart');
+                //     if (!chartDom) {
+                //         console.error('Radar chart container not found');
+                //         return;
+                //     }
+
+                //     // 初始化 ECharts 实例
+                //     const myChart = echarts.init(chartDom);
+
+                //     // 雷达图配置
+                //     const option = {
+                //         tooltip: {
+                //             trigger: 'item'
+                //         },
+                //         legend: {
+                //             data: ['检测得分'],
+                //             bottom: 0
+                //         },
+                //         radar: {
+                //             shape: 'polygon',
+                //             indicator: [
+                //                 { name: '疲劳度', max: 100 },
+                //                 { name: '浑浊度', max: 100 },
+                //                 { name: '脆弱度', max: 100 },
+                //                 { name: '干涩度', max: 100 },
+                //                 { name: '充血度', max: 100 }
+                //             ],
+                //             splitArea: {
+                //                 show: true,
+                //                 areaStyle: {
+                //                     color: ['rgba(255,255,255,0.3)']
+                //                 }
+                //             }
+                //         },
+                //         series: [{
+                //             name: '检测得分',
+                //             type: 'radar',
+                //             data: [{
+                //                 value: [
+                //                     data.fatigue || 0,
+                //                     data.turbidity || 0,
+                //                     data.fragility || 0,
+                //                     data.dryness || 0,
+                //                     data.congestion || 0
+                //                 ],
+                //                 name: '检测得分',
+                //                 areaStyle: {
+                //                     color: 'rgba(65,105,225,0.3)'
+                //                 }
+                //             }]
+                //         }]
+                //     };
+
+                //     // 使用配置项显示图表
+                //     myChart.setOption(option);
+
+                //     // 响应窗口大小变化
+                //     window.addEventListener('resize', () => myChart.resize());
+                // }
+
+                // // 从 JSON 文件加载数据并初始化雷达图
+                // async function loadAndInitRadarChart() {
+                //     try {
+                //         const response = await fetch('/data/patientData.json');
+                //         const data = await response.json();
+                //         console.log("loadAndInitRadarChart", data);
+                //         // data.analysisData.fatigue = 65;
+                //         // data.analysisData.turbidity = 72;
+                //         // data.analysisData.fragility = 58;
+                //         // data.analysisData.dryness = 70;
+                //         // data.analysisData.congestion = 68;
+                //         // 获取分析数据
+                //         const analysisData = data.analysisData;
+                //         if (analysisData) {
+                //             initDetectionRadarChart(analysisData);
+                //         } else {
+                //             console.error('Analysis data not found in JSON');
+                //         }
+                //     } catch (error) {
+                //         console.error('Error loading radar chart data:', error);
+                //     }
+                // }
+
+                // // 页面加载完成后初始化雷达图
+                // document.addEventListener('DOMContentLoaded', loadAndInitRadarChart);
+
+                // 定义全局图表实例
+                // let radarChart = null;
+
+                // // 等待容器可见并且有尺寸
+                // function waitForContainer(dimensionData) {
+                //     const chartDom = document.getElementById('detectionRadarChart');
+                //     if (chartDom && chartDom.offsetWidth > 0 && chartDom.offsetHeight > 0) {
+                //         console.log('waitForContainer', chartDom);
+                //         initChart(chartDom, dimensionData);
+                //     } else {
+                //         console.log('waitForContainer', chartDom, ", wait for 100ms");
+                //         setTimeout(waitForContainer, 100);
+                //     }
+                // }
+
+                // function updateRadarChart(dimensionData) {
+                //     console.log('Updating radar chart with dimension data:', dimensionData);
+
+                //     // 确保容器存在
+                //     const chartDom = document.getElementById('detectionRadarChart');
+                //     if (!chartDom) {
+                //         console.error('Radar chart container not found');
+                //         return;
+                //     }
+                //     waitForContainer(dimensionData);
+                // }
+
+                // function initChart(chartDom, dimensionData) {
+                //     console.log('initChart', chartDom, dimensionData);
+                //     // 如果已经有实例，先销毁
+                //     if (radarChart) {
+                //         radarChart.dispose();
+                //     }
+                //     radarChart = echarts.init(chartDom);
+
+                //     // 从dimensionData提取数据
+                //     const currentScores = [];
+                //     const targetScores = [];
+                //     const indicators = [];
+
+
+                //     // 遍历维度数据构建图表数据
+                //     dimensionData.forEach(dimension => {
+                //         currentScores.push(dimension.currentScore);
+                //         targetScores.push(dimension.targetScore);
+                //         indicators.push({
+                //             name: dimension.name,
+                //             max: 100,
+                //             axisLabel: {
+                //                 show: true,
+                //                 fontSize: 12
+                //             }
+                //         });
+                //     });
+
+                //     console.log('Chart container:', chartDom);
+                //     console.log('Container dimensions:', chartDom.offsetWidth, chartDom.offsetHeight);
+                //     console.log('Container visibility:', chartDom.offsetParent !== null);
+                //     console.log('Current scores:', currentScores);
+                //     console.log('Target scores:', targetScores);
+
+                //     // 配置项
+                //     const option = {
+                //         tooltip: {
+                //             trigger: 'item'
+                //         },
+                //         legend: {
+                //             data: ['当前状态', '目标值'],
+                //             bottom: 0
+                //         },
+                //         radar: {
+                //             center: ['50%', '50%'],
+                //             radius: '70%',
+                //             shape: 'polygon',
+                //             indicator: indicators,
+                //             splitArea: {
+                //                 show: true,
+                //                 areaStyle: {
+                //                     color: ['rgba(255,255,255,0.3)']
+                //                 }
+                //             },
+                //             series: [{
+                //                 type: 'radar',
+                //                 data: [
+                //                     {
+                //                         value: currentScores,
+                //                         name: '当前状态',
+                //                         lineStyle: {
+                //                             color: '#4CAF50'
+                //                         },
+                //                         areaStyle: {
+                //                             color: 'rgba(76,175,80,0.3)'
+                //                         }
+                //                     },
+                //                     {
+                //                         value: targetScores,
+                //                         name: '目标值',
+                //                         lineStyle: {
+                //                             color: '#2196F3'
+                //                         },
+                //                         areaStyle: {
+                //                             color: 'rgba(33,150,243,0.3)'
+                //                         }
+                //                     }
+                //                 ]
+                //             }]
+                //         }
+                //     };
+
+                //     radarChart.setOption(option);
+                // }
+
+
+                // // 添加全局的事件监听
+                // window.addEventListener('resize', () => {
+                //     if (window.AbortController) {
+                //         console.log('resize', window.radarChart);
+                //         window.radarChart.resize();
+                //     }
+                // });
+
+                // 在页面初始化和切换时确保图表正确渲染
+                document.addEventListener('DOMContentLoaded', () => {
+                    if (window.currentPatient && window.currentPatient.dimensionData) {
+                        //updateRadarChart(window.currentPatient.dimensionData);
+                        window.radarChart.resize();
+                    }
+                });
+
+
+                // 添加 MutationObserver 监听容器可见性变化
+                const observer = new MutationObserver((mutations) => {
+                    const chartDom = document.getElementById('detectionRadarChart');
+                    if (chartDom && chartDom.offsetParent !== null && radarChart) {
+                        radarChart.resize();
+                    }
+                });
+
+                // 观察容器的显示状态变化
+                const chartContainer = document.getElementById('detectionRadarChart');
+                if (chartContainer) {
+                    observer.observe(chartContainer.parentElement, {
+                        attributes: true,
+                        childList: true,
+                        subtree: true
+                    });
+                }
+
             </script>
         </div>
 
