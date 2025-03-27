@@ -6917,7 +6917,7 @@
                     updateBreadcrumb(currentPageId);
 
                     // 初始化雷达图
-                    //initRadarChart('detectionRadarChart');
+                    initRadarChart('detectionRadarChart');
 
                     // 初始化检测报告和检测结果
                     //updateDetectionReport();
@@ -7032,9 +7032,13 @@
                 }
 
                 // 统一的雷达图初始化函数
-                async function initRadarChart(chartDom) {
-                    console.log(' initRadarChart, chartDom:', chartDom);
+                async function initRadarChart(containerId) {
+                    console.log(' initRadarChart, containerId:', containerId);
                     try {
+                        // 等待容器就绪
+                        const chartDom = await ensureContainer(containerId);
+                        console.log('Container ready:', chartDom.getBoundingClientRect());
+
                         if (!window.currentPatient) {
                             window.currentPatient = await getPatientData();
                         }
@@ -7460,8 +7464,18 @@
                     // 确保雷达图实例存在
                     if (!window.radarChart) {
                         console.error('Radar chart instance not found');
-                        await initRadarChart('detectionRadarChart');
-                        return;
+                        
+                        let attempts = 0;
+                        const maxAttempts = 10;
+                        
+                        while (!window.radarChart && attempts < maxAttempts) {
+                            console.log('Waiting for radar chart initialization... Attempt:', attempts + 1);
+                            await new Promise(resolve => setTimeout(resolve, 500));
+                            attempts++;
+                        }
+                        if (!window.radarChart) {
+                            throw new Error('Radar chart initialization timeout after multiple attempts');
+                        }
                     }
 
                     console.log('Updating radar chart data with dimensionData:', dimensionData);
@@ -9379,6 +9393,52 @@
                     }, 3000);
                 }
 
+                // 确保患者数据已加载
+                async function ensurePatientData() {
+                    let attempts = 0;
+                    const maxAttempts = 10;
+
+                    while (!window.currentPatient && attempts < maxAttempts) {
+                        await new Promise(resolve => setTimeout(resolve, 500));
+                        attempts++;
+                    }
+
+                    if (!window.currentPatient) {
+                        throw new Error('Failed to load patient data');
+                    }
+                }
+
+                // 确保容器就绪
+                async function ensureContainer(containerId) {
+                    const chartDom = document.getElementById(containerId);
+                    if (!chartDom) {
+                        throw new Error('Chart container not found');
+                    }
+
+                    let attempts = 0;
+                    const maxAttempts = 10;
+
+                    while (attempts < maxAttempts) {
+                        const rect = chartDom.getBoundingClientRect();
+                        if (rect.width > 0 && rect.height > 0) {
+                            return chartDom;
+                        }
+                        await new Promise(resolve => setTimeout(resolve, 500));
+                        attempts++;
+                    }
+
+                    throw new Error('Container failed to initialize with proper dimensions');
+                }
+
+
+
+                // 分离初始化逻辑
+                async function initializeReportDetails() {
+                    // 确保数据已加载
+                    await ensurePatientData();
+                    // 初始化雷达图
+                    await initRadarChart('detectionRadarChart');
+                }
 
                 // 页面初始化函数集合
                 const pageInitializers = {
@@ -9409,19 +9469,19 @@
                     'report-details': async () => {
                         // 报告详情页面初始化逻辑
                         console.log('Initializing report details page');
-                        try {
-                            console.log(' report-details initPage');
-                            // 使用原有的 initRadarChart 函数
-                            const chartDom = document.getElementById('detectionRadarChart');
-                            if (chartDom) {
-                                console.log('L9422, report-details initRadarChart', chartDom);
-                                await initRadarChart(chartDom);
-                                console.log('radarChart initialized');
-                                await updateDetectionReport();
-                                console.log('detectionReport updated');
+                        // 确保 DOM 完全加载
+                        await new Promise(resolve => {
+                            if (document.readyState === 'complete') {
+                                console.log('document.readyState === complete');    
+                                resolve();
                             } else {
-                                console.error('L9425, report-details initRadarChart, chartDom not found');
+                                console.log('document.readyState !== complete');
+                                window.addEventListener('load', resolve);
                             }
+                        });
+
+                        try {
+                            await initializeReportDetails();
                         } catch (error) {
                             console.error('Error initializing report details page:', error);
                         }
@@ -9511,6 +9571,8 @@
                     recordPageVisit(pageId);
                 }
 
+
+
                 /**
                  * 更新页面标题
                  */
@@ -9548,17 +9610,17 @@
                     sessionStorage.setItem('currentPage', pageId);
                     console.log('currentPage:', sessionStorage.getItem('currentPage'));
 
-                    navItems.forEach(item => {
-                        const targetPage = item.getAttribute('page');
-                        console.log('targetPage:', targetPage, ", pageId:", pageId);
-                        if (targetPage === pageId) {
-                            console.log('targetPage:', targetPage, ", pageId:", pageId, ", need to set it as active");
-                            item.classList.add('active');
-                        } else {
-                            console.log('targetPage:', targetPage, ", pageId:", pageId, ", need to remove it as active");
-                            item.classList.remove('active');
-                        }
-                    });
+                    // navItems.forEach(item => {
+                    //     const targetPage = item.getAttribute('page');
+                    //     console.log('targetPage:', targetPage, ", pageId:", pageId);
+                    //     if (targetPage === pageId) {
+                    //         console.log('targetPage:', targetPage, ", pageId:", pageId, ", need to set it as active");
+                    //         item.classList.add('active');
+                    //     } else {
+                    //         console.log('targetPage:', targetPage, ", pageId:", pageId, ", need to remove it as active");
+                    //         item.classList.remove('active');
+                    //     }
+                    // });
                 }
 
                 /**
