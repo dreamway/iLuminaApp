@@ -2812,67 +2812,54 @@
 
         /* 修改网格布局为每行3个 */
         .cases-grid {
-            flex: 1;
-            overflow-y: auto;
-            padding: 15px;
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            /* 改为3列 */
-            gap: 15px;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+            padding: 20px;
         }
 
-        /* 修改案例项样式 */
+        /* 案例项样式 */
         .case-item {
-            background: white;
+            background: #fff;
             border-radius: 8px;
             overflow: hidden;
-            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            transition: transform 0.3s ease;
         }
 
-        /* 修改前后对比图片容器样式 */
-        .case-item .before-after {
+        .case-item:hover {
+            transform: translateY(-2px);
+        }
+
+        /* 前后对比图容器 */
+        .before-after {
             position: relative;
-            padding-bottom: 100%;
-            /* 保持1:1的宽高比 */
+            width: 100%;
+            padding-top: 75%;
+            /* 4:3 比例 */
             overflow: hidden;
         }
 
-        /* 修改前后对比图片样式 */
-        .case-item .before-after img {
+        /* 图片样式 */
+        .before-after img {
             position: absolute;
+            top: 0;
             height: 100%;
             width: 50%;
             object-fit: cover;
         }
 
-        .case-item .before-after img:first-child {
-            left: 0;
-            /* 治疗前图片靠左 */
-        }
-
         .case-item .before-after img:last-child {
             left: 50%;
             /* 治疗后图片靠右 */
+            border-left: 1px solid #fff;
         }
 
-        /* 调整信息区域的样式以适应更窄的宽度 */
         .case-item .case-info {
-            padding: 8px;
-        }
-
-        .case-item .case-title {
-            font-size: 12px;
-            font-weight: bold;
-            margin-bottom: 4px;
-        }
-
-        .case-item .case-description {
-            font-size: 11px;
-            color: #666;
-            display: -webkit-box;
-            -webkit-line-clamp: 2;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
+            padding: 12px;
+            background: #fff;
+            border-top: 1px solid #eee;
         }
 
         /* 案例详情页样式 */
@@ -5142,7 +5129,7 @@
                 <div class="card">
                     <div class="section-title">日常用眼情况</div>
                     <div class="form-group">
-                        <label>每日用眼时长</label>
+                        <label>每日高强度用眼时长</label>
                         <div class="radio-group">
                             <div class="radio-item" onclick="selectEyeTime(this)">
                                 <div class="radio-button"></div>
@@ -5365,7 +5352,7 @@
                             <div style="font-weight: 500; margin-bottom: 8px;">眼部疲劳指数：75分</div>
                             <div style="color: var(--text-secondary);">根据问卷答案分析，您存在中度眼疲劳症状：</div>
                             <ul style="color: var(--text-secondary); margin: 8px 0 0 20px;">
-                                <li>每日用眼时间超过6小时</li>
+                                <li>每日高强度用眼时间超过6小时</li>
                                 <li>经常感觉眼睛干涩不适</li>
                                 <li>存在轻微的异物感</li>
                             </ul>
@@ -7989,6 +7976,7 @@
 
                 // 根据分类显示案例
                 function showCasesByCategory(categoryName) {
+                    console.log('showCasesByCategory', categoryName);
                     currentCategory = serviceCases.find(cat => cat.name === categoryName);
                     if (!currentCategory) {
                         console.error('Category not found:', categoryName);
@@ -8001,6 +7989,12 @@
                 // 更新案例网格
                 function updateCasesGrid() {
                     const grid = document.getElementById('casesGrid');
+                    if (!grid || !currentCategory) {
+                        console.error('Grid element or category not found');
+                        return;
+                    }
+                    console.log('Updating grid with cases:', currentCategory.cases);
+
                     grid.innerHTML = '';
 
                     const startIndex = (currentPage - 1) * PAGE_SIZE;
@@ -8008,22 +8002,29 @@
                     const casesToShow = currentCategory.cases.slice(startIndex, endIndex);
 
                     casesToShow.forEach(caseItem => {
+                        console.log('Creating case item:', caseItem);
                         const caseElement = document.createElement('div');
                         caseElement.className = 'case-item';
                         caseElement.onclick = () => showCaseDetail(caseItem);
 
                         caseElement.innerHTML = `
                         <div class="before-after">
-                            <img src="\${caseItem.before_after_images.before}" alt="治疗前">
-                            <img src="\${caseItem.before_after_images.after}" alt="治疗后">
+                            <img src="${caseItem.before_after_images.before}" alt="治疗前">
+                            <img src="${caseItem.before_after_images.after}" alt="治疗后">
                         </div>
                         <div class="case-info">
-                            <div class="case-title">\${caseItem.title}</div>
-                            <div class="case-description">\${caseItem.client_background.symptoms}</div>
+                            <div class="case-title" style="font-size: 14px; font-weight: 500; margin-bottom: 8px; color: #333;">
+                                ${caseItem.title || '案例标题'}
+                            </div>
+                            <div class="case-description" style="font-size: 12px; color: #666; line-height: 1.4; 
+                                display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">
+                                ${caseItem.client_background.symptoms || '暂无描述'}
+                            </div>
                         </div>
                     `;
 
                         grid.appendChild(caseElement);
+                        console.log('Case element added:', caseElement);
                     });
                 }
 
