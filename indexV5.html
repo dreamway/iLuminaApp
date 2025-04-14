@@ -4799,7 +4799,7 @@
                     <div class="input-row">
                         <div class="input-label">客户姓名:</div>
                         <div class="input-field mint-bg">
-                            <input type="text" id="customerName" placeholder="(输入姓氏)" class="transparent-input">
+                            <input type="text" id="customerName" placeholder="(输入姓氏)" value="陈先生" class="transparent-input">
                         </div>
                     </div>
 
@@ -4809,9 +4809,11 @@
                         <div class="input-field mint-bg">
                             <input type="text" id="phonePrefix" class="transparent-input" maxlength="3"
                                 placeholder="(输入电话前三、后四位)" onkeyup="handlePhoneInput(this, 'phoneSuffix')"
+                                value = "138"
                                 oninput="this.value = this.value.replace(/[^0-9]/g, '')">
                             <span class="phone-separator">-</span>
                             <input type="text" id="phoneSuffix" class="transparent-input" maxlength="4"
+                                value = "1234"
                                 onkeyup="handlePhoneInput(this, null)"
                                 oninput="this.value = this.value.replace(/[^0-9]/g, '')">
                         </div>
@@ -5929,7 +5931,7 @@
             </div>
 
             <!-- 登录页面 -->
-            <div class="page" id="login-page">
+            <!-- <div class="page" id="login-page">
                 <div style="max-width: 400px; margin: 40px auto; text-align: center;">
                     <div class="profile-avatar" style="width: 80px; height: 80px; margin: 0 auto 24px;">
                         <span class="material-icons" style="font-size: 40px;">person</span>
@@ -5947,7 +5949,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> -->
 
             <!-- 检测记录页面 -->
             <div class="page" id="detection-history">
@@ -6400,19 +6402,25 @@
                     // 清除登录状态
                     sessionStorage.clear();
                     // 跳转到登录页面
-                    navigateTo('login-page');
+                    //navigateTo('login-page');
+                    navigateTo('profile-page');
                 }
 
-                let currentUser = null; // 当前登录用户信息
+                // let currentUser = null; // 当前登录用户信息
+                let currentUser = {
+                    name: '张店长',
+                    role: '店长',
+                    store: '美睛美科中心店'
+                };
                 // 登录
                 function login() {
-                    const username = document.getElementById('username').value;
-                    const password = document.getElementById('password').value;
-                    currentUser = {
-                        name: '张店长',
-                        role: '店长',
-                        store: '美睛美科中心店'
-                    };
+                    // const username = document.getElementById('username').value;
+                    // const password = document.getElementById('password').value;
+                    // currentUser = {
+                    //     name: '张店长',
+                    //     role: '店长',
+                    //     store: '美睛美科中心店'
+                    // };
                     navigateTo('profile-page');
                 }
 
@@ -6787,7 +6795,7 @@
                         'store-management': ['首页', '个人中心', '门店管理'],
                         'personal-settings-page': ['首页', '个人中心', '个人设置'],
                         'system-settings-page': ['首页', '个人中心', '系统设置'],
-                        'login-page': ['登录']
+                        //'login-page': ['登录']
                     };
 
                     // 获取所有面包屑导航元素
@@ -9502,6 +9510,7 @@
                     'login-page': () => {
                         // 登录页面初始化逻辑
                         // initLoginPage();
+                        navigateTo('profile-page');
                     },
                     'detection-records': () => {
                         // 检测记录页面初始化逻辑
